@@ -5,6 +5,7 @@ public class HostVO {
 	private String pwd;
 	private String phone;
 	private String name;
+	private int status;
 
 	// Getter, Setter 메소드
 	public String getEmail() {
@@ -39,9 +40,18 @@ public class HostVO {
 		this.name = name;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	// ToString
 	@Override
 	public String toString() {
-		return "HostVO [email=" + email + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + "]";
+		return "HostVO [email=" + email + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status=" + status
+				+ "]";
 	}
 }
