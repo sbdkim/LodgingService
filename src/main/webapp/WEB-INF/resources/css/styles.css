@@ -24,12 +24,11 @@ body {
 }
 
 
-.hero-section {
+.top_home {
   background-image: url(background.jpg);
   height: 500px;
   background-size: cover;
   background-position: center;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -49,9 +48,11 @@ a {
 
 /* Header styles */
 header {
-  height: 80px;
+  height: 50px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  width: 100%
 }
 
 nav ul {
@@ -60,13 +61,21 @@ nav ul {
   padding: 0;
 }
 
+
+
+
+
+
 nav li {
   float: right;
+  height: 50px;
+  
 }
 
 nav a {
   display: block;
-  padding: 30px 20px;
+  padding: 10px 10px;
+  margin: 0px;
 }
 
 nav a:hover {
@@ -79,7 +88,8 @@ form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 200px;
+  vertical-align: middle;
 }
 
 label {
@@ -250,3 +260,42 @@ button {
       margin-left: 2%;
     }
   }
+  
+  
+  .search_room{
+  	  display: flex;
+  	font-size: 16px;
+ 	 font-weight: 600;
+  	margin-bottom: 10px;
+  		justify-content: center;
+	align-items: center;
+  }
+  
+  .main_count_box {
+	position: relative;
+	width: 80px;
+	font-size: 14px;
+	  font-size: 14px;
+  font-weight: 600;
+	margin-left: 8px;
+}
+
+.main_search_text {
+ padding: 10px 20px;
+  
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+	
+	
+	
+	
+	
+}
+  
+  
+  
+  
