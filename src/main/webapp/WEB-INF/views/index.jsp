@@ -1,82 +1,151 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>EZEN 숙소 예약</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="#">탐색하기</a>
-        <a href="#">호스트 되기</a>
-        <a href="#">저장된 숙소</a>
-        <a href="#">여행</a>
-        <a href="#">메시지</a>
-        <a href="#">도움말</a>
-      </nav>
-      <div class="logo">
-        <a href="#">KStay</a>
-      </div>
-      <div class="buttons">
-        <a href="#" class="signup-btn">Sign up</a>
-        <a href="#" class="login-btn">Log in</a>
-      </div>
-    </header>
-    <section class="hero-section">
-      <div class="hero-text">
-        <h1>Find a place to stay on KStay</h1>
-        <p>Discover entire homes and private rooms perfect for any trip.</p>
-        <div class="search-box">
-          <input type="text" placeholder="Where are you going?">
-          <input type="date" placeholder="Check in">
-          <input type="date" placeholder="Check out">
-          <input type="number" placeholder="Guests">
-          <button>Search</button>
-        </div>
-      </div>
-    </section>
-    <section class="explore-section">
-      <h2>Explore KStay</h2>
-      <div class="explore-cards">
-        <div class="card">
-          <img src="https://picsum.photos/300/200" alt="Card image">
-          <h3>Unique stays</h3>
-        </div>
-        <div class="card">
-          <img src="https://picsum.photos/300/200" alt="Card image">
-          <h3>Entire homes</h3>
-        </div>
-        <div class="card">
-          <img src="https://picsum.photos/300/200" alt="Card image">
-          <h3>Pets allowed</h3>
-        </div>
-        <div class="card">
-          <img src="https://picsum.photos/300/200" alt="Card image">
-          <h3>Outdoor getaways</h3>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <div class="logo">
-        <a href="#">KStay</a>
-      </div>
-      <div class="footer-nav">
-        <nav>
-          <a href="#">개인정보 처리방침</a>
-          <a href="#">이용약관</a>
-          <a href="#">사이트맵</a>
-          <a href="#">회사 세부정보</a>
-        </nav>
-      </div>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-square"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </footer>
-    <script src="script.js"></script>
-  </body>
-</html>
+	pageEncoding="UTF-8"%>
+<%@ include file="header.jsp"%>
+
+
+
+
+
+
+
+<div class=top_home >
+	<!-- image + search box -->
+	<div class="alignform" style="padding-top: 10px;  height: 100%; align-items: center; "> 
+	<form action="${pageContext.request.contextPath}/search/search"
+		name="f" method="get">
+		<div class=search_room style="padding-top: 10px;  height: 50%; align-items: center; ">
+			<!-- searchbox start-->
+			<div style="border-left: 1px solid #c8c8c8; margin-right: 10px; display:inline-block">
+				<input type=search class=main_search_text placeholder=서울,서초구
+					name="search_region" required>
+			</div>
+			<div class=main_checkinout style="display:inline-block">
+				<div role=button style="display:inline-block">
+					<div class="main_checkinout_buttonbox" style="display:inline-block">
+						<div style="display:inline-block">
+							<input type='date' id="checkin" min="${today }" value="${today }"
+								class="main_checkin_1" name="checkin" onchange="dateChk()"
+								required>
+						</div>
+						<div style="display:inline-block">
+							<input type='date' id="checkout" min="${tomorrow }"
+								value="${tomorrow }" class="main_checkout_1" name="checkout"
+								onchange="dateChk()" required>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class=main_count_box style="display:inline-block">
+				<div role="button" style="border-left: 1px solid #c8c8c8;">
+					<input type="hidden" name="ro_count" value="2">
+					<!-- select 저장용 -->
+					<select id="select_ro_count" class="form-select form-select-lg" 
+						onchange="change_ro_count()" style="border: none; height:40px; width: 40px; border-radius: 5px;" >
+						<option value="1">1</option>
+						<option value="2" selected>2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+			</div>
+
+
+
+			<div class="main_search_button_box"  style="display:inline-block">
+				<button type=submit style="border-left: 1px solid #c8c8c8;"
+					class="btn main_search_button">검색</button>
+			</div>
+		</div>
+		<!-- searchbox end -->
+
+	</form>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+	<div class="row">
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 1">
+			<p>City 1</p>
+		</div>
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 2">
+			<p>City 2</p>
+		</div>
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 3">
+			<p>City 3</p>
+		</div>
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 4">
+			<p>City 4</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 5">
+			<p>City 5</p>
+		</div>
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 6">
+			<p>City 6</p>
+		</div>
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 7">
+			<p>City 7</p>
+		</div>
+		<div class="cell">
+			<img src="css/dummy.jpg" alt="City 8">
+			<p>City 8</p>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+<%@ include file="footer.jsp"%>

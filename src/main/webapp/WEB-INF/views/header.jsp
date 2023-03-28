@@ -6,8 +6,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>KozyNest : Korean Comfort Lodging</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
+<header>
+	<img class="header-image" alt="logo" src="css/KozyNestLogo2.jpg" style="width:200px; float: left;"
+        		onclick="location.href='${pageContext.request.contextPath}/search/main'">
+
+  <nav style=" float: right">
+    <ul>
+    	<li><a href="#">로그인</a></li>
+    <li><a href="#">예약내역</a></li>
+      <li><a href="#">내 주변</a></li>
+      
+      
+    </ul>
+  </nav>
+</header>
+
+
+
 <body>
 
 </body>
