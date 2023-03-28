@@ -36,4 +36,9 @@
 		SELECT pwd FROM member
 		WHERE email=#{email}, name=#{name}, phone=#{phone}
 	</select>
+	
+	<!-- 전체 회원 정보 조회 -->
+	<select id="listMember" resultType="member">
+		SELECT * FROM member ORDER BY name
+	</select>
 </mapper>
