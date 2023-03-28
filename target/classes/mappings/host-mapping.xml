@@ -36,6 +36,21 @@
 		WHERE email=#{email}, name=#{name}, phone=#{phone}
 	</select>
 	
+	<!-- admin이 모든 호스트 조회하기 -->
+	<select id="getHostList" resultType="host">
+		SELECT * from host ORDER BY status ASEC
+	</select>
+	
+	
+	<!--  admin이 호스트 승인하기 -->
+	<update id="approveHost">
+		UPDATE host SET status='1'
+		WHERE email=#{email}
+	</update>
+	
+	
+	
+	
 	
 	
 </mapper>
