@@ -12,4 +12,15 @@
 		SELECT * FROM review_view
 		WHERE rseq=#{rseq}
 	</select>
+	
+	<!-- 리뷰수정 -->
+	<update id="updateReview">
+		UPDATE review SET content=#{content}, score=#{score}
+		WHERE reseq=#{reseq}
+	</update>
+	
+	<!-- 리뷰삭제 -->
+	<delete id="deleteReview">
+		DELETE review WHERE reseq=#{reseq}
+	</delete>
 </mapper>
