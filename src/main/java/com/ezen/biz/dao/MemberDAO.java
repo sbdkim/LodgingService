@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.ezen.biz.dto.MemberVO;
 
 @Repository
-public class MemberDAO{
+public class MemberDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
@@ -47,8 +47,8 @@ public class MemberDAO{
 	}
 
 	// 회원 정보 변경
-	public void updateMember(MemberVO vo) {
-		mybatis.update("MemberMapper.updateMember", vo);
+	public void updateMember(String email) {
+		mybatis.update("MemberMapper.updateMember", email);
 	}
 
 	// 이름, 번호로 이메일 찾기
