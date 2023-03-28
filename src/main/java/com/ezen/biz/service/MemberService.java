@@ -1,5 +1,7 @@
 package com.ezen.biz.service;
 
+import java.util.List;
+
 import com.ezen.biz.dto.MemberVO;
 
 public interface MemberService {
@@ -25,4 +27,6 @@ public interface MemberService {
 	// 이메일, 이름, 번호로 비밀번호 찾기
 	String selectPwdByEmailNamePhone(MemberVO vo);
 
+	// 전체 회원 정보 조회
+	List<MemberVO> getListMember(MemberVO vo);
 }
