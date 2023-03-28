@@ -4,7 +4,7 @@ public class HostVO {
 	private String email;
 	private String pwd;
 	private String phone;
-	private String address;
+	private String name;
 
 	// Getter, Setter 메소드
 	public String getEmail() {
@@ -31,17 +31,17 @@ public class HostVO {
 		this.phone = phone;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getName() {
+		return name;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	// ToString
 	@Override
 	public String toString() {
-		return "HostVO [email=" + email + ", pwd=" + pwd + ", phone=" + phone + ", address=" + address + "]";
+		return "HostVO [email=" + email + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + "]";
 	}
 }

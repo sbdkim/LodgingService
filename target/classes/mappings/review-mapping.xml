@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ReviewMapper">
+	<!-- 리뷰 등록 -->
+	<insert id="insertReview">
+		INSERT INTO review(reseq, rseq, bseq, content, score, reply)
+		VALUES(review_seq.NEXTVAL, #{rseq}, #{bseq}, #{content}, #{score}, #{reply})
+	</insert>
+	
+	<!-- 객실번호로 리뷰 조회 -->
+	<select id="selectReviewByRseq" resultType="review">
+		SELECT * FROM review_view
+		WHERE rseq=#{rseq}
+	</select>
+</mapper>
