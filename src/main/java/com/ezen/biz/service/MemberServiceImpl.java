@@ -33,8 +33,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void updateMember(MemberVO vo) {
-		mDao.updateMember(vo);
+	public void updateMember(String email) {
+		mDao.updateMember(email);
 	}
 
 	@Override

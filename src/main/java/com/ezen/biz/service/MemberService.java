@@ -17,7 +17,7 @@ public interface MemberService {
 	MemberVO getMember(String email);
 
 	// 회원 정보 변경
-	void updateMember(MemberVO vo);
+	void updateMember(String email);
 
 	// 이름, 번호로 이메일 찾기
 	String selectEmailByNamePhone(MemberVO vo);
