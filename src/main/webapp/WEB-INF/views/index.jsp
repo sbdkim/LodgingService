@@ -37,7 +37,7 @@
 			</div>
 
 			<div class=main_count_box style="display:inline-block">
-				<div role="button" style="border-left: 1px solid #c8c8c8;">
+				<div role="button">
 					<input type="hidden" name="ro_count" value="2">
 					<!-- select 저장용 -->
 					<select id="select_ro_count" class="form-select form-select-lg" 
@@ -102,47 +102,47 @@
 
 
 
-<section>
-	<div class="row">
+<section >
+	<div class="row" style="display: flex ; justify-content: center">
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 1">
+			<img src="css/dummy.jpg" alt="City 1" style="width:250px; height: 250px">
 			<p>City 1</p>
 		</div>
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 2">
+			<img src="css/dummy.jpg" alt="City 2" style="width:250px; height: 250px">
 			<p>City 2</p>
 		</div>
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 3">
+			<img src="css/dummy.jpg" alt="City 3" style="width:250px; height: 250px">
 			<p>City 3</p>
 		</div>
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 4">
+			<img src="css/dummy.jpg" alt="City 4" style="width:250px; height: 250px">
 			<p>City 4</p>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="display: flex ; justify-content: center">
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 5">
+			<img src="css/dummy.jpg" alt="City 5" style="width:250px; height: 250px">
 			<p>City 5</p>
 		</div>
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 6">
+			<img src="css/dummy.jpg" alt="City 6" style="width:250px; height: 250px">
 			<p>City 6</p>
 		</div>
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 7">
+			<img src="css/dummy.jpg" alt="City 7" style="width:250px; height: 250px">
 			<p>City 7</p>
 		</div>
 		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 8">
+			<img src="css/dummy.jpg" alt="City 8" style="width:250px; height: 250px">
 			<p>City 8</p>
 		</div>
 	</div>
 </section>
 
 
-
+</body>
 
 
 

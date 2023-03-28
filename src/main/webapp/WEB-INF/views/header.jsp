@@ -11,7 +11,7 @@
 </head>
 
 <header>
-	<img class="header-image" alt="logo" src="css/KozyNestLogo2.jpg" style="width:200px; float: left;"
+	<img class="header-image" alt="logo" src="css/KozyNestLogo4.jpg" style="width:200px; float: left; padding: 5px;"
         		onclick="location.href='${pageContext.request.contextPath}/search/main'">
 
   <nav style=" float: right">
@@ -29,5 +29,4 @@
 
 <body>
 
-</body>
-</html>
+
