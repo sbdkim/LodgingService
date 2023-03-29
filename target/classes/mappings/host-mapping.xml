@@ -38,7 +38,7 @@
 	
 	<!-- admin이 모든 호스트 조회하기 -->
 	<select id="getHostList" resultType="host">
-		SELECT * from host ORDER BY status ASEC
+		SELECT * from host ORDER BY status ASC
 	</select>
 	
 	

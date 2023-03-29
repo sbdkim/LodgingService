@@ -25,12 +25,17 @@ public class ReviewDAO {
 	}
 
 	// 리뷰수정
-	public void updateReview(int reseq) {
-		mybatis.update("ReviewMapper.updateReview", reseq);
+	public void updateReview(ReviewVO vo) {
+		mybatis.update("ReviewMapper.updateReview", vo);
 	}
 
 	// 리뷰삭제
 	public void deleteReview(int reseq) {
 		mybatis.delete("ReviewMapper.deleteReview", reseq);
+	}
+
+	// 전체 리뷰 조회
+	public List<ReviewVO> getListReview() {
+		return mybatis.selectList("ReviewMapper.getListReview");
 	}
 }

@@ -49,8 +49,8 @@ public class MemberDAO {
 	}
 
 	// 회원 정보 변경
-	public void updateMember(String email) {
-		mybatis.update("MemberMapper.updateMember", email);
+	public void updateMember(MemberVO vo) {
+		mybatis.update("MemberMapper.updateMember", vo);
 	}
 
 	// 이름, 번호로 이메일 찾기
@@ -64,7 +64,7 @@ public class MemberDAO {
 	}
 
 	// 전체 회원 정보 조회
-	public List<MemberVO> listMember(MemberVO vo) {
-		return mybatis.selectList("MemberMapper.listMember", vo);
+	public List<MemberVO> listMember() {
+		return mybatis.selectList("MemberMapper.listMember");
 	}
 }

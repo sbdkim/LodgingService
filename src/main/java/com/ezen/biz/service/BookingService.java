@@ -16,9 +16,11 @@ public interface BookingService {
 	BookingVO selectBookByBseq(int bseq);
 
 	// 예약번호로 예약수정
-	void updateBookByBseq(int bseq);
+	void updateBookByBseq(BookingVO vo);
 
 	// 예약번호로 예약취소
 	void deleteBookByBseq(int bseq);
 
+	// 전체 예약 내역 조회
+	List<BookingVO> getListBooking();
 }
