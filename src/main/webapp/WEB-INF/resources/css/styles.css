@@ -88,7 +88,6 @@ form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 200px;
   vertical-align: middle;
 }
 
@@ -99,7 +98,7 @@ label {
   margin-bottom: 10px;
 }
 
-input[type="text"], input[type="date"], input[type="number"] {
+input[type="text"],  input[type="password"], input[type="date"], input[type="number"] {
   padding: 10px;
   border: none;
   border-radius: 4px;
@@ -235,7 +234,7 @@ button {
       align-items: center;
     }
   
-    input[type="text"], input[type="date"], input[type="number"], button[type="submit"] {
+    input[type="text"], input[type="password"], input[type="date"], input[type="number"], button[type="submit"] {
       width: 100%;
       margin-right: 0;
       margin-bottom: 10px;
@@ -354,6 +353,32 @@ text-align:left;
 margin:0% 3%;
 }
 }
+
+/*RESET*/
+input[type="radio"] { display: none; }
+label { cursor: pointer; }
+* { box-sizing: border-box; }
+
+/*TAB_DESIGN*/
+label { 
+	display: block; 
+	border: 1px solid tomato;
+	width: 300px; 
+	height: 50px; 
+	float: left;
+	line-height: 50px;
+	text-align: center;
+}
+label:nth-of-type(even) { border-left: none; }
+
+div.tab_first_content { width: 100%; background-color: tomato; display: none; }
+div.tab_second_content { width: 100%; background-color: tomato; display: none; }
+div.tab_contents { clear: both; border: 1px solid tomato; width: 600px; overflow: hidden; border-top: none; }
+div.tab_contents div { padding: 20px; }
+
+
+input#tab_first[type="radio"]:checked ~ .tab_contents .tab_first_content { display: block; }
+input#tab_second[type="radio"]:checked ~ .tab_contents .tab_second_content { display: block; }
 
 
   

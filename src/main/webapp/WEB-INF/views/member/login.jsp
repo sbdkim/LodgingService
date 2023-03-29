@@ -10,7 +10,7 @@
           <label>User EMAIL</label>
           <input name="email" type="text" value="${email}"><br> 
           <label>Password</label> 
-          <input name="pwd" type="password"><br> 
+          <input name="pwd" type="password"><br>
         </fieldset>
         <div class="clear"></div>
         <div id="buttons">
