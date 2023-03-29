@@ -17,18 +17,19 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	// login 페이지로 이동
 	@GetMapping("/login_form")
 	public String loginView() {
 		return "member/login";
 	}
-	
+
 	@PostMapping("/login")
 	public String loginAction(MemberVO vo, Model model) {
 		int result = memberService.loginMember(vo);
-		
-		if(result == 1) {
+
+		if (result == 1) {
 			model.addAttribute("loginUser", memberService.getMember(vo.getEmail()));
-			
+
 			return "redirect:index";
 		} else {
 			return "member/login_fail";
@@ -73,4 +74,5 @@ public class MemberController {
 		memberService.insertMember(vo);
 		return "member/login";
 	}
+
 }
