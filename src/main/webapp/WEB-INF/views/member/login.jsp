@@ -7,8 +7,8 @@
     <form method="post" action="login">
         <fieldset>
         <legend></legend>
-          <label>User ID</label>
-          <input name="id" type="text" value="${id}"><br> 
+          <label>User EMAIL</label>
+          <input name="email" type="text" value="${email}"><br> 
           <label>Password</label> 
           <input name="pwd" type="password"><br> 
         </fieldset>
