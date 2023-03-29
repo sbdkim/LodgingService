@@ -18,7 +18,7 @@
 			<legend></legend>
 			<table>
 			 <tr>
-			 <td><label>User EMAIL</label> </td>
+			 <td><label>User email</label> </td>
 			 <td><input name="email" type="text"
 				></td>
 			 </tr> 
@@ -50,7 +50,7 @@
 			
 			<table>
 			 <tr>
-			 <td><label>Host EMAIL</label> </td>
+			 <td><label>Host email</label> </td>
 			 <td><input name="email" type="text"
 				></td>
 			 </tr> 

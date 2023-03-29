@@ -14,7 +14,7 @@ import com.ezen.biz.service.HostService;
 import com.ezen.biz.service.MemberService;
 
 @Controller
-@SessionAttributes("loginUser")
+@SessionAttributes({"loginUser", "loginHost"})
 public class MemberController {
 
 	@Autowired
