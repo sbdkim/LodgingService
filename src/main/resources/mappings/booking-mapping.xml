@@ -29,4 +29,9 @@
 	<delete id="deleteBookByBseq">
 		DELETE booking WHERE bseq=#{bseq}
 	</delete>
+	
+	<!-- 전체 예약 내역 조회 -->
+	<select id="getListBooking" resultType="booking">
+		SELECT * FROM booking ORDER BY bseq DESC
+	</select>
 </mapper>

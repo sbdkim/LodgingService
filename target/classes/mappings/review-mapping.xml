@@ -23,4 +23,15 @@
 	<delete id="deleteReview">
 		DELETE review WHERE reseq=#{reseq}
 	</delete>
+	
+	<!-- 전체 리뷰 조회 -->
+	<select id="getListReview" resultType="review">
+		SELECT * FROM review ORDER BY reseq DESC
+	</select>
+	
+	<!-- 리뷰 답글 달기 -->
+	<update id="insertReply">
+		UPDATE review SET reply=#{reply}
+		WHERE reseq=#{reseq}
+	</update>
 </mapper>

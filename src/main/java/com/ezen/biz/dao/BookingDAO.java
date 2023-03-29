@@ -30,12 +30,17 @@ public class BookingDAO {
 	}
 
 	// 예약번호로 예약수정
-	public void updateBookByBseq(int bseq) {
-		mybatis.update("Booking.updateBookByBseq", bseq);
+	public void updateBookByBseq(BookingVO vo) {
+		mybatis.update("Booking.updateBookByBseq", vo);
 	}
 
 	// 예약번호로 예약취소
 	public void deleteBookByBseq(int bseq) {
 		mybatis.delete("Booking.deleteBookByBseq", bseq);
+	}
+
+	// 전체 예약 내역 조회
+	public List<BookingVO> getListBooking() {
+		return mybatis.selectList("BookingMapper.getListBooking");
 	}
 }

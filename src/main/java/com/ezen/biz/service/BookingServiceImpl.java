@@ -30,13 +30,18 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void updateBookByBseq(int bseq) {
-		bDao.updateBookByBseq(bseq);
+	public void updateBookByBseq(BookingVO vo) {
+		bDao.updateBookByBseq(vo);
 	}
 
 	@Override
 	public void deleteBookByBseq(int bseq) {
 		bDao.deleteBookByBseq(bseq);
+	}
+
+	@Override
+	public List<BookingVO> getListBooking() {
+		return bDao.getListBooking();
 	}
 
 }

@@ -25,13 +25,23 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void updateReview(int reseq) {
-		rDao.updateReview(reseq);
+	public void updateReview(ReviewVO vo) {
+		rDao.updateReview(vo);
 	}
 
 	@Override
 	public void deleteReview(int reseq) {
 		rDao.deleteReview(reseq);
+	}
+
+	@Override
+	public List<ReviewVO> getListReview() {
+		return rDao.getListReview();
+	}
+
+	@Override
+	public void insertReply(ReviewVO vo) {
+		rDao.insertReply(vo);
 	}
 
 }
