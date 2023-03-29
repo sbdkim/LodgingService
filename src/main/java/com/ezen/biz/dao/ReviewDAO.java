@@ -38,4 +38,9 @@ public class ReviewDAO {
 	public List<ReviewVO> getListReview() {
 		return mybatis.selectList("ReviewMapper.getListReview");
 	}
+
+	// 리뷰 답글 달기
+	public void insertReply(ReviewVO vo) {
+		mybatis.update("ReviewMapper.insertReply", vo);
+	}
 }

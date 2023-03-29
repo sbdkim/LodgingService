@@ -20,4 +20,7 @@ public interface ReviewService {
 
 	// 전체 리뷰 조회
 	List<ReviewVO> getListReview();
+
+	// 리뷰 답글 달기
+	void insertReply(ReviewVO vo);
 }

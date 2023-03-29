@@ -39,4 +39,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return rDao.getListReview();
 	}
 
+	@Override
+	public void insertReply(ReviewVO vo) {
+		rDao.insertReply(vo);
+	}
+
 }
