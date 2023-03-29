@@ -1,5 +1,7 @@
 package com.ezen.biz.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String selectPwdByEmailNamePhone(MemberVO vo) {
 		return mDao.selectPwdByEmailNamePhone(vo);
+	}
+
+	@Override
+	public List<MemberVO> getListMember(MemberVO vo) {
+		return mDao.listMember(vo);
 	}
 
 }

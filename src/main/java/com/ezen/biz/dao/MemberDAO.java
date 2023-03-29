@@ -1,5 +1,7 @@
 package com.ezen.biz.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -59,5 +61,10 @@ public class MemberDAO {
 	// 이메일, 이름, 번호로 비밀번호 찾기
 	public String selectPwdByEmailNamePhone(MemberVO vo) {
 		return mybatis.selectOne("MemberMapper.selectPwdByEmailNamePhone", vo);
+	}
+
+	// 전체 회원 정보 조회
+	public List<MemberVO> listMember(MemberVO vo) {
+		return mybatis.selectList("MemberMapper.listMember", vo);
 	}
 }
