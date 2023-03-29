@@ -18,22 +18,23 @@
 	<div id="logo">
 	<img class="header-image" alt="logo" src="css/KozyNestLogo4.jpg" style="width:200px; float: left; padding: 5px;"
         		onclick="location.href='index.html'">
-3
+
   </div>
   <nav id="catergory_menu" style=" float: right">
     <ul>
     	<c:choose>
     	<c:when test="${empty sessionScope.loginUser}">
-    	<li><a href="login_form">로그인</a></li>
-    	<li><a href="#">예약내역</a></li>
-      	<li><a href="#">내 주변</a></li>
-      	</c:when>
+    		<li><a href="login_form">로그인</a></li>
+    	</c:when>
       	<c:otherwise>
-      	<li>
-      	 ${sessionScope.loginUser.name}(${sessionScope.loginUser.email })
-      	</li>
+	      	<li><a href="logout">로그아웃</a></li>
+	      	<li><a href="mypage">
+	      	 ${sessionScope.loginUser.name}님(마이페이지)</a>
+	      	</li>
       	</c:otherwise>
       	</c:choose> 
+	      	<li><a href="#">예약내역</a></li>
+	      	<li><a href="#">내 주변</a></li>
       
     </ul>
   </nav>
