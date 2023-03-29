@@ -42,24 +42,6 @@ public class MemberController {
 
 	
 	
-	/*
-	 * 사용자 인증
-	 */
-	@PostMapping("/login")
-	public String loginAction( MemberVO vo, 
-			 Model model) {
-		System.out.println(vo.getEmail());
-			System.out.println("loginAction():vo="+vo);
-		int result = memberService.loginMember(vo);
-		
-		if (result == 1) { // 로그인 성공
-			model.addAttribute("loginUser", memberService.getMember(vo.getEmail()));
-			
-			return "redirect:index";
-		} else {
-			return "member/login_fail";
-		}
-	}
 	
 
 	// 약정화면 표시
