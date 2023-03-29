@@ -5,12 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
+import com.ezen.biz.service.HostService;
 import com.ezen.biz.service.MemberService;
 
 @Controller
@@ -19,6 +19,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private HostService hostService;
 
 	//login 페이지로 이동
 
@@ -27,12 +30,7 @@ public class MemberController {
 		return "member/login";
 	}
 
-	
-	@PostMapping("/login")
-	public String loginAction(MemberVO vo, Model model) {
-		int result = memberService.loginMember(vo);
-		
-		if(result == 1) {
+
 
 
 	@PostMapping("/login")
@@ -48,6 +46,24 @@ public class MemberController {
 			return "member/login_fail";
 		}
 	}
+	
+	@PostMapping("/hostlogin")
+	public String loginAction(HostVO vo, Model model) {
+		int result = hostService.loginHost(vo);
+
+		if (result == 1) {
+
+			model.addAttribute("loginHost", hostService.getHost(vo.getEmail()));
+
+			return "redirect:index";
+		} else {
+			return "host/login_fail";
+		}
+	}
+	
+	
+	
+	
 
 	
 	@GetMapping("/logout")
@@ -55,7 +71,7 @@ public class MemberController {
 		
 		status.setComplete();  // 세션 해지
 		
-		return "member/login";
+		return "redirect:index";
 	}
 	
 
