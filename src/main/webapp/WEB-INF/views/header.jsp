@@ -12,7 +12,7 @@
   <script type="text/javascript" src="member/member.js"></script>
 </head>
 
-<body>
+<body >
 <div id="wrap">
   <header>
 	<div id="logo">
