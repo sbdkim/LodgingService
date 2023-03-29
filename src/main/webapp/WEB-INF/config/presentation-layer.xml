@@ -14,10 +14,14 @@
 	<!-- 리소스 경로 설정 -->
 	<mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/images/" mapping="/images/**"></mvc:resources>
-	<mvc:resources location="/WEB-INF/resources/product_images/" mapping="/product_images/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/resources/accommodation_images/" mapping="/accommodation_images/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/resources/room_images/" mapping="/room_images/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/member/" mapping="/member/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/mypage/" mapping="/mypage/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/admin/" mapping="/admin/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/views/accommodation/" mapping="/accommodation/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/views/room/" mapping="/room/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/views/qna/" mapping="/qna/**"></mvc:resources>
 	
 	<!-- 파일 전송 설정 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

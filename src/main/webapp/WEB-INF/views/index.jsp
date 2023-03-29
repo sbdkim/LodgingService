@@ -104,38 +104,38 @@
 
 <section >
 	<div class="row" style="display: flex ; justify-content: center">
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 1" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 1" style="width:100%">
 			<p>City 1</p>
 		</div>
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 2" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 2" style="width:100%">
 			<p>City 2</p>
 		</div>
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 3" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 3" style="width:100%">
 			<p>City 3</p>
 		</div>
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 4" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 4" style="width:100%">
 			<p>City 4</p>
 		</div>
 	</div>
 	<div class="row" style="display: flex ; justify-content: center">
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 5" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 5" style="width:100%">
 			<p>City 5</p>
 		</div>
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 6" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 6" style="width:100%">
 			<p>City 6</p>
 		</div>
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 7" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 7" style="width:100%">
 			<p>City 7</p>
 		</div>
-		<div class="cell">
-			<img src="css/dummy.jpg" alt="City 8" style="width:250px; height: 250px">
+		<div class="cell" style="padding:5px">
+			<img src="css/dummy.jpg" alt="City 8" style="width:100%">
 			<p>City 8</p>
 		</div>
 	</div>

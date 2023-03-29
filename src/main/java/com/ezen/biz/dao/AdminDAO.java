@@ -12,6 +12,9 @@ public class AdminDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
+	public String adminCheck(String email) {
+		return mybatis.selectOne("AdminMapper.adminCheck", email);
+	}
 	// 회원정보 조회
 	public AdminVO getAdmin(String email) {
 		return mybatis.selectOne("AdminMapper.getAdmin", email);
