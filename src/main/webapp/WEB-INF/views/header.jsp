@@ -30,7 +30,7 @@
       	</c:when>
       	<c:otherwise>
       	<li>
-      	 ${sessionScope.loginUser.name}(${sessionScope.loginUser.id })
+      	 ${sessionScope.loginUser.name}(${sessionScope.loginUser.email })
       	</li>
       	</c:otherwise>
       	</c:choose> 
