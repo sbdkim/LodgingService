@@ -3,6 +3,7 @@ package com.ezen.biz.service;
 import java.util.List;
 
 import com.ezen.biz.dto.MemberVO;
+import com.ezen.biz.dto.ReviewVO;
 
 public interface MemberService {
 
@@ -19,7 +20,7 @@ public interface MemberService {
 	MemberVO getMember(String email);
 
 	// 회원 정보 변경
-	void updateMember(String email);
+	void updateMember(MemberVO vo);
 
 	// 이름, 번호로 이메일 찾기
 	String selectEmailByNamePhone(MemberVO vo);
@@ -28,5 +29,5 @@ public interface MemberService {
 	String selectPwdByEmailNamePhone(MemberVO vo);
 
 	// 전체 회원 정보 조회
-	List<MemberVO> getListMember(MemberVO vo);
+	List<MemberVO> getListMember();
 }

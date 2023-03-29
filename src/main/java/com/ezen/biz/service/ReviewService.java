@@ -13,9 +13,11 @@ public interface ReviewService {
 	List<ReviewVO> selectReviewByRseq(int rseq);
 
 	// 리뷰수정
-	void updateReview(int reseq);
+	void updateReview(ReviewVO vo);
 
 	// 리뷰삭제
 	void deleteReview(int reseq);
 
+	// 전체 리뷰 조회
+	List<ReviewVO> getListReview();
 }

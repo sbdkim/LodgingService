@@ -35,8 +35,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void updateMember(String email) {
-		mDao.updateMember(email);
+	public void updateMember(MemberVO vo) {
+		mDao.updateMember(vo);
 	}
 
 	@Override
@@ -50,8 +50,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberVO> getListMember(MemberVO vo) {
-		return mDao.listMember(vo);
+	public List<MemberVO> getListMember() {
+		return mDao.listMember();
 	}
 
 }
