@@ -7,26 +7,43 @@
 <head>
 <meta charset="UTF-8">
 <title>KozyNest : Korean Comfort Lodging</title>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+ <link rel="stylesheet" type="text/css" href="css/styles.css">
+ <link rel="stylesheet" href="css/shopping.css" >  
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script> 
+  <script type="text/javascript" src="member/member.js"></script>
+  <script type="text/javascript" src="product/product.js"></script>
+  <script type="text/javascript" src="mypage/mypage.js"></script>
 </head>
 
-<header>
+<body>
+<div id="wrap">
+  <header>
+	<div id="logo">
 	<img class="header-image" alt="logo" src="css/KozyNestLogo4.jpg" style="width:200px; float: left; padding: 5px;"
         		onclick="location.href='index.html'">
 
-  <nav style=" float: right">
+  </div>
+  <nav id="catergory_menu" style=" float: right">
     <ul>
-    	<li><a href="#">로그인</a></li>
-    <li><a href="#">예약내역</a></li>
-      <li><a href="#">내 주변</a></li>
-      
+    	<c:choose>
+    	<c:when test="${empty sessionScope.loginUser}">
+    	<li><a href="login_form">로그인</a></li>
+    	<li><a href="#">예약내역</a></li>
+      	<li><a href="#">내 주변</a></li>
+      	</c:when>
+      	<c:otherwise>
+      	<li>
+      	 ${sessionScope.loginUser.name}(${sessionScope.loginUser.id })
+      	</li>
+      	</c:otherwise>
+      	</c:choose> 
       
     </ul>
   </nav>
 </header>
 
 
-
-<body>
+</body>
+</html>
 
 
