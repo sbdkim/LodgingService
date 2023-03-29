@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.service.MemberService;
@@ -41,7 +42,13 @@ public class MemberController {
 	}
 
 	
-	
+	@GetMapping("/logout")
+	public String logout(SessionStatus status) {
+		
+		status.setComplete();  // 세션 해지
+		
+		return "member/login";
+	}
 	
 
 	// 약정화면 표시
