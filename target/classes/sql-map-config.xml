@@ -2,11 +2,25 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-
+		<typeAlias type="com.ezen.biz.dto.AccommodationVO" alias="accommodation"/>
+		<typeAlias type="com.ezen.biz.dto.AdminVO" alias="admin"/>
+		<typeAlias type="com.ezen.biz.dto.BookingVO" alias="booking"/>
+		<typeAlias type="com.ezen.biz.dto.HostVO" alias="host"/>
+		<typeAlias type="com.ezen.biz.dto.MemberVO" alias="member"/>
+		<typeAlias type="com.ezen.biz.dto.QnaVO" alias="qna"/>
+		<typeAlias type="com.ezen.biz.dto.ReviewVO" alias="review"/>
+		<typeAlias type="com.ezen.biz.dto.RoomVO" alias="room"/>
 	</typeAliases>
 	
 	<!-- SQL 매핑 파일 -->
 	<mappers>
-
+		<mapper resource="mappings/accommodation-mapping.xml"/>
+		<mapper resource="mappings/admin-mapping.xml"/>
+		<mapper resource="mappings/booking-mapping.xml"/>
+		<mapper resource="mappings/host-mapping.xml"/>
+		<mapper resource="mappings/member-mapping.xml"/>
+		<mapper resource="mappings/qna-mapping.xml"/>
+		<mapper resource="mappings/review-mapping.xml"/>
+		<mapper resource="mappings/room-mapping.xml"/>
 	</mappers>
 </configuration>

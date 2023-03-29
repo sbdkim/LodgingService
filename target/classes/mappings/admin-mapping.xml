@@ -4,6 +4,10 @@
 
 <!-- admin 회원가입  x  -->
 	
+	<select id="adminCheck" resultType="String">
+		SELECT pwd FROM admin WHERE id=#{id}
+	</select>
+	
 	<!-- 회원정보 조회 -->
 	<select id="getAdmin" resultType="admin">
 		SELECT * FROM admin

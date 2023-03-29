@@ -4,6 +4,8 @@ import com.ezen.biz.dto.AdminVO;
 
 public interface AdminService {
 
+	int adminCheck(AdminVO vo);
+	
 	// 회원정보 조회
 	AdminVO getAdmin(String email);
 

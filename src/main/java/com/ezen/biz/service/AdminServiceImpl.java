@@ -13,6 +13,18 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDAO aDao;
 
 	@Override
+	public int adminCheck(AdminVO vo) {
+		String pwd_in_db = aDao.adminCheck(vo.getEmail());
+		if (pwd_in_db == null) {
+			return -1; // 관리자 email이 존재하지 않음
+		} else if (pwd_in_db.equals(vo.getPwd())) {
+			return 1; // 정상적인 관리자
+		} else {
+			return 0; // 비밀번호 틀림
+		}
+	}
+
+	@Override
 	public AdminVO getAdmin(String email) {
 		return aDao.getAdmin(email);
 	}
