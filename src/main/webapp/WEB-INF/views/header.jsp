@@ -18,7 +18,7 @@
 	<div id="logo">
 	<img class="header-image" alt="logo" src="css/KozyNestLogo4.jpg" style="width:200px; float: left; padding: 5px;"
         		onclick="location.href='index.html'">
-
+3
   </div>
   <nav id="catergory_menu" style=" float: right">
     <ul>

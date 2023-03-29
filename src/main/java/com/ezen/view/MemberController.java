@@ -26,6 +26,19 @@ public class MemberController {
 	public String loginView() {
 		return "member/login";
 	}
+	
+	@PostMapping("/login")
+	public String loginAction(MemberVO vo, Model model) {
+		int result = memberService.loginMember(vo);
+		
+		if(result == 1) {
+			model.addAttribute("loginUser", memberService.getMember(vo.getEmail()));
+			
+			return "redirect:index";
+		} else {
+			return "member/login_fail";
+		}
+	}
 
 	
 	
