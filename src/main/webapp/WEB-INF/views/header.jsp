@@ -33,7 +33,7 @@
 	      	</li>
       	</c:otherwise>
       	</c:choose> 
-	      	<li><a href="#">예약내역</a></li>
+	      	<li><a href="login_form">예약내역</a></li>
 	      	<li><a href="#">내 주변</a></li>
       
     </ul>
