@@ -5,16 +5,20 @@ import java.util.List;
 import com.ezen.biz.dto.BookingVO;
 
 public interface BookingService {
-
-	// 예약하기
-	void insertBooking(BookingVO vo);
+	
+	int selectMaxBseq();
+//
+//	// 예약하기
+//	int insertBooking(BookingVO vo);
 
 	// 이름, 이메일로 예약내역 조회
-	List<BookingVO> listBookByNameEmail(BookingVO vo);
+	List<BookingVO> getListBookByNameEmail(BookingVO vo);
 
 	// 예약번호로 예약내역 조회
-	BookingVO selectBookByBseq(int bseq);
+	BookingVO SelectBookByBseq(int bseq);
 
+	List<Integer> getSeqBooking(BookingVO vo);
+	
 	// 예약번호로 예약수정
 	void updateBookByBseq(BookingVO vo);
 

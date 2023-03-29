@@ -13,7 +13,7 @@
       <tr>  
         <td> <fmt:formatDate value="${bookingVO.indate}" type="date"/></td>
         <td> ${bookingVO.bseq} </td>    
-        <td> ${bookingVO.} </td>
+
         <td> <fmt:formatNumber value="${bookingVO.price}" type="currency" currencySimbol="￦"/> </td>
         <td> <a href="booking_detail?bseq=${bookingVO.bseq}"> 조회 </a></td>
       </tr>

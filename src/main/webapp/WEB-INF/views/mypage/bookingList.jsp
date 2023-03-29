@@ -14,7 +14,7 @@
        <td> ${bookingVO.indate} </td>
         <td>
             <a href="booking_detail?bseq=${bookingVO.bseq}">
-              <h3> ${bookingVO.pname} </h3>              
+              <h3> ${bookingVO.name} </h3>              
           </a>    
         </td>
         <td> ${bookingVO.ckindate} </td>
