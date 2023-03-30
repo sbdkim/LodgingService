@@ -26,9 +26,9 @@ input[type=button], input[type=submit] {
 }
 </style>
 <script type="text/javascript">
-function emailok(){
-	opener.document.getElementById("email").value="${email}";
-	opener.document.getElementById("reemail").value="${email}";
+function hostemailok(){
+	opener.document.getElementById("hostemail").value="${email}";
+	opener.document.getElementById("rehostemail").value="${email}";
  	self.close();
 }
 </script>
@@ -43,13 +43,13 @@ function emailok(){
     <div style="margin-top: 20px">   
       <c:if test="${message == 1}">
         <script type="text/javascript">
-          opener.document.formm.email.value="";
+          opener.document.formm.hostemail.value="";
         </script>
         ${email}는 이미 사용중인 이메일입니다.
       </c:if>
       <c:if test="${message==0}">
         ${email}는 사용 가능한 이메일입니다.
-        <input type="button" value="사용" class="cancel" onclick="emailok()">
+        <input type="button" value="사용" class="cancel" onclick="hostemailok()">
       </c:if>
     </div>
   </form>

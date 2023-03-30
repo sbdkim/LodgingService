@@ -24,8 +24,14 @@
   <nav id="catergory_menu" style=" float: right">
     <ul>
     	<c:choose>
-    	<c:when test="${empty sessionScope.loginUser}">
+    	<c:when test="${empty sessionScope.loginUser && empty sessionScope.loginHost}">
     		<li><a href="login_form">로그인</a></li>
+    	</c:when>
+    	<c:when test="${not empty sessionScope.loginHost}">
+    		<li><a href="logout">로그아웃</a></li>
+	      	<li><a href="mypage">
+	      	 ${sessionScope.loginHost.name}님(마이페이지)</a>
+	      	</li>
     	</c:when>
       	<c:otherwise>
 	      	<li><a href="logout">로그아웃</a></li>

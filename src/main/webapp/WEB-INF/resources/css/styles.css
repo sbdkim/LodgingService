@@ -359,7 +359,7 @@ margin:0% 3%;
 }
 
 /*RESET*/
-input[type="radio"] { display: none; }
+input[type="radio"] {display:none;}
 label { cursor: pointer; }
 * { box-sizing: border-box; }
 

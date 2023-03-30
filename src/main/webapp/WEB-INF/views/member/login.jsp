@@ -18,7 +18,7 @@
 			<legend></legend>
 			<table>
 			 <tr>
-			 <td><label>User EMAIL</label> </td>
+			 <td><label>User email</label> </td>
 			 <td><input name="email" type="text"
 				></td>
 			 </tr> 
@@ -31,7 +31,6 @@
 			 
 		
 		</fieldset>
-		<div class="clear"></div>
 		<div id="buttons">
 			<input type="submit" value="로그인" class="submit"> 
 			<input type="button" value="회원가입" class="cancel"
@@ -50,7 +49,7 @@
 			
 			<table>
 			 <tr>
-			 <td><label>Host EMAIL</label> </td>
+			 <td><label>Host email</label> </td>
 			 <td><input name="email" type="text"
 				></td>
 			 </tr> 
