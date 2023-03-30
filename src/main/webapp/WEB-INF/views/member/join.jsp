@@ -2,33 +2,79 @@
     pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>   
 <%@ include file="sub_img.html"%> 
-<%@ include file="sub_menu.html" %>   
-  <article>
-    <h2>Join Us</h2>
-    <form id="join" action="join" method="post" name="formm">
-      <fieldset>
-        <legend>Basic Info</legend>
-        <label>User EMAIL</label>
-        <input type="text"      name="email"  id="email" value="${email}"  size="12"  >
-        <input type="hidden"    name="reemail" id="reemail" value="${reemail}">
-        <input type="button"    value="중복 체크"  class="dup" onclick="emailcheck()"><br>
-        <label>Password</label> 
-        <input type="password"  name="pwd" id="pwd"><br> 
-        <label>Retype Password</label> 
-        <input type="password"  name="pwdCheck" id="pwdCheck"><br> 
-        <label>Phone</label>
-        <input type="text" name="phone" id="phone"><br> 
-        <label>Name</label>
-        <input type="text" name="name" id="name"><br> 
-      </fieldset>
-
-      <div class="clear"></div>
-      <div id="buttons">
-        <input type="button"    value="회원가입"   class="submit" onclick="go_save()"> 
-        <input type="reset"      value="취소"     class="cancel">
-      </div>
-      <br>
-    </form>
-  </article>
+<%@ include file="sub_menu.html" %>
+<h1>Join Us</h1>
+<div class="tap_wrapper">
+	<input id="tab_first" type="radio" name="tab_menu" value="tab_first" checked="checked">
+	<input id="tab_second" type="radio" name="tab_menu" value="tab_second">
+	<label for="tab_first">고객 회원가입</label>
+	<label for="tab_second">사업자 회원가입</label>
+	<div class="tab_contents">
+	<div class="tab_first_content">
+	<form style="display:flex">
+		<table width="500">
+			<tr align="center">
+				<td><b>User EMAIL</b></td>
+				<td><input name="email" type="text" id="email" value="${email}"></td>
+				<td><input name="email" type="hidden" id="reemail" value="${email}"></td>
+				<td cols="2"><input type="button" value="중복체크" class="dup" onclick="emailcheck()"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Password</b></td>
+				<td><input name="pwd" type="password" id="pwd"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Retype Password</b></td>
+				<td><input type="password"  name="pwdCheck" id="pwdCheck"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Phone</b></td>
+				<td><input type="text" name="phone" id="phone"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Name</b></td>
+				<td><input type="text" name="name" id="name"></td>
+			</tr>
+		</table>
+		<div id="buttons" style="display:block">
+          <input type="button" value="회원가입" class="submit" onclick="go_save()"> 
+          <input type="reset" value="취소" class="cancel">
+	    </div>
+	</form>
+	</div>
+	<div class="tab_second_content">
+	<form style="display:flex">
+		<table width="500">
+			<tr align="center">
+				<td><b>Host EMAIL</b></td>
+				<td><input name="email" type="text" id="email" value="${email}"></td>
+				<td><input name="email" type="hidden" id="reemail" value="${email}"></td>
+				<td cols="2"><input type="button" value="중복체크" class="dup" onclick="emailcheck()"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Password</b></td>
+				<td><input name="pwd" type="password" id="pwd"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Retype Password</b></td>
+				<td><input type="password"  name="pwdCheck" id="pwdCheck"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Phone</b></td>
+				<td><input type="text" name="phone" id="phone"></td>
+			</tr>
+			<tr align="center">
+				<td><b>Name</b></td>
+				<td><input type="text" name="name" id="name"></td>
+			</tr>
+		</table>
+		<div id="buttons" style="display:block">
+          <input type="button" value="회원가입" class="submit" onclick="go_save()"> 
+          <input type="reset" value="취소" class="cancel">
+	    </div>
+	</form>
+	</div>
+	</div>
+</div>
 <%@ include file="../footer.jsp" %>
   
