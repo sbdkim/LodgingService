@@ -9,7 +9,7 @@
 <link href="CSS/subpage.css" rel="stylesheet">
 <style type="text/css">
 body{   
-  background-color:#B96DB5;
+  background-color:tomato;
   font-family: Verdana;
 }
 #wrap{     

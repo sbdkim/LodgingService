@@ -40,7 +40,9 @@
 	      	</li>
       	</c:otherwise>
       	</c:choose> 
+
 	      	<li><a href="#">내 주변</a></li>
+
       
     </ul>
   </nav>
