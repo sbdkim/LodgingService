@@ -9,7 +9,7 @@
 <link href="CSS/subpage.css" rel="stylesheet">
 <style type="text/css">
 body{   
-  background-color:#B96DB5;
+  background-color:tomato;
   font-family: Verdana;
 }
 #wrap{     
@@ -27,9 +27,9 @@ input[type=button], input[type=submit] {
 </style>
 <script type="text/javascript">
 function emailok(){
-  opener.formm.email.value="${email}"; 
-  opener.formm.reemail.value="${email}";
-  self.close();
+	opener.document.getElementById("email").value="${email}";
+	opener.document.getElementById("reemail").value="${email}";
+ 	self.close();
 }
 </script>
 </head>
@@ -43,7 +43,7 @@ function emailok(){
     <div style="margin-top: 20px">   
       <c:if test="${message == 1}">
         <script type="text/javascript">
-          opener.document.formm.id.value="";
+          opener.document.formm.email.value="";
         </script>
         ${email}는 이미 사용중인 이메일입니다.
       </c:if>

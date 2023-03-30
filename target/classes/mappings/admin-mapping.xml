@@ -22,13 +22,13 @@
 	<!-- 이름, 번호로 이메일 찾기 -->
 	<select id="selectEmailByNamePhone" resultType="String">
 		SELECT email FROM admin
-		WHERE name=#{name}, phone=#{phone}
+		WHERE name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- 이메일, 이름, 번호로 비밀번호 찾기 -->
 	<select id="selectPwdByEmailNamePhone" resultType="String">
 		SELECT pwd FROM admin
-		WHERE email=#{email}, name=#{name}, phone=#{phone}
+		WHERE email=#{email} AND name=#{name} AND phone=#{phone}
 	</select>
 	
 	

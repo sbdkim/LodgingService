@@ -24,16 +24,21 @@
 		UPDATE host SET pwd=#{pwd}, name=#{name}, phone=#{phone} where email=#{email}
 	</update>
 	
+	<!-- 비밀번호 변경 -->
+	<update id="changePwd">
+		UPDATE host SET pwd=#{pwd} WHERE email=#{email}
+	</update>
+	
 	<!-- 이름, 번호로 이메일 찾기 -->
 	<select id="selectEmailByNamePhone" resultType="String">
 		SELECT email FROM host
-		WHERE name=#{name}, phone=#{phone}
+		WHERE name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- 이메일, 이름, 번호로 비밀번호 찾기 -->
 	<select id="selectPwdByEmailNamePhone" resultType="String">
 		SELECT pwd FROM host
-		WHERE email=#{email}, name=#{name}, phone=#{phone}
+		WHERE email=#{email} AND name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- admin이 모든 호스트 조회하기 -->

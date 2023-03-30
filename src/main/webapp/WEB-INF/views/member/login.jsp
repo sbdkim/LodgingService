@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-
-
-
 <div class="tap_wrapper" align="center" style="display: inline-block">
 	<input id="tab_first" type="radio" name="tab_menu" value="tab_first" checked="checked">
 	<input id="tab_second" type="radio" name="tab_menu" value="tab_second">
@@ -27,16 +24,13 @@
 			 <td><input
 				name="pwd" type="password"></td>
 			 </tr> 
-			 </table>
-			 
-		
+			 </table>		
 		</fieldset>
-	
+		
 		<div id="buttons">
 			<input type="submit" value="로그인" class="submit"> 
-			<input type="button" value="회원가입" class="cancel"
-				onclick="location='contract'"> <input type="button"
-				value="아이디 비밀번호 찾기" class="submit" onclick="find_id_form()">
+			<input type="button" value="회원가입" class="cancel" onclick="location='contract'">
+			<input type="button" value="이메일/비밀번호 찾기" class="submit" onclick="find_email_form()">
 		</div>
 	</form>
 </article>
@@ -46,8 +40,7 @@
 		<article>
 	<form method="post" action="hostlogin">
 		<fieldset>
-			<legend></legend>
-			
+			<legend></legend>		
 			<table>
 			 <tr>
 			 <td><label>Host email</label> </td>
@@ -60,54 +53,16 @@
 				name="pwd" type="password"></td>
 			 </tr> 
 			 </table>
-
-
-
 		</fieldset>
 		<div id="buttons">
-			<input type="submit" value="로그인" class="submit"> <input
-				type="button" value="회원가입" class="cancel"
-				onclick="location='contract'"> <input type="button"
-				value="아이디 비밀번호 찾기" class="submit" onclick="find_id_form()">
+			<input type="submit" value="로그인" class="submit">
+			<input type="button" value="회원가입" class="cancel" onclick="location='contract'">
+			<input type="button" value="이메일/비밀번호 찾기" class="submit" onclick="find_host_email_form()">
 		</div>
 	</form>
 </article>
 	</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <%@ include file="../footer.jsp"%>

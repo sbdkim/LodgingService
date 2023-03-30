@@ -25,4 +25,6 @@ public interface HostService {
 	// 이메일, 이름, 번호로 비밀번호 찾기
 	String selectPwdByEmailNamePhone(HostVO vo);
 
+	// 비밀번호 변경
+	void changePwd(HostVO vo);
 }
