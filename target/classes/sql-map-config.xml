@@ -15,6 +15,7 @@
 	
 	<!-- SQL 매핑 파일 -->
 	<mappers>
+		<mapper resource="mappings/accommodation-mapping.xml"/>
 		<mapper resource="mappings/admin-mapping.xml"/>
 		<mapper resource="mappings/booking-mapping.xml"/>
 		<mapper resource="mappings/host-mapping.xml"/>
