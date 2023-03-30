@@ -14,24 +14,21 @@ import com.ezen.biz.service.HostService;
 import com.ezen.biz.service.MemberService;
 
 @Controller
-@SessionAttributes({"loginUser", "loginHost"})
+@SessionAttributes({ "loginUser", "loginHost" })
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
 	private HostService hostService;
 
-	//login 페이지로 이동
+	// login 페이지로 이동
 
 	@GetMapping("/login_form")
 	public String loginView() {
 		return "member/login";
 	}
-
-
-
 
 	@PostMapping("/login")
 	public String loginAction(MemberVO vo, Model model) {
@@ -46,7 +43,7 @@ public class MemberController {
 			return "member/login_fail";
 		}
 	}
-	
+
 	@PostMapping("/hostlogin")
 	public String loginAction(HostVO vo, Model model) {
 		int result = hostService.loginHost(vo);
@@ -60,21 +57,14 @@ public class MemberController {
 			return "host/login_fail";
 		}
 	}
-	
-	
-	
-	
 
-	
 	@GetMapping("/logout")
 	public String logout(SessionStatus status) {
-		
-		status.setComplete();  // 세션 해지
-		
+
+		status.setComplete(); // 세션 해지
+
 		return "redirect:index";
 	}
-	
-
 
 	// 약정화면 표시
 	@GetMapping("/contract")
@@ -90,7 +80,7 @@ public class MemberController {
 
 	// EMAIL 중복체크 화면 표시
 	@GetMapping(value = "/email_check_form")
-	public String idCheckView(MemberVO vo, Model model) {
+	public String emailCheckView(MemberVO vo, Model model) {
 		// email 중복확인 조회
 		int result = memberService.confirmEmail(vo.getEmail());
 		model.addAttribute("email", vo.getEmail());
@@ -107,6 +97,26 @@ public class MemberController {
 		model.addAttribute("message", result);
 		return "member/emailcheck";
 	}
+	
+	// EMAIL 중복체크 화면 표시
+	@GetMapping(value = "/host_email_check_form")
+	public String hostEmailCheckView(HostVO vo, Model model) {
+		// email 중복확인 조회
+		int result = hostService.confirmEmail(vo.getEmail());
+		model.addAttribute("email", vo.getEmail());
+		model.addAttribute("message", result);
+		return "member/hostemailcheck";
+	}
+	
+	// EMAIL 중복체크 수행
+	@PostMapping("/host_email_check_form")
+	public String hostEmailCheckAction(HostVO vo, Model model) {
+		// email 중복 확인 조회
+		int result = hostService.confirmEmail(vo.getEmail());
+		model.addAttribute("email", vo.getEmail());
+		model.addAttribute("message", result);
+		return "member/hostemailcheck";
+	}
 
 	// 회원가입 처리
 	@PostMapping("/join")
@@ -115,5 +125,11 @@ public class MemberController {
 		return "member/login";
 	}
 
-}
+	// 사업자 회원가입 처리
+	@PostMapping("/hostjoin")
+	public String hostJoinAction(HostVO vo) {
+		hostService.insertHost(vo);
+		return "member/login";
+	}
 
+}

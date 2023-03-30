@@ -186,8 +186,8 @@
       </textarea>
       <br><br>
       <div style="text-align: center;">
-      <input type="radio" name="okon1" class="agree" checked> 동의함 &nbsp; &nbsp; &nbsp;
-      <input type="radio" name="okon1" class="agree" checked> 동의안함
+      <input type="radio" name="okon1" class="agree" checked style="display:block"> 동의함 &nbsp; &nbsp; &nbsp;
+      <input type="radio" name="okon1" class="agree" checked style="display:block"> 동의안함
       </div>
       <input type="button" value="Next" class="submit"  onclick="go_next()" style="float: right;"> 
     </form>
