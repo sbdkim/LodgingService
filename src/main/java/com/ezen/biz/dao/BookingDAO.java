@@ -23,9 +23,9 @@ public class BookingDAO {
 		mybatis.insert("BookingMapper.insertBooking", vo);
 	}
 
-	// 이름, 이메일로 예약내역 조회
-	public List<BookingVO> listBookByNameEmail(BookingVO vo) {
-		return mybatis.selectList("BookingMapper.listBookByNameEmail", vo);
+	// 자신의 예약내역 조회
+	public List<BookingVO> listBookByEmail(String email) {
+		return mybatis.selectList("BookingMapper.listBookByEmail", email);
 	}
 
 	// 예약번호로 예약내역 조회
@@ -51,5 +51,17 @@ public class BookingDAO {
 	// 전체 예약 내역 조회
 	public List<BookingVO> getListBooking() {
 		return mybatis.selectList("BookingMapper.getListBooking");
+	}
+	
+	public List<BookingVO> listBookingByEmail(BookingVO vo){
+		return mybatis.selectList("BookingMapper.listBookingByEmail");
+	}
+	
+	public String showAname(String email) {
+		return mybatis.selectOne("BookingMapper.showAname", email);
+	}
+	
+	public String showRname(String email) {
+		return mybatis.selectOne("BookingMapper.showRname", email);
 	}
 }
