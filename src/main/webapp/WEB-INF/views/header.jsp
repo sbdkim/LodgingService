@@ -10,6 +10,7 @@
  <link rel="stylesheet" type="text/css" href="css/styles.css">
   <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script> 
   <script type="text/javascript" src="member/member.js"></script>
+  <script type="text/javascript" src="mypage/mypage.js"></script>
 </head>
 
 <body >
@@ -23,8 +24,14 @@
   <nav id="catergory_menu" style=" float: right">
     <ul>
     	<c:choose>
-    	<c:when test="${empty sessionScope.loginUser}">
+    	<c:when test="${empty sessionScope.loginUser && empty sessionScope.loginHost}">
     		<li><a href="login_form">로그인</a></li>
+    	</c:when>
+    	<c:when test="${not empty sessionScope.loginHost}">
+    		<li><a href="logout">로그아웃</a></li>
+	      	<li><a href="mypage">
+	      	 ${sessionScope.loginHost.name}님(마이페이지)</a>
+	      	</li>
     	</c:when>
       	<c:otherwise>
 	      	<li><a href="logout">로그아웃</a></li>
@@ -33,8 +40,10 @@
 	      	</li>
       	</c:otherwise>
       	</c:choose> 
-	      	<li><a href="login_form">예약내역</a></li>
-	      	<li><a href="#">내 주변</a></li>
+
+	      	<li><a href="#">예약내역</a></li>
+	      	<li><a href="map">내 주변</a></li>
+
       
     </ul>
   </nav>

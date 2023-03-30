@@ -3,7 +3,7 @@ package com.ezen.biz.service;
 import java.util.List;
 
 import com.ezen.biz.dto.MemberVO;
-import com.ezen.biz.dto.ReviewVO;
+
 
 public interface MemberService {
 
@@ -30,4 +30,7 @@ public interface MemberService {
 
 	// 전체 회원 정보 조회
 	List<MemberVO> getListMember();
+	
+	// 비밀번호 변경
+	void changePwd(MemberVO vo);
 }

@@ -14,10 +14,10 @@
 		VALUES(#{bseq}, #{resq}, #{email}, #{ckindate}, #{ckoutdate}, #{price}, #{payment}, #{status})
 	</insert>
 	
-	<!-- 이름, 이메일로 예약내역 조회 -->
-	<select id="listBookByNameEmail" resultType="booking">
+	<!-- 자신의 예약내역 조회 -->
+	<select id="listBookByEmail" resultType="booking">
 		SELECT * FROM booking_view
-		WHERE name=#{name} AND email=#{email}
+		WHERE email=#{email}
 	</select>
 	
 	<!-- 예약번호로 예약내역 조회 -->
@@ -36,7 +36,7 @@
 	
 	<!-- 예약번호로 예약수정 -->
 	<update id="updateBookByBseq">
-		UPDATE booking SET rseq=#{rseq}, ckindate=#{ckindate}, ckoutdate=#{ckoutdate}
+		UPDATE booking SET status=1
 		WHERE bseq=#{bseq}
 	</update>
 	
@@ -49,4 +49,17 @@
 	<select id="getListBooking" resultType="booking">
 		SELECT * FROM booking ORDER BY bseq DESC
 	</select>
+	
+	<select id="showAname" resultType="String">
+		SELECT aname
+		FROM booking_view
+		WHERE email=#{email}
+	</select>
+	
+	<select id="showRname" resultType="String">
+		SELECT Rname
+		FROM booking_view
+		WHERE email=#{email}
+	</select>
+
 </mapper>

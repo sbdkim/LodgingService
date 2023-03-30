@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
-<%@ include file="../header.jsp" %>	 
-<%@ include file="sub_img.html"%> 
-<%@ include file="sub_menu.html" %>   
+<%@ include file="../header.jsp" %>
   <article>
     <h2>Join Us</h2>
     <form id="join" action="join_form" method="post" name="formm">
@@ -186,8 +184,8 @@
       </textarea>
       <br><br>
       <div style="text-align: center;">
-      <input type="radio" name="okon1" class="agree" checked> 동의함 &nbsp; &nbsp; &nbsp;
-      <input type="radio" name="okon1" class="agree" checked> 동의안함
+      <input type="radio" name="okon1" class="agree" checked style="display:block"> 동의함 &nbsp; &nbsp; &nbsp;
+      <input type="radio" name="okon1" class="agree" checked style="display:block"> 동의안함
       </div>
       <input type="button" value="Next" class="submit"  onclick="go_next()" style="float: right;"> 
     </form>

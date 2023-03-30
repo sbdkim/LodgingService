@@ -12,6 +12,8 @@ public class BookingVO {
 	private int payment;
 	private int status;
 	private Date bookdate;
+	private String aname;
+	private String rname;
 
 	// Getter, Setter 메소드
 	public int getBseq() {
@@ -86,12 +88,32 @@ public class BookingVO {
 		this.bookdate = bookdate;
 	}
 
-	// ToString
+	public String getAname() {
+		return aname;
+	}
+
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
+
+	public String getRname() {
+		return rname;
+	}
+
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", email=" + email + ", ckindate=" + ckindate
 				+ ", ckoutdate=" + ckoutdate + ", price=" + price + ", payment=" + payment + ", status=" + status
-				+ ", bookdate=" + bookdate + "]";
+				+ ", bookdate=" + bookdate + ", aname=" + aname + ", rname=" + rname + "]";
 	}
+
+	
+	
+	
+	
 
 }

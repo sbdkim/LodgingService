@@ -49,4 +49,9 @@ public class HostServiceImpl implements HostService {
 		return hDao.selectPwdByEmailNamePhone(vo);
 	}
 
+	@Override
+	public void changePwd(HostVO vo) {
+		hDao.changePwd(vo);
+	}
+
 }

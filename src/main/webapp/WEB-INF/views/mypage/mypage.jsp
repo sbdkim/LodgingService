@@ -11,7 +11,7 @@
       </tr>
       <c:forEach items="${bookingList}"  var="bookingVO">
       <tr>  
-        <td> <fmt:formatDate value="${bookingVO.indate}" type="date"/></td>
+        <td> <fmt:formatDate value="${bookingVO.Bookdate}" type="date"/></td>
         <td> ${bookingVO.bseq} </td>    
         <td> ${bookingVO.rname} </td>
         <td> <fmt:formatNumber value="${bookingVO.price}" type="currency" currencySymbol="￦"/> </td>
