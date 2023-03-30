@@ -9,7 +9,7 @@
       <tr>
         <th>예약일자</th> <th>예약번호</th> <th>객실명</th> <th>결제 금액</th> <th>예약 상세</th> </th>    
       </tr>
-      <c:forEach items="${bookingList}"  var="BookingVO">
+      <c:forEach items="${bookingList}"  var="bookingVO">
       <tr>  
         <td> <fmt:formatDate value="${bookingVO.indate}" type="date"/></td>
         <td> ${bookingVO.bseq} </td>    
