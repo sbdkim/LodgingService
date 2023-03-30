@@ -13,7 +13,7 @@
   <script type="text/javascript" src="mypage/mypage.js"></script>
 </head>
 
-<body>
+<body >
 <div id="wrap">
   <header>
 	<div id="logo">
