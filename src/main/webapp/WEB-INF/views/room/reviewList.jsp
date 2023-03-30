@@ -217,10 +217,10 @@
    /*
    ** 상품 댓글 등록
    */
-   function save_review(bseq) {
+   function save_review(rseq) {
       $.ajax({
          type:'POST',
-         url:'reveiw/save',
+         url:'review/save',
          data:$("#reviewForm").serialize(),
          success: function(data) {
             if (data=='success') {   // 상품평 등록 성공

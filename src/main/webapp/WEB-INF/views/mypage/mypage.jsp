@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
-<%@ include file="../header.jsp" %>  
-       
+<%@ include file="../header.jsp" %>
+<%@ include file="sub_menu.jsp" %>        
   <article>
     <h2> 예약내역확인 </h2>
     <form name="formm" method="post">
@@ -13,8 +13,8 @@
       <tr>  
         <td> <fmt:formatDate value="${bookingVO.indate}" type="date"/></td>
         <td> ${bookingVO.bseq} </td>    
-
-        <td> <fmt:formatNumber value="${bookingVO.price}" type="currency" currencySimbol="￦"/> </td>
+        <td> ${bookingVO.rname} </td>
+        <td> <fmt:formatNumber value="${bookingVO.price}" type="currency" currencySymbol="￦"/> </td>
         <td> <a href="booking_detail?bseq=${bookingVO.bseq}"> 조회 </a></td>
       </tr>
       </c:forEach>    

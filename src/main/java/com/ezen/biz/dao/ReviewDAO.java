@@ -55,8 +55,8 @@ public class ReviewDAO {
 		return mybatis.selectList("ReviewMapper.reviewListwithPaging", map);
 	}
 	
-	public int countReviewList(int bseq) {
+	public int getCountReviewList(int bseq) {
 		
-		return mybatis.selectOne("ReviewMapper.countReviewList",bseq);
+		return mybatis.selectOne("ReviewMapper.getCountReviewList",bseq);
 	}
 }

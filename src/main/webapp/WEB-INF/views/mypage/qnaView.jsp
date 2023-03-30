@@ -25,7 +25,7 @@
     <div class="clear"></div>
      <div id="buttons" style="float:right">
       <input type="button"  value="목록보기"     class="submit"  onclick="location.href='qna_list'"> 
-      <input type="button"  value="쇼핑 계속하기"  class="cancel"  onclick="location.href='index'">  
+      <input type="button"  value="예약 계속하기"  class="cancel"  onclick="location.href='index'">  
       </div>
     </form>
   </article>
