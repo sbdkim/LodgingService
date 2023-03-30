@@ -10,6 +10,7 @@
  <link rel="stylesheet" type="text/css" href="css/styles.css">
   <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script> 
   <script type="text/javascript" src="member/member.js"></script>
+  <script type="text/javascript" src="mypage/mypage.js"></script>
 </head>
 
 <body >
@@ -39,7 +40,7 @@
 	      	</li>
       	</c:otherwise>
       	</c:choose> 
-	      	<li><a href="#">예약내역</a></li>
+	      	<li><a href="login_form">예약내역</a></li>
 	      	<li><a href="#">내 주변</a></li>
       
     </ul>
