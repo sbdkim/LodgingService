@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
-<%@ include file="../header.jsp" %>	 
-<%@ include file="sub_img.html"%> 
-<%@ include file="sub_menu.html" %>   
+<%@ include file="../header.jsp" %>
   <article>
     <h2>Join Us</h2>
     <form id="join" action="join_form" method="post" name="formm">
