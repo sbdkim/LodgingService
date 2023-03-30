@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.ezen.biz.dao.ReviewDAO;
 import com.ezen.biz.dto.ReviewVO;
 
+import utils.Criteria;
+
 @Service("reviewService")
 public class ReviewServiceImpl implements ReviewService {
 
@@ -15,8 +17,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDAO rDao;
 
 	@Override
-	public void insertReview(ReviewVO vo) {
-		rDao.insertReview(vo);
+	public int insertReview(ReviewVO vo) {
+		return rDao.insertReview(vo);
 	}
 
 	@Override
@@ -42,6 +44,18 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void insertReply(ReviewVO vo) {
 		rDao.insertReply(vo);
+	}
+
+	@Override
+	public List<ReviewVO> getReviewListwithPaging(Criteria criteria, int bseq) {
+		
+		return rDao.reviewListwithPaging(criteria, bseq);
+	}
+
+	@Override
+	public int getCountReviewList(int bseq) {
+	
+		return rDao.getCountReviewList(bseq);
 	}
 
 }

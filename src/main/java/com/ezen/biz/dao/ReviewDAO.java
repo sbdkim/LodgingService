@@ -1,5 +1,6 @@
 package com.ezen.biz.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.ezen.biz.dto.ReviewVO;
 
+import utils.Criteria;
+
 @Repository
 public class ReviewDAO {
 
@@ -15,8 +18,8 @@ public class ReviewDAO {
 	private SqlSessionTemplate mybatis;
 
 	// 리뷰 등록
-	public void insertReview(ReviewVO vo) {
-		mybatis.insert("ReviewMapper.insertReview", vo);
+	public int insertReview(ReviewVO vo) {
+		return mybatis.insert("ReviewMapper.insertReview", vo);
 	}
 
 	// 객실번호로 리뷰 조회
@@ -42,5 +45,18 @@ public class ReviewDAO {
 	// 리뷰 답글 달기
 	public void insertReply(ReviewVO vo) {
 		mybatis.update("ReviewMapper.insertReply", vo);
+	}
+	
+	public List<ReviewVO> reviewListwithPaging(Criteria criteria, int bseq){
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("rseq", bseq);
+		return mybatis.selectList("ReviewMapper.reviewListwithPaging", map);
+	}
+	
+	public int countReviewList(int bseq) {
+		
+		return mybatis.selectOne("ReviewMapper.countReviewList",bseq);
 	}
 }

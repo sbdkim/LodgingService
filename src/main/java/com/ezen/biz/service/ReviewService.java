@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.ezen.biz.dto.ReviewVO;
 
+import utils.Criteria;
+
 public interface ReviewService {
 
 	// 리뷰 등록
-	void insertReview(ReviewVO vo);
+	int insertReview(ReviewVO vo);
 
 	// 객실번호로 리뷰 조회
 	List<ReviewVO> selectReviewByRseq(int rseq);
@@ -23,4 +25,9 @@ public interface ReviewService {
 
 	// 리뷰 답글 달기
 	void insertReply(ReviewVO vo);
+	// 리뷰 페이징
+	
+	List<ReviewVO> getReviewListwithPaging(Criteria criteria, int bseq);
+	
+	int getCountReviewList(int bseq);
 }
