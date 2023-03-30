@@ -67,4 +67,9 @@ public class MemberDAO {
 	public List<MemberVO> listMember() {
 		return mybatis.selectList("MemberMapper.listMember");
 	}
+
+	// 비밀번호 변경
+	public void changePwd(MemberVO vo) {
+		mybatis.update("MemberMapper.changePwd", vo);
+	}
 }

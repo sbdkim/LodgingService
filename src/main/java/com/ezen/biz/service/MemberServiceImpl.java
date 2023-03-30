@@ -54,4 +54,9 @@ public class MemberServiceImpl implements MemberService {
 		return mDao.listMember();
 	}
 
+	@Override
+	public void changePwd(MemberVO vo) {
+		mDao.changePwd(vo);
+	}
+
 }

@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>   
-<%@ include file="sub_img.html"%> 
-<%@ include file="sub_menu.html" %>
+<div class="tap_wrapper" align="center">
 <h1>Join Us</h1>
-<div class="tap_wrapper">
 	<input id="tab_first" type="radio" name="tab_menu" value="tab_first" checked="checked">
 	<input id="tab_second" type="radio" name="tab_menu" value="tab_second">
 	<label for="tab_first">Guest</label>
