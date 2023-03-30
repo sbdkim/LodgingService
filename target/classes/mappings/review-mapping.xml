@@ -47,4 +47,13 @@
 		UPDATE review SET reply=#{reply}
 		WHERE reseq=#{reseq}
 	</update>
+	
+	<select id="countReviewList" resultType="int">
+	SELECT COUNT(*) FROM review WHERE bseq=#{bseq}
+    </select>
+    
+    
+    <select id="getEmailView" resultType= "review">   
+    SELECT  * FROM review_view
+   </select>
 </mapper>

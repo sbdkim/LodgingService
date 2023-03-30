@@ -15,8 +15,8 @@
 	 
 	 <!--qna 작성  -->
 	 <insert id="insertQna">
-	 INSERT INTO qna(qseq,email,subject,content)
-	 VALUES(qna_seq.nextval,#{qseq},#{email},#{subject},{content})
+	 INSERT INTO qna(qseq,subject,content,email)
+	 VALUES(qna_seq.nextval,#{subject},#{content},#{email})
 	 </insert> 
 	 
 	 <!--날짜순서로 qna 리스트 보기  -->
@@ -26,7 +26,7 @@
      
      <!--qna 답변 -->
      <update id="updateQna">
-     UPDATE qna SET reply={reply}, rep='1' WHERE qseq=#{qseq}
+     UPDATE qna SET reply=#{reply}, rep='1' WHERE qseq=#{qseq}
      </update>
      
      

@@ -9,7 +9,7 @@ public class ReviewVO {
 	private int score;
 	private Date indate;
 	private String reply;
-
+	private String email;
 	// Getter, Setter 메소드
 	public int getReseq() {
 		return reseq;
@@ -58,7 +58,7 @@ public class ReviewVO {
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
-
+     
 	// ToString
 	@Override
 	public String toString() {
