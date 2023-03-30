@@ -97,7 +97,7 @@ public class MemberController {
 		model.addAttribute("message", result);
 		return "member/emailcheck";
 	}
-	
+
 	// EMAIL 중복체크 화면 표시
 	@GetMapping(value = "/host_email_check_form")
 	public String hostEmailCheckView(HostVO vo, Model model) {
@@ -107,7 +107,7 @@ public class MemberController {
 		model.addAttribute("message", result);
 		return "member/hostemailcheck";
 	}
-	
+
 	// EMAIL 중복체크 수행
 	@PostMapping("/host_email_check_form")
 	public String hostEmailCheckAction(HostVO vo, Model model) {
@@ -132,4 +132,77 @@ public class MemberController {
 		return "member/login";
 	}
 
+	@GetMapping("/find_email_form")
+	public String findEmailFormVIew() {
+		return "member/findEmailAndPassword";
+	}
+
+	@PostMapping("/find_email")
+	public String findEmailAction(MemberVO vo, Model model) {
+		String email = memberService.selectEmailByNamePhone(vo);
+		if (email != null) { // 아이디 조회 성공
+			model.addAttribute("message", 1);
+			model.addAttribute("email", email);
+		} else {
+			model.addAttribute("message", -1);
+		}
+		return "member/findResult"; // 아이디 조회결과 화면표시
+	}
+
+	@PostMapping("/find_pwd")
+	public String findPwdAction(MemberVO vo, Model model) {
+		String pwd = memberService.selectPwdByEmailNamePhone(vo);
+		String email = memberService.selectEmailByNamePhone(vo);
+		if (pwd != null) { // 아이디 조회 성공
+			model.addAttribute("message", 1);
+			model.addAttribute("email", email);
+			model.addAttribute("pwd", pwd);
+		} else {
+			model.addAttribute("message", -1);
+		}
+		return "member/findPwdResult"; // 비밀번호 조회결과 화면표시
+	}
+	
+	@PostMapping("/change_pwd")
+	public String changePwdAction(MemberVO vo) {
+		memberService.changePwd(vo);
+		return "member/changePwdOk";
+	}
+
+	@GetMapping("/find_host_email_form")
+	public String findHostEmailFormVIew() {
+		return "member/findHostEmailAndPassword";
+	}
+
+	@PostMapping("/find_host_email")
+	public String findHostEmailAction(HostVO vo, Model model) {
+		String email = hostService.selectEmailByNamePhone(vo);
+		if (email != null) { // 아이디 조회 성공
+			model.addAttribute("message", 1);
+			model.addAttribute("email", email);
+		} else {
+			model.addAttribute("message", -1);
+		}
+		return "member/findResult"; // 아이디 조회결과 화면표시
+	}
+
+	@PostMapping("/find_host_pwd")
+	public String findHostPwdAction(HostVO vo, Model model) {
+		String pwd = hostService.selectPwdByEmailNamePhone(vo);
+		String email = hostService.selectEmailByNamePhone(vo);
+		if (pwd != null) { // 아이디 조회 성공
+			model.addAttribute("message", 1);
+			model.addAttribute("email", email);
+			model.addAttribute("pwd", pwd);
+		} else {
+			model.addAttribute("message", -1);
+		}
+		return "member/findHostPwdResult"; // 비밀번호 조회결과 화면표시
+	}
+
+	@PostMapping("/change_host_pwd")
+	public String changeHostPwdAction(HostVO vo) {
+		hostService.changePwd(vo);
+		return "member/changePwdOk";
+	}
 }

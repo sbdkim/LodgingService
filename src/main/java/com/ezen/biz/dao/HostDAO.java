@@ -64,7 +64,10 @@ public class HostDAO {
 			return mybatis.selectOne("HostMapper.selectPwdByEmailNamePhone", vo);
 		}
 	
-
+		// 비밀번호 변경
+		public void changePwd(HostVO vo) {
+			mybatis.update("HostMapper.changePwd", vo);
+		}
 	
 	
 	

@@ -105,3 +105,121 @@ function go_save_host() {
 		document.getElementById("hostjoin").submit();
 	}
 }
+
+// 아이디, 비밀번호 찾기 화면 요청
+function find_email_form() {
+	var url = "find_email_form";
+	window.open(url, "_blank_",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=450");
+}
+
+function findMemberEmail() {
+	if (document.getElementById("name").value=="") {
+		alert("이름을 입력해 주세요.")
+		document.getElementById("name").focus();
+		return false;
+	} else if (document.getElementById("phone").value=="") {
+		alert("전화번호를 입력해 주세요.")
+		document.getElementById("phone").focus();
+		return false;
+	} else {
+		var form = document.getElementById("findEmail");
+		form.action = "find_email";
+		form.submit();
+	}
+}
+
+function findPassword() {
+	if (document.getElementById("email2").value==""){
+		alert("아이디를 입력해 주세요.")
+		document.getElementById("email2").focus();
+		return false;
+	} else if (document.getElementById("name2").value=="") {
+		alert("이름을 입력해 주세요.")
+		document.getElementById("name2").focus();
+		return false;
+	} else if (document.getElementById("phone2").value=="") {
+		alert("전화번호를 입력해 주세요.")
+		document.getElementById("phone2").focus();
+		return false;
+	} else {
+		var form = document.getElementById("findPW");
+		form.action = "find_pwd";
+		form.submit();
+	}
+}
+
+function changePassword() {
+	if (document.getElementById("pwd").value=="") {
+		alert("비밀번호를 입력해 주세요.");
+		document.getElementById("pwd").focus();
+		return false;
+	} else if (document.getElementById("pwd").value != document.getElementById("pwdcheck").value) {
+		alert("비밀번호가 맞지 않습니다.");
+		documnet.getElementById("pwd").focuse();
+		return false;
+	} else {
+		var form = document.getElementById("pwd_form");
+		form.action = "change_pwd";
+		form.submit();
+	}
+}
+
+// 사업자아이디, 비밀번호 찾기 화면 요청
+function find_host_email_form() {
+	var url = "find_host_email_form";
+	window.open(url, "_blank_",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=450");
+}
+
+function findHostEmail() {
+	if (document.getElementById("name").value=="") {
+		alert("이름을 입력해 주세요.")
+		document.getElementById("name").focus();
+		return false;
+	} else if (document.getElementById("phone").value=="") {
+		alert("전화번호를 입력해 주세요.")
+		document.getElementById("phone").focus();
+		return false;
+	} else {
+		var form = document.getElementById("findHostEmail");
+		form.action = "find_host_email";
+		form.submit();
+	}
+}
+
+function findHostPassword() {
+	if (document.getElementById("email2").value==""){
+		alert("아이디를 입력해 주세요.")
+		document.getElementById("email2").focus();
+		return false;
+	} else if (document.getElementById("name2").value=="") {
+		alert("이름을 입력해 주세요.")
+		document.getElementById("name2").focus();
+		return false;
+	} else if (document.getElementById("phone2").value=="") {
+		alert("전화번호를 입력해 주세요.")
+		document.getElementById("phone2").focus();
+		return false;
+	} else {
+		var form = document.getElementById("findHostPW");
+		form.action = "find_host_pwd";
+		form.submit();
+	}
+}
+
+function changeHostPassword() {
+	if (document.getElementById("pwd").value=="") {
+		alert("비밀번호를 입력해 주세요.");
+		document.getElementById("pwd").focus();
+		return false;
+	} else if (document.getElementById("pwd").value != document.getElementById("pwdcheck").value) {
+		alert("비밀번호가 맞지 않습니다.");
+		documnet.getElementById("pwd").focuse();
+		return false;
+	} else {
+		var form = document.getElementById("host_pwd_form");
+		form.action = "change_host_pwd";
+		form.submit();
+	}
+}

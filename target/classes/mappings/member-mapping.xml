@@ -25,16 +25,21 @@
 		WHERE email=#{email}
 	</update>
 	
+		<!-- 비밀번호 변경 -->
+	<update id="changePwd">
+		UPDATE member SET pwd=#{pwd} WHERE email=#{email}
+	</update>
+	
 	<!-- 이름, 번호로 이메일 찾기 -->
 	<select id="selectEmailByNamePhone" resultType="String">
 		SELECT email FROM member
-		WHERE name=#{name}, phone=#{phone}
+		WHERE name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- 이메일, 이름, 번호로 비밀번호 찾기 -->
 	<select id="selectPwdByEmailNamePhone" resultType="String">
 		SELECT pwd FROM member
-		WHERE email=#{email}, name=#{name}, phone=#{phone}
+		WHERE email=#{email} AND name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- 전체 회원 정보 조회 -->
