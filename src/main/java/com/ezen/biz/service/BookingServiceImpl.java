@@ -32,7 +32,7 @@ public class BookingServiceImpl implements BookingService {
 		// 2.신규 예약을 예약 테이블에 저장
 		bDao.insertBooking(vo);
 		
-		List<BookingVO> bookingList = bookingService.getListBookByEmail(vo.getEmail());
+		List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
 		
 		for(BookingVO booking : bookingList) {
 			booking.setBseq(bseq);
@@ -47,8 +47,8 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<BookingVO> getListBookByEmail(String email) {
-		return bDao.listBookByEmail(email);
+	public List<BookingVO> getListBookByEmail(BookingVO vo) {
+		return bDao.listBookByEmail(vo);
 	}
 
 	@Override

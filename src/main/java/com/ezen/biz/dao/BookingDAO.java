@@ -24,8 +24,8 @@ public class BookingDAO {
 	}
 
 	// 자신의 예약내역 조회
-	public List<BookingVO> listBookByEmail(String email) {
-		return mybatis.selectList("BookingMapper.listBookByEmail", email);
+	public List<BookingVO> listBookByEmail(BookingVO vo) {
+		return mybatis.selectList("BookingMapper.listBookByEmail", vo);
 	}
 
 	// 예약번호로 예약내역 조회

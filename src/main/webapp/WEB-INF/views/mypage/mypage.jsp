@@ -7,14 +7,15 @@
     <form name="formm" method="post">
       <table id="bookingList">
       <tr>
-        <th>예약일자</th> <th>예약번호</th> <th>객실명</th> <th>결제 금액</th> <th>예약 상세</th> </th>    
+        <th>예약일자</th> <th>예약번호</th><th>숙박업체명</th> <th>객실명</th> <th>결제 금액</th> <th>예약 상세</th>   
       </tr>
-      <c:forEach items="${bookingList}"  var="BookingVO">
+      <c:forEach items="${bookingList}"  var="bookingVO">
       <tr>  
-        <td> <fmt:formatDate value="${bookingVO.Bookdate}" type="date"/></td>
+        <td> <fmt:formatDate value="${bookingVO.bookdate}" type="date"/></td>
         <td> ${bookingVO.bseq} </td>    
-
-        <td> <fmt:formatNumber value="${bookingVO.price}" type="currency" currencySimbol="￦"/> </td>
+		<td> ${bookingVO.aname} </td>
+		<td> ${bookingVO.rname} </td>
+        <td> <fmt:formatNumber value="${bookingVO.price}" type="currency" currencySymbol="￦"/> </td>
         <td> <a href="booking_detail?bseq=${bookingVO.bseq}"> 조회 </a></td>
       </tr>
       </c:forEach>    
