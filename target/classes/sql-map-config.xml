@@ -10,6 +10,7 @@
 		<typeAlias type="com.ezen.biz.dto.QnaVO" alias="qna"/>
 		<typeAlias type="com.ezen.biz.dto.ReviewVO" alias="review"/>
 		<typeAlias type="com.ezen.biz.dto.RoomVO" alias="room"/>
+		<typeAlias type="com.ezen.biz.location.Location" alias="location"/>
 	</typeAliases>
 	
 	<!-- SQL 매핑 파일 -->
@@ -21,5 +22,6 @@
 		<mapper resource="mappings/qna-mapping.xml"/>
 		<mapper resource="mappings/review-mapping.xml"/>
 		<mapper resource="mappings/room-mapping.xml"/>
+		<mapper resource="mappings/location-mapping.xml"/>
 	</mappers>
 </configuration>
