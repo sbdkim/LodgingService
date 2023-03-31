@@ -16,7 +16,7 @@
 		</tr>
 	</table>
 	
-	<table id="accommodationList">
+	<table id="accommodationList" border="1" width="1500">
 		<tr>
 			<th>번호</th><th>숙소명</th><th>주소</th><th>사업자이메일</th><th>전화번호</th>
 		</tr>
@@ -31,13 +31,11 @@
 			<c:otherwise>
 				<c:forEach items="${accommodationList}" var="accommodationVO" varStatus="status">
 				<tr>
-				<td height="23" align="center">${status.count}</td>
-				<td style="test-align:left; padding-left:50px; padding-right:0px">
-				   <a href="#" onclick="go_detail('${pageMaker.criteria.pageNum}','${pageMaker.criteria.rowsPerPage}','${accommodationVO.aseq}')"></a>
-			  	   <a href="#" onclick="go_detail('${accommodationVO.aseq}')">    
-			       ${accommodationVO.address}
-			       </a>
-			    </td>
+					<td>${accommodationVO.aseq}</td>
+					<td>${accommodationVO.name}</td>
+					<td>${accommodationVO.address}</td>
+					<td>${accommodationVO.email}</td>
+					<td>${accommodationVO.tel}</td>
 				</tr>
 				</c:forEach>
 				<tr><td colspan="6" style="text-align:center;"> ${paging} </td></tr>

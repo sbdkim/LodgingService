@@ -12,7 +12,7 @@ public interface BookingService {
 	int insertBooking(BookingVO vo);
 
 	// 이름, 이메일로 예약내역 조회
-	List<BookingVO> getListBookByEmail(String email);
+	List<BookingVO> getListBookByEmail(BookingVO vo);
 
 	// 예약번호로 예약내역 조회
 	BookingVO SelectBookByBseq(int bseq);

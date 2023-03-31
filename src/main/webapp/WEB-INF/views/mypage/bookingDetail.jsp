@@ -5,28 +5,28 @@
     <h2> 주문상세정보 </h2>
     <form name="formm" method="post">
       <h3> 주문자 정보 </h3>     
-      <table>      
+      <table id="bookingList">      
       <tr>
-        <th>예약일자</th> <th>예약번호</th> <th>예약자</th>
- <th> 예약 가격</th>     
+        <th>예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
      </tr>     
      <tr>  
-       <td> <fmt:formatDate value="${bookingDetail.indate}" type="date"/></td>
+       <td> <fmt:formatDate value="${bookingDetail.bookdate}" type="date"/></td>
        <td> ${bookingDetail.bseq} </td>    
        <td> ${bookingDetail.email} </td>
-       <td> <fmt:formatNumber type="currency" 
-value="${totalPrice}" /> </td>
+       <td> <fmt:formatNumber type="currency" value="${totalPrice}" /> </td>
      </tr>    
-     </table>         
+     </table>      
+     <br><br>   
      <h3> 예약 상품 정보 </h3> 
      <table>
      <tr>
-       <th>예약객실명</th> <th>객실번호</th> <th>체크인 날짜</th> <th>체크아웃 날짜</th>
+       <th>예약숙박업체</th><th>예약객실명</th> <th>객실번호</th> <th>체크인 날짜</th> <th>체크아웃 날짜</th>
  <th>가격</th> <th>처리 상태</th>    
      </tr>
      <c:forEach items="${bookingList}"  var="bookingVO">
      <tr>
-       <td> ${bookingVO.pname} </td>
+ 	   <td> ${bookingVO.aname} </td>
+       <td> ${bookingVO.rname} </td>
        <td> ${bookingVO.rseq} </td>          
        <td> ${bookingVO.ckindate} </td>
        <td> ${bookingVO.ckoutdate} </td>
