@@ -49,17 +49,6 @@
 	<select id="getListBooking" resultType="booking">
 		SELECT * FROM booking ORDER BY bseq DESC
 	</select>
-	
-	<select id="showAname" resultType="String">
-		SELECT aname
-		FROM booking_view
-		WHERE email=#{email}
-	</select>
-	
-	<select id="showRname" resultType="String">
-		SELECT Rname
-		FROM booking_view
-		WHERE email=#{email}
-	</select>
 
+	
 </mapper>
