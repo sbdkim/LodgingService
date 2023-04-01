@@ -32,7 +32,7 @@
 				<c:forEach items="${accommodationList}" var="accommodationVO" varStatus="status">
 				<tr>
 					<td>${accommodationVO.aseq}</td>
-					<td>${accommodationVO.name}</td>
+					<td><a href="${accommodationVO.name}">${accommodationVO.name}</a></td>
 					<td>${accommodationVO.address}</td>
 					<td>${accommodationVO.email}</td>
 					<td>${accommodationVO.tel}</td>
