@@ -29,9 +29,5 @@ public interface BookingService {
 	List<BookingVO> getListBooking();
 	
 	 List<BookingVO> getListBookingByEmail(BookingVO vo);
-	
-	String showAname(String email);
-	
-	String showRname(String email);
-	
+
 }

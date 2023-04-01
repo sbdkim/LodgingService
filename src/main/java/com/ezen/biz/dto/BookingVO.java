@@ -8,7 +8,8 @@ public class BookingVO {
 	private String email;
 	private String ckindate;
 	private String ckoutdate;
-	private int price;
+	private int rprice;
+	private int bprice;
 	private int payment;
 	private int status;
 	private Date bookdate;
@@ -56,14 +57,6 @@ public class BookingVO {
 		this.ckoutdate = ckoutdate;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
 	public int getPayment() {
 		return payment;
 	}
@@ -104,15 +97,28 @@ public class BookingVO {
 		this.rname = rname;
 	}
 
+	public int getRprice() {
+		return rprice;
+	}
+
+	public void setRprice(int rprice) {
+		this.rprice = rprice;
+	}
+
+	public int getBprice() {
+		return bprice;
+	}
+
+	public void setBprice(int bprice) {
+		this.bprice = bprice;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", email=" + email + ", ckindate=" + ckindate
-				+ ", ckoutdate=" + ckoutdate + ", price=" + price + ", payment=" + payment + ", status=" + status
-				+ ", bookdate=" + bookdate + ", aname=" + aname + ", rname=" + rname + "]";
+				+ ", ckoutdate=" + ckoutdate + ", rprice=" + rprice + ", bprice=" + bprice + ", payment=" + payment
+				+ ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname + ", rname=" + rname + "]";
 	}
-
-	
-	
 	
 	
 

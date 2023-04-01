@@ -13,10 +13,9 @@
        <td> <fmt:formatDate value="${bookingDetail.bookdate}" type="date"/></td>
        <td> ${bookingDetail.bseq} </td>    
        <td> ${bookingDetail.email} </td>
-       <td> <fmt:formatNumber type="currency" value="${totalPrice}" /> </td>
+       <td> <fmt:formatNumber type="currency" value="${bookingDetail.bprice}" /> </td>
      </tr>    
-     </table>      
-     <br><br>   
+     </table>        
      <h3> 예약 상품 정보 </h3> 
      <table>
      <tr>

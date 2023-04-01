@@ -78,23 +78,10 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public String showAname(String email) {
-		
-		return bDao.showAname(email);
-	}
-
-	@Override
-	public String showRname(String email) {
-		
-		return bDao.showRname(email);
-	}
-
-	@Override
 	public List<BookingVO> getListBookingByEmail(BookingVO vo) {
 		
 		return bDao.listBookingByEmail(vo);
 	}
-
 	
 
 }
