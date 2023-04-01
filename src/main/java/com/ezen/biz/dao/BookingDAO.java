@@ -56,12 +56,6 @@ public class BookingDAO {
 	public List<BookingVO> listBookingByEmail(BookingVO vo){
 		return mybatis.selectList("BookingMapper.listBookingByEmail");
 	}
+
 	
-	public String showAname(String email) {
-		return mybatis.selectOne("BookingMapper.showAname", email);
-	}
-	
-	public String showRname(String email) {
-		return mybatis.selectOne("BookingMapper.showRname", email);
-	}
 }
