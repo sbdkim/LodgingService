@@ -13,3 +13,9 @@ function go_total() {
 	form.action = "acc_search_list";
 	form.submit();
 }
+
+
+function accommodationRooms(){
+	window.location.href = "roomList.jsp";
+}
+

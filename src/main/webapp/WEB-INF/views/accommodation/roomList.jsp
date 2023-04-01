@@ -4,7 +4,7 @@
 <%@ include file="../header.jsp"%>
 <article>
 <h1>숙소 검색</h1>
-<form name="frm" id="acc_form" method="post" style="display:block">
+<form name="roomForm" id="room_form" method="post" style="display:block">
 	<table>
 		<tr>
 			<td width="650">
@@ -16,27 +16,26 @@
 		</tr>
 	</table>
 	
-	<table id="accommodationList" border="1" width="1500">
+	<table id="roomList" border="1" width="1500">
 		<tr>
-			<th>번호</th><th>숙소명</th><th>주소</th><th>숙소 살펴보기</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
+			<th>Image</th><th>방 이름</th><th>가격</th><th>최대 인원</th><th>침대</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
 		</tr>
 		<c:choose>
-			<c:when test="${accommodationListSize<=0}">
+			<c:when test="${roomListSize<=0}">
 				<tr>
 					<td width="100%" colspan="5" align="center" height="23">
-					등록된 숙소가 없습니다.
+					등록된 방이 없습니다...
 					</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
-				<c:forEach items="${accommodationList}" var="accommodationVO" varStatus="status">
+				<c:forEach items="${roomList}" var="roomVO" varStatus="status">
 				<tr>
-					<td>${accommodationVO.aseq}</td>
-					<td>${accommodationVO.name}</td>
-					<td>${accommodationVO.address}</td>
-					<td><button onclick="accommodationRooms()">숙소 살펴보기</button></td>
-					<!-- <td>${accommodationVO.email}</td> -->
-					<!-- <td>${accommodationVO.tel}</td>   -->
+					<td> <img src="room-images/${roomVO.image}" /></td>
+					<td><a href="${roomVO.name}">${roomVO.name}</a></td>
+					<td>${roomVO.price}</td>
+					<td>${roomVO.maxcap}</td>
+					<td>${roomVO.bed}</td>
 				</tr>
 				</c:forEach>
 				<tr><td colspan="6" style="text-align:center;"> ${paging} </td></tr>
@@ -45,4 +44,7 @@
 	</table>
 </form>
 </article>
+
+
+
 <%@ include file="../footer.jsp"%>
