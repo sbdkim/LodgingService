@@ -2,19 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../header.jsp"%>
+
+<h1>숙소 검색 결과</h1>
+<h2><%= request.getAttribute("accommodationName") %>의 객실 목록</h2>
 <article>
-<h1>숙소 검색</h1>
 <form name="roomForm" id="room_form" method="post" style="display:block">
-	<table>
-		<tr>
-			<td width="650">
-				지역
-				<input type="text" name="key" id="key">
-				<input class="btn" type="button" name="btn_search" value="검색" onclick="go_search()">
-				<input class="btn" type="button" name="btn_total" value="전체보기" onclick="go_total()">
-			</td>
-		</tr>
-	</table>
+
 	
 	<table id="roomList" border="1" width="1500">
 		<tr>
@@ -29,15 +22,15 @@
 				</tr>
 			</c:when>
 			<c:otherwise>
-				<c:forEach items="${roomList}" var="roomVO" varStatus="status">
+				<c:forEach items="${roomList}" var="roomVO">
 				<tr>
 					<c:choose>
-					    <c:when test="${empty roomVO.image}">
+					    <c:when test="${empty roomVO.image1}">
 					       <td>  <img src="room-images/default.jpg" /></td>
 					      
 					    </c:when>    
 					    <c:otherwise>
-					        <td> <img src="room-images/${roomVO.image}" /></td>
+					        <td> <img src="room-images/${roomVO.image1}" /></td>
 					    </c:otherwise>
 					</c:choose>
 

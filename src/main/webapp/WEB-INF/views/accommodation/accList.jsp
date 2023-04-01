@@ -4,7 +4,7 @@
 <%@ include file="../header.jsp"%>
 <article>
 <h1>숙소 검색</h1>
-<form name="frm" id="acc_form" method="post" style="display:block">
+<form name="frm" action="room" method="post" style="display:block">
 	<table>
 		<tr>
 			<td width="650">
@@ -30,12 +30,18 @@
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${accommodationList}" var="accommodationVO" varStatus="status">
+				
 				<tr>
 					<td>${accommodationVO.aseq}</td>
 					<td>${accommodationVO.name}</td>
 					<td>${accommodationVO.address}</td>
-					<td><button onclick="accommodationRooms()">숙소 살펴보기</button></td>
-					<!-- <td>${accommodationVO.email}</td> -->
+					  
+					<td>
+					
+						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
+						<button  type=submit>숙소 살펴보기</button>
+					</td>
+     				<!-- <td>${accommodationVO.email}</td> -->
 					<!-- <td>${accommodationVO.tel}</td>   -->
 				</tr>
 				</c:forEach>
