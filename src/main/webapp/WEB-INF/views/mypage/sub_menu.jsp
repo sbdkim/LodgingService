@@ -5,7 +5,7 @@
     <ul>
       <li><a href="qna_list"> Q & A </a></li>
       <li><a href="mypage">예약내역확인</a></li>
-      <li><a href="reviewList">내가 쓴 리뷰</a></li>
+      
      
     </ul>
   </nav> 
