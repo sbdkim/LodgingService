@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+  pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp"%>
+<%@ include file="../sub_menu.jsp"%>
 <script type="text/javascript">
   function go_view(qseq) {
     var theForm = document.frm;
@@ -23,7 +24,7 @@
       <td>
       ${qnaVO.qseq}  
       <c:choose>          
-        <c:when test='${qnaVO.rep=="0"}'>(미처리)</c:when>
+        <c:when test='${qnaVO.rep=="1"}'>(미처리)</c:when>
         <c:otherwise>(답변처리완료)</c:otherwise>
       </c:choose>      
       </td>
@@ -39,4 +40,6 @@
     </table>
     </form>    
   </article>
-  
+  <%@ include file="../footer.jsp"%>
+</body>
+</html>

@@ -36,4 +36,11 @@ public class AccommodationServiceImpl implements AccommodationService {
 		return aDao.countAccList(address);
 	}
 
+	@Override
+	public List<AccommodationVO> getListHostAccommodation(AccommodationVO vo) {
+
+		return aDao.listHostAccommodation(vo);
+	}
+
+
 }

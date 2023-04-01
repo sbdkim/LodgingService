@@ -1,6 +1,5 @@
 package com.ezen.view;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,18 +10,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
+import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
-import com.ezen.biz.dto.RoomVO;
+import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
-
-import lombok.ToString;
 
 @Controller
 public class MypageController {
 	
 	@Autowired
 	private BookingService bookingService;
+	@Autowired
+	private AccommodationService accommodationService;
+
 	
 	@PostMapping("booking_insert")
 	public String insertBooking(BookingVO vo, HttpSession session) {
@@ -112,5 +114,75 @@ public class MypageController {
 			return "mypage/bookingDetail";
 		}
 	}
+	
+	@GetMapping("/hostmypage")
+	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
+		
+		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+		
+		if(loginHost == null) {
+			return "member/login";
+		} else {
+						
+		
+			vo.setEmail(loginHost.getEmail());
+			
+			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
+			
+					
+			model.addAttribute("accommodationList", accommodationList);
+			
+			return "mypage/hostmypage";
+			
+			
+			
+		}
+		
+		
+	}
+	
+	@GetMapping("/accommodation_list")
+	public String AccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
+		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+		
+		if(loginHost == null) {
+			return "member/login";
+		} else {
+			vo.setEmail(loginHost.getEmail());
+			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
+			
+			
+			model.addAttribute("accommodationList", accommodationList);
+			
+			return "mypage/accommodationList";
+		}
+	}
+	
+//	@GetMapping("/accommodation_detail")
+//	public String AccommodationDetail(HttpSession session, AccommodationVO vo, Model model) {
+//		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+//		
+//		if(loginHost == null) {
+//			return "member/login";
+//		} else {
+//			vo.setEmail(loginHost.getEmail());
+//			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
+//			
+//			RoomVO vo accommodationDetail = new RoomVO();
+//			accommodationDetail.(accommodationList.get(0).getBookdate());
+//	
+//			
+//			
+//				
+//			model.addAttribute("accommodationDetail", accommodationDetail);
+//			model.addAttribute("accommodationList", accommodationList);
+//			
+//			return "mypage/accommodationDetail";
+//		}
+//	}
+	
+	
+	
+	
 
 }

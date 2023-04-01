@@ -19,4 +19,7 @@ public interface AccommodationService {
 	
 	// 전체 숙소 갯수 조회
 	 int countAccList(String address);
+	 
+	 //호스트 별 등록된 업체 리스트
+	 public List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
 }
