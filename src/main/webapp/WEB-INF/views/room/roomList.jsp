@@ -31,7 +31,16 @@
 			<c:otherwise>
 				<c:forEach items="${roomList}" var="roomVO" varStatus="status">
 				<tr>
-					<td> <img src="room-images/${roomVO.image}" /></td>
+					<c:choose>
+					    <c:when test="${empty roomVO.image}">
+					       <td>  <img src="room-images/default.jpg" /></td>
+					      
+					    </c:when>    
+					    <c:otherwise>
+					        <td> <img src="room-images/${roomVO.image}" /></td>
+					    </c:otherwise>
+					</c:choose>
+
 					<td><a href="${roomVO.name}">${roomVO.name}</a></td>
 					<td>${roomVO.price}</td>
 					<td>${roomVO.maxcap}</td>

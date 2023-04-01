@@ -4,8 +4,15 @@ import java.util.List;
 
 import com.ezen.biz.dto.RoomVO;
 
+import utils.Criteria;
+
 public interface RoomService {
 
-	List<RoomVO> selectRoomByAcc(String aseq);//selectRoomByAcc
+	List<RoomVO> getRoomByAcc(int aseq);//selectRoomByAcc
+	
+	List<RoomVO> getRoomListWithPaging(Criteria criteria, int aseq);//selectRoomByAcc
+	
+	int countRoomList(int aseq);
+	
 
 }
