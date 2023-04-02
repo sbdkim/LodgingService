@@ -27,4 +27,10 @@
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
 		]]>
 	</select>
+	
+	<!-- host 숙소 -->
+	<select id="listHostAccommodation" resultType="accommodation">
+		SELECT * FROM accommodation
+		WHERE email=#{email}
+	</select>
 </mapper>

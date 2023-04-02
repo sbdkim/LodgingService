@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>KozyNest Admin</title>
+<title>Nonage Admin</title>
 <link rel="stylesheet" href="admin/css/admin.css">
 <script type="text/javascript">
 function admin_check()

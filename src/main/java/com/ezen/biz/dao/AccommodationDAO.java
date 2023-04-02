@@ -39,4 +39,8 @@ public class AccommodationDAO {
 		map.put("name", address);
 		return mybatis.selectList("AccommodationMapper.listAccWithPaging", map);
 	}
+	
+	public List<AccommodationVO> listHostAccommodation(AccommodationVO vo){
+		return mybatis.selectList("AccommodationMapper.listHostAccommodation", vo);
+	}
 }
