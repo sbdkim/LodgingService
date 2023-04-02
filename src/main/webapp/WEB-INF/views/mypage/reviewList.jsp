@@ -5,12 +5,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    
+    <!-- link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <style>
     #cCnt {
     	border-radius: 3px;
@@ -41,44 +39,28 @@
     }
     </style>
 </head>
-
- 	
-
-<!---Coding By CodingLab | www.codinglabweb.com--->
-
-  <head>
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-pUA-Compatible" content="ie=edge" />
-    <!--<title>Star Rating in HTML CSS & JavaScript</title>-->
-    <link rel="stylesheet" href="star-rating.css" />
-    <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    <!--<script src="script.js" defer></script>-->
-  </head>
-  
-</html>
-
-<c:if test="${sessionScope.vo!=null }">
-		<br>
-		&nbsp;&nbsp;&nbsp;<label for="score" class="control-label">별점 주기</label>
-		<table>
-			<tr>
-				<td width="30"></td>
-				<td width="250">
-					<input id="score" name="score" class="rating rating-loading" data-min="0" data-max="5" data-step="1" >
-				</td>
-				<td>
-					평가글 남기기 : <input type ="text" id="context" name="context" size="50" maxlength="100"> 
-					
-					<button type="button" id="saveBtn" onclick="saveStar()">저장하기</button><!--ajex 를 이용한 비동기 통신  -->
-				</td>
-			</tr>		
-		</table>
-	</c:if>
+<body>
+<div class="container">
+    <form id="reviewForm" name="reviewForm" method="post">
+    <br><br>
+        <div>
+            <div>
+                <span><h3>상품평</h3></span> <span id="cCnt"></span>
+            </div>
+            <div id="reply">
+                <table id="rep_input" style="width: 650px">                    
+                    <tr>
+                        <td style="width:80%;">
+                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
+                        </td>
+                        <td style="width:10%;">
+                            <a href='#' onClick="save_review('${bookingVO.bseq }')" class="btn">등록</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <input type="hidden" id="bseq" name="bseq" value="${bookingVO.bseq }" />        
+        <input type="hidden" id="bseq" name="bseq" value="${bookingVO.bseq  }" />        
     </form>
 </div>
 <div class="container">
@@ -97,11 +79,11 @@
 
 	$(document).ready(function() {
 		// 상품상세정보 로딩 시에 상품평 목록을 조회하여 출력
-		getListReview();
+		getReviewList();
 	});
 	
 	// 상품평 목록 불러오기
-	function getListReview() {
+	function getReviewList() {
 		
 		$.ajax({
 			type: 'GET',
@@ -111,10 +93,10 @@
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
-				var totalCount = data.total;
-				var reviewList = data.reviewList;
+				var total = data.total;
+				var reeviewList = data.reviewList;
 				
-				showHTML(pageMaker, reviewList, totalCount);
+				showHTML(pageMaker, reviewList, total);
 			},
 			error: function() {
 				alert("상품평 목록을 조회하지 못했습니다.")
@@ -125,7 +107,7 @@
 	/*
 	** 상품평 페이지별 목록 요청
 	*/
-	function getReviewPaging(pagenum, rowsperpage, bseq) {
+	function getReviewPaging(pagenum, rowsperpage, pseq) {
 		$.ajax({
 			type: 'GET',
 			url: 'review/list',
@@ -136,13 +118,13 @@
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
-				var totalCount = data.totalCount;
+				var total = data.total;
 				var reviewList = data.reviewList;
 				console.log("pageMaker=", pageMaker);
-				console.log("count=", totalCount);
-				console.log("review=", reviewList);
+				console.log("total=", total);
+				console.log("reviewList=", reviewList);
 				
-				showHTML(pageMaker, reviewList, totalCount);
+				showHTML(pageMaker, reviewList, total);
 			},
 			error: function() {
 				alert("상품평 목록을 조회하지 못했습니다.")
@@ -150,7 +132,7 @@
 		});
 	}
 	
-	function showHTML(pageMaker, reviewList, totalCount) {
+	function showHTML(pageMaker, reviewList, total) {
 		var html = "";
 		var p_html = "";
 		
@@ -158,7 +140,7 @@
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.writer + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.regDate) + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
@@ -185,13 +167,12 @@
 			
 		} else { // 조회된 상품평이 없을 경우
 			html += "<div>";
-			html += "<h5>등록된 리뷰가 없습니다.</h5>";
+			html += "<h5>등록된 상품평이 없습니다.</h5>";
 			html += "</div>";
 		}
 		
 		// 상품평 갯수 출력
-		$("#cCnt").html("댓글 " + "<span style='color:#00f;'>" + totalCount+"</span>");
-		$("#avg").html("평균별점 " + "<span style='color:#00f;'>" + totalCount+"</span>");
+		$("#cCnt").html("댓글 " + "<span style='color:#00f;'>" + total+"</span>");
 		// 상품평 목록 출력
 		$("#reviewList").html(html);
 		// 페이징 버튼 출력
@@ -234,7 +215,7 @@
 	/*
 	** 상품 댓글 등록
 	*/
-	function save_review(bseq) {
+	function save_review(pseq) {
 		$.ajax({
 			type:'POST',
 			url:'review/save',
@@ -254,8 +235,6 @@
 			}
 		});
 	}
-	
-	
 </script>
 </body>
 </html>

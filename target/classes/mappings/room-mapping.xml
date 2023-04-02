@@ -36,12 +36,13 @@
 	<delete id="deleteBookByBseq">
 		DELETE booking WHERE bseq=#{bseq}
 	</delete>
-	
+
 	<!-- 숙소업체별 객실 조회 -->
 	<select id="listRoomByAccommodation" resultType="room">
 		SELECT * FROM list_room_view
 		WHERE email=#{email}
 	</select>
+
 	
 	
 	
@@ -72,5 +73,4 @@
 	</select>
 	
 
-	
 </mapper>

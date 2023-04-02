@@ -5,8 +5,8 @@
 	<!--리뷰 페이징  -->
 	<select id="reviewListwithPaging" parameterType="hashmap" resultType="review">
 	  <![CDATA[
-	  SELECT review_seq, bseq,content,score,indate,reply
-	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, review_seq, re.bseq,email
+	  SELECT re_\seq, bseq,content,score,indate,reply
+	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, reseq, re.bseq,email
 	        content,score,indate,reply FROM review_view
 	        WHERE bseq=#{bseq})
 	        WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}

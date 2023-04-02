@@ -43,6 +43,7 @@ public class ReviewController {
 		pageMaker.setTotalCount(reviewService.getCountReviewList(vo.getBseq()));
 		
 	    reviewInfo.put("total", reviewList.size());
+	   
 	    reviewInfo.put("reviewList", reviewList);
 	    reviewInfo.put("pageInfo", pageMaker);
 	    return reviewInfo;
