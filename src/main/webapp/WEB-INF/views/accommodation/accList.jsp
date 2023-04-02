@@ -4,7 +4,7 @@
 <%@ include file="../header.jsp"%>
 <article>
 <h1>숙소 검색</h1>
-<form name="frm" id="acc_form" method="post" style="display:block">
+<form name="frm" action="room" method="post" style="display:block">
 	<table>
 		<tr>
 			<td width="650">
@@ -18,7 +18,7 @@
 	
 	<table id="accommodationList" border="1" width="1500">
 		<tr>
-			<th>번호</th><th>숙소명</th><th>주소</th><th>사업자이메일</th><th>전화번호</th>
+			<th>번호</th><th>숙소명</th><th>주소</th><th>숙소 살펴보기</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
 		</tr>
 		<c:choose>
 			<c:when test="${accommodationListSize<=0}">
@@ -30,12 +30,19 @@
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${accommodationList}" var="accommodationVO" varStatus="status">
+				
 				<tr>
 					<td>${accommodationVO.aseq}</td>
 					<td>${accommodationVO.name}</td>
 					<td>${accommodationVO.address}</td>
-					<td>${accommodationVO.email}</td>
-					<td>${accommodationVO.tel}</td>
+					  
+					<td>
+					
+						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
+						<button  type=submit>숙소 살펴보기</button>
+					</td>
+     				<!-- <td>${accommodationVO.email}</td> -->
+					<!-- <td>${accommodationVO.tel}</td>   -->
 				</tr>
 				</c:forEach>
 				<tr><td colspan="6" style="text-align:center;"> ${paging} </td></tr>

@@ -39,9 +39,26 @@ public class MypageController {
 			return "redirect:booking_list";
 		}
 	}
-	
-	
-	
+
+
+
+	@GetMapping("/booking_list")
+	public String BookingListAction(HttpSession session, Model model, BookingVO vo) {
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+
+		if (loginUser == null) {
+			return "member/login";
+		} else {
+			vo.setEmail(loginUser.getEmail());
+			vo.setStatus(0);
+			List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
+
+			model.addAttribute("bookingList", bookingList);
+
+			return "mypage/bookingList";
+		}
+	}
+
 	@GetMapping("/mypage")
 	public String myPageView(HttpSession session, BookingVO vo, Model model) {
 		
@@ -70,24 +87,9 @@ public class MypageController {
 		
 		
 	}
+
 	
-	@GetMapping("/booking_list")
-	public String BookingListAction(HttpSession session, Model model,BookingVO vo) {
-		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		
-		if(loginUser == null) {
-			return "member/login";
-		} else {
-			vo.setEmail(loginUser.getEmail());
-			vo.setStatus(0);
-			List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
-			
-			
-			model.addAttribute("bookingList", bookingList);
-			
-			return "mypage/bookingList";
-		}
-	}
+
 	
 	@GetMapping("/booking_detail")
 	public String BookingDetail(HttpSession session, BookingVO vo, Model model) {
@@ -96,6 +98,15 @@ public class MypageController {
 		if(loginUser == null) {
 			return "member/login";
 		} else {
+
+//			vo.setEmail(loginUser.getEmail());
+//			vo.setStatus(0);
+//			
+//			List<BookingVO> bookingDetail = bookingService.getListBookByEmail(vo);
+//			
+//					
+//			model.addAttribute("bookingDetail", bookingDetail);
+
 			vo.setEmail(loginUser.getEmail());
 			vo.setStatus(0);
 			List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
@@ -110,7 +121,7 @@ public class MypageController {
 				
 			model.addAttribute("bookingDetail", bookingDetail);
 			model.addAttribute("bookingList", bookingList);
-			
+
 			return "mypage/bookingDetail";
 		}
 	}

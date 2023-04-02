@@ -3,11 +3,11 @@
 <%@ include file="../header.jsp" %>
 <%@ include file="sub_menu.jsp" %>        
   <article>
-    <h2 align="center">  ${sessionScope.loginHost.name}에서 등록한 숙소 </h2>
+    <h2 align="center">  '${sessionScope.loginHost.name}'님이 등록한 숙소 </h2>
     <form name="formm" method="post">
       <table id="accommodationList">
       <tr>
-        <th>일련번호</th> <th>카테고리</th><th>이 름</th> <th>주 소</th> <th>전화번호</th> <th>상 세</th>   
+        <th>카테고리</th><th>이 름</th> <th>주 소</th> <th>전화번호</th> <th>상 세</th>   
       </tr>
 
       <c:forEach items="${accommodationList}"  var="accommodationVO">
@@ -21,9 +21,9 @@
         </c:choose>
 		</td> 
 		<td align="center" width="300px"> ${accommodationVO.name} </td>
-		<td align="center" width="300px"> ${accommodationVO.address} </td>
+		<td align="center" width="500px"> ${accommodationVO.address} </td>
 		<td align="center" width="100px"> ${accommodationVO.tel} </td>
-		 <td align="center" width="100px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
+		<td align="center" width="100px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
       </tr>
       </c:forEach>    
       </table>   
