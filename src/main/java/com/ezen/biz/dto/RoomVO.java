@@ -33,11 +33,8 @@ public class RoomVO {
 	private int smoking;
 	private int gym;
 	private int roomservice;
-	private String image1;
-	private String image2;
-	private String image3;
-	private String image4;
-	private String image5;
+	private String image;
+
 
 	// Getter, Setter 메소드
 	public int getRseq() {
@@ -296,45 +293,16 @@ public class RoomVO {
 		this.roomservice = roomservice;
 	}
 
-	public String getImage1() {
-		return image1;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImage1(String image1) {
-		this.image1 = image1;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-	public String getImage2() {
-		return image2;
-	}
 
-	public void setImage2(String image2) {
-		this.image2 = image2;
-	}
 
-	public String getImage3() {
-		return image3;
-	}
-
-	public void setImage3(String image3) {
-		this.image3 = image3;
-	}
-
-	public String getImage4() {
-		return image4;
-	}
-
-	public void setImage4(String image4) {
-		this.image4 = image4;
-	}
-
-	public String getImage5() {
-		return image5;
-	}
-
-	public void setImage5(String image5) {
-		this.image5 = image5;
-	}
 
 	// ToString
 	@Override
@@ -346,7 +314,6 @@ public class RoomVO {
 				+ parking + ", heater=" + heater + ", microwave=" + microwave + ", plug=" + plug + ", washer=" + washer
 				+ ", bbq=" + bbq + ", hairdrier=" + hairdrier + ", amenity=" + amenity + ", towel=" + towel
 				+ ", elevator=" + elevator + ", breakfast=" + breakfast + ", smoking=" + smoking + ", gym=" + gym
-				+ ", roomservice=" + roomservice + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3
-				+ ", image4=" + image4 + ", image5=" + image5 + "]";
+				+ ", roomservice=" + roomservice + ", image=" + image +  "]";
 	}
 }
