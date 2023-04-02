@@ -35,12 +35,22 @@ public class ReviewVO {
 		this.content = content;
 	}
 
+
+
 	public double getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Date getIndate() {

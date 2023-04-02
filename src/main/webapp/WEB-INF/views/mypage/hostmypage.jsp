@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>
-<%@ include file="sub_menu.jsp" %>        
+<%@ include file="sub_menu_host.jsp" %>        
   <article>
     <h2 align="center">  '${sessionScope.loginHost.name}'님이 등록한 숙소 </h2>
     <form name="formm" method="post">

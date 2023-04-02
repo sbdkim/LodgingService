@@ -5,10 +5,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <!-- link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    
     <style>
     #cCnt {
     	border-radius: 3px;
@@ -39,28 +41,30 @@
     }
     </style>
 </head>
-<body>
+
+ 	
+
 <div class="container">
     <form id="reviewForm" name="reviewForm" method="post">
     <br><br>
         <div>
             <div>
-                <span><h3>상품평</h3></span> <span id="cCnt"></span>
+                <span><h3>리뷰</h3></span> <span id="cCnt"></span><span id="avg"></span>
             </div>
             <div id="reply">
                 <table id="rep_input" style="width: 650px">                    
                     <tr>
                         <td style="width:80%;">
-                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
                         </td>
                         <td style="width:10%;">
-                            <a href='#' onClick="save_review('${bookingVO.bseq }')" class="btn">등록</a>
+                            <a href='#' onClick="save_review('${bookingVO.bseq}')" class="btn">등록</a>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <input type="hidden" id="bseq" name="bseq" value="${bookingVO.bseq  }" />        
+        <input type="hidden" id="bseq" name="bseq" value="${bookingVO.bseq }" />        
     </form>
 </div>
 <div class="container">
@@ -79,11 +83,11 @@
 
 	$(document).ready(function() {
 		// 상품상세정보 로딩 시에 상품평 목록을 조회하여 출력
-		getReviewList();
+		getListReview();
 	});
 	
 	// 상품평 목록 불러오기
-	function getReviewList() {
+	function getListReview() {
 		
 		$.ajax({
 			type: 'GET',
@@ -94,7 +98,7 @@
 			success: function(data) {
 				var pageMaker = data.pageInfo;
 				var total = data.total;
-				var reeviewList = data.reviewList;
+				var reviewList = data.reviewList;
 				
 				showHTML(pageMaker, reviewList, total);
 			},
@@ -107,22 +111,22 @@
 	/*
 	** 상품평 페이지별 목록 요청
 	*/
-	function getReviewPaging(pagenum, rowsperpage, pseq) {
+	function getReviewPaging(pagenum, rowsperpage, rseq) {
 		$.ajax({
 			type: 'GET',
 			url: 'review/list',
 			dataType: 'json',
 			data:{"pageNum": pagenum,
 				  "rowsPerPage": rowsperpage,
-				  "bseq": bseq},
+				  "rseq": rseq},
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
 				var total = data.total;
 				var reviewList = data.reviewList;
 				console.log("pageMaker=", pageMaker);
-				console.log("total=", total);
-				console.log("reviewList=", reviewList);
+				console.log("count=", total);
+				console.log("review=", reviewList);
 				
 				showHTML(pageMaker, reviewList, total);
 			},
@@ -140,8 +144,8 @@
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"review_item\"> <strong>작성자: " + item.writer + "</strong>";
-				html += "<span id=\"write_date\">" + displayTime(item.regDate) + "</span><br>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>";
+				html += "<span id=\"write_date\">" + displayTime(item.inDate) + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
 			});
@@ -150,24 +154,24 @@
 			if (pageMaker.prev == true) {
 				p_html += "<li class=\"paginate_button previous\">";
 				p_html += "<a href='javascript:getReviewPaging("
-					  +pageMaker.startPage-1+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq}+")'>[이전]</a></li>";
+					  +pageMaker.startPage-1+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>[이전]</a></li>";
 			}
 			
 			for(var i=pageMaker.startPage; i<=pageMaker.endPage; i++){
 				p_html += "<a href='javascript:getReviewPaging("
-					  + i +","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq}+")'>["+i+"]</a></li>";
+					  + i +","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>["+i+"]</a></li>";
 				console.log(p_html);
 			}
 			
 			if (pageMaker.next == true) {
 				p_html += "<li class=\"paginate_button next\">";
 				p_html += "<a href='javascript:getReviewPaging("
-					  +(pageMaker.endPage+1)+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq}+")'>[다음]</a></li>";
+					  +(pageMaker.endPage+1)+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>[다음]</a></li>";
 			}
 			
 		} else { // 조회된 상품평이 없을 경우
 			html += "<div>";
-			html += "<h5>등록된 상품평이 없습니다.</h5>";
+			html += "<h5>등록된 리뷰가 없습니다.</h5>";
 			html += "</div>";
 		}
 		
@@ -215,7 +219,7 @@
 	/*
 	** 상품 댓글 등록
 	*/
-	function save_review(pseq) {
+	function save_review(bseq) {
 		$.ajax({
 			type:'POST',
 			url:'review/save',
@@ -235,6 +239,8 @@
 			}
 		});
 	}
+	
+	
 </script>
 </body>
 </html>
