@@ -5,10 +5,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+ 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <!-- link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    
     <style>
     #cCnt {
     	border-radius: 3px;
@@ -33,39 +36,41 @@
     	padding: 5px;
     	margin: 0 5px;
     }
-    #commentList {
+    #reviewList {
     	background-color: rgba(254, 206, 229, 0.3);
     	border-radius: 3px;
     }
     </style>
 </head>
-<body>
+
+ 	
+
 <div class="container">
-    <form id="commentForm" name="commentForm" method="post">
+    <form id="reviewForm" name="reviewForm" method="post">
     <br><br>
         <div>
             <div>
-                <span><h3>리뷰</h3></span> <span id="cCnt"></span>
+                <span><h3>리뷰</h3></span> <span id="cCnt"></span><span id="avg"></span>
             </div>
             <div id="reply">
                 <table id="rep_input" style="width: 650px">                    
                     <tr>
                         <td style="width:80%;">
-                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
                         </td>
                         <td style="width:10%;">
-                            <a href='#' onClick="save_comment('${roomVO.rseq }')" class="btn">등록</a>
+                            <a href='#' onClick="save_review('${bookingVO.bseq }')" class="btn">등록</a>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <input type="hidden" id="pseq" name="pseq" value="${productVO.pseq }" />        
+        <input type="hidden" id="rseq" name="rseq" value="${bookingVO.bseq }" />        
     </form>
 </div>
 <div class="container">
-    <form id="commentListForm" name="commentListForm" method="post">
-        <div id="commentList">
+    <form id="reviewListForm" name="reviewListForm" method="post">
+        <div id="reviewList">
         </div>
     </form>
 	<!-- 페이지 처리 영역 -->
@@ -79,24 +84,24 @@
 
 	$(document).ready(function() {
 		// 상품상세정보 로딩 시에 상품평 목록을 조회하여 출력
-		getCommentList();
+		getListReview();
 	});
 	
 	// 상품평 목록 불러오기
-	function getCommentList() {
+	function getListReview() {
 		
 		$.ajax({
 			type: 'GET',
-			url: 'comments/list',
+			url: 'review/list',
 			dataType: 'json',
-			data:$("#commentForm").serialize(),//일련화 시킴, 연속화
+			data:$("#reviewForm").serialize(),//일련화 시킴, 연속화
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
 				var totalCount = data.total;
-				var commentList = data.commentList;
+				var reviewList = data.reviewList;
 				
-				showHTML(pageMaker, commentList, totalCount);
+				showHTML(pageMaker, reviewList, totalCount);
 			},
 			error: function() {
 				alert("상품평 목록을 조회하지 못했습니다.")
@@ -107,24 +112,24 @@
 	/*
 	** 상품평 페이지별 목록 요청
 	*/
-	function getCommentPaging(pagenum, rowsperpage, pseq) {
+	function getReviewPaging(pagenum, rowsperpage, rseq) {
 		$.ajax({
 			type: 'GET',
-			url: 'comments/list',
+			url: 'review/list',
 			dataType: 'json',
 			data:{"pageNum": pagenum,
 				  "rowsPerPage": rowsperpage,
-				  "pseq": pseq},
+				  "rseq": rseq},
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
 				var totalCount = data.total;
-				var commentList = data.commentList;
+				var reviewList = data.reviewList;
 				console.log("pageMaker=", pageMaker);
 				console.log("count=", totalCount);
-				console.log("comments=", commentList);
+				console.log("review=", reviewList);
 				
-				showHTML(pageMaker, commentList, totalCount);
+				showHTML(pageMaker, reviewList, totalCount);
 			},
 			error: function() {
 				alert("상품평 목록을 조회하지 못했습니다.")
@@ -132,15 +137,15 @@
 		});
 	}
 	
-	function showHTML(pageMaker, commentList, totalCount) {
+	function showHTML(pageMaker, reviewList, totalCount) {
 		var html = "";
 		var p_html = "";
 		
-		if (commentList.length > 0) {
+		if (reviewList.length > 0) {
 			// 상품평의 각 항목별로 HTML 생성
-			$.each(commentList, function(index, item){
+			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"comment_item\"> <strong>작성자: " + item.writer + "</strong>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.regDate) + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
@@ -149,32 +154,32 @@
 			// 페이징 버튼 출력
 			if (pageMaker.prev == true) {
 				p_html += "<li class=\"paginate_button previous\">";
-				p_html += "<a href='javascript:getCommentPaging("
-					  +pageMaker.startPage-1+","+pageMaker.criteria.rowsPerPage+","+${productVO.pseq}+")'>[이전]</a></li>";
+				p_html += "<a href='javascript:getReviewPaging("
+					  +pageMaker.startPage-1+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>[이전]</a></li>";
 			}
 			
 			for(var i=pageMaker.startPage; i<=pageMaker.endPage; i++){
-				p_html += "<a href='javascript:getCommentPaging("
-					  + i +","+pageMaker.criteria.rowsPerPage+","+${productVO.pseq}+")'>["+i+"]</a></li>";
+				p_html += "<a href='javascript:getReviewPaging("
+					  + i +","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>["+i+"]</a></li>";
 				console.log(p_html);
 			}
 			
 			if (pageMaker.next == true) {
 				p_html += "<li class=\"paginate_button next\">";
-				p_html += "<a href='javascript:getCommentPaging("
-					  +(pageMaker.endPage+1)+","+pageMaker.criteria.rowsPerPage+","+${productVO.pseq}+")'>[다음]</a></li>";
+				p_html += "<a href='javascript:getReviewPaging("
+					  +(pageMaker.endPage+1)+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>[다음]</a></li>";
 			}
 			
 		} else { // 조회된 상품평이 없을 경우
 			html += "<div>";
-			html += "<h5>등록된 상품평이 없습니다.</h5>";
+			html += "<h5>등록된 리뷰가 없습니다.</h5>";
 			html += "</div>";
 		}
 		
 		// 상품평 갯수 출력
 		$("#cCnt").html("댓글 " + "<span style='color:#00f;'>" + totalCount+"</span>");
 		// 상품평 목록 출력
-		$("#commentList").html(html);
+		$("#reviewList").html(html);
 		// 페이징 버튼 출력
 		$("#pagination").html(p_html);
 		
@@ -215,14 +220,14 @@
 	/*
 	** 상품 댓글 등록
 	*/
-	function save_comment(pseq) {
+	function save_review(bseq) {
 		$.ajax({
 			type:'POST',
-			url:'comments/save',
-			data:$("#commentForm").serialize(),
+			url:'review/save',
+			data:$("#reviewForm").serialize(),
 			success: function(data) {
 				if (data=='success') {	// 상품평 등록 성공
-					getCommentList(); 	// 상품평 목록 요청함수 호출
+					getReviewList(); 	// 상품평 목록 요청함수 호출
 					$("#content").val("");
 				} else if (data=='fail') {
 					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");
@@ -235,6 +240,8 @@
 			}
 		});
 	}
+	
+	
 </script>
 </body>
 </html>
