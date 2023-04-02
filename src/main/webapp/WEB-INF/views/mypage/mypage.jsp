@@ -7,7 +7,7 @@
     <form name="formm" method="post">
       <table id="bookingList">
       <tr>
-        <th>예약일자</th> <th>예약번호</th><th>숙박업체명;</th> <th>객실명</th> <th>결제 금액</th> <th>예약 상세</th>   
+        <th>예약일자</th> <th>예약번호</th><th>숙박업체명</th> <th>객실명</th> <th>결제 금액</th> <th>예약 상세</th>   
       </tr>
 
       <c:forEach items="${bookingList}"  var="bookingVO">

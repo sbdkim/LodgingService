@@ -7,7 +7,7 @@
       <form name="formm" method="post">
         <table id="accommodationList">
        <tr>
-       <th>일련번호</th> <th>카테고리</th> <th>이 름</th>  <th>주 소</th> <th>전화번호</th>
+       <th>카테고리</th> <th>이 름</th>  <th>주 소</th> <th>전화번호</th>
        </tr>
        <c:forEach items="${accommodationList}"  var="accommodationVO">
        <tr>      
