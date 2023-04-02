@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,21 +19,16 @@ public class RoomController {
 
 	@Autowired
 	private RoomService roomService;
-	
+
 	@RequestMapping("/room")
 	public String roomView(RoomVO vo, Model model) {
 		int aseq = vo.getAseq();
 		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
 		model.addAttribute("roomList", roomList);
 		return "room/roomList";
-		
+
 	}
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping("/selectedAccommodation")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
 			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
@@ -58,8 +52,13 @@ public class RoomController {
 
 		return "room/roomList";
 	}
-	
-	
-	
-	
-}//RoomController
+
+	@RequestMapping("/room_detail")
+	public String roomDetail(RoomVO vo, Model model) {
+		int rseq = vo.getRseq();
+		RoomVO roomDetail = roomService.selectRoomByRseq(rseq);
+		model.addAttribute("roomDetail", roomDetail);
+		return "room/roomDetail";
+	}
+
+}// RoomController

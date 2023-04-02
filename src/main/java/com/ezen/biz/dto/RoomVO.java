@@ -22,7 +22,7 @@ public class RoomVO {
 	private int parking;
 	private int heater;
 	private int microwave;
-	private int plug;
+	private int kettle;
 	private int washer;
 	private int bbq;
 	private int hairdrier;
@@ -34,7 +34,6 @@ public class RoomVO {
 	private int gym;
 	private int roomservice;
 	private String image;
-
 
 	// Getter, Setter 메소드
 	public int getRseq() {
@@ -205,12 +204,12 @@ public class RoomVO {
 		this.microwave = microwave;
 	}
 
-	public int getPlug() {
-		return plug;
+	public int getKettle() {
+		return kettle;
 	}
 
-	public void setPlug(int plug) {
-		this.plug = plug;
+	public void setKettle(int kettle) {
+		this.kettle = kettle;
 	}
 
 	public int getWasher() {
@@ -301,19 +300,17 @@ public class RoomVO {
 		this.image = image;
 	}
 
-
-
-
-	// ToString
 	@Override
 	public String toString() {
 		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", name=" + name + ", price=" + price + ", maxcap=" + maxcap
 				+ ", ckintime=" + ckintime + ", ckouttime=" + ckouttime + ", rooms=" + rooms + ", bathroom=" + bathroom
 				+ ", bed=" + bed + ", wifi=" + wifi + ", kitchen=" + kitchen + ", pool=" + pool + ", ac=" + ac + ", tv="
 				+ tv + ", coffeemachine=" + coffeemachine + ", fridge=" + fridge + ", bathtub=" + bathtub + ", parking="
-				+ parking + ", heater=" + heater + ", microwave=" + microwave + ", plug=" + plug + ", washer=" + washer
+				+ parking + ", heater=" + heater + ", microwave=" + microwave + ", kettle=" + kettle + ", washer=" + washer
 				+ ", bbq=" + bbq + ", hairdrier=" + hairdrier + ", amenity=" + amenity + ", towel=" + towel
 				+ ", elevator=" + elevator + ", breakfast=" + breakfast + ", smoking=" + smoking + ", gym=" + gym
-				+ ", roomservice=" + roomservice + ", image=" + image +  "]";
+				+ ", roomservice=" + roomservice + ", image=" + image + "]";
 	}
+
+
 }
