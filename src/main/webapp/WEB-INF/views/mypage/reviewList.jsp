@@ -59,36 +59,23 @@
   
 </html>
 
-<div class="container">
-    <form id="reviewForm" name="reviewForm" method="post">
-    <br><br>
-        <div>
-            <div>
-            
-                <span><h3>리뷰</h3></span> <span id="cCnt"></span><span id="avg"></span>
-       
-    <div class="rating-box">
-      
-      <div class="stars">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-      </div>
-    </div>  
-            </div>
-            <div id="reply">
-                <table id="rep_input" style="width: 650px">                    
-                    <tr>
-                        <td style="width:80%;">
-                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
-                        </td>
-                        <td style="width:10%;">
-                            <a href='#' onClick="save_review('${bookingVO.bseq }')" class="btn">등록</a>
-                        </td>
-                    </tr>
-                </table>
+<c:if test="${sessionScope.vo!=null }">
+		<br>
+		&nbsp;&nbsp;&nbsp;<label for="score" class="control-label">별점 주기</label>
+		<table>
+			<tr>
+				<td width="30"></td>
+				<td width="250">
+					<input id="score" name="score" class="rating rating-loading" data-min="0" data-max="5" data-step="1" >
+				</td>
+				<td>
+					평가글 남기기 : <input type ="text" id="context" name="context" size="50" maxlength="100"> 
+					
+					<button type="button" id="saveBtn" onclick="saveStar()">저장하기</button><!--ajex 를 이용한 비동기 통신  -->
+				</td>
+			</tr>		
+		</table>
+	</c:if>
             </div>
         </div>
         <input type="hidden" id="bseq" name="bseq" value="${bookingVO.bseq }" />        

@@ -6,7 +6,7 @@ public class ReviewVO {
 	private int reseq;
 	private int bseq;
 	private String content;
-	private int score;
+	private double score;
 	private Date indate;
 	private String reply;
 	private String email;
@@ -35,7 +35,7 @@ public class ReviewVO {
 		this.content = content;
 	}
 
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
 
