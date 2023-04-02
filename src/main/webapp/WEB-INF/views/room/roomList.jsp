@@ -9,9 +9,9 @@
 <form name="roomForm" id="room_form" method="post" style="display:block">
 
 	
-	<table id="roomList" border="1" width="1500">
+	<table id="roomList" border="1" width="1000">
 		<tr>
-			<th>Image</th><th>방 이름</th><th>가격</th><th>최대 인원</th><th>침대</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
+			<th width="225">Image</th><th>방 이름</th><th>가격</th><th>최대 인원</th><th>침대</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
 		</tr>
 		<c:choose>
 			<c:when test="${roomListSize<=0}">
@@ -25,16 +25,16 @@
 				<c:forEach items="${roomList}" var="roomVO">
 				<tr>
 					<c:choose>
-					    <c:when test="${empty roomVO.image1}">
-					       <td>  <img src="room-images/default.jpg" /></td>
+					    <c:when test="${empty roomVO.image}">
+					       <td>  <img src="room_images/default.jpg" /></td>
 					      
 					    </c:when>    
 					    <c:otherwise>
-					        <td> <img src="room-images/${roomVO.image1}" /></td>
+					        <td> <img src="room_images/${roomVO.image}" /></td>
 					    </c:otherwise>
 					</c:choose>
 
-					<td><a href="${roomVO.name}">${roomVO.name}</a></td>
+					<td><a href="room_detail?rseq=${roomVO.rseq}">${roomVO.name}</a></td>
 					<td>${roomVO.price}</td>
 					<td>${roomVO.maxcap}</td>
 					<td>${roomVO.bed}</td>

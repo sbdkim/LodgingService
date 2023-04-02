@@ -42,5 +42,4 @@ public class AccommodationServiceImpl implements AccommodationService {
 		return aDao.listHostAccommodation(vo);
 	}
 
-
 }

@@ -36,19 +36,20 @@
 	<delete id="deleteBookByBseq">
 		DELETE booking WHERE bseq=#{bseq}
 	</delete>
-	
+
 	<!-- 숙소업체별 객실 조회 -->
 	<select id="listRoomByAccommodation" resultType="room">
 		SELECT * FROM list_room_view
 		WHERE email=#{email}
 	</select>
+
 	
 	
 	
 	
 		<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
 	<select id="selectRoomByAcc" resultType="room">
-		SELECT * from room WHERE aseq=#{aseq}
+		SELECT * FROM room WHERE aseq=#{aseq}
 	</select>
 	
 	
@@ -56,7 +57,7 @@
 	
 	
 	<select id="countRoomList" parameterType="int" resultType="int">
-		SELECT count(*) FROM room WHERE pseq = #{pseq}
+		SELECT count(*) FROM room WHERE aseq = #{aseq}
 	</select>
 	
 	
@@ -71,6 +72,9 @@
 		]]>
 	</select>
 	
-
-	
+	<!-- rseq로 room 상세조회 -->
+	<select id="selectRoomByRseq" resultType="room">
+		SELECT * FROM room
+		WHERE rseq=#{rseq}
+	</select>
 </mapper>

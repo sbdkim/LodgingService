@@ -31,6 +31,11 @@ public class RoomServiceImpl implements RoomService {
 	public int countRoomList(int aseq) {
 		return rDao.countRoomList(aseq);
 	}
+
+	@Override
+	public RoomVO selectRoomByRseq(int rseq) {
+		return rDao.selectRoomByRseq(rseq);
+	}
 	
 	
 	
