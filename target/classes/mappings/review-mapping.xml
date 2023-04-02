@@ -16,8 +16,8 @@
 	</select>
 	<!-- 리뷰 등록 -->
 	<insert id="insertReview">
-		INSERT INTO review(reseq, rseq, bseq, content, score, reply)
-		VALUES(review_seq.NEXTVAL, #{rseq}, #{bseq}, #{content}, #{score}, #{reply})
+		INSERT INTO review(reseq,  bseq, content, score, reply)
+		VALUES(review_seq.NEXTVAL, #{bseq}, #{content}, #{score}, #{reply})
 	</insert>
 	
 	<!-- 객실번호로 리뷰 조회 -->
@@ -49,11 +49,19 @@
 	</update>
 	
 	<select id="countReviewList" resultType="int">
-	SELECT COUNT(*) FROM review WHERE bseq=#{bseq}
+	SELECT COUNT(*) FROM review WHERE rseq=#{rseq}
     </select>
     
     
     <select id="getEmailView" resultType= "review">   
-    SELECT  * FROM review_view
+    SELECT  email  FROM review_view
    </select>
+   
+   
+   <select id="avgScore" resultType= "review">
+   SELECT reseq, ROUND(AVG(score),1)
+   FROM review GROUP BY reseq;
+   </select>
+   
+   
 </mapper>

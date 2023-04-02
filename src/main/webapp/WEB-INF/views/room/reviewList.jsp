@@ -5,10 +5,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <!-- link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link href="starrating.css" rel="stylesheet"/>
     <style>
     #cCnt {
        border-radius: 3px;
@@ -33,7 +35,7 @@
        padding: 5px;
        margin: 0 5px;
     }
-    #commentList {
+    #reviewList {
        background-color: rgba(254, 206, 229, 0.3);
        border-radius: 3px;
     }
@@ -44,17 +46,33 @@
     <form id="reviewForm" name="reviewForm" method="post">
     <br><br>
         <div>
+        
             <div>
                 <span><h3>객실 리뷰</h3></span> <span id="cCnt"></span>
             </div>
+        
+	    <fieldset>
+		<span class="text-bold">별점을 선택해주세요</span>
+		<input type="radio" name="reviewStar" value="5" id="rate1"><label
+			for="rate1">★</label>
+		<input type="radio" name="reviewStar" value="4" id="rate2"><label
+			for="rate2">★</label>
+		<input type="radio" name="reviewStar" value="3" id="rate3"><label
+			for="rate3">★</label>
+		<input type="radio" name="reviewStar" value="2" id="rate4"><label
+			for="rate4">★</label>
+		<input type="radio" name="reviewStar" value="1" id="rate5"><label
+			for="rate5">★</label>
+	</fieldset>
+            
             <div id="reply">
                 <table id="rep_input" style="width: 650px">                    
                     <tr>
                         <td style="width:80%;">
-                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
                         </td>
                         <td style="width:10%;">
-                            <a href='#' onClick="save_comment('${roomVO.rseq}')" class="btn">등록</a>
+                            <a href='#' onClick="save_review('${roomVO.rseq}')" class="btn">등록</a>
                         </td>
                     </tr>
                 </table>
@@ -172,7 +190,7 @@
       }
       
       // 상품평 갯수 출력
-      $("#cCnt").html("댓글 " + "<span style='color:#00f;'>" + totalCount+"</span>");
+      $("#cCnt").html("리뷰 " + "<span style='color:#00f;'>" + totalCount+"</span>");
       // 상품평 목록 출력
       $("#reviewList").html(html);
       // 페이징 버튼 출력

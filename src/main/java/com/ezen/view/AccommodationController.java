@@ -22,11 +22,14 @@ public class AccommodationController {
 	private AccommodationService accommodationService;
 
 	@GetMapping("/search")
-	public String searchView() {
+	public String searchView(AccommodationVO vo, Model model) {
+		String address = vo.getAddress();
+		List<AccommodationVO> accommodationList = accommodationService.selectAccByAdd(address);
+		model.addAttribute("accommodationList", accommodationList);
 		return "accommodation/accList";
 	}
 
-	@RequestMapping("acc_search_list")
+	@RequestMapping("/acc_search_list")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
 			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
 			@RequestParam(value = "key", defaultValue = "") String address, Model model) {

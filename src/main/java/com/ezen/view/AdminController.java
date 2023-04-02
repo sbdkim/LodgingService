@@ -1,15 +1,20 @@
 package com.ezen.view;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.ezen.biz.dto.AdminVO;
+import com.ezen.biz.dto.QnaVO;
 import com.ezen.biz.service.AdminService;
+import com.ezen.biz.service.QnaService;
 
 @Controller
 @SessionAttributes("admin")
@@ -17,7 +22,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-
+	@Autowired
+	private QnaService qnaService;
+	
 	@GetMapping("/admin_login_form")
 	public String adminLoginView() {
 		return "admin/main";
@@ -51,4 +58,29 @@ public class AdminController {
 		status.setComplete();
 		return "admin/main";
 	}// adminLogout
+	
+	
+	@RequestMapping("/admin_qna_list")
+	public String admingQnaList(Model model) {
+		List<QnaVO> qnaList=qnaService.getListAllQna();
+		model.addAttribute("qnaList", qnaList);
+		return "admin/qna/qnaList";
+	}//adminQnaList
+	
+	
+	@PostMapping("/admin_qna_detail")
+	public String adminQnaDetail(Model model, QnaVO vo) {
+		QnaVO qna= qnaService.getQna(vo.getQseq());
+		model.addAttribute("qnaVO", qna);
+		return "admin/qna/qnaDetail";
+	}//adminQnaDetail
+	
+	
+	@PostMapping("/admin_qna_repsave")
+	public String adminQnaRepSave(Model model,QnaVO vo) {
+		qnaService.updateQna(vo);
+		return "redirect:admin_qna_list";	
+		}//adminQnaRepSave
+	
+	
 }// class

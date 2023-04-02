@@ -32,6 +32,7 @@
           onclick="location.href='index'">  
       </div>
     </form>
+ <%@ include file="reviewList.jsp" %>
   </article>
 
 <%@ include file="../footer.jsp" %>
