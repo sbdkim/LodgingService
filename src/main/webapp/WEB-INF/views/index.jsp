@@ -5,8 +5,7 @@
 <div class=top_home >
 	<!-- image + search box -->
 	<div class="alignform" style="padding-top: 10px;  height: 100%; align-items: center; "> 
-	<form action="search"
-		name="f" method="get" style="margin-top: 200px;">
+	<form action="search" name="f" method="get" style="margin-top: 200px;">
 		<div class=search_room style="padding-top: 10px;  height: 50%; align-items: center; ">
 			<!-- searchbox start-->
 			<div style="border-left: 1px solid #c8c8c8; margin-right: 10px; display:inline-block">

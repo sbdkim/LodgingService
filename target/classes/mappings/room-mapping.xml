@@ -7,6 +7,7 @@
 		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{ckindate}, #{ckoutdate}, #{price}, #{payment}, #{status})
 	</insert>
 	
+
 	<!-- 숙박업체 등록  --> 
 	
 	
@@ -41,4 +42,35 @@
 		SELECT * FROM list_room_view
 		WHERE email=#{email}
 	</select>
+	
+	
+	
+	
+		<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
+	<select id="selectRoomByAcc" resultType="room">
+		SELECT * from room WHERE aseq=#{aseq}
+	</select>
+	
+	
+	
+	
+	
+	<select id="countRoomList" parameterType="int" resultType="int">
+		SELECT count(*) FROM room WHERE pseq = #{pseq}
+	</select>
+	
+	
+	
+	<select id="listRoomWithPaging" resultType="room">
+		<![CDATA[
+		SELECT * FROM
+		(SELECT row_number() OVER (ORDER BY name) rn, name, price, maxcap, ckintime, ckouttime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, coffeemachine, fridge, bathtub, parking, heater, microwave, kettle, washer, bbq, hairdrier, amenity, towel, elevator, breakfast, smoking, gym, roomservice, image1, image2, image3, image4, image5
+		FROM room WHERE aseq = #{aseq}
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+		]]>
+	</select>
+	
+
+	
 </mapper>
