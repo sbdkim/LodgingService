@@ -6,7 +6,7 @@
 	<select id="reviewListwithPaging" parameterType="hashmap" resultType="review">
 	  <![CDATA[
 	  SELECT review_seq, bseq,content,score,indate,reply
-	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, review_seq, bseq,
+	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, review_seq, re.bseq,email
 	        content,score,indate,reply FROM review_view
 	        WHERE bseq=#{bseq})
 	        WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
@@ -49,7 +49,7 @@
 	</update>
 	
 	<select id="countReviewList" resultType="int">
-	SELECT COUNT(*) FROM review WHERE rseq=#{rseq}
+	SELECT COUNT(*) FROM review WHERE bseq=#{bseq}
     </select>
     
     
@@ -59,8 +59,7 @@
    
    
    <select id="avgScore" resultType= "review">
-   SELECT reseq, ROUND(AVG(score),1)
-   FROM review GROUP BY reseq;
+  select avg(score) from review where rseq=#{rseq}
    </select>
    
    

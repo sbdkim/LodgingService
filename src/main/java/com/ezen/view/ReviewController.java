@@ -8,14 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.ReviewVO;
+import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.ReviewService;
 
 import utils.Criteria;
@@ -27,6 +27,8 @@ public class ReviewController {
     
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private BookingService bookingService;
 	
 	
 	@GetMapping(value="/list", produces="application/json; cjarset=UTF-8")
@@ -47,7 +49,7 @@ public class ReviewController {
 	}
 	
 	@PostMapping(value="/save")
-	public String saveReviewAction(ReviewVO reviewVO, HttpSession session) {
+	public String saveReviewAction(ReviewVO reviewVO, BookingVO vo, HttpSession session) {
 		 MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		 if (loginUser == null) {
 			 
@@ -59,6 +61,8 @@ public class ReviewController {
 		 if (reviewService.insertReview(reviewVO) > 0 ) {
 			 
 			 return "success";
+		 }else if(vo.getStatus()!=2){
+			 return "fail";
 		 }else {
 			 return "fail";
 		 }

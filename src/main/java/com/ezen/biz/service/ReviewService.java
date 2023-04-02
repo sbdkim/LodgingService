@@ -30,4 +30,6 @@ public interface ReviewService {
 	List<ReviewVO> getReviewListwithPaging(Criteria criteria, int bseq);
 	
 	int getCountReviewList(int bseq);
+	
+	double avgScore(int rseq);
 }

@@ -58,4 +58,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return rDao.getCountReviewList(bseq);
 	}
 
+	@Override
+	public double avgScore(int rseq) {
+		
+		return rDao.avgScore(rseq);
+	}
+
 }

@@ -6,7 +6,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
- 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,12 +44,39 @@
 
  	
 
+<!---Coding By CodingLab | www.codinglabweb.com--->
+
+  <head>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-pUA-Compatible" content="ie=edge" />
+    <!--<title>Star Rating in HTML CSS & JavaScript</title>-->
+    <link rel="stylesheet" href="star-rating.css" />
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <!--<script src="script.js" defer></script>-->
+  </head>
+  
+</html>
+
 <div class="container">
     <form id="reviewForm" name="reviewForm" method="post">
     <br><br>
         <div>
             <div>
+            
                 <span><h3>리뷰</h3></span> <span id="cCnt"></span><span id="avg"></span>
+       
+    <div class="rating-box">
+      
+      <div class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+    </div>  
             </div>
             <div id="reply">
                 <table id="rep_input" style="width: 650px">                    
@@ -65,7 +91,7 @@
                 </table>
             </div>
         </div>
-        <input type="hidden" id="rseq" name="rseq" value="${bookingVO.bseq }" />        
+        <input type="hidden" id="bseq" name="bseq" value="${bookingVO.bseq }" />        
     </form>
 </div>
 <div class="container">
@@ -112,18 +138,18 @@
 	/*
 	** 상품평 페이지별 목록 요청
 	*/
-	function getReviewPaging(pagenum, rowsperpage, rseq) {
+	function getReviewPaging(pagenum, rowsperpage, bseq) {
 		$.ajax({
 			type: 'GET',
 			url: 'review/list',
 			dataType: 'json',
 			data:{"pageNum": pagenum,
 				  "rowsPerPage": rowsperpage,
-				  "rseq": rseq},
+				  "bseq": bseq},
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
-				var totalCount = data.total;
+				var totalCount = data.totalCount;
 				var reviewList = data.reviewList;
 				console.log("pageMaker=", pageMaker);
 				console.log("count=", totalCount);
@@ -155,19 +181,19 @@
 			if (pageMaker.prev == true) {
 				p_html += "<li class=\"paginate_button previous\">";
 				p_html += "<a href='javascript:getReviewPaging("
-					  +pageMaker.startPage-1+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>[이전]</a></li>";
+					  +pageMaker.startPage-1+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq}+")'>[이전]</a></li>";
 			}
 			
 			for(var i=pageMaker.startPage; i<=pageMaker.endPage; i++){
 				p_html += "<a href='javascript:getReviewPaging("
-					  + i +","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>["+i+"]</a></li>";
+					  + i +","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq}+")'>["+i+"]</a></li>";
 				console.log(p_html);
 			}
 			
 			if (pageMaker.next == true) {
 				p_html += "<li class=\"paginate_button next\">";
 				p_html += "<a href='javascript:getReviewPaging("
-					  +(pageMaker.endPage+1)+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq }+")'>[다음]</a></li>";
+					  +(pageMaker.endPage+1)+","+pageMaker.criteria.rowsPerPage+","+${bookingVO.bseq}+")'>[다음]</a></li>";
 			}
 			
 		} else { // 조회된 상품평이 없을 경우
@@ -178,6 +204,7 @@
 		
 		// 상품평 갯수 출력
 		$("#cCnt").html("댓글 " + "<span style='color:#00f;'>" + totalCount+"</span>");
+		$("#avg").html("평균별점 " + "<span style='color:#00f;'>" + totalCount+"</span>");
 		// 상품평 목록 출력
 		$("#reviewList").html(html);
 		// 페이징 버튼 출력
