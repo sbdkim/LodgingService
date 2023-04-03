@@ -3,6 +3,7 @@ package com.ezen.biz.service;
 import java.util.List;
 
 import com.ezen.biz.dto.BookingVO;
+import com.ezen.biz.dto.SalesQuantity;
 
 public interface BookingService {
 	
@@ -28,6 +29,7 @@ public interface BookingService {
 	// 전체 예약 내역 조회
 	List<BookingVO> getListBooking();
 	
-	 List<BookingVO> getListBookingByEmail(BookingVO vo);
-
+	List<BookingVO> getListBookingByEmail(BookingVO vo);
+    //판매실적
+	List<SalesQuantity> getListBookingSales();
 }

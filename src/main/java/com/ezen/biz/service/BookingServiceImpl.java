@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.BookingDAO;
 import com.ezen.biz.dto.BookingVO;
+import com.ezen.biz.dto.SalesQuantity;
 
 @Service("bookingService")
 public class BookingServiceImpl implements BookingService {
@@ -81,6 +82,12 @@ public class BookingServiceImpl implements BookingService {
 	public List<BookingVO> getListBookingByEmail(BookingVO vo) {
 		
 		return bDao.listBookingByEmail(vo);
+	}
+
+	@Override
+	public List<SalesQuantity> getListBookingSales() {
+		
+		return bDao.getListBookingSales();
 	}
 	
 
