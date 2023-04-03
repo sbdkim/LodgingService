@@ -9,13 +9,13 @@
 							<div role=button style="display:inline-block">
 								<div class="main_checkinout_buttonbox" style="display:inline-block">
 									<div style="display:inline-block">
-										<input type='date' id="checkin"  value="${param.checkin  }"
-											class="main_checkin_1" name="checkin" onchange="dateChk()"
+										<input type='date' id="checkin"  
+											class="main_checkin_1" name="checkin" value= "${checkin}" onchange="dateChk()"
 											required>
 									</div>
 									<div style="display:inline-block">
 										<input type='date' id="checkout"
-											value="${param.checkout }" class="main_checkout_1" name="checkout"
+											class="main_checkout_1" name="checkout" value = "${checkout}"
 											onchange="dateChk()" required>
 									</div>
 								</div>
@@ -71,15 +71,6 @@
   document.getElementById("checkout").setAttribute("min", today);
 </script>
 
-<%
-  String checkin = request.getParameter("checkin");
-  String checkout = request.getParameter("checkout");
-%>
-<script>
-  // Set the values of the date inputs
-  document.getElementById("checkin").value = '<%= checkin %>';
-  document.getElementById("checkout").value = '<%= checkout %>';
-</script>
 
 
 

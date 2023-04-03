@@ -18,13 +18,13 @@
 				<div role=button style="display:inline-block">
 					<div class="main_checkinout_buttonbox" style="display:inline-block">
 						<div style="display:inline-block">
-							<input type='date' id="checkin" min="min" value="min"
+							<input type='date' id="checkin"
 									class="main_checkin_1" name="checkin" onchange="dateChk()"
 								required>
 						</div>
 						<div style="display:inline-block">
-							<input type='date' id="checkout" min="${tomorrow }"
-								value="${tomorrow }" class="main_checkout_1" name="checkout"
+							<input type='date' id="checkout"
+								class="main_checkout_1" name="checkout"
 								onchange="dateChk()" required>
 						</div>
 					</div>
@@ -73,37 +73,6 @@
   document.getElementById("checkin").setAttribute("min", today);
   document.getElementById("checkout").setAttribute("min", today);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <section >

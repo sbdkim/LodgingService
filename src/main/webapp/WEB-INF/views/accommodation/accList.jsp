@@ -2,7 +2,20 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../header.jsp"%>
-
+	<script>
+		function dateChk1() {
+			var dateInput = document.getElementById("checkin1");
+			var newDateValue = dateInput.value;
+			dateInput.setAttribute("value", newDateValue);
+		}
+		
+		function dateChk2() {
+			var dateInput = document.getElementById("checkout1");
+			var newDateValue = dateInput.value;
+			dateInput.setAttribute("value", newDateValue);
+		}
+		
+	</script>
 <article>
 <h1>숙소 검색</h1>
 <form name="frm" action="room" method="post" style="display:block">
@@ -19,14 +32,14 @@
 							<div role=button style="display:inline-block">
 								<div class="main_checkinout_buttonbox" style="display:inline-block">
 									<div style="display:inline-block">
-										<input type='date' id="checkin" value="${param.checkin }"
-											class="main_checkin_1" name="checkin" onchange="dateChk()"
+										<input type='date' id="checkin1" 
+											class="main_checkin_1" name="checkin1" onchange="dateChk1()"
 											required>
 									</div>
 									<div style="display:inline-block">
-										<input type='date' id="checkout" 
-											value="${param.checkout }" class="main_checkout_1" name="checkout"
-											onchange="dateChk()" required>
+										<input type='date' id="checkout1" 
+											 class="main_checkout_1" name="checkout1"
+											onchange="dateChk2()" required>
 									</div>
 								</div>
 							</div>
@@ -58,7 +71,7 @@
 					<td>
 					
 						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
-						<a href="room?aseq=${accommodationVO.aseq}&checkin=${param.checkin}&checkout=${param.checkout}" >숙소 살펴보기</a>
+						<a href="room?aseq=${accommodationVO.aseq}&checkin1=${param.checkin1}&checkout1=${param.checkout1}" >숙소 살펴보기</a>
 						<%--  <button  type=submit>숙소 살펴보기</button> --%>
 					</td>
      				<!-- <td>${accommodationVO.email}</td> -->
@@ -76,21 +89,33 @@
   // Get today's date
   const today = new Date().toISOString().split('T')[0];
   // Set the minimum date of the input
-  document.getElementById("checkin").setAttribute("min", today);
-  document.getElementById("checkout").setAttribute("min", today);
+  document.getElementById("checkin1").setAttribute("min", today);
+  document.getElementById("checkout1").setAttribute("min", today);
 </script>
 
+<%--  bring the value of the previous page to be stored --%>
 <%
   String key = request.getParameter("address");
   String checkin = request.getParameter("checkin");
   String checkout = request.getParameter("checkout");
 %>
+
 <script>
   // Set the values of the date inputs
   document.getElementById("key").value = '<%= key %>';
-  document.getElementById("checkin").value = '<%= checkin %>';
-  document.getElementById("checkout").value = '<%= checkout %>';
+  document.getElementById("checkin1").value = '<%= checkin %>';
+  document.getElementById("checkout1").value = '<%= checkout %>';
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
 </script>
-
 </article>
 <%@ include file="../footer.jsp"%>

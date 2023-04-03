@@ -1,5 +1,6 @@
 package com.ezen.view;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,12 @@ public class RoomController {
 	private AccommodationService accommodationService;
 
 	@RequestMapping("/room")
-	public String roomView(AccommodationVO vo, Model model, int aseq) {
+	public String roomView(AccommodationVO vo, Model model, int aseq, String checkin1, String checkout1) {
 		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
-		model.addAttribute("roomList", roomList);		
+		model.addAttribute("roomList", roomList);	
+		model.addAttribute("checkin", checkin1);
+		model.addAttribute("checkout", checkout1);
 		model.addAttribute("accommodationName", accommodationName);
 		return "room/roomList";
 
