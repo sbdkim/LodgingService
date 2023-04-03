@@ -7,7 +7,7 @@
     <form name="formm" method="post">
       <table id="accommodationList">
       <tr>
-        <th>카테고리</th><th>이 름</th> <th>주 소</th> <th>전화번호</th> <th>상 세</th>   
+        <th>카테고리</th><th>이 름</th> <th>주 소</th> <th>전화번호</th> <th>상 세</th> <th colspan="3">수정하기</th>
       </tr>
 
       <c:forEach items="${accommodationList}"  var="accommodationVO">
@@ -24,14 +24,12 @@
 		<td align="center" width="500px"> ${accommodationVO.address} </td>
 		<td align="center" width="100px"> ${accommodationVO.tel} </td>
 		<td align="center" width="100px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
+		<td align="center" width="50px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 등 록 / </a></td>
+		<td align="center" width="50px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 수 정 / </a></td>
+		<td align="center" width="40px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 삭 제 </a></td>
       </tr>
       </c:forEach>    
       </table>   
-      <br><br>    
-      <div class="clear"></div>
-      <div id="buttons" style="float: right">
-       <input type="button"    value="예약 계속하기"  class="cancel"  onclick="location.href='index'"> 
-      </div>
     </form>  
   </article>
 <%@ include file="../footer.jsp" %>    

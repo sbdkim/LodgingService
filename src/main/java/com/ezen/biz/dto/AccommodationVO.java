@@ -4,6 +4,7 @@ public class AccommodationVO {
 	private int aseq;
 	private String email;
 	private String name;
+	private String rname;
 	private int category;
 	private String address;
 	private String tel;
@@ -28,12 +29,23 @@ public class AccommodationVO {
 		this.email = email;
 	}
 
+	
+
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getRname() {
+		return rname;
+	}
+
+	public void setRname(String rname) {
+		this.rname = rname;
 	}
 
 	public int getCategory() {
@@ -76,11 +88,15 @@ public class AccommodationVO {
 		this.image = image;
 	}
 
-
 	// ToString
 	@Override
 	public String toString() {
-		return "AccommodationVO [aseq=" + aseq + ", email=" + email + ", name=" + name + ", category=" + category
-				+ ", address=" + address + ", tel=" + tel + ", bestyn=" + bestyn + ", image=" + image + "]";
+		return "AccommodationVO [aseq=" + aseq + ", email=" + email + ", name=" + name + ", rname=" + rname
+				+ ", category=" + category + ", address=" + address + ", tel=" + tel + ", bestyn=" + bestyn + ", image="
+				+ image + "]";
 	}
+
+
+	
+	
 }

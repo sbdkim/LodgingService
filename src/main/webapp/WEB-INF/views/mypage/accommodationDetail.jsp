@@ -2,52 +2,37 @@
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>  
     <article>
-    <h2> 주문상세정보 </h2>
+    <h2> 상세 정보 </h2>
     <form name="formm" method="post">
-      <h3> 주문자 정보 </h3>     
+      <h3> 업체 정보 </h3>     
       <table id="accommodationList">      
       <tr>
-        <th>예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
+        <th>일련번호</th><th>이메일</th><th>이 름</th>     
      </tr>     
      <tr>  
-       <td> <fmt:formatDate value="${accommodationDetail.bookdate}" type="date"/></td>
-       <td> ${accommodationDetail.bseq} </td>    
-       <td> ${accommodationDetail.email} </td>
-       <td> <fmt:formatNumber type="currency" value="${accommodationDetail.bprice}" /> </td>
+       <td> ${accommodationList.aseq} </td>    
+       <td> ${accommodationList.email} </td> 
+       <td> ${accommodationList.name} </td> 
      </tr>    
      </table>      
       
-     <h3>  상품 정보 </h3> 
+     <h3>  객실 정보 </h3> 
      <table>
      <tr>
-       <th>예약숙박업체</th><th>예약객실명</th> <th>객실번호</th> <th>체크인 날짜</th> <th>체크아웃 날짜</th>
- <th>가격</th> <th>처리 상태</th>    
+       <th>객실 번호</th><th>객실명</th><th>객실 가격</th>   
      </tr>
-     <c:forEach items="${accommodationList}"  var="accommodationVO">
+     <c:forEach items="${accommodationDetail}"  var="roomVO">
      <tr>
- 	   <td> ${accommodationVO.aname} </td>
-       <td> ${accommodationVO.rname} </td>
-       <td> ${accommodationVO.rseq} </td>          
-       <td> ${accommodationVO.ckindate} </td>
-       <td> ${accommodationVO.ckoutdate} </td>
-       <td> <fmt:formatNumber type="currency"
-       value="${totalPrice}" /> </td>
-       <td>
-         <c:choose>
-         <c:when test='${accommodationVO.status=="0"}'> 예약완료 </c:when>
-         <c:when test='${accommodationVO.status=="1"}'> 입실완료 </c:when>
-         <c:when test='${accommodationVO.status=="0"}'> 이용완료 </c:when>
-         <c:otherwise> <span style="color:red"> 취소완료 </span></c:otherwise>
-         </c:choose>
-       </td>
+       <td> ${roomVO.rseq} </td>
+ 	   <td> ${roomVO.name} </td>
+       <td> ${roomVO.price}</td>
      </tr>
      </c:forEach>    
      </table>   
           
      <div class="clear"></div>
      <div id="buttons" style="float: right">
-       <input type="button"    value="예약 계속하기"  class="cancel"  
-onclick="location.href='index'">
+       <input type="button"    value="예약 계속하기"  class="cancel" onclick="location.href='index'">
      </div>
     </form>  
   </article>

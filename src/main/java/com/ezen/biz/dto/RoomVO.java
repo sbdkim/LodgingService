@@ -4,6 +4,7 @@ public class RoomVO {
 	private int rseq;
 	private int aseq;
 	private String name;
+	private String aname;
 	private int price;
 	private int maxcap;
 	private String ckintime;
@@ -301,19 +302,28 @@ public class RoomVO {
 		this.image = image;
 	}
 
+	public String getAname() {
+		return aname;
+	}
 
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
 
-
+	
 	// ToString
 	@Override
 	public String toString() {
-		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", name=" + name + ", price=" + price + ", maxcap=" + maxcap
-				+ ", ckintime=" + ckintime + ", ckouttime=" + ckouttime + ", rooms=" + rooms + ", bathroom=" + bathroom
-				+ ", bed=" + bed + ", wifi=" + wifi + ", kitchen=" + kitchen + ", pool=" + pool + ", ac=" + ac + ", tv="
-				+ tv + ", coffeemachine=" + coffeemachine + ", fridge=" + fridge + ", bathtub=" + bathtub + ", parking="
-				+ parking + ", heater=" + heater + ", microwave=" + microwave + ", plug=" + plug + ", washer=" + washer
-				+ ", bbq=" + bbq + ", hairdrier=" + hairdrier + ", amenity=" + amenity + ", towel=" + towel
-				+ ", elevator=" + elevator + ", breakfast=" + breakfast + ", smoking=" + smoking + ", gym=" + gym
-				+ ", roomservice=" + roomservice + ", image=" + image +  "]";
+		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", name=" + name + ", aname=" + aname + ", price=" + price
+				+ ", maxcap=" + maxcap + ", ckintime=" + ckintime + ", ckouttime=" + ckouttime + ", rooms=" + rooms
+				+ ", bathroom=" + bathroom + ", bed=" + bed + ", wifi=" + wifi + ", kitchen=" + kitchen + ", pool="
+				+ pool + ", ac=" + ac + ", tv=" + tv + ", coffeemachine=" + coffeemachine + ", fridge=" + fridge
+				+ ", bathtub=" + bathtub + ", parking=" + parking + ", heater=" + heater + ", microwave=" + microwave
+				+ ", plug=" + plug + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier + ", amenity="
+				+ amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast + ", smoking="
+				+ smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", image=" + image + "]";
 	}
+
+
+	
 }
