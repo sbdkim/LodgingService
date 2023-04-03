@@ -20,7 +20,7 @@
         <c:when test='${accommodationVO.category==3}'>게스트 하우스</c:when>  
         </c:choose>
 		</td> 
-		<td align="center" width="300px"> ${accommodationVO.name} </td>
+		<td align="center" width="300px"> ${accommodationVO.aname} </td>
 		<td align="center" width="500px"> ${accommodationVO.address} </td>
 		<td align="center" width="100px"> ${accommodationVO.tel} </td>
 		<td align="center" width="100px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
