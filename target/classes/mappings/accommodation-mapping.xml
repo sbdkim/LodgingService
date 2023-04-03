@@ -21,7 +21,7 @@
 	<select id="listAccWithPaging" resultType="accommodation">
 		<![CDATA[
 		SELECT * FROM
-		(SELECT row_number() OVER (ORDER BY name) rn, email, name, category, address, tel, bestyn, image1, image2, image3, image4, image5
+		(SELECT row_number() OVER (ORDER BY name) rn, email, aname, category, address, tel, bestyn, image
 		FROM accommodation WHERE address like '%'||#{address}||'%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="selectAccByName" resultType="String">
-		SELECT name from accommodation
+		SELECT aname from accommodation
 		WHERE aseq=#{aseq}
 	</select>
 	

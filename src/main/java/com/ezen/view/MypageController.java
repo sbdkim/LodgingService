@@ -170,7 +170,7 @@ public class MypageController {
 			List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
 			RoomVO accommodationDetail = new RoomVO();
 			accommodationDetail.setRseq(roomList.get(0).getRseq());
-			accommodationDetail.setName(roomList.get(0).getName());
+			accommodationDetail.setRname(roomList.get(0).getRname());
 			accommodationDetail.setPrice(roomList.get(0).getPrice());
 			
 		

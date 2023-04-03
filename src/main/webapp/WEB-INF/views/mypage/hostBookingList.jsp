@@ -11,7 +11,7 @@
        <td> ${accommodationVO.category} </td>
         <td>
             <a href="accommodation_detail?aseq=${accommodationVO.aseq}">
-              <h3> ${accommodationVO.name} </h3>              
+              <h3> ${accommodationVO.aname} </h3>              
           </a>    
        
        </tr>

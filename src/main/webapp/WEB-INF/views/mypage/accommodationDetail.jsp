@@ -12,7 +12,7 @@
      <tr>  
        <td> ${accommodationList.aseq} </td>    
        <td> ${accommodationList.email} </td> 
-       <td> ${accommodationList.name} </td> 
+       <td> ${accommodationList.aname} </td> 
      </tr>    
      </table>      
       
@@ -24,7 +24,7 @@
      <c:forEach items="${accommodationDetail}"  var="roomVO">
      <tr>
        <td> ${roomVO.rseq} </td>
- 	   <td> ${roomVO.name} </td>
+ 	   <td> ${roomVO.rname} </td>
        <td> ${roomVO.price}</td>
      </tr>
      </c:forEach>    
