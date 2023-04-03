@@ -2,6 +2,8 @@ package com.ezen.view;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.AdminVO;
+import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.QnaVO;
 import com.ezen.biz.service.AdminService;
 import com.ezen.biz.service.QnaService;
@@ -61,11 +65,11 @@ public class AdminController {
 	
 	
 	@RequestMapping("/admin_qna_list")
-	public String admingQnaList(Model model) {
-		List<QnaVO> qnaList=qnaService.getListAllQna();
+	public String adminQnaList(Model model ) {
+		List<QnaVO> qnaList= qnaService.getListAllQna();
 		model.addAttribute("qnaList", qnaList);
 		return "admin/qna/qnaList";
-	}//adminQnaList
+	}
 	
 	
 	@PostMapping("/admin_qna_detail")

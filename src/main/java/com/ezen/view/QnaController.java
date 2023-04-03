@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
@@ -93,28 +94,6 @@ public class QnaController {
 			
 			return "mypage/qnaWrite";
 				}
-		}
-	 // 호스트 별 큐엔아이
-	 @GetMapping(value="/qna_listByHost")
-		
-		public String qnaListHost(HttpSession session,  Model model, QnaVO vo) {
-			//
-			HostVO loginHost=	(HostVO)session.getAttribute("loginHost");
-			
-		    if(loginHost == null) {//로그인이 안된경우
-				
-			    return "member/login";
-					
-			}else{
-			    
-				List<QnaVO> qnaListByHost = qnaService.getListByHost(vo);
-				
-			
-		    
-		    model.addAttribute("qnaListByHost", qnaListByHost);
-				
-			return "mypage/qnaList";
-			}
 		}
 	
 	

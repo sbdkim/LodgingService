@@ -143,5 +143,5 @@
        
        
        
-       
+ <%@ include file="reviewList.jsp" %>
  <%@ include file="../footer.jsp" %>    

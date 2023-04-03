@@ -7,11 +7,13 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.ReviewVO;
 import com.ezen.biz.service.ReviewService;
@@ -28,7 +30,7 @@ public class ReviewController {
 	
 	
 	@GetMapping(value="/list", produces="application/json; cjarset=UTF-8")
-	public Map<String, Object> reviewList(ReviewVO vo, Criteria criteria){
+	public Map<String, Object> reviewList(ReviewVO vo, Criteria criteria,Model model){
 		Map<String, Object> reviewInfo= new HashMap<>();
 		//댓글 목록 조회
 		List<ReviewVO> reviewList=reviewService.getReviewListwithPaging(criteria, vo.getBseq());
@@ -45,7 +47,7 @@ public class ReviewController {
 	}
 	
 	@PostMapping(value="/save")
-	public String saveReviewAction(ReviewVO reviewVO, HttpSession session) {
+	public String saveReviewAction(ReviewVO reviewVO, BookingVO vo,HttpSession session) {
 		 MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		 if (loginUser == null) {
 			 
@@ -54,8 +56,8 @@ public class ReviewController {
 			reviewVO.setEmail(loginUser.getEmail());
 		 
 		//상품명 저장
-		 if (reviewService.insertReview(reviewVO) > 0 ) {
-			 
+		 if (reviewVO.getBseq()==vo.getBseq() ){
+			 reviewService.insertReview(reviewVO);
 			 return "success";
 		 }else {
 			 return "fail";
