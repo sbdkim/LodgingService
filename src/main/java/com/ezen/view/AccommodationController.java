@@ -23,11 +23,19 @@ public class AccommodationController {
 
 	@GetMapping("/search")
 	public String searchView(AccommodationVO vo, Model model) {
+		System.out.println(vo.toString());
 		String address = vo.getAddress();
 		List<AccommodationVO> accommodationList = accommodationService.selectAccByAdd(address);
 		model.addAttribute("accommodationList", accommodationList);
 		return "accommodation/accList";
 	}
+	
+
+	
+	
+	
+	
+	
 
 	@RequestMapping("/acc_search_list")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,

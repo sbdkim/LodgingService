@@ -5,6 +5,22 @@
 
 <h1>숙소 검색 결과</h1>
 <h2> ${accommodationName} 의 객실 목록</h2>
+						<div class=main_checkinout style="display:inline-block">
+							<div role=button style="display:inline-block">
+								<div class="main_checkinout_buttonbox" style="display:inline-block">
+									<div style="display:inline-block">
+										<input type='date' id="checkin"  value="${param.checkin  }"
+											class="main_checkin_1" name="checkin" onchange="dateChk()"
+											required>
+									</div>
+									<div style="display:inline-block">
+										<input type='date' id="checkout"
+											value="${param.checkout }" class="main_checkout_1" name="checkout"
+											onchange="dateChk()" required>
+									</div>
+								</div>
+							</div>
+						</div>
 <article>
 <form name="roomForm" id="room_form" method="post" style="display:block">
 
@@ -46,6 +62,24 @@
 	</table>
 </form>
 </article>
+
+<script>
+  // Get today's date
+  const today = new Date().toISOString().split('T')[0];
+  // Set the minimum date of the input
+  document.getElementById("checkin").setAttribute("min", today);
+  document.getElementById("checkout").setAttribute("min", today);
+</script>
+
+<%
+  String checkin = request.getParameter("checkin");
+  String checkout = request.getParameter("checkout");
+%>
+<script>
+  // Set the values of the date inputs
+  document.getElementById("checkin").value = '<%= checkin %>';
+  document.getElementById("checkout").value = '<%= checkout %>';
+</script>
 
 
 

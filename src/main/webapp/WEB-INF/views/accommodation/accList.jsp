@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../header.jsp"%>
+
 <article>
 <h1>숙소 검색</h1>
 <form name="frm" action="room" method="post" style="display:block">
@@ -12,6 +13,24 @@
 				<input type="text" name="key" id="key">
 				<input class="btn" type="button" name="btn_search" value="검색" onclick="go_search()">
 				<input class="btn" type="button" name="btn_total" value="전체보기" onclick="go_total()">
+			</td>
+			<td>
+						<div class=main_checkinout style="display:inline-block">
+							<div role=button style="display:inline-block">
+								<div class="main_checkinout_buttonbox" style="display:inline-block">
+									<div style="display:inline-block">
+										<input type='date' id="checkin" value="${param.checkin }"
+											class="main_checkin_1" name="checkin" onchange="dateChk()"
+											required>
+									</div>
+									<div style="display:inline-block">
+										<input type='date' id="checkout" 
+											value="${param.checkout }" class="main_checkout_1" name="checkout"
+											onchange="dateChk()" required>
+									</div>
+								</div>
+							</div>
+						</div>
 			</td>
 		</tr>
 	</table>
@@ -39,7 +58,7 @@
 					<td>
 					
 						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
-						<a href="room?aseq=${accommodationVO.aseq}" >숙소 살펴보기</a>
+						<a href="room?aseq=${accommodationVO.aseq}&checkin=${param.checkin}&checkout=${param.checkout}" >숙소 살펴보기</a>
 						<%--  <button  type=submit>숙소 살펴보기</button> --%>
 					</td>
      				<!-- <td>${accommodationVO.email}</td> -->
@@ -51,5 +70,27 @@
 		</c:choose>
 	</table>
 </form>
+
+
+<script>
+  // Get today's date
+  const today = new Date().toISOString().split('T')[0];
+  // Set the minimum date of the input
+  document.getElementById("checkin").setAttribute("min", today);
+  document.getElementById("checkout").setAttribute("min", today);
+</script>
+
+<%
+  String key = request.getParameter("address");
+  String checkin = request.getParameter("checkin");
+  String checkout = request.getParameter("checkout");
+%>
+<script>
+  // Set the values of the date inputs
+  document.getElementById("key").value = '<%= key %>';
+  document.getElementById("checkin").value = '<%= checkin %>';
+  document.getElementById("checkout").value = '<%= checkout %>';
+</script>
+
 </article>
 <%@ include file="../footer.jsp"%>
