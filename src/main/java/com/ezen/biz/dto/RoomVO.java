@@ -62,6 +62,14 @@ public class RoomVO {
 		this.name = name;
 	}
 
+	public String getAname() {
+		return aname;
+	}
+
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
+
 	public int getPrice() {
 		return price;
 	}
@@ -320,6 +328,7 @@ public class RoomVO {
 				+ ", bathroom=" + bathroom + ", bed=" + bed + ", wifi=" + wifi + ", kitchen=" + kitchen + ", pool="
 				+ pool + ", ac=" + ac + ", tv=" + tv + ", coffeemachine=" + coffeemachine + ", fridge=" + fridge
 				+ ", bathtub=" + bathtub + ", parking=" + parking + ", heater=" + heater + ", microwave=" + microwave
+<<<<<<< Updated upstream
 				+ ", plug=" + plug + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier + ", amenity="
 				+ amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast + ", smoking="
 				+ smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", image=" + image + "]";
@@ -327,4 +336,24 @@ public class RoomVO {
 
 
 	
+=======
+				+ ", kettle=" + kettle + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier
+				+ ", amenity=" + amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast
+				+ ", smoking=" + smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", image=" + image
+				+ ", getRseq()=" + getRseq() + ", getAseq()=" + getAseq() + ", getName()=" + getName() + ", getAname()="
+				+ getAname() + ", getPrice()=" + getPrice() + ", getMaxcap()=" + getMaxcap() + ", getCkintime()="
+				+ getCkintime() + ", getCkouttime()=" + getCkouttime() + ", getRooms()=" + getRooms()
+				+ ", getBathroom()=" + getBathroom() + ", getBed()=" + getBed() + ", getWifi()=" + getWifi()
+				+ ", getKitchen()=" + getKitchen() + ", getPool()=" + getPool() + ", getAc()=" + getAc() + ", getTv()="
+				+ getTv() + ", getCoffeemachine()=" + getCoffeemachine() + ", getFridge()=" + getFridge()
+				+ ", getBathtub()=" + getBathtub() + ", getParking()=" + getParking() + ", getHeater()=" + getHeater()
+				+ ", getMicrowave()=" + getMicrowave() + ", getKettle()=" + getKettle() + ", getWasher()=" + getWasher()
+				+ ", getBbq()=" + getBbq() + ", getHairdrier()=" + getHairdrier() + ", getAmenity()=" + getAmenity()
+				+ ", getTowel()=" + getTowel() + ", getElevator()=" + getElevator() + ", getBreakfast()="
+				+ getBreakfast() + ", getSmoking()=" + getSmoking() + ", getGym()=" + getGym() + ", getRoomservice()="
+				+ getRoomservice() + ", getImage()=" + getImage() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
+>>>>>>> Stashed changes
 }

@@ -78,5 +78,13 @@
 		SELECT * FROM room
 		WHERE rseq=#{rseq}
 	</select>
+<<<<<<< Updated upstream
 
+=======
+	
+	<!-- rseq로 숙소조회 -->
+	<select id="selectAccByRseq" resultType="room">
+		SELECT * FROM list_room_view WHERE rseq=#{rseq}
+	</select>
+>>>>>>> Stashed changes
 </mapper>
