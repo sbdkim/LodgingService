@@ -26,7 +26,6 @@ public class RoomController {
 
 	@RequestMapping("/room")
 	public String roomView(AccommodationVO vo, Model model, int aseq) {
-		System.out.println("roomView() : vo="+vo);
 		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
 		model.addAttribute("roomList", roomList);		
