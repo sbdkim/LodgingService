@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.RoomVO;
+import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.RoomService;
 
 import utils.Criteria;
@@ -20,21 +21,19 @@ public class RoomController {
 
 	@Autowired
 	private RoomService roomService;
-	
+	@Autowired
+	private AccommodationService accommodationService;
+
 	@RequestMapping("/room")
-	public String roomView(RoomVO vo, Model model) {
-		int aseq = vo.getAseq();
+	public String roomView(AccommodationVO vo, Model model, int aseq) {
+		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
-		model.addAttribute("roomList", roomList);
+		model.addAttribute("roomList", roomList);		
+		model.addAttribute("accommodationName", accommodationName);
 		return "room/roomList";
-		
+
 	}
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping("/selectedAccommodation")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
 			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
@@ -58,8 +57,13 @@ public class RoomController {
 
 		return "room/roomList";
 	}
-	
-	
-	
-	
-}//RoomController
+
+	@RequestMapping("/room_detail")
+	public String roomDetail(RoomVO vo, Model model) {
+		int rseq = vo.getRseq();
+		RoomVO roomDetail = roomService.selectRoomByRseq(rseq);
+		model.addAttribute("roomDetail", roomDetail);
+		return "room/roomDetail";
+	}
+
+}// RoomController

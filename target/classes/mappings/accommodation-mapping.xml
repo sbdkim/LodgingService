@@ -33,4 +33,12 @@
 		SELECT * FROM accommodation
 		WHERE email=#{email}
 	</select>
+	
+	<select id="selectAccByName" resultType="String">
+		SELECT name from accommodation
+		WHERE aseq=#{aseq}
+	</select>
+	
+	
+	
 </mapper>

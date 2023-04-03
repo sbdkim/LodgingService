@@ -23,7 +23,7 @@ public class RoomVO {
 	private int parking;
 	private int heater;
 	private int microwave;
-	private int plug;
+	private int kettle;
 	private int washer;
 	private int bbq;
 	private int hairdrier;
@@ -206,12 +206,12 @@ public class RoomVO {
 		this.microwave = microwave;
 	}
 
-	public int getPlug() {
-		return plug;
+	public int getKettle() {
+		return kettle;
 	}
 
-	public void setPlug(int plug) {
-		this.plug = plug;
+	public void setKettle(int kettle) {
+		this.kettle = kettle;
 	}
 
 	public int getWasher() {
@@ -301,6 +301,7 @@ public class RoomVO {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
 
 	public String getAname() {
 		return aname;

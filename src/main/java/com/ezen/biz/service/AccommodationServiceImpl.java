@@ -42,5 +42,10 @@ public class AccommodationServiceImpl implements AccommodationService {
 		return aDao.listHostAccommodation(vo);
 	}
 
+	@Override
+	public String getNameByAseq(int aseq) {
+		// TODO Auto-generated method stub
+		return aDao.getNameByAseq(aseq);
+	}
 
 }

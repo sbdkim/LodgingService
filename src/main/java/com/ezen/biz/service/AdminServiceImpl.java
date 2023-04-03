@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.AdminDAO;
 import com.ezen.biz.dto.AdminVO;
+import com.ezen.biz.dto.HostVO;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -42,6 +43,14 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public String selectPwdByEmailNamePhone(AdminVO vo) {
 		return aDao.selectPwdByEmailNamePhone(vo);
+	}
+
+	@Override
+	public int loginAdmin(HostVO vo) {
+		String email = vo.getEmail();
+		String inputPwd = vo.getPwd();
+		return aDao.loginAdmin(email , inputPwd);
+	
 	}
 
 }

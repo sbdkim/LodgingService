@@ -10,6 +10,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
+import com.ezen.biz.service.AdminService;
 import com.ezen.biz.service.HostService;
 import com.ezen.biz.service.MemberService;
 
@@ -22,6 +23,9 @@ public class MemberController {
 
 	@Autowired
 	private HostService hostService;
+	
+	@Autowired
+	private AdminService adminService;
 
 	// login 페이지로 이동
 
@@ -46,16 +50,40 @@ public class MemberController {
 
 	@PostMapping("/hostlogin")
 	public String loginAction(HostVO vo, Model model) {
-		int result = hostService.loginHost(vo);
+		System.out.println(vo.toString());
+		String hostEmail = vo.getEmail();
+		
+		//admin login
+		if(hostEmail.equals("kozynest0330@gmail.com") || hostEmail.equals("kozynest1104@gmail.com") || hostEmail.equals("kozynest0116@gmail.com") || hostEmail.equals("kozynest0331@gmail.com")) {
+			System.out.println(hostEmail);
+			int result = adminService.loginAdmin(vo);
+			
+			if (result == 1) {
 
-		if (result == 1) {
+				model.addAttribute("loginAdmin", adminService.getAdmin(vo.getEmail()));
 
-			model.addAttribute("loginHost", hostService.getHost(vo.getEmail()));
+				return "redirect:index";
+			} else {
+				return "host/login_fail";
+			}
 
-			return "redirect:index";
-		} else {
-			return "host/login_fail";
+			
+		}else {
+			//host login
+			int result = hostService.loginHost(vo);
+
+			if (result == 1) {
+
+				model.addAttribute("loginHost", hostService.getHost(vo.getEmail()));
+
+				return "redirect:index";
+			} else {
+				return "host/login_fail";
+			}
 		}
+		
+		
+		
 	}
 
 	@GetMapping("/logout")
