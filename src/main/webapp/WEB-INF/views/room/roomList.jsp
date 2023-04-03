@@ -4,7 +4,7 @@
 <%@ include file="../header.jsp"%>
 
 <h1>숙소 검색 결과</h1>
-<h2><%= request.getAttribute("accommodationName") %>의 객실 목록</h2>
+<h2> ${accommodationName} 의 객실 목록</h2>
 <article>
 <form name="roomForm" id="room_form" method="post" style="display:block">
 

@@ -27,4 +27,3 @@ function accommodationRooms(aseq) {
   document.body.appendChild(form);
   form.submit();
 }
-

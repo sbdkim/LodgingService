@@ -6,9 +6,6 @@
       <h2> Accommodation List </h2>
       <form name="formm" method="post">
         <table id="accommodationList">
-       <tr>
-       <th>카테고리</th> <th>이 름</th>  <th>주 소</th> <th>전화번호</th>
-       </tr>
        <c:forEach items="${accommodationList}"  var="accommodationVO">
        <tr>      
        <td> ${accommodationVO.category} </td>
@@ -16,9 +13,6 @@
             <a href="accommodation_detail?aseq=${accommodationVO.aseq}">
               <h3> ${accommodationVO.aname} </h3>              
           </a>    
-        </td>
-        <td> ${accommodationVO.address} </td>
-        <td> ${accommodationVO.tel} </td>
        
        </tr>
        </c:forEach>

@@ -43,5 +43,13 @@ public class AccommodationDAO {
 	public List<AccommodationVO> listHostAccommodation(AccommodationVO vo){
 		return mybatis.selectList("AccommodationMapper.listHostAccommodation", vo);
 	}
+	
+	
+	public String getNameByAseq(int aseq) {
+		return mybatis.selectOne("AccommodationMapper.selectAccByName", aseq);
+	}
+	
+	
+	
 
 }

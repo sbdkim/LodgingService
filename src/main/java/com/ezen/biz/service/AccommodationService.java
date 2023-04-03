@@ -22,5 +22,7 @@ public interface AccommodationService {
 	 
 	 //호스트 별 등록된 업체 리스트
 	 public List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
+	 
+	 public String getNameByAseq(int aseq);
 
 }

@@ -1,6 +1,7 @@
 package com.ezen.biz.service;
 
 import com.ezen.biz.dto.AdminVO;
+import com.ezen.biz.dto.HostVO;
 
 public interface AdminService {
 
@@ -8,6 +9,9 @@ public interface AdminService {
 	
 	// 회원정보 조회
 	AdminVO getAdmin(String email);
+	
+	//admin login
+	int loginAdmin(HostVO vo);
 
 	// 회원정보 변경
 	void updateAdmin(AdminVO vo);

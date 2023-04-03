@@ -39,7 +39,8 @@
 					<td>
 					
 						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
-						<button  type=submit>숙소 살펴보기</button>
+						<a href="room?aseq=${accommodationVO.aseq}" >숙소 살펴보기</a>
+						<%--  <button  type=submit>숙소 살펴보기</button> --%>
 					</td>
      				<!-- <td>${accommodationVO.email}</td> -->
 					<!-- <td>${accommodationVO.tel}</td>   -->

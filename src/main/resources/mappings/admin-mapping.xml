@@ -31,6 +31,10 @@
 		WHERE email=#{email} AND name=#{name} AND phone=#{phone}
 	</select>
 	
-	
+	<!-- Email 존재 여부 확인 -->
+	<select id="confirmEmail" resultType="String">
+		SELECT pwd FROM admin
+		WHERE email=#{email}
+	</select>
 	
 </mapper>
