@@ -3,13 +3,14 @@ package com.ezen.biz.dto;
 public class AccommodationVO {
 	private int aseq;
 	private String email;
-	private String name;
+	private String aname;
 	private String rname;
 	private int category;
 	private String address;
 	private String tel;
 	private String bestyn;
-	private String image;
+	private String aimage;
+	private String rimage;
 
 
 	// Getter, Setter 메소드
@@ -29,15 +30,22 @@ public class AccommodationVO {
 		this.email = email;
 	}
 
-	
 
-	
-	public String getName() {
-		return name;
+
+	public String getAname() {
+		return aname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
+
+	public String getAimage() {
+		return aimage;
+	}
+
+	public void setAimage(String aimage) {
+		this.aimage = aimage;
 	}
 
 	public String getRname() {
@@ -80,23 +88,21 @@ public class AccommodationVO {
 		this.bestyn = bestyn;
 	}
 
-	public String getImage() {
-		return image;
+	
+	public String getRimage() {
+		return rimage;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setRimage(String rimage) {
+		this.rimage = rimage;
 	}
 
 	// ToString
 	@Override
 	public String toString() {
-		return "AccommodationVO [aseq=" + aseq + ", email=" + email + ", name=" + name + ", rname=" + rname
-				+ ", category=" + category + ", address=" + address + ", tel=" + tel + ", bestyn=" + bestyn + ", image="
-				+ image + "]";
+		return "AccommodationVO [aseq=" + aseq + ", email=" + email + ", aname=" + aname + ", rname=" + rname
+				+ ", category=" + category + ", address=" + address + ", tel=" + tel + ", bestyn=" + bestyn
+				+ ", aimage=" + aimage + ", rimage=" + rimage + "]";
 	}
 
-
-	
-	
 }

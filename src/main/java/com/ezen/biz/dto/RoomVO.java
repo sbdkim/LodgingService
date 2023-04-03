@@ -3,7 +3,7 @@ package com.ezen.biz.dto;
 public class RoomVO {
 	private int rseq;
 	private int aseq;
-	private String name;
+	private String rname;
 	private String aname;
 	private int price;
 	private int maxcap;
@@ -34,7 +34,8 @@ public class RoomVO {
 	private int smoking;
 	private int gym;
 	private int roomservice;
-	private String image;
+	private String rimage;
+	private String aimage;
 
 
 	// Getter, Setter 메소드
@@ -54,13 +55,7 @@ public class RoomVO {
 		this.aseq = aseq;
 	}
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getAname() {
 		return aname;
@@ -302,13 +297,6 @@ public class RoomVO {
 		this.roomservice = roomservice;
 	}
 
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
 
 
 	public String getAname() {
@@ -318,42 +306,32 @@ public class RoomVO {
 	public void setAname(String aname) {
 		this.aname = aname;
 	}
-
 	
-	// ToString
-	@Override
-	public String toString() {
-		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", name=" + name + ", aname=" + aname + ", price=" + price
-				+ ", maxcap=" + maxcap + ", ckintime=" + ckintime + ", ckouttime=" + ckouttime + ", rooms=" + rooms
-				+ ", bathroom=" + bathroom + ", bed=" + bed + ", wifi=" + wifi + ", kitchen=" + kitchen + ", pool="
-				+ pool + ", ac=" + ac + ", tv=" + tv + ", coffeemachine=" + coffeemachine + ", fridge=" + fridge
-				+ ", bathtub=" + bathtub + ", parking=" + parking + ", heater=" + heater + ", microwave=" + microwave
-<<<<<<< Updated upstream
-				+ ", plug=" + plug + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier + ", amenity="
-				+ amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast + ", smoking="
-				+ smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", image=" + image + "]";
+	
+
+	public String getRname() {
+		return rname;
+	}
+
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
+
+	public String getRimage() {
+		return rimage;
+	}
+
+	public void setRimage(String rimage) {
+		this.rimage = rimage;
+	}
+
+	public String getAimage() {
+		return aimage;
+	}
+
+	public void setAimage(String aimage) {
+		this.aimage = aimage;
 	}
 
 
-	
-=======
-				+ ", kettle=" + kettle + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier
-				+ ", amenity=" + amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast
-				+ ", smoking=" + smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", image=" + image
-				+ ", getRseq()=" + getRseq() + ", getAseq()=" + getAseq() + ", getName()=" + getName() + ", getAname()="
-				+ getAname() + ", getPrice()=" + getPrice() + ", getMaxcap()=" + getMaxcap() + ", getCkintime()="
-				+ getCkintime() + ", getCkouttime()=" + getCkouttime() + ", getRooms()=" + getRooms()
-				+ ", getBathroom()=" + getBathroom() + ", getBed()=" + getBed() + ", getWifi()=" + getWifi()
-				+ ", getKitchen()=" + getKitchen() + ", getPool()=" + getPool() + ", getAc()=" + getAc() + ", getTv()="
-				+ getTv() + ", getCoffeemachine()=" + getCoffeemachine() + ", getFridge()=" + getFridge()
-				+ ", getBathtub()=" + getBathtub() + ", getParking()=" + getParking() + ", getHeater()=" + getHeater()
-				+ ", getMicrowave()=" + getMicrowave() + ", getKettle()=" + getKettle() + ", getWasher()=" + getWasher()
-				+ ", getBbq()=" + getBbq() + ", getHairdrier()=" + getHairdrier() + ", getAmenity()=" + getAmenity()
-				+ ", getTowel()=" + getTowel() + ", getElevator()=" + getElevator() + ", getBreakfast()="
-				+ getBreakfast() + ", getSmoking()=" + getSmoking() + ", getGym()=" + getGym() + ", getRoomservice()="
-				+ getRoomservice() + ", getImage()=" + getImage() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
-	}
-
->>>>>>> Stashed changes
 }
