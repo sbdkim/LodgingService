@@ -17,11 +17,11 @@ public interface AccommodationService {
 	// 페이지별 숙소 조회
 	List<AccommodationVO> getListAccWithPaging(Criteria criteria, String address);
 	
+	//host별 숙소 조회 페이징
+	List<AccommodationVO> getlistHostAccWithPaging(Criteria criteria, String email);
+	
 	// 전체 숙소 갯수 조회
 	 int countAccList(String address);
-	 
-	 //호스트 별 등록된 업체 리스트
-	 public List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
 	 
 	 public String getNameByAseq(int aseq);
 	 

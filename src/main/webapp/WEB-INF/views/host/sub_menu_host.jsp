@@ -6,6 +6,7 @@
 		<li><a href="hostbookinglist">매출 관리</a></li>    
 		<li><a href="hostbookinglist">리뷰 관리</a></li>
 		<li><a href="hostBookingList">예약 목록</a></li>
+		<li><a href="host_accommodation_write">업체 등록</a></li> 
 		<li><a href="hostmypage">전체 목록</a></li> 
     </ul>
   </nav> 

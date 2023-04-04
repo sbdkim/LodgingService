@@ -37,12 +37,6 @@ public class AccommodationServiceImpl implements AccommodationService {
 	}
 
 	@Override
-	public List<AccommodationVO> getListHostAccommodation(AccommodationVO vo) {
-
-		return aDao.listHostAccommodation(vo);
-	}
-
-	@Override
 	public String getNameByAseq(int aseq) {
 		
 		return aDao.getNameByAseq(aseq);
@@ -59,5 +53,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 		
 		aDao.updateAccommodation(vo);
 	}
+
+	@Override
+	public List<AccommodationVO> getlistHostAccWithPaging(Criteria criteria, String email) {
+		
+		return aDao.listHostAccWithPaging(criteria, email);
+	}
+
 
 }
