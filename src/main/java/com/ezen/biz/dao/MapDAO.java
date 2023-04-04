@@ -15,7 +15,7 @@ public class MapDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public List<Location> getAllLocation(){
-		return mybatis.selectList("LocationMapper.selectAccomodation");
+		return mybatis.selectList("LocationMapper.selectAccommodation");
 	}
 	
 	

@@ -2,6 +2,8 @@ package com.ezen.view;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.AccommodationVO;
+import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.RoomService;
@@ -26,13 +29,13 @@ public class RoomController {
 
 	@RequestMapping("/room")
 	public String roomView(AccommodationVO vo, Model model, int aseq,
-			@RequestParam(value="checkin1") String checkin1, 
-			@RequestParam(value="checkout1") String checkout1) {
+			@RequestParam(value="checkin") String checkin, 
+			@RequestParam(value="checkout") String checkout) {
 		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
 		model.addAttribute("roomList", roomList);	
-		model.addAttribute("checkin", checkin1);
-		model.addAttribute("checkout", checkout1);
+		model.addAttribute("checkin", checkin);
+		model.addAttribute("checkout", checkout);
 		model.addAttribute("accommodationName", accommodationName);
 		return "room/roomList";
 
@@ -65,9 +68,27 @@ public class RoomController {
 	@RequestMapping("/room_detail")
 	public String roomDetail(RoomVO vo, Model model) {
 		int rseq = vo.getRseq();
-		RoomVO roomDetail = roomService.selectRoomByRseq(rseq);
+		RoomVO roomDetail = roomService.getRoomByRseq(rseq);
 		model.addAttribute("roomDetail", roomDetail);
 		return "room/roomDetail";
+	}
+
+	@RequestMapping("/booking")
+	public String booking(HttpSession session, RoomVO vo, 
+			@RequestParam(value="checkin") String checkin, 
+			@RequestParam(value="checkout") String checkout,
+			Model model) {
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			return "member/login";
+		} else {
+			int rseq = vo.getRseq();
+			RoomVO accRoom = roomService.getAccByRseq(rseq);
+			model.addAttribute("checkin", checkin);
+			model.addAttribute("checkout", checkout);
+			model.addAttribute("accRoom", accRoom);
+			return "room/booking";
+		}
 	}
 
 }// RoomController

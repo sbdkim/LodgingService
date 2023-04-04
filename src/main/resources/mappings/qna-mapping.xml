@@ -29,9 +29,5 @@
      UPDATE qna SET reply=#{reply}, rep='1' WHERE qseq=#{qseq}
      </update>
      
-     <!--host qna 보기 -->
-     <select id="getListByHost" resultType="qna">
-	 SELECT rseq FROM qna_host_view WHERE email=#{email}
-	 </select>
      
 </mapper>

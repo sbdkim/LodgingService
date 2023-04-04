@@ -40,7 +40,7 @@ public class AccommodationDAO {
 	public List<AccommodationVO> listAccWithPaging(Criteria criteria, String address) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("criteria", criteria);
-		map.put("name", address);
+		map.put("address", address);
 		return mybatis.selectList("AccommodationMapper.listAccWithPaging", map);
 	}
 	
