@@ -8,15 +8,15 @@
       <tr>
         <td rowspan="9" width="225">
 	        <c:choose>
-				<c:when test="${accRoom.image == null}"><img src="room_images/default.jpg" /></c:when>    
-				<c:otherwise><img src="room_images/${accRoom.image}" /></c:otherwise>
+				<c:when test="${empty accRoom.rimage}"><img src="room_images/default.jpg" /></c:when>    
+				<c:otherwise><img src="room_images/${accRoom.rimage}" /></c:otherwise>
 			</c:choose>
 		</td>
 		<td width="100"><b>숙소명</b></td>
 		<td>${accRoom.aname}</td>
      </tr>
       <tr>
-        <td><b>객실명</b></td><td>${accRoom.name}</td>
+        <td><b>객실명</b></td><td>${accRoom.rname}</td>
      </tr>
       <tr>
         <td><b>수용 인원</b></td><td>${accRoom.maxcap}</td>

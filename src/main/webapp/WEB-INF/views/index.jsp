@@ -10,7 +10,7 @@
 			<!-- searchbox start-->
 			<div style="border-left: 1px solid #c8c8c8; margin-right: 10px; display:inline-block">
 				<input type=search class=main_search_text placeholder=서울,서초구
-					name="address" required>
+					name="address">
 			</div>
 			
 			

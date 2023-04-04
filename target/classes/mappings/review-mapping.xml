@@ -8,9 +8,9 @@
 	  SELECT reseq, bseq,content,score,indate,reply
 	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, reseq, bseq,
 	        content,score,indate,reply FROM review_view
-	        WHERE rseq=#{rseq})
+	        WHERE bseq=#{bseq})
 	        WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
-	        AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	        AND rn > (#{criteria.pageNum}-1) * {criteria.rowsPerPage}
 	   ]]>
 	
 	</select>
@@ -49,7 +49,7 @@
 	</update>
 	
 	<select id="countReviewList" resultType="int">
-	SELECT COUNT(*) FROM review_view WHERE rseq=#{rseq}
+	SELECT COUNT(*) FROM review WHERE rseq=#{rseq}
     </select>
     
     

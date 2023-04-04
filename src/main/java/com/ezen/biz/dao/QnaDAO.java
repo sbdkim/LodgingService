@@ -42,8 +42,4 @@ public class QnaDAO {
 		
 		mybatis.update("QnaMapper.updateQna", vo);
 	}
-	
-	public List<QnaVO> getListByHost(QnaVO vo) {
-		return mybatis.selectList("QnaMapper.getListByHost", vo);
-	}
 }
