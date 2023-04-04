@@ -30,4 +30,5 @@ public interface BookingService {
 	
 	 List<BookingVO> getListBookingByEmail(BookingVO vo);
 
+	 List<BookingVO> getBookingListByAseq(BookingVO vo);
 }

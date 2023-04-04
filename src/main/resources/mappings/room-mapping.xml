@@ -7,14 +7,6 @@
 		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{ckindate}, #{ckoutdate}, #{price}, #{payment}, #{status})
 	</insert>
 	
-
-	<!-- 숙박업체 등록  --> 
-	
-	
-	
-	
-	
-
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">
 		SELECT * FROM booking_view
@@ -39,8 +31,7 @@
 	</select>
 
 	
-	
-	
+
 	<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
 	<select id="selectRoomByAcc" resultType="room">
 
@@ -56,15 +47,11 @@
 	
 		
 	</select>
-	
 
-	
-	
 	
 	<select id="countRoomList" parameterType="int" resultType="int">
 		SELECT count(*) FROM room WHERE aseq = #{aseq}
 	</select>
-	
 	
 	
 	<select id="listRoomWithPaging" resultType="room">
@@ -87,4 +74,26 @@
 	<select id="selectAccByRseq" resultType="room">
 		SELECT * FROM list_room_view WHERE rseq=#{rseq}
 	</select>
+
+	<!-- HOST -->
+	<!-- host가 accommodation 등록 -->
+	<insert id="insertRoom" parameterType="room">
+		INSERT INTO room(rseq, aseq, name, price, maxcap, ckintime, ckoutime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, 
+						coffeemachine, fridge, bathtub, parking, heater, microwave, kettle, washer, bbq, hairdrier, amenity, towel, 
+						elevator, breakfast, smoking, gym, roomservice, image)
+		VALUES(room_seq.NEXTVAL, #{aseq}, #{name}, #{price}, #{maxcap}, #{ckintime}, #{ckoutime}, #{rooms}, #{bathroom}, #{bed}, #{wifi},
+			 #{kitchen}, #{pool}, #{ac}, #{tv},#{coffeemachine}, #{fridge}, #{bathtub}, #{parking}, #{heater}, #{microwave}, #{kettle},
+			 #{washer}, #{bbq}, #{hairdrier}, #{amenity}, #{towel}, #{elevator}, #{breakfast}, #{smoking},#{gym}, #{roomservice}, #{image})
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="updateRoom" parameterType="room">
+		UPDATE room SET name=#{name}, price=#{price}, maxcap=#{maxcap}, ckintime=#{ckintime}, ckoutime=#{ckoutime}, rooms=#{rooms}, 
+						bathroom=#{bathroom}, bed=#{bed}, wifi=#{wifi}, kitchen=#{kitchen}, pool=#{pool}, ac=#{ac}, tv=#{tv}, 
+						coffeemachine=#{coffeemachine}, fridge=#{fridge}, bathtub=#{bathtub}, parking=#{parking}, heater=#{heater}, 
+						microwave=#{microwave}, kettle=#{kettle}, washer=#{washer}, bbq=#{bbq}, hairdrier=#{hairdrier}, amenity=#{amenity},
+						towel=#{towel},elevator=#{elevator}, breakfast=#{breakfast}, smoking=#{smoking}, gym=#{gym}, roomservice=#{roomservice}, image=#{image}
+		WHERE rseq=#{rseq}
+	</update>
+
 </mapper>

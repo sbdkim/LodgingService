@@ -50,5 +50,4 @@
 		SELECT * FROM booking ORDER BY bseq DESC
 	</select>
 
-	
 </mapper>

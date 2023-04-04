@@ -40,6 +40,16 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public RoomVO getAccByRseq(int rseq) {
 		return rDao.selectAccByRseq(rseq);
+
+	public void insertRoom(RoomVO vo) {
+		
+		rDao.insertRoom(vo);
+	}
+
+	@Override
+	public void updateRoom(RoomVO vo) {
+		
+		rDao.updateRoom(vo);
 	}
 	
 	

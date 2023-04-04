@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>  
+<%@ include file="sub_menu_host.jsp" %>      
      
   <article>
-      <h2> Accommodation List </h2>
+      <h2> 예약된 목록 </h2>
       <form name="formm" method="post">
         <table id="accommodationList">
        <c:forEach items="${accommodationList}"  var="accommodationVO">
        <tr>      
-       <td> ${accommodationVO.category} </td>
-        <td>
-            <a href="accommodation_detail?aseq=${accommodationVO.aseq}">
+         <td align="center">
+            <a href="host_booking_detail?aseq=${accommodationVO.aseq}">
               <h3> ${accommodationVO.aname} </h3>              
           </a>    
        
@@ -20,9 +20,6 @@
       </table>   
           
       <div class="clear"></div>
-      <div id="buttons" style="float: right">
-       <input type="button"    value="계속하기"  class="cancel"  onclick="location.href='index'">     
-      </div>
     </form>  
   </article>
 <%@ include file="../footer.jsp" %>
