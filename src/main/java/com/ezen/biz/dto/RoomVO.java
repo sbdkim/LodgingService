@@ -37,7 +37,6 @@ public class RoomVO {
 	private String rimage;
 	private String aimage;
 
-
 	// Getter, Setter 메소드
 	public int getRseq() {
 		return rseq;
@@ -53,16 +52,6 @@ public class RoomVO {
 
 	public void setAseq(int aseq) {
 		this.aseq = aseq;
-	}
-
-
-
-	public String getAname() {
-		return aname;
-	}
-
-	public void setAname(String aname) {
-		this.aname = aname;
 	}
 
 	public int getPrice() {
@@ -297,6 +286,13 @@ public class RoomVO {
 		this.roomservice = roomservice;
 	}
 
+	public String getAname() {
+		return aname;
+	}
+
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
 
 
 	public String getRname() {
@@ -322,6 +318,5 @@ public class RoomVO {
 	public void setAimage(String aimage) {
 		this.aimage = aimage;
 	}
-
 
 }

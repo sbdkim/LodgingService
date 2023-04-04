@@ -32,18 +32,25 @@ public class AccommodationDAO {
 		return mybatis.selectOne("AccommodationMapper.countAccList", address);
 	}
 
+	public int countHostAccList(String email) {
+		
+		return mybatis.selectOne("AccommodationMapper.countHostAccList",email);
+	}
 	// 페이지별 숙소 조회
 	public List<AccommodationVO> listAccWithPaging(Criteria criteria, String address) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("criteria", criteria);
-		map.put("name", address);
+		map.put("address", address);
 		return mybatis.selectList("AccommodationMapper.listAccWithPaging", map);
 	}
 	
-	public List<AccommodationVO> listHostAccommodation(AccommodationVO vo){
-		return mybatis.selectList("AccommodationMapper.listHostAccommodation", vo);
+	//host별 숙소 조회
+	public List<AccommodationVO> listHostAccWithPaging(Criteria criteria, String email) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("email", email);
+		return mybatis.selectList("AccommodationMapper.listHostAccWithPaging", map);
 	}
-	
 	
 	public String getNameByAseq(int aseq) {
 		return mybatis.selectOne("AccommodationMapper.selectAccByName", aseq);
@@ -55,6 +62,11 @@ public class AccommodationDAO {
 	
 	public void updateAccommodation(AccommodationVO vo) {
 		mybatis.update("AccommodationMapper.updateAccommodation", vo);
+	}
+	
+	public List<AccommodationVO> listHostAccommodation(AccommodationVO vo){
+		
+		return mybatis.selectList("AccommodationMapper.listHostAccommodation",vo);
 	}
 
 }

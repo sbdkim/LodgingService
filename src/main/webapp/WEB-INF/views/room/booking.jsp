@@ -3,8 +3,7 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 객실예약 </h2>
-
-    <form name="formm" method="post">
+    <form name="formm" method="post" action="booking_insert">
       <table id="accRoom" align="center" border="1" width="600">      
       <tr>
         <td rowspan="9" width="225">
@@ -32,13 +31,13 @@
         <td><b>체크아웃</b></td><td>${param.checkout}</td>
      </tr>
      <tr>
-        <td><b>이름</b></td><td><input type="text" value="${loginUser.name}"></td>
+        <td><b>이름</b></td><td>${loginUser.name}</td>
      </tr>
       <tr>
-        <td><b>전화번호</b></td><td><input type="text" value="${loginUser.phone}"></td>
+        <td><b>전화번호</b></td><td>${loginUser.phone}</td>
      </tr>
       <tr>
-        <td><b>이메일</b></td><td><input type="text" value="${loginUser.email}"></td>
+        <td><b>이메일</b></td><td>${loginUser.email}</td>
      </tr>
       <tr>
         <td colspan="3"><b>시설 및 서비스</b></td>
@@ -52,7 +51,8 @@
           
      <div class="clear"></div>
      <div id="buttons" style="float: right">
-       <input type="button"    value="다른 객실 보기" onclick="history.back(1)">
+       <input type="submit" value="예약하기">
+       <input type="button" value="다른 객실 예약" onclick="history.go(-2)">
      </div>
     </form>  
   </article>

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,7 +20,7 @@ public class AccommodationController {
 	@Autowired
 	private AccommodationService accommodationService;
 
-	@GetMapping("/search")
+	@RequestMapping("/search")
 	public String searchView(AccommodationVO vo, Model model) {
 		System.out.println(vo.toString());
 		String address = vo.getAddress();
@@ -40,7 +39,10 @@ public class AccommodationController {
 	@RequestMapping("/acc_search_list")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
 			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
-			@RequestParam(value = "key", defaultValue = "") String address, Model model) {
+			@RequestParam(value = "key", defaultValue = "") String address,
+			@RequestParam(value = "checkin", defaultValue = "") String checkin,
+			@RequestParam(value = "checkout", defaultValue = "") String checkout,
+			@RequestParam(value = "ro_count", defaultValue = "") String ro_count, Model model) {
 
 		Criteria criteria = new Criteria();
 		criteria.setPageNum(Integer.parseInt(pageNum));
@@ -57,6 +59,10 @@ public class AccommodationController {
 		model.addAttribute("accommodationList", accommodationList);
 		model.addAttribute("accommodationListSize", accommodationList.size());
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("key", address);
+		model.addAttribute("checkin", checkin);
+		model.addAttribute("checkout", checkout);
+		model.addAttribute("ro_count", ro_count);
 
 		return "accommodation/accList";
 	}

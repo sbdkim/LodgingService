@@ -41,18 +41,16 @@
 		  SELECT rseq 
 		  FROM booking 
 		  WHERE ckindate <= #{ckindate}
-		    AND ckoutdate >= #{ckoutdate})
+		    AND ckoutdate >= #{ckoutdate}) ORDER BY price
 		]]>
 
 	
 		
 	</select>
-
 	
 	<select id="countRoomList" parameterType="int" resultType="int">
 		SELECT count(*) FROM room WHERE aseq = #{aseq}
 	</select>
-	
 	
 	<select id="listRoomWithPaging" resultType="room">
 		<![CDATA[
