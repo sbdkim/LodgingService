@@ -22,7 +22,7 @@
 <h1>Q&amp;A 게시판</h1>   
 <form name="frm" method="post">
 <input type="hidden" name="qseq" value="${qnaVO.qseq}">
-<table id="bookingList">
+<table id="orderList">
     <tr>
         <th width="20%">제목</th>
         <td> ${qnaVO.subject} ${qnaVO.rep} </td>
@@ -37,11 +37,11 @@
     </tr>
 </table>
 <c:choose>          
-  <c:when test='${qnaVO.rep=="0"}'>
-  <table id="bookngList">
+  <c:when test='${qnaVO.rep=="1"}'>
+  <table id="orderList">
       <tr>
-          <td colspan="1">
-    
+          <td colspan="2">
+      <img src="admin/images/opinionimg01.gif">
       </td>
       </tr>
     <tr>

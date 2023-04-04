@@ -50,7 +50,7 @@
 					    </c:otherwise>
 					</c:choose>
 
-					<td><a href="room_detail?rseq=${roomVO.rseq}">${roomVO.rname}</a></td>
+					<td><a href="room_detail?rseq=${roomVO.rseq}&checkin=${checkin}&checkout=${checkout}">${roomVO.rname}</a></td>
 					<td>${roomVO.price}</td>
 					<td>${roomVO.maxcap}</td>
 					<td>${roomVO.bed}</td>
@@ -64,13 +64,9 @@
 </article>
 
 <script>
-  // Get today's date
-  const today = new Date().toISOString().split('T')[0];
-  // Set the minimum date of the input
-  document.getElementById("checkin").setAttribute("min", today);
-  document.getElementById("checkout").setAttribute("min", today);
+  document.getElementById("checkin").readOnly = true;
+  document.getElementById("checkout").readOnly = true;
 </script>
-
 
 
 

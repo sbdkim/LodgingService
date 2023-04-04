@@ -8,7 +8,7 @@
       <tr>
         <td rowspan="9" width="225">
 	        <c:choose>
-				<c:when test="${accRoom.rimage == null}"><img src="room_images/default.jpg" /></c:when>    
+				<c:when test="${empty accRoom.rimage}"><img src="room_images/default.jpg" /></c:when>    
 				<c:otherwise><img src="room_images/${accRoom.rimage}" /></c:otherwise>
 			</c:choose>
 		</td>
@@ -25,10 +25,10 @@
         <td><b>1박 가격</b></td><td>${accRoom.price}</td>
      </tr>
       <tr>
-        <td><b>체크인</b></td><td></td>
+        <td><b>체크인</b></td><td>${checkin}</td>
      </tr>
       <tr>
-        <td><b>체크아웃</b></td><td></td>
+        <td><b>체크아웃</b></td><td>${checkout}</td>
      </tr>
      <tr>
         <td><b>이름</b></td><td>${loginUser.name}</td>

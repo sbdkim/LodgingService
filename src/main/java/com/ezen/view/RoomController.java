@@ -74,13 +74,18 @@ public class RoomController {
 	}
 
 	@RequestMapping("/booking")
-	public String booking(HttpSession session, RoomVO vo, Model model) {
+	public String booking(HttpSession session, RoomVO vo, 
+			@RequestParam(value="checkin") String checkin, 
+			@RequestParam(value="checkout") String checkout,
+			Model model) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
 			return "member/login";
 		} else {
 			int rseq = vo.getRseq();
 			RoomVO accRoom = roomService.getAccByRseq(rseq);
+			model.addAttribute("checkin", checkin);
+			model.addAttribute("checkout", checkout);
 			model.addAttribute("accRoom", accRoom);
 			return "room/booking";
 		}

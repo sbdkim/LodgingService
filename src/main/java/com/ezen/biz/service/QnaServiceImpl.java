@@ -46,10 +46,4 @@ public class QnaServiceImpl implements QnaService {
 
 	}
 
-	@Override
-	public List<QnaVO> getListByHost(QnaVO vo) {
-		
-		return qDao.getListByHost(vo);
-	}
-
 }
