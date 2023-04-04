@@ -85,9 +85,11 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
+
 	public List<SalesQuantity> getListBookingSales() {
 		
 		return bDao.getListBookingSales();
+
 	}
 	
 

@@ -24,5 +24,9 @@ public interface AccommodationService {
 	 public List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
 	 
 	 public String getNameByAseq(int aseq);
+	 
+	 void insertAccommodation(AccommodationVO vo);
+	 
+	 void updateAccommodation(AccommodationVO vo);
 
 }

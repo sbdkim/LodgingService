@@ -10,11 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
-import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
-import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.RoomService;
@@ -24,11 +21,6 @@ public class MypageController {
 	
 	@Autowired
 	private BookingService bookingService;
-	@Autowired
-	private AccommodationService accommodationService;
-	@Autowired
-	private RoomService roomService;
-
 	
 	@PostMapping("booking_insert")
 	public String insertBooking(BookingVO vo, HttpSession session) {
@@ -71,7 +63,6 @@ public class MypageController {
 			return "member/login";
 		} else {
 						
-		
 			vo.setEmail(loginUser.getEmail());
 			vo.setBseq(vo.getBseq());
 			vo.setStatus(0);
@@ -116,72 +107,5 @@ public class MypageController {
 		}
 	}
 	
-	@GetMapping("/hostmypage")
-	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
-		
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
-			return "member/login";
-		} else {
-						
-		
-			vo.setEmail(loginHost.getEmail());
-			
-			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-			
-					
-			model.addAttribute("accommodationList", accommodationList);
-			
-			return "mypage/hostmypage";
-						
-		}
-		
-	}
 	
-	@GetMapping("/accommodation_list")
-	public String AccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
-			return "member/login";
-		} else {
-			vo.setEmail(loginHost.getEmail());
-			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-				
-			
-			model.addAttribute("accommodationList", accommodationList);
-			
-			return "mypage/accommodationList";
-		}
-	}
-	
-	@GetMapping("/accommodation_detail")
-	public String AccommodationDetail(HttpSession session, AccommodationVO vo, Model model) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
-			return "member/login";
-		} else {
-			vo.setEmail(loginHost.getEmail());
-			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-			
-			int aseq = vo.getAseq();
-			List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
-			RoomVO accommodationDetail = new RoomVO();
-			accommodationDetail.setRseq(roomList.get(0).getRseq());
-			accommodationDetail.setRname(roomList.get(0).getRname());
-			accommodationDetail.setPrice(roomList.get(0).getPrice());
-			
-		
-			
-			model.addAttribute("accommodationDetail", accommodationDetail);
-			model.addAttribute("accommodationList", accommodationList);
-			model.addAttribute("roomList", roomList);
-			
-			return "mypage/accommodationDetail";
-		}
-	
-	}
-
 }

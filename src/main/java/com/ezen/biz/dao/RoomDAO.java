@@ -37,5 +37,11 @@ public class RoomDAO{
 		return mybatis.selectOne("RoomMapper.selectRoomByRseq", rseq);
 	}
 	
+	public void insertRoom(RoomVO vo) {
+		mybatis.insert("RoomMapper.insertRoom", vo);
+	}
 	
+	public void updateRoom(RoomVO vo) {
+		mybatis.update("RoomMapper.updateRoom", vo);
+	}
 }//RoomDAO
