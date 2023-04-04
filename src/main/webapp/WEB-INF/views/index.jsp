@@ -86,25 +86,25 @@
 
 
 <section >
-	<div class="row" style="display: flex ; justify-content: center">
+	<div id = "regionacc"class="row" style="display: flex ; justify-content: center">
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 1" style="width:100%">
-			<p>City 1</p>
+			<p>서울</p>
 		</div>
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 2" style="width:100%">
-			<p>City 2</p>
+			<p>부산</p>
 		</div>
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 3" style="width:100%">
-			<p>City 3</p>
+			<p>대구</p>
 		</div>
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 4" style="width:100%">
-			<p>City 4</p>
+			<p>인천</p>
 		</div>
 	</div>
-	<div class="row" style="display: flex ; justify-content: center">
+	<div id = "trendingacc" class="row" style="display: flex ; justify-content: center">
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 5" style="width:100%">
 			<p>City 5</p>
