@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<%@ include file="../sub_menu.jsp"%>
+
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -31,13 +31,13 @@ $(document).ready(function() {
 		var data = new google.visualization.DataTable();
 		
 		data.addColumn("string", "aname");
-		data.addColumn("number", "revenue");
+		data.addColumn("number", "bprice");
 		
 		// 콘트롤러에서 json타입으로 전달된 데이터를 
 		// 자바스크립트의 배열로 저장
 		var dataArray = [];
 		$.each(result, function(i, obj){
-			dataArray.push([obj.aname, obj.revenue]);
+			dataArray.push([obj.aname, obj.bprice]);
 		})
 		
 		// data객체에 dataArray의 내용을 저장
