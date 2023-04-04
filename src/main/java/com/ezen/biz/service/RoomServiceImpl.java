@@ -36,6 +36,18 @@ public class RoomServiceImpl implements RoomService {
 	public RoomVO selectRoomByRseq(int rseq) {
 		return rDao.selectRoomByRseq(rseq);
 	}
+
+	@Override
+	public void insertRoom(RoomVO vo) {
+		
+		rDao.insertRoom(vo);
+	}
+
+	@Override
+	public void updateRoom(RoomVO vo) {
+		
+		rDao.updateRoom(vo);
+	}
 	
 	
 	
