@@ -60,33 +60,6 @@
   
   
   <script>
-  /*
-  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-  mapOption = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-      level: 3 // 지도의 확대 레벨
-  };  
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-
- 
-    <c:forEach var="location" items="${locations}">
-    var geocoder = new kakao.maps.services.Geocoder();
-    console.log(${location.address});
-  
-      geocoder.addressSearch(location.address, function(result, status) {
-        if (status === kakao.maps.services.Status.OK) {
-          var markerPosition = new kakao.maps.LatLng(result[0].y, result[0].x);
-          var marker = new kakao.maps.Marker({
-            position: markerPosition
-          });
-          marker.setMap(map);
-        } else {
-          console.log('Geocoder failed due to: ' + status);
-        }
-      });
-   
-      </c:forEach>
-      */
   $(document).ready(function() {
 	  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	  
@@ -95,8 +68,8 @@
 	  mapOption = {
 
 		  
-				 center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			      level: 3 // 지도의 확대 레벨
+				 center: new kakao.maps.LatLng(37.564369, 126.980058), // 지도의 중심좌표
+			      level: 7 // 지도의 확대 레벨
 
 	  };  
 	  
@@ -112,7 +85,7 @@
 		  contentType: 'application/x-www-form-urlencoded; charsetset=utf-8',
 		  success : function(data) {
 			  $.each(data, function(index, location){
-				 //console.log(location.address); 
+				 console.log(location.aname); 
 				  geocoder.addressSearch(location.address, function(result, status) {
 				        if (status === kakao.maps.services.Status.OK) {
 				          var markerPosition = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -124,8 +97,8 @@
 				          
 				          
 				          
-				       // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-				          var iwContent = '<div style="padding:5px;">${location.name}</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				       		// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
+				          var iwContent = '<div style="padding:5px;">' + location.aname + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 
 				          // 인포윈도우를 생성합니다
 				          var infowindow = new kakao.maps.InfoWindow({
@@ -145,6 +118,17 @@
 				          });
 				          
 				          
+				          
+				       // 마커에 클릭이벤트를 등록합니다
+				          kakao.maps.event.addListener(marker, 'click', function() {
+				        	  // set the URL of the new page to navigate to
+				        	  // get the aseq value
+				        	  var aseq = location.aseq; // replace this with your actual aseq value
+				        	  // set the URL of the new page to navigate to, including the aseq value as a query parameter
+				        	  var url = "room?aseq=" + aseq + "&checkin1=" + today + "&checkout1=" +tomorrow;
+				        	  // navigate to the new page
+				        	  window.location.href = url;
+				          });
 				          
 				          
 				          
@@ -230,6 +214,17 @@
       
       
   </script>
+  
+<script>
+  // Get today's date
+  const today = new Date().toISOString().split('T')[0];
+  
+  
+  const tom = new Date();
+  tom.setDate(tom.getDate() + 1);
+  const tomorrow = tom.toISOString().split('T')[0];
+</script>
+  
 </body>
 </html>
 
