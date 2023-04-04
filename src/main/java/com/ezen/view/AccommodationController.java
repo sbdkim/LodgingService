@@ -39,7 +39,10 @@ public class AccommodationController {
 	@RequestMapping("/acc_search_list")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
 			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
-			@RequestParam(value = "key", defaultValue = "") String address, Model model) {
+			@RequestParam(value = "key", defaultValue = "") String address,
+			@RequestParam(value = "checkin", defaultValue = "") String checkin,
+			@RequestParam(value = "checkout", defaultValue = "") String checkout,
+			@RequestParam(value = "ro_count", defaultValue = "") String ro_count, Model model) {
 
 		Criteria criteria = new Criteria();
 		criteria.setPageNum(Integer.parseInt(pageNum));
@@ -57,6 +60,9 @@ public class AccommodationController {
 		model.addAttribute("accommodationListSize", accommodationList.size());
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("key", address);
+		model.addAttribute("checkin", checkin);
+		model.addAttribute("checkout", checkout);
+		model.addAttribute("ro_count", ro_count);
 
 		return "accommodation/accList";
 	}

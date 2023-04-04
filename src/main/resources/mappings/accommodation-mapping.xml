@@ -20,8 +20,8 @@
 	<!-- 페이지별 숙소 목록 조회 -->
 	<select id="listAccWithPaging" resultType="accommodation">
 		<![CDATA[
-		SELECT * FROM
-		(SELECT row_number() OVER (ORDER BY aname) rn, email, aname, category, address, tel, bestyn, aimage
+		SELECT aseq, email, aname, category, address, tel, bestyn, aimage FROM
+		(SELECT row_number() OVER (ORDER BY aseq) rn, aseq, email, aname, category, address, tel, bestyn, aimage
 		FROM accommodation WHERE address like '%'||#{address}||'%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}

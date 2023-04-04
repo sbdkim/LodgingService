@@ -84,7 +84,7 @@ public class HostController {
 		}
 		
 	}
-	
+	/*
 	@GetMapping("/accommodation_list")
 	public String AccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
@@ -101,6 +101,7 @@ public class HostController {
 			return "host/accommodationList";
 		}
 	}
+	*/
 	
 	@GetMapping("/accommodation_detail")
 	public String AccommodationDetail(HttpSession session, AccommodationVO vo, Model model) {

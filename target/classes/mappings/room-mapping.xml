@@ -41,7 +41,7 @@
 		  SELECT rseq 
 		  FROM booking 
 		  WHERE ckindate <= #{ckindate}
-		    AND ckoutdate >= #{ckoutdate})
+		    AND ckoutdate >= #{ckoutdate}) ORDER BY price
 		]]>
 
 	
