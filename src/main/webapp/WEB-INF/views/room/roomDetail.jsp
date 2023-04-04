@@ -146,7 +146,7 @@
 				showHTML(pageMaker, reviewList, total);
 			},
 			error: function() {
-				alert("상품평 목록을 조회하지 못했습니다.")
+				alert("리뷰 목록을 조회하지 못했습니다.")
 			}
 		});
 	}
@@ -247,9 +247,9 @@
 					getReviewList(); 	// 상품평 목록 요청함수 호출
 					$("#content").val("");
 				} else if (data=='fail') {
-					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");
+					alert("리뷰 등록이 실패하였습니다. 다시 시도해 주세요.");
 				} else if (data=='not_logedin') {
-					alert("상품평 등록은 로그인이 필요합니다.");
+					alert("리뷰 등록은 로그인이 필요합니다.");
 				}
 			},
 			error: function(request, status, error) {
