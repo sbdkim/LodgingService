@@ -25,10 +25,10 @@
         <td><b>1박 가격</b></td><td>${accRoom.price}</td>
      </tr>
       <tr>
-        <td><b>체크인</b></td><td>${checkin}</td>
+        <td><b>체크인</b></td><td>${param.checkin}</td>
      </tr>
       <tr>
-        <td><b>체크아웃</b></td><td>${checkout}</td>
+        <td><b>체크아웃</b></td><td>${param.checkout}</td>
      </tr>
      <tr>
         <td><b>이름</b></td><td>${loginUser.name}</td>
@@ -59,8 +59,18 @@
 
        
        
+  <%
+  String checkin = request.getParameter("checkin");
+  String checkout = request.getParameter("checkout");
+%>
+
+<script>
+  // Set the values of the date inputs
+
+  document.getElementById("checkin").value = '<%= checkin %>';
+  document.getElementById("checkout").value = '<%= checkout %>';
        
-       
+  </script>
        
        
        
