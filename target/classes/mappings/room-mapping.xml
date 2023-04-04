@@ -6,14 +6,8 @@
 		INSERT INTO booking(bseq, rseq, email, ckindate, ckoutdate, price, payment, status)
 		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{ckindate}, #{ckoutdate}, #{price}, #{payment}, #{status})
 	</insert>
-	
 
 	<!-- 숙박업체 등록  --> 
-	
-	
-	
-	
-	
 
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">
@@ -38,24 +32,14 @@
 		WHERE email=#{email}
 	</select>
 
-	
-	
-	
-	
 		<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
 	<select id="selectRoomByAcc" resultType="room">
 		SELECT * FROM room WHERE aseq=#{aseq}
 	</select>
 	
-	
-	
-	
-	
 	<select id="countRoomList" parameterType="int" resultType="int">
 		SELECT count(*) FROM room WHERE aseq = #{aseq}
 	</select>
-	
-	
 	
 	<select id="listRoomWithPaging" resultType="room">
 		<![CDATA[
@@ -72,11 +56,9 @@
 		SELECT * FROM room
 		WHERE rseq=#{rseq}
 	</select>
-
 	
 	<!-- rseq로 숙소조회 -->
 	<select id="selectAccByRseq" resultType="room">
 		SELECT * FROM list_room_view WHERE rseq=#{rseq}
 	</select>
-
 </mapper>

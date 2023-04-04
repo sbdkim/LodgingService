@@ -10,11 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-<<<<<<< Updated upstream
 import com.ezen.biz.dto.AccommodationVO;
-=======
 import com.ezen.biz.dto.MemberVO;
->>>>>>> Stashed changes
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.RoomService;
@@ -34,7 +31,7 @@ public class RoomController {
 	public String roomView(AccommodationVO vo, Model model, int aseq) {
 		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
-		model.addAttribute("roomList", roomList);		
+		model.addAttribute("roomList", roomList);
 		model.addAttribute("accommodationName", accommodationName);
 		return "room/roomList";
 

@@ -5,12 +5,12 @@
 <div class=top_home >
 	<!-- image + search box -->
 	<div class="alignform" style="padding-top: 10px;  height: 100%; align-items: center; "> 
-	<form action="search" name="f" method="get" style="margin-top: 200px;">
+	<form action="acc_search_list" name="f" method="get" style="margin-top: 200px;">
 		<div class=search_room style="padding-top: 10px;  height: 50%; align-items: center; ">
 			<!-- searchbox start-->
 			<div style="border-left: 1px solid #c8c8c8; margin-right: 10px; display:inline-block">
 				<input type=search class=main_search_text placeholder=서울,서초구
-					name="address" required>
+					name="key" id="key" required>
 			</div>
 			<div class=main_checkinout style="display:inline-block">
 				<div role=button style="display:inline-block">

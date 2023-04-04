@@ -4,14 +4,15 @@
 <%@ include file="../header.jsp"%>
 <article>
 <h1>숙소 검색</h1>
-<form name="frm" action="room" method="post" style="display:block">
+<form name="frm" id="acc_form" action="room" method="post" style="display:block">
+<input type="hidden" name="key" id="key" value="${key}">
 	<table>
 		<tr>
 			<td width="650">
 				지역
 				<input type="text" name="key" id="key">
-				<input class="btn" type="button" name="btn_search" value="검색" onclick="go_search()">
-				<input class="btn" type="button" name="btn_total" value="전체보기" onclick="go_total()">
+				<input class="btn" type="button" name="btn_search" value="검색" onClick="go_search()">
+				<input class="btn" type="button" name="btn_total" value="전체보기" onClick="go_total()">
 			</td>
 		</tr>
 	</table>
@@ -32,8 +33,9 @@
 				<c:forEach items="${accommodationList}" var="accommodationVO" varStatus="status">
 				
 				<tr>
-					<td>${accommodationVO.aseq}</td>
-					<td>${accommodationVO.name}</td>
+				
+					<td>${status.count}</td>
+					<td>${accommodationVO.aname}</td>
 					<td>${accommodationVO.address}</td>
 					  
 					<td>
@@ -46,10 +48,25 @@
 					<!-- <td>${accommodationVO.tel}</td>   -->
 				</tr>
 				</c:forEach>
-				<tr><td colspan="6" style="text-align:center;"> ${paging} </td></tr>
+				<tr><td colspan="4" style="text-align:center;"> ${paging} </td></tr>
 			</c:otherwise>
 		</c:choose>
 	</table>
 </form>
+<script>
+function go_search() {
+	var form = document.getElementById("acc_form");
+	form.action = "acc_search_list";
+	form.submit();
+}
+
+function go_total() {
+	var form = document.getElementById("acc_form");
+	document.getElementById("address").value = "";
+	form.action = "acc_search_list";
+	form.submit();
+}
+</script>
+<%@ include file="page_area.jsp" %>
 </article>
 <%@ include file="../footer.jsp"%>

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,7 +20,7 @@ public class AccommodationController {
 	@Autowired
 	private AccommodationService accommodationService;
 
-	@GetMapping("/search")
+	@RequestMapping("/search")
 	public String searchView(AccommodationVO vo, Model model) {
 		String address = vo.getAddress();
 		List<AccommodationVO> accommodationList = accommodationService.selectAccByAdd(address);
@@ -49,6 +48,7 @@ public class AccommodationController {
 		model.addAttribute("accommodationList", accommodationList);
 		model.addAttribute("accommodationListSize", accommodationList.size());
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("key", address);
 
 		return "accommodation/accList";
 	}
