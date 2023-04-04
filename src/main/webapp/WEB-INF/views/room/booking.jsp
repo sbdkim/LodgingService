@@ -3,6 +3,7 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 객실예약 </h2>
+
     <form name="formm" method="post">
       <table id="accRoom" align="center" border="1" width="600">      
       <tr>
@@ -25,10 +26,10 @@
         <td><b>1박 가격</b></td><td>${accRoom.price}</td>
      </tr>
       <tr>
-        <td><b>체크인</b></td><td>${checkin}</td>
+        <td><b>체크인</b></td><td>${param.checkin}</td>
      </tr>
       <tr>
-        <td><b>체크아웃</b></td><td>${checkout}</td>
+        <td><b>체크아웃</b></td><td>${param.checkout}</td>
      </tr>
      <tr>
         <td><b>이름</b></td><td><input type="text" value="${loginUser.name}"></td>
@@ -58,8 +59,18 @@
 
        
        
+  <%
+  String checkin = request.getParameter("checkin");
+  String checkout = request.getParameter("checkout");
+%>
+
+<script>
+  // Set the values of the date inputs
+
+  document.getElementById("checkin").value = '<%= checkin %>';
+  document.getElementById("checkout").value = '<%= checkout %>';
        
-       
+  </script>
        
        
        

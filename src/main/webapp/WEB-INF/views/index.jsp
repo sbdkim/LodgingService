@@ -19,13 +19,13 @@
 					<div class="main_checkinout_buttonbox" style="display:inline-block">
 						<div style="display:inline-block">
 							<input type='date' id="checkin"
-									class="main_checkin_1" name="checkin" onchange="dateChk()"
+									class="main_checkin_1" name="checkin" 
 								required>
 						</div>
 						<div style="display:inline-block">
 							<input type='date' id="checkout"
 								class="main_checkout_1" name="checkout"
-								onchange="dateChk()" required>
+								" required>
 						</div>
 					</div>
 				</div>
@@ -69,9 +69,19 @@
 <script>
   // Get today's date
   const today = new Date().toISOString().split('T')[0];
+  
+  
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowISO = tomorrow.toISOString().split('T')[0];
+  
   // Set the minimum date of the input
   document.getElementById("checkin").setAttribute("min", today);
   document.getElementById("checkout").setAttribute("min", today);
+  
+  //set default date for the date inputs
+  document.getElementById("checkin").setAttribute("value", today);
+  document.getElementById("checkout").setAttribute("value", tomorrowISO);
 </script>
 
 
