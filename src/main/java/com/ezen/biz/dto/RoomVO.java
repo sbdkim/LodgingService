@@ -299,16 +299,6 @@ public class RoomVO {
 
 
 
-	public String getAname() {
-		return aname;
-	}
-
-	public void setAname(String aname) {
-		this.aname = aname;
-	}
-	
-	
-
 	public String getRname() {
 		return rname;
 	}

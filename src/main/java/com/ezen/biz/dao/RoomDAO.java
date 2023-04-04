@@ -40,7 +40,6 @@ public class RoomDAO {
 	public RoomVO selectAccByRseq(int rseq) {
 		return mybatis.selectOne("RoomMapper.selectAccByRseq", rseq);
 	}
-}// RoomDAO
 
 	
 	public void insertRoom(RoomVO vo) {
