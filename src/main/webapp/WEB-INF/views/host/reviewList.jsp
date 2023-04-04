@@ -59,7 +59,7 @@
                             <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
                         </td>
                         <td style="width:10%;">
-                            <a href='#' onClick="save_review('${roomDetail.rseq}')" class="btn">등록</a>
+                            <a href='#' onClick="save_review('${bookingVO.bseq}')" class="btn">등록</a>
                         </td>
                     </tr>
                 </table>

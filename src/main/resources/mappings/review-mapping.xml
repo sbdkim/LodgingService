@@ -16,8 +16,8 @@
 	</select>
 	<!-- 리뷰 등록 -->
 	<insert id="insertReview">
-		INSERT INTO review(reseq,  bseq, content, score, reply)
-		VALUES(review_seq.NEXTVAL, #{bseq}, #{content}, #{score}, #{reply})
+		INSERT INTO review(reseq,  rseq, content, score)
+		VALUES(review_seq.NEXTVAL, #{rseq}, #{review.content}, #{review.score})
 	</insert>
 	
 	<!-- 객실번호로 리뷰 조회 -->

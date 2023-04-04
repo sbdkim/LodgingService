@@ -11,12 +11,12 @@
       <tr>
         <td rowspan="6" width="225" height="225">
 	        <c:choose>
-				<c:when test="${roomDetail.image == null}"><img src="room_images/default.jpg" /></c:when>    
-				<c:otherwise><img src="room_images/${roomDetail.image}" /></c:otherwise>
+				<c:when test="${roomDetail.rimage == null}"><img src="room_images/default.jpg" /></c:when>    
+				<c:otherwise><img src="room_images/${roomDetail.rimage}" /></c:otherwise>
 			</c:choose>
 		</td>
 		<td><b>객실명</b></td>
-		<td>${roomDetail.name}</td>
+		<td>${roomDetail.rname}</td>
      </tr>
       <tr>
         <td><b>가격</b></td><td>${roomDetail.price}</td>
@@ -160,7 +160,7 @@
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.bseq + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
@@ -237,7 +237,7 @@
 	/*
 	** 상품 댓글 등록
 	*/
-	function save_review(bseq) {
+	function save_review(rseq) {
 		$.ajax({
 			type:'POST',
 			url:'review/save',
@@ -250,6 +250,8 @@
 					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");
 				} else if (data=='not_logedin') {
 					alert("상품평 등록은 로그인이 필요합니다.");
+					
+					
 				}
 			},
 			error: function(request, status, error) {

@@ -184,11 +184,25 @@ public class HostController {
 //							
 //			return "host/hostBookingListDetail";
 //		}
-    @RequestMapping("/booking_record_chart")
-	@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
-	public List<SalesQuantity> salesRecordChart(){
-	List<SalesQuantity> listSales = bookingService.getListBookingSales();
-	return listSales;
-	}
+	
+	
+	//상품별 판매 실적 화면 출력
+		@RequestMapping("/admin_booking_record_form")
+		public String adminProductSalesForm() {
+		   return "admin/host/salesRecords";
+	    }
+		
+	    @RequestMapping("/booking_record_chart")
+		@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
+		public List<SalesQuantity> salesRecordChart(HttpSession session,AccommodationVO vo){
+		    HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+		    
+		    
+			vo.setEmail(loginHost.getEmail());
+			List<SalesQuantity> listSales = bookingService.getListBookingSales();
+			return listSales;
+		}
+	   }
+
 //	}?
-}
+

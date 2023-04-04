@@ -9,7 +9,7 @@ import utils.Criteria;
 public interface ReviewService {
 
 	// 리뷰 등록
-	int insertReview(ReviewVO vo);
+	int insertReview(ReviewVO vo, int rseq);
 
 	// 객실번호로 리뷰 조회
 	List<ReviewVO> selectReviewByRseq(int rseq);

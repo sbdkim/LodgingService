@@ -49,7 +49,9 @@ public class ReviewController {
 	}
 	
 	@PostMapping(value="/save")
-	public String saveReviewAction(ReviewVO reviewVO,HttpSession session) {
+	public String saveReviewAction(
+			@RequestParam(value="rseq") int rseq,
+			ReviewVO reviewVO,HttpSession session) {
 		 MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		 if (loginUser == null) {
 			 
@@ -58,7 +60,7 @@ public class ReviewController {
 			reviewVO.setEmail(loginUser.getEmail());
 		 
 		//상품명 저장
-		 if (reviewService.insertReview(reviewVO) > 0 ){
+		 if (reviewService.insertReview(reviewVO,  rseq) > 0 ){
 			 
 			 return "success";
 		 }else {

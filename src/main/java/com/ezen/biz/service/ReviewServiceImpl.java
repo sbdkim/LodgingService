@@ -17,8 +17,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDAO rDao;
 
 	@Override
-	public int insertReview(ReviewVO vo) {
-		return rDao.insertReview(vo);
+	public int insertReview(ReviewVO vo, int rseq) {
+		return rDao.insertReview(vo, rseq);
 	}
 
 	@Override

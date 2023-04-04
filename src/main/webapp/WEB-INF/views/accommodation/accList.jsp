@@ -33,7 +33,7 @@
 				
 				<tr>
 					<td>${accommodationVO.aseq}</td>
-					<td>${accommodationVO.name}</td>
+					<td>${accommodationVO.aname}</td>
 					<td>${accommodationVO.address}</td>
 					  
 					<td>

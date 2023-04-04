@@ -3,7 +3,6 @@
 <%@ include file="../header.jsp"%>
 <%@ include file="sub_menu_host.jsp"%>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({

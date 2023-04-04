@@ -58,7 +58,7 @@
  
     <!--판매실적 -->
     <select id="getListBookingSales" resultMap="salesMap">
-        SELECT aname ,sum(bprice) as sales_count FROM booking_view  GROUP BY aname
+        SELECT aname ,sum(bprice) as sales_count FROM booking_view GROUP BY aname
      </select>
 	
 
