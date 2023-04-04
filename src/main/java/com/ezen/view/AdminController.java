@@ -90,10 +90,10 @@ public class AdminController {
 	
 	
 	   //상품별 판매 실적 화면 출력
-	@RequestMapping("/admin_booking_record_form")
-		public String adminProductSalesForm() {
-		  return "admin/order/salesRecords";
-	    }
+	//@RequestMapping("/admin_booking_record_form")
+		//public String adminProductSalesForm() {
+		  //return "admin/order/salesRecords";
+	   // }
 		
 	
 	
