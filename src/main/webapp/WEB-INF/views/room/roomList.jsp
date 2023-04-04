@@ -41,16 +41,16 @@
 				<c:forEach items="${roomList}" var="roomVO">
 				<tr>
 					<c:choose>
-					    <c:when test="${empty roomVO.image}">
+					    <c:when test="${empty roomVO.rimage}">
 					       <td>  <img src="room_images/default.jpg" /></td>
 					      
 					    </c:when>    
 					    <c:otherwise>
-					        <td> <img src="room_images/${roomVO.image}" /></td>
+					        <td> <img src="room_images/${roomVO.rimage}" /></td>
 					    </c:otherwise>
 					</c:choose>
 
-					<td><a href="room_detail?rseq=${roomVO.rseq}">${roomVO.name}</a></td>
+					<td><a href="room_detail?rseq=${roomVO.rseq}">${roomVO.rname}</a></td>
 					<td>${roomVO.price}</td>
 					<td>${roomVO.maxcap}</td>
 					<td>${roomVO.bed}</td>

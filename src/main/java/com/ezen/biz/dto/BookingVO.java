@@ -5,7 +5,8 @@ import java.util.Date;
 public class BookingVO {
 	private int bseq;
 	private int rseq;
-	private String email;
+	private String memail;
+	private String hemail;
 	private String ckindate;
 	private String ckoutdate;
 	private int rprice;
@@ -35,12 +36,22 @@ public class BookingVO {
 		this.rseq = rseq;
 	}
 
-	public String getEmail() {
-		return email;
+
+
+	public String getMemail() {
+		return memail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMemail(String memail) {
+		this.memail = memail;
+	}
+
+	public String getHemail() {
+		return hemail;
+	}
+
+	public void setHemail(String hemail) {
+		this.hemail = hemail;
 	}
 
 	public String getCkindate() {
@@ -134,13 +145,12 @@ public class BookingVO {
 
 	@Override
 	public String toString() {
-		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", email=" + email + ", ckindate=" + ckindate
-				+ ", ckoutdate=" + ckoutdate + ", rprice=" + rprice + ", bprice=" + bprice + ", payment=" + payment
-				+ ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname + ", rname=" + rname + ", aseq="
-				+ aseq + ", mname=" + mname + "]";
+		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", memail=" + memail + ", hemail=" + hemail
+				+ ", ckindate=" + ckindate + ", ckoutdate=" + ckoutdate + ", rprice=" + rprice + ", bprice=" + bprice
+				+ ", payment=" + payment + ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname
+				+ ", rname=" + rname + ", aseq=" + aseq + ", mname=" + mname + "]";
 	}
 
-	
 
 
 

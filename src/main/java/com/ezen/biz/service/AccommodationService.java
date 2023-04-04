@@ -23,10 +23,14 @@ public interface AccommodationService {
 	// 전체 숙소 갯수 조회
 	 int countAccList(String address);
 	 
+	 int countHostAccList(String email);
+	 
 	 public String getNameByAseq(int aseq);
 	 
 	 void insertAccommodation(AccommodationVO vo);
 	 
 	 void updateAccommodation(AccommodationVO vo);
+	 
+	 List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
 
 }

@@ -34,6 +34,7 @@ public class AccommodationDAO {
 
 	public int countHostAccList(String email) {
 		
+		return mybatis.selectOne("AccommodationMapper.countHostAccList",email);
 	}
 	// 페이지별 숙소 조회
 	public List<AccommodationVO> listAccWithPaging(Criteria criteria, String address) {
@@ -61,6 +62,11 @@ public class AccommodationDAO {
 	
 	public void updateAccommodation(AccommodationVO vo) {
 		mybatis.update("AccommodationMapper.updateAccommodation", vo);
+	}
+	
+	public List<AccommodationVO> listHostAccommodation(AccommodationVO vo){
+		
+		return mybatis.selectList("AccommodationMapper.listHostAccommodation",vo);
 	}
 
 }

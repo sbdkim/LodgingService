@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezen.biz.dto.AccommodationVO;
-import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.dto.SalesQuantity;
@@ -41,32 +40,40 @@ public class HostController {
 	
 	@PostMapping("/host_accommodation_write_form")
 	public String hostAccommodationWriteView(Model model) {
-		String[] category = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
+		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
 		
-		model.addAttribute("category", category);
+		model.addAttribute("categoryList", categoryList);
 		
 		return "host/accommodationWrite";
 	}
 	
 	@PostMapping("/host_accommodation_write")
 	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, @RequestParam(value="default") MultipartFile uploadFile) {
+HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			vo.setAimage(fileName);
+		if(loginHost == null) {
+			return "member/login";
+		} else {
 			
-			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
+			vo.setEmail(loginHost.getEmail());
 			
-			try {
-				uploadFile.transferTo(new File(image_path + fileName));
-			} catch (IllegalStateException | IOException e) {
-				
-				e.printStackTrace();
-			} 			
+				if(!uploadFile.isEmpty()) {
+					String fileName = uploadFile.getOriginalFilename();
+					vo.setAimage(fileName);
+					
+					String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
+					
+					try {
+						uploadFile.transferTo(new File(image_path + fileName));
+					} catch (IllegalStateException | IOException e) {
+						
+						e.printStackTrace();
+					} 			
+					
+				}
 			
+			accommodationService.insertAccommodation(vo);
 		}
-		
-		accommodationService.insertAccommodation(vo);
 		
 		return "redirect:hostmypage";
 		
@@ -74,10 +81,10 @@ public class HostController {
 	}
 	
 	
-	@RequestMapping("/hostmypage")
+	@RequestMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, 
 			@RequestParam(value="pageNum", defaultValue="1") String pageNum,
-			@RequestParam(value="rowsPerPage", defaultValue="3") String rowsPerPage,
+			@RequestParam(value="rowsPerPage", defaultValue="10") String rowsPerPage,
 			@RequestParam(value="key", defaultValue="") String email,
 			Model model) {
 		
@@ -96,16 +103,15 @@ public class HostController {
 			
 			System.out.println("hostMyPageView() : criteria="+criteria);
 			
-			List<AccommodationVO> accommodationList = accommodationService.getListAccWithPaging(criteria, vo.getEmail());
+			List<AccommodationVO> accommodationList = accommodationService.getlistHostAccWithPaging(criteria, vo.getEmail());
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCriteria(criteria);
-			pageMaker.setTotalCount(accommodationService.countAccList(email));
+			pageMaker.setTotalCount(accommodationService.countHostAccList(vo.getEmail()));
 			
 			
 			model.addAttribute("accommodationList", accommodationList);
-			model.addAttribute("accList",accList);
-			model.addAttribute("accListSize", accList.size());	
+			model.addAttribute("accommodationListSize", accommodationList.size());	
 			model.addAttribute("pageMaker",pageMaker);
 			
 			return "host/hostmypage";
@@ -114,7 +120,28 @@ public class HostController {
 		
 	}
 	
-
+//	@GetMapping("/hostmypage")
+//	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
+//		
+//		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+//		
+//		if(loginHost == null) {
+//			return "member/login";
+//		} else {
+//						
+//		
+//			vo.setEmail(loginHost.getEmail());
+//			
+//			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
+//			
+//					
+//			model.addAttribute("accommodationList", accommodationList);
+//			
+//			return "host/hostmypage";
+//						
+//		}
+//		
+//	}
 	
 	@GetMapping("/accommodation_detail")
 	public String AccommodationDetail(HttpSession session, AccommodationVO vo, Model model) {
@@ -197,11 +224,14 @@ public class HostController {
 //							
 //			return "host/hostBookingListDetail";
 //		}
-    @RequestMapping("/booking_record_chart")
-	@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
-	public List<SalesQuantity> salesRecordChart(){
-	List<SalesQuantity> listSales = bookingService.getListBookingSales();
-	return listSales;
-	}
-//	}?
+//	
+//	}
+	
+	
+	 @RequestMapping("/booking_record_chart")
+	 @ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
+	 public List<SalesQuantity> salesRecordChart(){
+	   List<SalesQuantity> listSales = bookingService.getListBookingSales();
+	   return listSales;
+	 }
 }

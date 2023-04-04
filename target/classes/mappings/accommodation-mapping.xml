@@ -33,6 +33,7 @@
 	</select>
 	
 	<!-- host 숙소 -->
+
 	<select id="listHostAccWithPaging" resultType="accommodation">
 		<![CDATA[
 		SELECT * FROM
@@ -48,8 +49,14 @@
 		WHERE aseq=#{aseq}
 	</select>
 
+   <select id="listHostAccommodation" resultType="accommodation">
+      SELECT * FROM accommodation
+      WHERE email=#{email}
+   </select>
 
-	
-	
+	<insert id="insertAccommodation" parameterType="accommodation">
+		INSERT INTO accommodation(aseq, email, aname, category, address, tel, bestyn, aimage)
+		VALUES(accommodation_seq.NEXTVAL, #{email}, #{aname}, #{category}, #{address}, #{tel}, #{bestyn}, #{aimage})
+	</insert>
 
 </mapper>

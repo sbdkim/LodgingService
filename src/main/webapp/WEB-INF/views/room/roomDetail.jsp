@@ -11,12 +11,12 @@
       <tr>
         <td rowspan="6" width="225" height="225">
 	        <c:choose>
-				<c:when test="${roomDetail.image == null}"><img src="room_images/default.jpg" /></c:when>    
-				<c:otherwise><img src="room_images/${roomDetail.image}" /></c:otherwise>
+				<c:when test="${roomDetail.rimage == null}"><img src="room_images/default.jpg" /></c:when>    
+				<c:otherwise><img src="room_images/${roomDetail.rimage}" /></c:otherwise>
 			</c:choose>
 		</td>
 		<td><b>객실명</b></td>
-		<td>${roomDetail.name}</td>
+		<td>${roomDetail.rname}</td>
      </tr>
       <tr>
         <td><b>가격</b></td><td>${roomDetail.price}</td>

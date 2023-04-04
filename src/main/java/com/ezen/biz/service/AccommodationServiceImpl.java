@@ -60,5 +60,17 @@ public class AccommodationServiceImpl implements AccommodationService {
 		return aDao.listHostAccWithPaging(criteria, email);
 	}
 
+	@Override
+	public List<AccommodationVO> getListHostAccommodation(AccommodationVO vo) {
+		
+		return aDao.listHostAccommodation(vo);
+	}
+
+	@Override
+	public int countHostAccList(String email) {
+	
+		return aDao.countHostAccList(email);
+	}
+
 
 }

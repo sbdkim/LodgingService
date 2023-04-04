@@ -12,7 +12,7 @@
      <tr>  
        <td> <fmt:formatDate value="${bookingDetail.bookdate}" type="date"/></td>
        <td> ${bookingDetail.bseq} </td>    
-       <td> ${bookingDetail.email} </td>
+       <td> ${bookingDetail.memail} </td>
        <td> <fmt:formatNumber type="currency" value="${bookingDetail.bprice}" /> </td>
      </tr>    
      </table>      
