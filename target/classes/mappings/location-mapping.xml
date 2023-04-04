@@ -3,7 +3,7 @@
 <mapper namespace="LocationMapper">
 
 	<select id="selectAccomodation" resultType="location">
-		SELECT name, address FROM accommodation
+		SELECT aname, address FROM accommodation
 	</select>
 	
 

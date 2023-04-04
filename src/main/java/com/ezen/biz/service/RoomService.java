@@ -14,5 +14,7 @@ public interface RoomService {
 	
 	int countRoomList(int aseq);
 	
-	RoomVO selectRoomByRseq(int rseq);
+	RoomVO getRoomByRseq(int rseq);
+	
+	RoomVO getAccByRseq(int rseq);
 }

@@ -46,18 +46,10 @@
           
      <div class="clear"></div>
      <div id="buttons" style="float: right">
-       <input type="button"    value="예약 계속하기"  class="cancel"  
-onclick="location.href='index'">
+       <input type="button"    value="예약 계속하기"  class="cancel"  onclick="location.href='index'">
      </div>
     </form>  
   </article>
 
-       
-       
-       
-       
-       
-       
-       
-       
+            
  <%@ include file="../footer.jsp" %>    

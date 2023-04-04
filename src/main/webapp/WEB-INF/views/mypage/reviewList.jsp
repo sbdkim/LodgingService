@@ -6,7 +6,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
- 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -59,13 +58,13 @@
                             <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
                         </td>
                         <td style="width:10%;">
-                            <a href='#' onClick="save_review('${bookingVO.bseq }')" class="btn">등록</a>
+                            <a href='#' onClick="save_review('${bookingVO.bseq}')" class="btn">등록</a>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <input type="hidden" id="rseq" name="rseq" value="${bookingVO.bseq }" />        
+        <input type="hidden" id="bseq" name="bseq" value="${bookingVO.bseq }" />        
     </form>
 </div>
 <div class="container">
@@ -98,10 +97,10 @@
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
-				var totalCount = data.total;
+				var total = data.total;
 				var reviewList = data.reviewList;
 				
-				showHTML(pageMaker, reviewList, totalCount);
+				showHTML(pageMaker, reviewList, total);
 			},
 			error: function() {
 				alert("상품평 목록을 조회하지 못했습니다.")
@@ -123,13 +122,13 @@
 			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
 			success: function(data) {
 				var pageMaker = data.pageInfo;
-				var totalCount = data.total;
+				var total = data.total;
 				var reviewList = data.reviewList;
 				console.log("pageMaker=", pageMaker);
-				console.log("count=", totalCount);
+				console.log("count=", total);
 				console.log("review=", reviewList);
 				
-				showHTML(pageMaker, reviewList, totalCount);
+				showHTML(pageMaker, reviewList, total);
 			},
 			error: function() {
 				alert("상품평 목록을 조회하지 못했습니다.")
@@ -137,7 +136,7 @@
 		});
 	}
 	
-	function showHTML(pageMaker, reviewList, totalCount) {
+	function showHTML(pageMaker, reviewList, total) {
 		var html = "";
 		var p_html = "";
 		
@@ -146,7 +145,7 @@
 			$.each(reviewList, function(index, item){
 				html += "<div>";
 				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>";
-				html += "<span id=\"write_date\">" + displayTime(item.regDate) + "</span><br>";
+				html += "<span id=\"write_date\">" + displayTime(item.inDate) + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
 			});
@@ -177,7 +176,7 @@
 		}
 		
 		// 상품평 갯수 출력
-		$("#cCnt").html("댓글 " + "<span style='color:#00f;'>" + totalCount+"</span>");
+		$("#cCnt").html("댓글 " + "<span style='color:#00f;'>" + total+"</span>");
 		// 상품평 목록 출력
 		$("#reviewList").html(html);
 		// 페이징 버튼 출력

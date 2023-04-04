@@ -3,7 +3,8 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 객실상세정보 </h2>
-    <form name="formm" method="post">
+    <form name="formm" method="post" action="booking">
+    	<input type="hidden" name="rseq" value="${roomDetail.rseq}">
       <table id="roomDetail" align="center" border="1" width="500">      
       <tr>
         <td rowspan="6" width="225" height="225">
@@ -131,6 +132,7 @@
           
      <div class="clear"></div>
      <div id="buttons" style="float: right">
+       <input type="submit" value="예약하기">
        <input type="button"    value="다른 객실 보기" onclick="history.back(1)">
      </div>
     </form>  

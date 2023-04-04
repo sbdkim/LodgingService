@@ -2,13 +2,19 @@ package com.ezen.view;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+<<<<<<< Updated upstream
 import com.ezen.biz.dto.AccommodationVO;
+=======
+import com.ezen.biz.dto.MemberVO;
+>>>>>>> Stashed changes
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.RoomService;
@@ -65,9 +71,22 @@ public class RoomController {
 	@RequestMapping("/room_detail")
 	public String roomDetail(RoomVO vo, Model model) {
 		int rseq = vo.getRseq();
-		RoomVO roomDetail = roomService.selectRoomByRseq(rseq);
+		RoomVO roomDetail = roomService.getRoomByRseq(rseq);
 		model.addAttribute("roomDetail", roomDetail);
 		return "room/roomDetail";
+	}
+
+	@RequestMapping("/booking")
+	public String booking(HttpSession session, RoomVO vo, Model model) {
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			return "member/login";
+		} else {
+			int rseq = vo.getRseq();
+			RoomVO accRoom = roomService.getAccByRseq(rseq);
+			model.addAttribute("accRoom", accRoom);
+			return "room/booking";
+		}
 	}
 
 }// RoomController

@@ -12,30 +12,31 @@ import com.ezen.biz.dto.RoomVO;
 import utils.Criteria;
 
 @Repository
-public class RoomDAO{
+public class RoomDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
-	
-	public List<RoomVO> selectRoomByAcc(int aseq){
+
+	public List<RoomVO> selectRoomByAcc(int aseq) {
 		return mybatis.selectList("RoomMapper.selectRoomByAcc", aseq);
-	}//selectRoomByAcc
-	
-	public List<RoomVO> listRoomWithPaging(Criteria criteria, int aseq){
+	}// selectRoomByAcc
+
+	public List<RoomVO> listRoomWithPaging(Criteria criteria, int aseq) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("criteria", criteria);
 		map.put("name", aseq);
 		return mybatis.selectList("RoomMapper.listRoomWithPaging", map);
-	}//selectRoomByAcc
-	
+	}// selectRoomByAcc
+
 	public int countRoomList(int aseq) {
 		return mybatis.selectOne("RomMapper.countRoomList", aseq);
 	}
-	
+
 	public RoomVO selectRoomByRseq(int rseq) {
 		return mybatis.selectOne("RoomMapper.selectRoomByRseq", rseq);
 	}
-	
-	
-}//RoomDAO
+
+	public RoomVO selectAccByRseq(int rseq) {
+		return mybatis.selectOne("RoomMapper.selectAccByRseq", rseq);
+	}
+}// RoomDAO

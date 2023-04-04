@@ -14,12 +14,7 @@
 	
 	
 	
-	<!-- 이름, 이메일로 예약내역 조회 -->
-	<select id="listBookByNameEmail" resultType="booking">
-		SELECT * FROM booking_view
-		WHERE name=#{name} AND email=#{email}
-	</select>
-	
+
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">
 		SELECT * FROM booking_view
@@ -86,5 +81,10 @@
 	<select id="selectRoomByRseq" resultType="room">
 		SELECT * FROM room
 		WHERE rseq=#{rseq}
+	</select>
+	
+	<!-- rseq로 숙소조회 -->
+	<select id="selectAccByRseq" resultType="room">
+		SELECT * FROM list_room_view WHERE rseq=#{rseq}
 	</select>
 </mapper>
