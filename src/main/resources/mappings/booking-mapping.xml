@@ -17,7 +17,7 @@
 	<!-- 자신의 예약내역 조회 -->
 	<select id="listBookByEmail" resultType="booking">
 		SELECT * FROM booking_view
-		WHERE email=#{email}
+		WHERE memail=#{memail}
 	</select>
 	
 	<!-- 예약번호로 예약내역 조회 -->
@@ -29,7 +29,7 @@
 	<!-- 예약번호별로 예약내용 조회 -->
 	<select id="selectSeqBooking" resultType="int">
 		SELECT distinct(bseq) FROM booking_view
-		WHERE email=#{email} 
+		WHERE memail=#{memail} 
 		AND status LIKE '%'||#{status}||'%'
 		ORDER BY bseq DESC
 	</select>

@@ -4,7 +4,7 @@
 <%@ include file="../header.jsp"%>
 <article>
 <h1>숙소 검색</h1>
-<form name="frm" action="room" method="post" style="display:block">
+<form name="frm" id="frm" action="room" method="get" style="display:block">
 	<table>
 		<tr>
 			<td width="650">
@@ -12,6 +12,24 @@
 				<input type="text" name="key" id="key">
 				<input class="btn" type="button" name="btn_search" value="검색" onclick="go_search()">
 				<input class="btn" type="button" name="btn_total" value="전체보기" onclick="go_total()">
+			</td>
+			<td>
+						<div class=main_checkinout style="display:inline-block">
+							<div role=button style="display:inline-block">
+								<div class="main_checkinout_buttonbox" style="display:inline-block">
+									<div style="display:inline-block">
+										<input type='date' id="checkin1" 
+											class="main_checkin_1" name="checkin1" 
+											required>
+									</div>
+									<div style="display:inline-block">
+										<input type='date' id="checkout1" 
+											 class="main_checkout_1" name="checkout1"
+											 required>
+									</div>
+								</div>
+							</div>
+						</div>
 			</td>
 		</tr>
 	</table>
@@ -39,7 +57,7 @@
 					<td>
 					
 						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
-						<a href="room?aseq=${accommodationVO.aseq}" >숙소 살펴보기</a>
+						<a href="#" onclick="location.href='room?aseq=${accommodationVO.aseq}&checkin1='+document.getElementById('checkin1').value+'&checkout1='+document.getElementById('checkout1').value">숙소 살펴보기</a>
 						<%--  <button  type=submit>숙소 살펴보기</button> --%>
 					</td>
      				<!-- <td>${accommodationVO.email}</td> -->
@@ -51,5 +69,32 @@
 		</c:choose>
 	</table>
 </form>
+
+
+<script>
+  // Get today's date
+  const today = new Date().toISOString().split('T')[0];
+  // Set the minimum date of the input
+  document.getElementById("checkin1").setAttribute("min", today);
+  document.getElementById("checkout1").setAttribute("min", today);   
+  
+</script>
+
+<%--  bring the value of the previous page to be stored --%>
+<%
+  String key = request.getParameter("address");
+  String checkin = request.getParameter("checkin");
+  String checkout = request.getParameter("checkout");
+%>
+
+<script>
+  // Set the values of the date inputs
+  document.getElementById("key").value = '<%= key %>';
+  document.getElementById("checkin1").value = '<%= checkin %>';
+  document.getElementById("checkout1").value = '<%= checkout %>';
+
+  
+  
+</script>
 </article>
 <%@ include file="../footer.jsp"%>

@@ -17,11 +17,15 @@
 		SELECT count(*) FROM accommodation WHERE address like '%'||#{address}||'%'
 	</select>
 	
+	<select id="countHostAccList" parameterType="String" resultType="int">
+		SELECT count(*) FROM accommodation WHERE email=#{email}
+	</select>
+	
 	<!-- 페이지별 숙소 목록 조회 -->
 	<select id="listAccWithPaging" resultType="accommodation">
 		<![CDATA[
 		SELECT * FROM
-		(SELECT row_number() OVER (ORDER BY name) rn, email, aname, category, address, tel, bestyn, image
+		(SELECT row_number() OVER (ORDER BY aname) rn, email, aname, category, address, tel, bestyn, aimage
 		FROM accommodation WHERE address like '%'||#{address}||'%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
@@ -29,16 +33,30 @@
 	</select>
 	
 	<!-- host 숙소 -->
+
+	<select id="listHostAccWithPaging" resultType="accommodation">
+		<![CDATA[
+		SELECT * FROM
+		(SELECT row_number() OVER (ORDER BY aname) rn, email, aname, category, address, tel, bestyn, aimage
+		FROM accommodation WHERE email=#{email})
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+		]]> 
+	</select>
+	
+	<select id="selectAccByName" resultType="String">
+		SELECT aname from accommodation
+		WHERE aseq=#{aseq}
+	</select>
+
    <select id="listHostAccommodation" resultType="accommodation">
       SELECT * FROM accommodation
       WHERE email=#{email}
    </select>
-   
-   <select id="selectAccByName" resultType="String">
-      SELECT aname from accommodation
-      WHERE aseq=#{aseq}
-   </select>
-	
-	
+
+	<insert id="insertAccommodation" parameterType="accommodation">
+		INSERT INTO accommodation(aseq, email, aname, category, address, tel, bestyn, aimage)
+		VALUES(accommodation_seq.NEXTVAL, #{email}, #{aname}, #{category}, #{address}, #{tel}, #{bestyn}, #{aimage})
+	</insert>
 
 </mapper>

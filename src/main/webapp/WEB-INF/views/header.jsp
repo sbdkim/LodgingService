@@ -30,7 +30,7 @@
     	</c:when>
     	<c:when test="${not empty sessionScope.loginHost}">
     		<li><a href="logout">로그아웃</a></li>
-	      	<li><a href="hostmypage">
+	      	<li><a href="host_mypage">
 	      	 ${sessionScope.loginHost.name}님(마이페이지)</a>
 	      	</li>
     	</c:when>
