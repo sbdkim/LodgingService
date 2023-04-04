@@ -10,6 +10,8 @@ public class ReviewVO {
 	private Date indate;
 	private String reply;
 	private String email;
+	private int  rseq;
+	
 	// Getter, Setter 메소드
 	public int getReseq() {
 		return reseq;
@@ -69,10 +71,22 @@ public class ReviewVO {
 		this.reply = reply;
 	}
      
-	// ToString
+	
+	
+	public int getRseq() {
+		return rseq;
+	}
+
+	public void setRseq(int rseq) {
+		this.rseq = rseq;
+	}
+
 	@Override
 	public String toString() {
 		return "ReviewVO [reseq=" + reseq + ", bseq=" + bseq + ", content=" + content + ", score=" + score + ", indate="
-				+ indate + ", reply=" + reply + "]";
+				+ indate + ", reply=" + reply + ", email=" + email + ", rseq=" + rseq + "]";
 	}
+
+
+	
 }

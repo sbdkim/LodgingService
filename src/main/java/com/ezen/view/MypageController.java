@@ -36,7 +36,7 @@ public class MypageController {
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginUser.getEmail());
+			vo.setMemail(loginUser.getEmail());
 			bookingService.insertBooking(vo);
 
 			return "mypage/bookingList";
@@ -50,7 +50,7 @@ public class MypageController {
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginUser.getEmail());
+			vo.setMemail(loginUser.getEmail());
 			vo.setStatus(0);
 			List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
 
@@ -68,7 +68,8 @@ public class MypageController {
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginUser.getEmail());
+						
+			vo.setMemail(loginUser.getEmail());
 			vo.setBseq(vo.getBseq());
 			vo.setStatus(0);
 			vo.setRseq(vo.getRseq());
@@ -91,14 +92,15 @@ public class MypageController {
 			return "member/login";
 		} else {
 
-			vo.setEmail(loginUser.getEmail());
+
+			vo.setMemail(loginUser.getEmail());
 			vo.setStatus(0);
 			List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
 
 			BookingVO bookingDetail = new BookingVO();
 			bookingDetail.setBookdate(bookingList.get(0).getBookdate());
 			bookingDetail.setBseq(bookingList.get(0).getBseq());
-			bookingDetail.setEmail(bookingList.get(0).getEmail());
+			bookingDetail.setMemail(bookingList.get(0).getMemail());
 			bookingDetail.setBprice(bookingList.get(0).getBprice());
 
 			model.addAttribute("bookingDetail", bookingDetail);
