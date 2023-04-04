@@ -12,22 +12,27 @@
 				<input type=search class=main_search_text placeholder=서울,서초구
 					name="address" required>
 			</div>
+			
+			
 			<div class=main_checkinout style="display:inline-block">
 				<div role=button style="display:inline-block">
 					<div class="main_checkinout_buttonbox" style="display:inline-block">
 						<div style="display:inline-block">
-							<input type='date' id="checkin" min="${today }" value="${today }"
-								class="main_checkin_1" name="checkin" onchange="dateChk()"
+							<input type='date' id="checkin"
+									class="main_checkin_1" name="checkin" onchange="dateChk()"
 								required>
 						</div>
 						<div style="display:inline-block">
-							<input type='date' id="checkout" min="${tomorrow }"
-								value="${tomorrow }" class="main_checkout_1" name="checkout"
+							<input type='date' id="checkout"
+								class="main_checkout_1" name="checkout"
 								onchange="dateChk()" required>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			
+			
 
 			<div class=main_count_box style="display:inline-block">
 				<div role="button">
@@ -61,38 +66,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+  // Get today's date
+  const today = new Date().toISOString().split('T')[0];
+  // Set the minimum date of the input
+  document.getElementById("checkin").setAttribute("min", today);
+  document.getElementById("checkout").setAttribute("min", today);
+</script>
 
 
 <section >

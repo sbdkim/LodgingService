@@ -31,11 +31,23 @@
 	</select>
 
 	
+
 	<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
 	<select id="selectRoomByAcc" resultType="room">
-		SELECT * FROM room WHERE aseq=#{aseq}
-	</select>
+
+	<![CDATA[
+		SELECT * FROM room WHERE aseq=#{aseq} AND 
+		rseq NOT IN (
+		  SELECT rseq 
+		  FROM booking 
+		  WHERE ckindate <= #{ckindate}
+		    AND ckoutdate >= #{ckoutdate})
+		]]>
+
+	
 		
+	</select>
+
 	
 	<select id="countRoomList" parameterType="int" resultType="int">
 		SELECT count(*) FROM room WHERE aseq = #{aseq}
