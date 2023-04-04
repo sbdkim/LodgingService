@@ -268,7 +268,7 @@
 			data:$("#reviewForm").serialize(),
 			success: function(data) {
 				if (data=='success') {	// 상품평 등록 성공
-					getReviewList(); 	// 상품평 목록 요청함수 호출
+					getListReview(); 	// 상품평 목록 요청함수 호출
 					$("#content").val("");
 				} else if (data=='fail') {
 					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");

@@ -55,9 +55,9 @@ public class ReviewController {
 			 return "not_logedin";
 		 }else {
 			reviewVO.setEmail(loginUser.getEmail());
-		 
+			
 		//상품명 저장
-		 if (reviewService.insertReview(reviewVO,  rseq) > 0 ){
+		 if (reviewService.insertReview(reviewVO) > 0 ){
 			 
 			 return "success";
 		 }else {

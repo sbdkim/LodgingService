@@ -19,11 +19,9 @@ public class ReviewDAO {
 	private SqlSessionTemplate mybatis;
 
 	// 리뷰 등록
-	public int insertReview(ReviewVO vo, int rseq) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("review", vo);
-		map.put("rseq", rseq);
-		return mybatis.insert("ReviewMapper.insertReview", map);
+	public int insertReview(ReviewVO vo) {
+		
+		 return mybatis.insert("ReviewMapper.insertReview", vo);
 	}
 
 	// 객실번호로 리뷰 조회
