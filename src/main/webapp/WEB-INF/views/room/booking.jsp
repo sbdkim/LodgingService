@@ -25,10 +25,10 @@
         <td><b>1박 가격</b></td><td>${accRoom.price}</td>
      </tr>
       <tr>
-        <td><b>체크인</b></td><td></td>
+        <td><b>체크인</b></td><td>${checkin}</td>
      </tr>
       <tr>
-        <td><b>체크아웃</b></td><td></td>
+        <td><b>체크아웃</b></td><td>${checkout}</td>
      </tr>
      <tr>
         <td><b>이름</b></td><td><input type="text" value="${loginUser.name}"></td>

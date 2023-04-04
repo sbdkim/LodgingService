@@ -135,7 +135,7 @@
      <div class="clear"></div>
      <div id="buttons" style="float: right">
        <input type="submit" value="예약하기">
-       <input type="button"    value="다른 객실 보기" onclick="history.back(1)">
+       <input type="button"   value="다른 객실 보기" onclick="history.back(1)">
      </div>
     </form>  
   </article>
