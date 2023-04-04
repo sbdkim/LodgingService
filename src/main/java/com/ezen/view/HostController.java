@@ -70,12 +70,16 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 						e.printStackTrace();
 					} 			
 					
+				} else {
+					vo.setAimage("default.jpg");
 				}
 			
-			accommodationService.insertAccommodation(vo);
+			
 		}
+		accommodationService.insertAccommodation(vo);
 		
-		return "redirect:hostmypage";
+		
+		return "redirect:host_mypage";
 		
 		
 	}

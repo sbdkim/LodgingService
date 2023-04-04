@@ -30,13 +30,12 @@
        <td> ${bookingVO.rseq} </td>          
        <td> ${bookingVO.ckindate} </td>
        <td> ${bookingVO.ckoutdate} </td>
-       <td> <fmt:formatNumber type="currency"
-       value="${totalPrice}" /> </td>
+       <td> <fmt:formatNumber type="currency" value="${totalPrice}" /> </td>
        <td>
          <c:choose>
          <c:when test='${bookingVO.status=="0"}'> 예약완료 </c:when>
          <c:when test='${bookingVO.status=="1"}'> 입실완료 </c:when>
-         <c:when test='${bookingVO.status=="0"}'> 이용완료 </c:when>
+         <c:when test='${bookingVO.status=="3"}'> 이용완료 </c:when>
          <c:otherwise> <span style="color:red"> 취소완료 </span></c:otherwise>
          </c:choose>
        </td>

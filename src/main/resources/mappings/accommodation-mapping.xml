@@ -41,6 +41,7 @@
 		FROM accommodation WHERE email=#{email})
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+		order by aname asc
 		]]> 
 	</select>
 	
@@ -55,8 +56,8 @@
    </select>
 
 	<insert id="insertAccommodation" parameterType="accommodation">
-		INSERT INTO accommodation(aseq, email, aname, category, address, tel, bestyn, aimage)
-		VALUES(accommodation_seq.NEXTVAL, #{email}, #{aname}, #{category}, #{address}, #{tel}, #{bestyn}, #{aimage})
+		INSERT INTO accommodation(aseq, email, aname, category, address, tel, aimage)
+		VALUES(accommodation_seq.NEXTVAL, #{email}, #{aname}, #{category}, #{address}, #{tel}, #{aimage})
 	</insert>
 
 </mapper>
