@@ -28,10 +28,14 @@ public class RoomController {
 	private AccommodationService accommodationService;
 
 	@RequestMapping("/room")
-	public String roomView(AccommodationVO vo, Model model, int aseq) {
+	public String roomView(AccommodationVO vo, Model model, int aseq,
+			@RequestParam(value="checkin1") String checkin1, 
+			@RequestParam(value="checkout1") String checkout1) {
 		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
-		model.addAttribute("roomList", roomList);
+		model.addAttribute("roomList", roomList);	
+		model.addAttribute("checkin", checkin1);
+		model.addAttribute("checkout", checkout1);
 		model.addAttribute("accommodationName", accommodationName);
 		return "room/roomList";
 

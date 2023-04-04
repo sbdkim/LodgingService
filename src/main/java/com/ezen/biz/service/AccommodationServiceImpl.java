@@ -44,8 +44,20 @@ public class AccommodationServiceImpl implements AccommodationService {
 
 	@Override
 	public String getNameByAseq(int aseq) {
-		// TODO Auto-generated method stub
+		
 		return aDao.getNameByAseq(aseq);
+	}
+
+	@Override
+	public void insertAccommodation(AccommodationVO vo) {
+		
+		aDao.insertAccommodation(vo);		
+	}
+
+	@Override
+	public void updateAccommodation(AccommodationVO vo) {
+		
+		aDao.updateAccommodation(vo);
 	}
 
 }

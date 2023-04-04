@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <%@ include file="../sub_menu.jsp"%>
-
 <script type="text/javascript">
+
 $(document).ready(function() {
 	$.ajax({
 		type: 'GET',
@@ -11,7 +11,7 @@ $(document).ready(function() {
 			Accept: "application/json; charset=utf-8",
 			"Content-type": "application/json; charset=utf-8"
 		},
-		url: 'sales_record_chart',
+		url: 'booking_record_chart',
 		success: function(result) {
 			// 최신 버전의 구글 코어차트 패키지 로드해준다.
 			google.charts.load('current', {'packages':['corechart']});
@@ -30,33 +30,27 @@ $(document).ready(function() {
 		// 차트 그리는데 사용할 데이터 객체 생성
 		var data = new google.visualization.DataTable();
 		
-		data.addColumn("string", "pname");
-		data.addColumn("number", "quantity");
+		data.addColumn("string", "aname");
+		data.addColumn("number", "revenue");
 		
 		// 콘트롤러에서 json타입으로 전달된 데이터를 
 		// 자바스크립트의 배열로 저장
 		var dataArray = [];
 		$.each(result, function(i, obj){
-			dataArray.push([obj.pname, obj.quantity]);
+			dataArray.push([obj.aname, obj.revenue]);
 		})
 		
 		// data객체에 dataArray의 내용을 저장
 		data.addRows(dataArray);
 		
-		// 파이차트 그리기
-		var piechart_options = {
-			title: '제품별 판매 실적', 
-			width: 300,
-			height: 300
-		};
+	
 		
-		var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
 		
-		piechart.draw(data, piechart_options);
+	
 		
 		// 바차트 그리기
 		var barchart_options = {
-			title: '제품별 판매 실적',
+			title: '연도별 숙소 예약 현황',
 			width: 300,
 			height: 300
 		}
@@ -71,10 +65,10 @@ $(document).ready(function() {
 </script>
 
 	<div align="center">
-	<h1>제품 판매 실적</h1>
+	<h1>연도별 숙소 예약 현황</h1>
 	<table>
 		<tr>
-			<td><div id="piechart_div" style="border:1px solid #ccc"></div></td>
+			
 			<td><div id="barchart_div" style="border:1px solid #ccc"></div></td>
 		</tr>
 	</table>

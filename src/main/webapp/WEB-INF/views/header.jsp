@@ -25,7 +25,7 @@
     	<c:choose>
     	<c:when test="${empty sessionScope.loginUser && empty sessionScope.loginHost}">
     		<li><a href="login_form">로그인</a></li>
-    		<li> <a href="admin_login_form" style="width:100px;">| ADMIN)</a></li>
+    		
     	</c:when>
     	<c:when test="${not empty sessionScope.loginHost}">
     		<li><a href="logout">로그아웃</a></li>
@@ -49,7 +49,5 @@
 </header>
 
 
-</body>
-</html>
 
 

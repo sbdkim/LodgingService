@@ -8,12 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.ezen.biz.dto.AdminVO;
 import com.ezen.biz.dto.QnaVO;
+import com.ezen.biz.dto.SalesQuantity;
 import com.ezen.biz.service.AdminService;
+import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.QnaService;
 
 @Controller
@@ -24,6 +27,9 @@ public class AdminController {
 	private AdminService adminService;
 	@Autowired
 	private QnaService qnaService;
+	@Autowired
+	private BookingService bookingService;
+	
 	
 	@GetMapping("/admin_login_form")
 	public String adminLoginView() {
@@ -59,15 +65,15 @@ public class AdminController {
 		return "admin/main";
 	}// adminLogout
 	
-	
+	//admin qna 리스트
 	@RequestMapping("/admin_qna_list")
-	public String admingQnaList(Model model) {
-		List<QnaVO> qnaList=qnaService.getListAllQna();
+	public String adminQnaList(Model model ) {
+		List<QnaVO> qnaList= qnaService.getListAllQna();
 		model.addAttribute("qnaList", qnaList);
 		return "admin/qna/qnaList";
-	}//adminQnaList
+	}
 	
-	
+	//admin qna 디테일
 	@PostMapping("/admin_qna_detail")
 	public String adminQnaDetail(Model model, QnaVO vo) {
 		QnaVO qna= qnaService.getQna(vo.getQseq());
@@ -75,12 +81,25 @@ public class AdminController {
 		return "admin/qna/qnaDetail";
 	}//adminQnaDetail
 	
-	
+	//admin qna 답
 	@PostMapping("/admin_qna_repsave")
 	public String adminQnaRepSave(Model model,QnaVO vo) {
 		qnaService.updateQna(vo);
 		return "redirect:admin_qna_list";	
 		}//adminQnaRepSave
 	
+	
+	   //상품별 판매 실적 화면 출력
+	@RequestMapping("/admin_booking_record_form")
+		public String adminProductSalesForm() {
+		  return "admin/order/salesRecords";
+	    }
+		
+	@RequestMapping("/booking_record_chart")
+	@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
+		public List<SalesQuantity> salesRecordChart(){
+		List<SalesQuantity> listSales = bookingService.getListBookingSales();
+		return listSales;
+		}
 	
 }// class

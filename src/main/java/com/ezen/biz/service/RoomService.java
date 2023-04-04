@@ -10,11 +10,18 @@ public interface RoomService {
 
 	List<RoomVO> getRoomByAcc(int aseq);//selectRoomByAcc
 	
-	List<RoomVO> getRoomListWithPaging(Criteria criteria, int aseq);//selectRoomByAcc
+	List<RoomVO> getRoomListWithPaging(Criteria criteria, int rseq);//selectRoomByAcc
 	
 	int countRoomList(int aseq);
 	
 	RoomVO getRoomByRseq(int rseq);
 	
 	RoomVO getAccByRseq(int rseq);
+
+	RoomVO selectRoomByRseq(int rseq);
+	
+	void insertRoom(RoomVO vo);
+	
+	void updateRoom(RoomVO vo);
+
 }

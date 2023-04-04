@@ -46,17 +46,23 @@ public class ReviewDAO {
 	public void insertReply(ReviewVO vo) {
 		mybatis.update("ReviewMapper.insertReply", vo);
 	}
-	
-	public List<ReviewVO> reviewListwithPaging(Criteria criteria, int bseq){
+	// 리뷰 페이징
+	public List<ReviewVO> reviewListwithPaging(Criteria criteria, int rseq){
 		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("criteria", criteria);
-		map.put("rseq", bseq);
+		map.put("rseq", rseq);
 		return mybatis.selectList("ReviewMapper.reviewListwithPaging", map);
 	}
-	
-	public int getCountReviewList(int bseq) {
+	// 리뷰 갯수 구하기
+	public int getCountReviewList(int rseq) {
 		
-		return mybatis.selectOne("ReviewMapper.getCountReviewList",bseq);
+		return mybatis.selectOne("ReviewMapper.countReviewList",rseq);
+	}
+	
+	//리뷰 평점 구하기
+	public double avgScore(int rseq) {
+		return mybatis.selectOne("ReviewMapper.avgScore",rseq);
+		
 	}
 }

@@ -49,7 +49,12 @@ public class AccommodationDAO {
 		return mybatis.selectOne("AccommodationMapper.selectAccByName", aseq);
 	}
 	
+	public void insertAccommodation(AccommodationVO vo) {
+		mybatis.insert("AccommodationMapper.insertAccommodation", vo);
+	}
 	
-	
+	public void updateAccommodation(AccommodationVO vo) {
+		mybatis.update("AccommodationMapper.updateAccommodation", vo);
+	}
 
 }

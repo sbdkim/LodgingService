@@ -22,9 +22,9 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public List<RoomVO> getRoomListWithPaging(Criteria criteria, int aseq) {
+	public List<RoomVO> getRoomListWithPaging(Criteria criteria, int rseq) {
 		
-		return rDao.listRoomWithPaging(criteria, aseq);
+		return rDao.listRoomWithPaging(criteria, rseq);
 	}
 
 	@Override
@@ -40,6 +40,23 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public RoomVO getAccByRseq(int rseq) {
 		return rDao.selectAccByRseq(rseq);
+	}
+	
+	@Override
+	public void insertRoom(RoomVO vo) {
+		
+		rDao.insertRoom(vo);
+	}
+
+	@Override
+	public void updateRoom(RoomVO vo) {
+		
+		rDao.updateRoom(vo);
+	}
+
+	@Override
+	public RoomVO selectRoomByRseq(int rseq) {
+		return rDao.selectRoomByRseq(rseq);
 	}
 	
 	

@@ -294,6 +294,7 @@ public class RoomVO {
 		this.aname = aname;
 	}
 
+
 	public String getRname() {
 		return rname;
 	}
