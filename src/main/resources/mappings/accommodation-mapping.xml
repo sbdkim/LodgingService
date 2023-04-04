@@ -29,15 +29,15 @@
 	</select>
 	
 	<!-- host 숙소 -->
-	<select id="listHostAccommodation" resultType="accommodation">
-		SELECT * FROM accommodation
-		WHERE email=#{email}
-	</select>
-	
-	<select id="selectAccByName" resultType="String">
-		SELECT aname from accommodation
-		WHERE aseq=#{aseq}
-	</select>
+   <select id="listHostAccommodation" resultType="accommodation">
+      SELECT * FROM accommodation
+      WHERE email=#{email}
+   </select>
+   
+   <select id="selectAccByName" resultType="String">
+      SELECT aname from accommodation
+      WHERE aseq=#{aseq}
+   </select>
 	
 	
 

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<%@ include file="sub_menu_host.jsp"%>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-
 $(document).ready(function() {
 	$.ajax({
 		type: 'GET',
@@ -67,8 +68,9 @@ $(document).ready(function() {
 	<div align="center">
 	<h1>연도별 숙소 예약 현황</h1>
 	<table>
+
 		<tr>
-			
+
 			<td><div id="barchart_div" style="border:1px solid #ccc"></div></td>
 		</tr>
 	</table>

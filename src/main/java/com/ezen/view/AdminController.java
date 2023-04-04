@@ -95,11 +95,6 @@ public class AdminController {
 		  return "admin/order/salesRecords";
 	    }
 		
-	@RequestMapping("/booking_record_chart")
-	@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
-		public List<SalesQuantity> salesRecordChart(){
-		List<SalesQuantity> listSales = bookingService.getListBookingSales();
-		return listSales;
-		}
+	
 	
 }// class

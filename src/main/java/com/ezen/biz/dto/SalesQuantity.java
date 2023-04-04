@@ -8,18 +8,18 @@ import lombok.ToString;
 public class SalesQuantity {
 	  
 	  private String aname;
+	  private int bprice;
 	  public String getAname() {
 		return aname;
 	}
 	public void setAname(String aname) {
 		this.aname = aname;
 	}
-	public int getRevenue() {
-		return revenue;
+	public int getBprice() {
+		return bprice;
 	}
-	public void setRevenue(int revenue) {
-		this.revenue = revenue;
+	public void setBprice(int bprice) {
+		this.bprice = bprice;
 	}
-	private int revenue;
-  
+	
 }
