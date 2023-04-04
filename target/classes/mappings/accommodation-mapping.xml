@@ -47,6 +47,8 @@
 		SELECT aname from accommodation
 		WHERE aseq=#{aseq}
 	</select>
+
+
 	
 	
 

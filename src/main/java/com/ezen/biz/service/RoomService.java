@@ -10,7 +10,7 @@ public interface RoomService {
 
 	List<RoomVO> getRoomByAcc(int aseq);//selectRoomByAcc
 	
-	List<RoomVO> getRoomListWithPaging(Criteria criteria, int aseq);//selectRoomByAcc
+	List<RoomVO> getRoomListWithPaging(Criteria criteria, int rseq);//selectRoomByAcc
 	
 	int countRoomList(int aseq);
 	

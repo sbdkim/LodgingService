@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
+import com.ezen.biz.dto.SalesQuantity;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.RoomService;
@@ -168,33 +170,38 @@ public class HostController {
 		}
 	}
 	
-	@GetMapping("/host_booking_detail")
-	public String HostBookingDetail(HttpSession session, BookingVO booking, Model model) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
-			return "member/login";
-		} else {
-
-			List<BookingVO> bookingList = bookingService.getBookingListByAseq(booking);
-			
-			
-			
-			BookingVO book = new BookingVO();
-			book.setBseq(bookingList.get(0).getBseq());
-			book.setRseq(bookingList.get(0).getRseq());
-			book.setBookdate(bookingList.get(0).getBookdate());
-			book.setMname(bookingList.get(0).getMname());
-			book.setCkindate(bookingList.get(0).getCkindate());
-			book.setCkoutdate(bookingList.get(0).getCkoutdate());
-			book.setRprice(bookingList.get(0).getRprice());
-			book.setBprice(bookingList.get(0).getBprice());
-			
-
-			model.addAttribute("bookingList", bookingList);
-							
-			return "host/hostBookingListDetail";
-		}
-	
+//	@GetMapping("/host_booking_detail")
+//	public String HostBookingDetail(HttpSession session, BookingVO booking, Model model) {
+//		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+//		
+//		if(loginHost == null) {
+//			return "member/login";
+//		} else {
+//
+//			List<BookingVO> bookingList = bookingService.getBookingListByAseq(booking);
+//			
+//			
+//			
+//			BookingVO book = new BookingVO();
+//			book.setBseq(bookingList.get(0).getBseq());
+//			book.setRseq(bookingList.get(0).getRseq());
+//			book.setBookdate(bookingList.get(0).getBookdate());
+//			book.setMname(bookingList.get(0).getMname());
+//			book.setCkindate(bookingList.get(0).getCkindate());
+//			book.setCkoutdate(bookingList.get(0).getCkoutdate());
+//			book.setRprice(bookingList.get(0).getRprice());
+//			book.setBprice(bookingList.get(0).getBprice());
+//			
+//
+//			model.addAttribute("bookingList", bookingList);
+//							
+//			return "host/hostBookingListDetail";
+//		}
+    @RequestMapping("/booking_record_chart")
+	@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
+	public List<SalesQuantity> salesRecordChart(){
+	List<SalesQuantity> listSales = bookingService.getListBookingSales();
+	return listSales;
 	}
+//	}?
 }

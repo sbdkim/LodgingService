@@ -15,7 +15,7 @@
 <h1>Q&amp;A 게시글 리스트</h1>  
 <form name="frm" method="post">
 <input type="hidden" name="qseq">  
-<table id="orderList">
+<table id="bookingList">
   <tr>
     <th>번호(답변여부)</th> <th>제목</th> <th>작성자</th> <th>작성일</th>    
   </tr>
@@ -24,7 +24,7 @@
       <td>
       ${qnaVO.qseq}  
       <c:choose>          
-        <c:when test='${qnaVO.rep=="1"}'>(미처리)</c:when>
+        <c:when test='${qnaVO.rep=="0"}'>(미처리)</c:when>
         <c:otherwise>(답변처리완료)</c:otherwise>
       </c:choose>      
       </td>
@@ -33,7 +33,8 @@
         ${qnaVO.subject} 
       </a>
       </td>
-      <td> ${qnaVO.id} </td>
+      <td> ${qnaVO.email} </td>
+       
       <td> <fmt:formatDate value="${qnaVO.indate}"/></td>
       </tr>
     </c:forEach>

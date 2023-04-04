@@ -16,4 +16,5 @@ public interface QnaService {
 
 	void updateQna(QnaVO vo);
 
+	List<QnaVO> getListByHost(QnaVO vo);
 }
