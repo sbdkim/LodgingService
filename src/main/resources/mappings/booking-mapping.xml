@@ -52,12 +52,12 @@
      <resultMap type="com.ezen.biz.dto.SalesQuantity" id="salesMap">
  
 	 <result column="aname" property= "aname"/>
-	 <result column="bprice" property= "revenue"/>
+	 <result column="bprice" property= "bprice"/>
 	 </resultMap>
  
     <!--판매실적 -->
     <select id="getListBookingSales" resultMap="salesMap">
-        SELECT aname ,sum(bprice) as sales_count FROM booking_view  WHERE aseq=#{aseq} GROUP BY aname
+        SELECT aname ,sum(bprice) as sales_count FROM booking_view  WHERE aseq=#{aseq,jdbcType=NUMBER} GROUP BY aname
      </select>
 	
 </mapper>
