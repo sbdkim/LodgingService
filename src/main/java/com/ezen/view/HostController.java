@@ -153,7 +153,7 @@ public class HostController {
 			return "host/hostBookingList";
 		}
 	}
-	
+	/*
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO booking, Model model) {
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
@@ -183,4 +183,5 @@ public class HostController {
 		}
 	
 	}
+	*/
 }
