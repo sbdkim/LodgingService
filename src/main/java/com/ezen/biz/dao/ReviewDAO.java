@@ -2,6 +2,7 @@ package com.ezen.biz.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,11 @@ public class ReviewDAO {
 	private SqlSessionTemplate mybatis;
 
 	// 리뷰 등록
-	public int insertReview(ReviewVO vo) {
-		return mybatis.insert("ReviewMapper.insertReview", vo);
+	public int insertReview(ReviewVO vo, int rseq) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("review", vo);
+		map.put("rseq", rseq);
+		return mybatis.insert("ReviewMapper.insertReview", map);
 	}
 
 	// 객실번호로 리뷰 조회
