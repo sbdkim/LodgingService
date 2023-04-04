@@ -1,7 +1,5 @@
 package com.ezen.view;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,12 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.ezen.biz.dto.AccommodationVO;
-import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.dto.SalesQuantity;
@@ -87,27 +82,9 @@ public class HostController {
 		}
 		
 	}
-	/*
-	@GetMapping("/accommodation_list")
-	public String AccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
-			return "member/login";
-		} else {
-			vo.setEmail(loginHost.getEmail());
-			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-				
-			
-			model.addAttribute("accommodationList", accommodationList);
-			
-			return "host/accommodationList";
-		}
-	}
-	*/
-	
-	@GetMapping("/accommodation_list")
-	public String AccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
+
+	@GetMapping("/host_accommodation_list")
+	public String HostAccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		
 		if(loginHost == null) {

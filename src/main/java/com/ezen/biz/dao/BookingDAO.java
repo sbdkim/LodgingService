@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.biz.dto.BookingVO;
+import com.ezen.biz.dto.SalesQuantity;
 
 @Repository
 public class BookingDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
+
 	public int selectMaxBseq() {
 		return mybatis.selectOne("BookingMapper.selectMaxBseq");
 	}
@@ -32,9 +33,9 @@ public class BookingDAO {
 	public BookingVO selectBookByBseq(int bseq) {
 		return mybatis.selectOne("BookingMapper.selectBookByBseq", bseq);
 	}
-	
-	public List<Integer> selectSeqBooking(BookingVO vo){
-		
+
+	public List<Integer> selectSeqBooking(BookingVO vo) {
+
 		return mybatis.selectList("BookingMapper.selectSeqBooking", vo);
 	}
 
@@ -52,15 +53,17 @@ public class BookingDAO {
 	public List<BookingVO> getListBooking() {
 		return mybatis.selectList("BookingMapper.getListBooking");
 	}
-	
-	public List<BookingVO> listBookingByEmail(BookingVO vo){
+
+	public List<BookingVO> listBookingByEmail(BookingVO vo) {
 		return mybatis.selectList("BookingMapper.listBookingByEmail");
 	}
 
 	// aseq로 해당 예약내역 조회
-	public List<BookingVO> bookingListByAseq(BookingVO vo){
-		return mybatis.selectList("BookingMapper.bookingListByAseq",vo);
+	public List<BookingVO> bookingListByAseq(BookingVO vo) {
+		return mybatis.selectList("BookingMapper.bookingListByAseq", vo);
 	}
-	
-	
+
+	public List<SalesQuantity> getListBookingSales() {
+		return mybatis.selectList("BookingMapper.getListBookingSales");
+	}
 }
