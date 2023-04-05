@@ -64,9 +64,14 @@
      <!-- home page  -->
      <select id="listBestAccom" resultType="booking">
      <![CDATA[
-      	select aseq, aname, count(aseq),
-    	dense_rank() over (order by count(aseq) desc) rank
-		from booking_view group by aseq order by count(aseq) desc limit 4
+      	SELECT * FROM (
+			select aseq, count(aseq),aname,
+	        dense_rank() over(order by count(aseq) desc) rank
+	        from booking_view 
+	        group by aseq , aname
+	        order by count(aseq) desc
+		)
+		WHERE rownum <= 4
   		]]>
    </select>		
      
