@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+5<%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../header.jsp"%>
 <%@ include file="sub_menu_host.jsp"%>
 
 <article>
-<h1>상품등록</h1>  
+<h1>객실 등록</h1>  
 <!-- [1] 파일을 업로드 하기 위해서는 폼태그를 post 방식으로 전송하고,
 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
-<form name="frm" id="write_form" method="post" enctype="multipart/form-data">
+<form name="frm" id="room_write_form" method="post" enctype="multipart/form-data">
 <table id="list">
 <tr>
   <th>상품분류</th>

@@ -41,7 +41,7 @@ function emailok(){
 <div id="wrap">
   <h1>비밀번호 찾기 결과</h1>
   <form method="post" name="formm" action="change_pwd" id="host_pwd_form" style="margin-right:0" >
-    <label>User EMAIL</label><input type=text name="email" value="${email}" readonly="readonly">   
+    <label>User EMAIL</label><input type=text name="email" value="${hemail}" readonly="readonly">   
     <div style="margin-top: 20px">   
       <c:if test="${message == 1}">
       	<label>Password</label> 

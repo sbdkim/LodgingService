@@ -10,8 +10,8 @@
 	
 	<!-- 예약하기 -->
 	<insert id="insertBooking">
-		INSERT INTO booking(bseq, rseq, email, ckindate, ckoutdate, price, payment, status)
-		VALUES(#{bseq}, #{resq}, #{email}, #{ckindate}, #{ckoutdate}, #{price}, #{payment}, #{status})
+		INSERT INTO booking(bseq, rseq, email, checkin, checkout, price, payment, status)
+		VALUES(#{bseq}, #{resq}, #{email}, #{checkin}, #{checkout}, #{price}, #{payment}, #{status})
 	</insert>
 	
 	<!-- 자신의 예약내역 조회 -->

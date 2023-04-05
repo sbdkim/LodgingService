@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="AccommodationMapper">
+	<!-- aseq로 숙소 검색 -->
+	<select id="getAccommodaiton" resultType="accommodation">
+		SELECT * FROM accommodation WHERE aseq=#{aseq}
+	</select>
 	<!-- 지역으로 숙소 검색 -->
 	<select id="selectAccByAdd" resultType="accommodation">
 		SELECT * FROM accommodation
@@ -18,14 +22,14 @@
 	</select>
 	
 	<select id="countHostAccList" parameterType="String" resultType="int">
-		SELECT count(*) FROM accommodation WHERE email=#{email}
+		SELECT count(*) FROM accommodation WHERE hemail=#{hemail}
 	</select>
 	
 	<!-- 페이지별 숙소 목록 조회 -->
 	<select id="listAccWithPaging" resultType="accommodation">
 		<![CDATA[
-		SELECT aseq, email, aname, category, address, tel, bestyn, aimage FROM
-		(SELECT row_number() OVER (ORDER BY aseq) rn, aseq, email, aname, category, address, tel, bestyn, aimage
+		SELECT aseq, hemail, aname, category, address, tel, bestyn, aimage FROM
+		(SELECT row_number() OVER (ORDER BY aseq) rn, aseq, hemail, aname, category, address, tel, bestyn, aimage
 		FROM accommodation WHERE address like '%'||#{address}||'%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
@@ -37,8 +41,8 @@
 	<select id="listHostAccWithPaging" resultType="accommodation">
 		<![CDATA[
 		SELECT * FROM
-		(SELECT row_number() OVER (ORDER BY aname) rn, email, aname, category, address, tel, bestyn, aimage
-		FROM accommodation WHERE email=#{email})
+		(SELECT row_number() OVER (ORDER BY aname) rn, hemail, aname, category, address, tel, bestyn, aimage
+		FROM accommodation WHERE hemail=#{hemail})
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
 		order by aname asc
@@ -50,14 +54,24 @@
 		WHERE aseq=#{aseq}
 	</select>
 
-   <select id="listHostAccommodation" resultType="accommodation">
-      SELECT * FROM accommodation
-      WHERE email=#{email}
-   </select>
 
+   
+	<!-- HOST -->
+	<!-- host 이메일로 등록된 업체 찾기 -->
+	<select id="listHostAccommodation" resultType="accommodation">
+      SELECT * FROM accommodation
+      WHERE hemail=#{hemail}
+   </select>
+   	<!-- host가 accommodation 등록 -->
 	<insert id="insertAccommodation" parameterType="accommodation">
-		INSERT INTO accommodation(aseq, email, aname, category, address, tel, aimage)
-		VALUES(accommodation_seq.NEXTVAL, #{email}, #{aname}, #{category}, #{address}, #{tel}, #{aimage})
+		INSERT INTO accommodation(aseq, hemail, aname, category, address, tel, aimage)
+		VALUES(accommodation_seq.NEXTVAL, #{hemail}, #{aname}, #{category}, #{address}, #{tel}, #{aimage})
 	</insert>
+	
+	<!-- 수정 -->
+	<update id="updateAccommodation" parameterType="accommodation">
+		UPDATE accommodation SET aname=#{aname}, category=#{category}, address=#{address}, tel=#{tel}, bestyn=#{bestyn}, aimage=#{aimage}
+		WHERE aseq=#{aseq}
+	</update>
 
 </mapper>

@@ -3,8 +3,8 @@
 <mapper namespace="RoomMapper">
 	<!-- 예약하기 -->
 	<insert id="insertBooking">
-		INSERT INTO booking(bseq, rseq, email, ckindate, ckoutdate, price, payment, status)
-		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{ckindate}, #{ckoutdate}, #{price}, #{payment}, #{status})
+		INSERT INTO booking(bseq, rseq, email, checkin, checkout, price, payment, status)
+		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{checkin}, #{checkout}, #{price}, #{payment}, #{status})
 	</insert>
 	
 	<!-- 예약번호로 예약내역 조회 -->
@@ -15,7 +15,7 @@
 	
 	<!-- 예약번호로 예약수정 -->
 	<update id="updateBookByBseq">
-		UPDATE booking SET rseq=#{rseq}, ckindate=#{ckindate}, ckoutdate=#{ckoutdate}
+		UPDATE booking SET rseq=#{rseq}, checkin=#{checkin}, checkout=#{checkout}
 		WHERE bseq=#{bseq}
 	</update>
 	
@@ -27,7 +27,7 @@
 	<!-- 숙소업체별 객실 조회 -->
 	<select id="listRoomByAccommodation" resultType="room">
 		SELECT * FROM list_room_view
-		WHERE email=#{email}
+		WHERE hemail=#{hemail}
 	</select>
 
 	
@@ -40,8 +40,8 @@
 		rseq NOT IN (
 		  SELECT rseq 
 		  FROM booking 
-		  WHERE ckindate <= #{ckindate}
-		    AND ckoutdate >= #{ckoutdate}) ORDER BY price
+		  WHERE checkin <= #{checkout}
+		    AND checkout>= #{checkout}) ORDER BY price
 		]]>
 
 	

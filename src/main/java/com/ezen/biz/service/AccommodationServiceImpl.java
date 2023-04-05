@@ -16,6 +16,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 	@Autowired
 	private AccommodationDAO aDao;
 
+	
+	@Override
+	public AccommodationVO getAccommodaiton(AccommodationVO vo) {
+	
+		return aDao.getAccommodaiton(vo);
+	}
 	@Override
 	public List<AccommodationVO> selectAccByAdd(String address) {
 		return aDao.selectAccByAdd(address);
@@ -55,9 +61,9 @@ public class AccommodationServiceImpl implements AccommodationService {
 	}
 
 	@Override
-	public List<AccommodationVO> getlistHostAccWithPaging(Criteria criteria, String email) {
+	public List<AccommodationVO> getlistHostAccWithPaging(Criteria criteria, String hemail) {
 		
-		return aDao.listHostAccWithPaging(criteria, email);
+		return aDao.listHostAccWithPaging(criteria, hemail);
 	}
 
 	@Override
@@ -67,10 +73,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 	}
 
 	@Override
-	public int countHostAccList(String email) {
+	public int countHostAccList(String hemail) {
 	
-		return aDao.countHostAccList(email);
+		return aDao.countHostAccList(hemail);
 	}
+
+
 
 
 }

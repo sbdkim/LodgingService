@@ -36,44 +36,24 @@ public class HostController {
 	
 	@PostMapping("/host_accommodation_write_form")
 	public String hostAccommodationWriteView(Model model) {
-		String[] kindList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
+		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
 		
-		model.addAttribute("kindList", kindList);
+		model.addAttribute("categoryList", categoryList);
 		
 		return "host/accommodationWrite";
 	}
 	
 
-//	@PostMapping("/host_accommodation_write")
-//	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, @RequestParam(value="default") MultipartFile uploadFile) {
-//		
-//		if(!uploadFile.isEmpty()) {
-//			String fileName = uploadFile.getOriginalFilename();
-//			vo.setAimage(fileName);
-//			
-//			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
-//			
-//			try {
-//				uploadFile.transferTo(new File(image_path + fileName));
-//			} catch (IllegalStateException | IOException e) {
-//				
-//				e.printStackTrace();
-//			} 			
-//			
-//		}
-//		
-//		
-//	}
-
 	@PostMapping("/host_accommodation_write")
-	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, @RequestParam(value="default") MultipartFile uploadFile) {
-HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, 
+			@RequestParam(value="default") MultipartFile uploadFile) {
+		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		
 		if(loginHost == null) {
 			return "member/login";
 		} else {
 			
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			
 				if(!uploadFile.isEmpty()) {
 					String fileName = uploadFile.getOriginalFilename();
@@ -101,9 +81,47 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		
 		
 	}
-
 	
-	@GetMapping("/hostmypage")
+	@RequestMapping("/host_acc_update_form")
+	public String hostAccUpdateView(AccommodationVO vo, Model model) {
+		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
+		
+		AccommodationVO accommodation = accommodationService.getAccommodaiton(vo);
+		
+		model.addAttribute("accommodationVO", accommodation);
+		model.addAttribute("categoryList", categoryList);
+		
+		return "host/accommodationUpdate";
+	}
+
+	@PostMapping("/host_acc_update")
+	public String hostAccUpdate(AccommodationVO vo,
+			@RequestParam(value="accommodation_images") MultipartFile uploadFile,
+			@RequestParam(value="nonmakeImg") String org_image,
+			HttpSession session) {
+		
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			vo.setAimage(fileName);
+			
+			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
+			
+			try {
+				uploadFile.transferTo(new File(image_path + fileName));
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			vo.setAimage(org_image);
+		}
+		
+		accommodationService.updateAccommodation(vo);
+		
+		return "redirect:host_mypage";
+		
+	}
+	
+	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
 		
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
@@ -113,7 +131,7 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		} else {
 						
 		
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
 			
@@ -133,7 +151,7 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		if(loginHost == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
 				
 			
@@ -150,12 +168,12 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		if(loginHost == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
 			
 			AccommodationVO accommodationDetail = new AccommodationVO();
 			accommodationDetail.setAseq(accommodationList.get(0).getAseq());
-			accommodationDetail.setEmail(accommodationList.get(0).getEmail());
+			accommodationDetail.setHemail(accommodationList.get(0).getHemail());
 			accommodationDetail.setAname(accommodationList.get(0).getAname());
 			
 			
@@ -185,7 +203,7 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		if(loginHost == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
 				
 			
@@ -236,7 +254,7 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		    HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		    
 		    
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			List<SalesQuantity> listSales = bookingService.getListBookingSales();
 			return listSales;
 		}

@@ -7,8 +7,8 @@ public class BookingVO {
 	private int rseq;
 	private String memail;
 	private String hemail;
-	private String ckindate;
-	private String ckoutdate;
+	private String checkin;
+	private String checkout;
 	private int rprice;
 	private int bprice;
 	private int payment;
@@ -18,6 +18,8 @@ public class BookingVO {
 	private String rname;
 	private int aseq;	
 	private String mname;
+	private int tprice;
+	private int email;
 	
 	// Getter, Setter 메소드
 	public int getBseq() {
@@ -36,7 +38,14 @@ public class BookingVO {
 		this.rseq = rseq;
 	}
 
+	
+	public int getEmail() {
+		return email;
+	}
 
+	public void setEmail(int email) {
+		this.email = email;
+	}
 
 	public String getMemail() {
 		return memail;
@@ -54,20 +63,20 @@ public class BookingVO {
 		this.hemail = hemail;
 	}
 
-	public String getCkindate() {
-		return ckindate;
+	public String getCheckin() {
+		return checkin;
 	}
 
-	public void setCkindate(String ckindate) {
-		this.ckindate = ckindate;
+	public void setCkindate(String checkin) {
+		this.checkin = checkin;
 	}
 
-	public String getCkoutdate() {
-		return ckoutdate;
+	public String getCheckout() {
+		return checkout;
 	}
 
-	public void setCkoutdate(String ckoutdate) {
-		this.ckoutdate = ckoutdate;
+	public void setCheckout(String checkout) {
+		this.checkout = checkout;
 	}
 
 	public int getPayment() {
@@ -143,15 +152,22 @@ public class BookingVO {
 		this.mname = mname;
 	}
 
+	
+	public int getTprice() {
+		return tprice;
+	}
+
+	public void setTprice(int tprice) {
+		this.tprice = tprice;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", memail=" + memail + ", hemail=" + hemail
-				+ ", ckindate=" + ckindate + ", ckoutdate=" + ckoutdate + ", rprice=" + rprice + ", bprice=" + bprice
+				+ ", checkin=" + checkin + ", checkout=" + checkout + ", rprice=" + rprice + ", bprice=" + bprice
 				+ ", payment=" + payment + ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname
-				+ ", rname=" + rname + ", aseq=" + aseq + ", mname=" + mname + "]";
+				+ ", rname=" + rname + ", aseq=" + aseq + ", mname=" + mname + ", tprice=" + tprice + "]";
 	}
-
-
 
 
 }

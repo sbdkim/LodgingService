@@ -33,7 +33,7 @@
 	<table>
 	<tr>
 		<td align="right"><label> 이메일</label></td>
-		<td><input type="text" name="email" id="email2" value=""></td>
+		<td><input type="text" name="hemail" id="email2" value=""></td>
 	</tr>	
 	<tr>
 		<td align="right"><label> 이름</label></td>

@@ -14,7 +14,6 @@ import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
-import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.RoomService;
@@ -117,7 +116,7 @@ public class MypageController {
 		if (loginHost == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
 
 			model.addAttribute("accommodationList", accommodationList);
