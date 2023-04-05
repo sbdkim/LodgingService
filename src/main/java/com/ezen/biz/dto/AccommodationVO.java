@@ -11,6 +11,7 @@ public class AccommodationVO {
 	private String bestyn;
 	private String aimage;
 	private String rimage;
+	private String hemail;
 
 	// Getter, Setter 메소드
 	public int getAseq() {
@@ -91,6 +92,15 @@ public class AccommodationVO {
 
 	public void setRimage(String rimage) {
 		this.rimage = rimage;
+	}
+
+	
+	public String getHemail() {
+		return hemail;
+	}
+
+	public void setHemail(String hemail) {
+		this.hemail = hemail;
 	}
 
 	// ToString

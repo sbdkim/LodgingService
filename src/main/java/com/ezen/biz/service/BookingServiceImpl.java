@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.BookingDAO;
+import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.SalesQuantity;
 
@@ -92,9 +93,9 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 
-	public List<SalesQuantity> getListBookingSales() {
+	public List<SalesQuantity> getListBookingSales(AccommodationVO vo) {
 
-		return bDao.getListBookingSales();
+		return bDao.getListBookingSales(vo);
 
 	}
 }

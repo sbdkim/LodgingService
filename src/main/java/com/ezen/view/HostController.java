@@ -82,6 +82,7 @@ public class HostController {
 		
 	}
 	
+
 	@RequestMapping("/host_acc_update_form")
 	public String hostAccUpdateView(AccommodationVO vo, Model model) {
 		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
@@ -121,6 +122,7 @@ public class HostController {
 		
 	}
 	
+
 	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
 		
@@ -245,7 +247,7 @@ public class HostController {
 	//상품별 판매 실적 화면 출력
 		@RequestMapping("/host_booking_record_form")
 		public String adminProductSalesForm() {
-		   return "admin/host/salesRecords";
+		   return "host/salesRecords";
 	    }
 		
 	    @RequestMapping("/booking_record_chart")
@@ -254,8 +256,10 @@ public class HostController {
 		    HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		    
 		    
-			vo.setHemail(loginHost.getHemail());
-			List<SalesQuantity> listSales = bookingService.getListBookingSales();
+
+			vo.setHemail(loginHost.getEmail());
+			List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
+
 			return listSales;
 		}
 	   }

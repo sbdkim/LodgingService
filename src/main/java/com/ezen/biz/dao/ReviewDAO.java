@@ -35,8 +35,8 @@ public class ReviewDAO {
 	}
 
 	// 리뷰삭제
-	public void deleteReview(int reseq) {
-		mybatis.delete("ReviewMapper.deleteReview", reseq);
+	public void deleteReview(ReviewVO vo) {
+		mybatis.delete("ReviewMapper.deleteReview", vo);
 	}
 
 	// 전체 리뷰 조회
@@ -49,16 +49,23 @@ public class ReviewDAO {
 		mybatis.update("ReviewMapper.insertReply", vo);
 	}
 	
-	public List<ReviewVO> reviewListwithPaging(Criteria criteria, int bseq){
+	public List<ReviewVO> reviewListwithPaging(Criteria criteria, int rseq){
 		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("criteria", criteria);
-		map.put("rseq", bseq);
-		return mybatis.selectList("ReviewMapper.reviewListwithPaging", map);
+		map.put("rseq", rseq);
+		List<ReviewVO> list = mybatis.selectList("ReviewMapper.reviewListwithPaging", map);
+		
+	
+		
+		return list;
 	}
 	
-	public int getCountReviewList(int bseq) {
+	public int getCountReviewList(int rseq) {
 		
-		return mybatis.selectOne("ReviewMapper.getCountReviewList",bseq);
+		return mybatis.selectOne("ReviewMapper.countReviewList",rseq);
 	}
+	
+	
+	
 }

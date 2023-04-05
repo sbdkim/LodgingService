@@ -32,8 +32,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void deleteReview(int reseq) {
-		rDao.deleteReview(reseq);
+	public void deleteReview(ReviewVO vo) {
+		rDao.deleteReview(vo);
 	}
 
 	@Override
@@ -47,15 +47,28 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewVO> getReviewListwithPaging(Criteria criteria, int bseq) {
+	public List<ReviewVO> getReviewListwithPaging(Criteria criteria, int rseq) {
 		
-		return rDao.reviewListwithPaging(criteria, bseq);
+		return rDao.reviewListwithPaging(criteria, rseq);
 	}
 
 	@Override
-	public int getCountReviewList(int bseq) {
+	public int getCountReviewList(int rseq) {
 	
-		return rDao.getCountReviewList(bseq);
+		return rDao.getCountReviewList(rseq);
 	}
+
+	/*@Override
+	public double avgScore(int rseq) {
+		
+		Double avgScore= rDao.avgScore(rseq);
+		
+		
+		ReviewVO vo = new ReviewVO();
+		vo.setRseq(rseq);
+		vo.setScore(avgScore);
+		return rDao.avgScore(rseq);
+
+	}*/
 
 }

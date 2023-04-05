@@ -2,6 +2,7 @@ package com.ezen.biz.service;
 
 import java.util.List;
 
+import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.SalesQuantity;
 
@@ -33,5 +34,5 @@ public interface BookingService {
 
 	 List<BookingVO> getBookingListByAseq(BookingVO vo);
 	 
-	 List<SalesQuantity> getListBookingSales();
+	 List<SalesQuantity> getListBookingSales(AccommodationVO vo);
 }
