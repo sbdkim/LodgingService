@@ -24,7 +24,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	/*
+	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String home(Model model) {
 		//베스트 숙소 조회 
@@ -35,15 +35,16 @@ public class HomeController {
 		return "index";
 	}
 	
-	*/
 	
 	
 	
+	/*
 	@GetMapping("/index")
 	public String index() {
 		return "index";
 	
 	}
+	*/
 	
 	
 	

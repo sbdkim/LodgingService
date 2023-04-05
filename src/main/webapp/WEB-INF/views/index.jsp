@@ -154,7 +154,7 @@
 	
 	<div>
 		<c:forEach items="${bestAccommodationList}" var="bookingVO">
-			<p>${bookingVO.name}</p>
+			<p>${bookingVO.aname}</p>
 		</c:forEach>
 
 	</div>
