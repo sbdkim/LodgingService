@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 
-		<div class="row">KozyNest Copyright © 2023 Inferno - All rights
+		<div class="row">KozyNest Copyright © 2023 Ezen - All rights
 			reserved || Designed By: KozyNest</div>
 	</div>
 </footer>

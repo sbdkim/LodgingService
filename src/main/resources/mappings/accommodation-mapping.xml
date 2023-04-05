@@ -18,14 +18,14 @@
 	</select>
 	
 	<select id="countHostAccList" parameterType="String" resultType="int">
-		SELECT count(*) FROM accommodation WHERE email=#{email}
+		SELECT count(*) FROM accommodation WHERE hemail=#{hemail}
 	</select>
 	
 	<!-- 페이지별 숙소 목록 조회 -->
 	<select id="listAccWithPaging" resultType="accommodation">
 		<![CDATA[
-		SELECT aseq, email, aname, category, address, tel, bestyn, aimage FROM
-		(SELECT row_number() OVER (ORDER BY aseq) rn, aseq, email, aname, category, address, tel, bestyn, aimage
+		SELECT aseq, hemail, aname, category, address, tel, bestyn, aimage FROM
+		(SELECT row_number() OVER (ORDER BY aseq) rn, aseq, hemail, aname, category, address, tel, bestyn, aimage
 		FROM accommodation WHERE address like '%'||#{address}||'%')
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
@@ -37,8 +37,8 @@
 	<select id="listHostAccWithPaging" resultType="accommodation">
 		<![CDATA[
 		SELECT * FROM
-		(SELECT row_number() OVER (ORDER BY aname) rn, email, aname, category, address, tel, bestyn, aimage
-		FROM accommodation WHERE email=#{email})
+		(SELECT row_number() OVER (ORDER BY aname) rn, hemail, aname, category, address, tel, bestyn, aimage
+		FROM accommodation WHERE hemail=#{hemail})
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
 		order by aname asc
@@ -52,12 +52,26 @@
 
    <select id="listHostAccommodation" resultType="accommodation">
       SELECT * FROM accommodation
-      WHERE email=#{email}
+      WHERE hemail=#{hemail}
    </select>
 
 	<insert id="insertAccommodation" parameterType="accommodation">
-		INSERT INTO accommodation(aseq, email, aname, category, address, tel, aimage)
-		VALUES(accommodation_seq.NEXTVAL, #{email}, #{aname}, #{category}, #{address}, #{tel}, #{aimage})
+		INSERT INTO accommodation(aseq, hemail, aname, category, address, tel, aimage)
+		VALUES(accommodation_seq.NEXTVAL, #{hemail}, #{aname}, #{category}, #{address}, #{tel}, #{aimage})
 	</insert>
+	
+	
+	<!-- home page  -->
+	<select id="listAccomByRegion" resultType="accommodation">
+	<![CDATA[
+      SELECT * FROM accommodation
+      WHERE address like '%'||#{address}||'%'  
+      	]]>  
+   </select>
+	
+	
+	
+	
+	
 
 </mapper>

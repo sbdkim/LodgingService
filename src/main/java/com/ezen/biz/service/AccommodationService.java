@@ -33,4 +33,6 @@ public interface AccommodationService {
 	 
 	 List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
 
+	 
+	 public List<AccommodationVO> getAccByRegion(String address);
 }

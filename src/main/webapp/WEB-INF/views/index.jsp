@@ -77,7 +77,7 @@
   
   // Set the minimum date of the input
   document.getElementById("checkin").setAttribute("min", today);
-  document.getElementById("checkout").setAttribute("min", today);
+  document.getElementById("checkout").setAttribute("min", tomorrowISO);
   
   //set default date for the date inputs
   document.getElementById("checkin").setAttribute("value", today);
@@ -85,48 +85,102 @@
 </script>
 
 
-<section >
-	<div id = "regionacc"class="row" style="display: flex ; justify-content: center">
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 1" style="width:100%">
-			<p>서울</p>
-		</div>
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 2" style="width:100%">
-			<p>부산</p>
-		</div>
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 3" style="width:100%">
-			<p>대구</p>
-		</div>
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 4" style="width:100%">
-			<p>인천</p>
+
+			<input type="hidden" id="today" name="today">
+			<input type="hidden" id="tomorrow" name="tomorrow">
+<section>
+	<div class="white-box" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px; margin: 30px">
+		<h3 style="font-weight: bold; margin-bottom: 10px; text-align: center" >🗺️ 인기 목적지별 숙소를 확인하세요</h3>
+		<div id="regionacc" class="row" style="display: flex ; justify-content: center">
+			<div class="cell" style="padding:5px">
+				<a href="#" onclick="location.href='acc_search_list?key=서울&checkin='+document.getElementById('today').value+'&checkout='+document.getElementById('tomorrow').value+'&ro_count=2'">					
+					<img src="css/seoul.jpg" alt="City 1" style="width:100%">
+					<p>서울</p>
+				</a>
+			</div>
+			<div class="cell" style="padding:5px">
+				<a href="#" onclick="location.href='acc_search_list?key=부산&checkin='+document.getElementById('today').value+'&checkout='+document.getElementById('tomorrow').value+'&ro_count=2'">
+					<img src="css/busan.jpg" alt="City 2" style="width:100%">
+					<p>부산</p>
+				</a>
+			</div>
+			<div class="cell" style="padding:5px">
+				<a href="#" onclick="location.href='acc_search_list?key=제주&checkin='+document.getElementById('today').value+'&checkout='+document.getElementById('tomorrow').value+'&ro_count=2'">
+					<img src="css/jeju.jpg" alt="City 3" style="width:100%">
+					<p>제주</p>
+				</a>
+			</div>
+			<div class="cell" style="padding:5px">
+				<a href="#" onclick="location.href='acc_search_list?key=대구&checkin='+document.getElementById('today').value+'&checkout='+document.getElementById('tomorrow').value+'&ro_count=2'">
+					<img src="css/daegu.jpg" alt="City 4" style="width:100%">
+					<p>대구</p>
+				</a>
+				
+			</div>
 		</div>
 	</div>
+	
+	<div class="white-box" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px; margin: 30px;">
+		<h3 style="font-weight: bold; margin-bottom: 10px; text-align: center">🔥 최근에 가장 인기 많은 숙소를 방문하세요</h3>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	<div id = "trendingacc" class="row" style="display: flex ; justify-content: center">
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 5" style="width:100%">
-			<p>City 5</p>
+			<p>Accommodation1</p>
 		</div>
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 6" style="width:100%">
-			<p>City 6</p>
+			<p>Accommodation2</p>
 		</div>
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 7" style="width:100%">
-			<p>City 7</p>
+			<p>Accommodation3</p>
 		</div>
 		<div class="cell" style="padding:5px">
 			<img src="css/dummy.jpg" alt="City 8" style="width:100%">
-			<p>City 8</p>
+			<p>Accommodation4</p>
 		</div>
+	</div>
+	
+	<div>
+		<c:forEach items="${bestAccommodationList}" var="bookingVO">
+			<p>${bookingVO.name}</p>
+		</c:forEach>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	</div>
 </section>
 
 
 </body>
-
+<script>
+  document.getElementById("today").setAttribute("value", today);
+  document.getElementById("tomorrow").setAttribute("value", tomorrowISO);
+</script>
 
 
 

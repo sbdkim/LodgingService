@@ -10,8 +10,8 @@
 	
 	<!-- 예약하기 -->
 	<insert id="insertBooking">
-		INSERT INTO booking(bseq, rseq, email, ckindate, ckoutdate, price, payment, status)
-		VALUES(#{bseq}, #{resq}, #{email}, #{ckindate}, #{ckoutdate}, #{price}, #{payment}, #{status})
+		INSERT INTO booking(bseq, rseq, memail, checkin, checkout, bprice, payment, status)
+		VALUES(#{bseq}, #{rseq}, #{memail}, #{checkin}, #{checkout}, #{bprice}, #{payment}, #{status})
 	</insert>
 	
 	<!-- 자신의 예약내역 조회 -->
@@ -60,6 +60,19 @@
     <select id="getListBookingSales" resultMap="salesMap">
         SELECT aname ,sum(bprice) as sales_count FROM booking_view GROUP BY aname
      </select>
+     
+     <!-- home page  -->
+     <select id="listBestAccom" resultType="booking">
+     <![CDATA[
+      	select aseq, aname, count(aseq),
+    	dense_rank() over (order by count(aseq) desc) rank
+		from booking_view group by aseq order by count(aseq) desc limit 4
+  		]]>
+   </select>		
+     
+     
+     
+     
 	
 
 </mapper>

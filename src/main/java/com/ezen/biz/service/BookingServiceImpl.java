@@ -97,4 +97,9 @@ public class BookingServiceImpl implements BookingService {
 		return bDao.getListBookingSales();
 
 	}
+
+	@Override
+	public List<BookingVO> listBestAccom() {
+		return bDao.listBestAccom();
+	}
 }

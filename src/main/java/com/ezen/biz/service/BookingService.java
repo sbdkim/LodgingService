@@ -34,4 +34,6 @@ public interface BookingService {
 	 List<BookingVO> getBookingListByAseq(BookingVO vo);
 	 
 	 List<SalesQuantity> getListBookingSales();
+	 
+	 public List<BookingVO> listBestAccom();
 }

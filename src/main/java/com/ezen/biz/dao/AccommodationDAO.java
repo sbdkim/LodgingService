@@ -68,5 +68,13 @@ public class AccommodationDAO {
 		
 		return mybatis.selectList("AccommodationMapper.listHostAccommodation",vo);
 	}
+	
+	public List<AccommodationVO> getAccByRegion(String address){
+		return mybatis.selectList("AccommodationMapper.listAccomByRegion", address);
+	}
+	
+	
+	
+	
 
 }

@@ -72,5 +72,11 @@ public class AccommodationServiceImpl implements AccommodationService {
 		return aDao.countHostAccList(email);
 	}
 
+	@Override
+	public List<AccommodationVO> getAccByRegion(String address) {
+		
+		return aDao.getAccByRegion(address);
+	}
+
 
 }
