@@ -160,8 +160,9 @@
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"review_item\"> <strong>작성자: " + item.bseq + "</strong>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.reseq + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
+				html += "<span id=\"write_score\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
 			});
@@ -245,6 +246,7 @@
 			success: function(data) {
 				if (data=='success') {	// 상품평 등록 성공
 					getListReview(); 	// 상품평 목록 요청함수 호출
+			        $("#score").val(),
 					$("#content").val("");
 				} else if (data=='fail') {
 					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");
@@ -258,5 +260,31 @@
 				alert("error:" + error);
 			}
 		});
+		/*
+		function delete_review(reseq) {
+		$("#btn_reply_Delete").click(function(){
+	        
+	        if(confirm("삭제 하시겠습니까?")){
+	        
+	        //댓글 삭제를 하기위해 댓글 번호, 글 번호, 댓글 내용, 그리고 게시글 세부 페이지로 포워딩 하기 위해 페이지 관련 값들을 변수에 저장한다.
+	            var reseq = $("#reseq").val();
+	            var rseq = $("#rseq").val();
+	            var score = $("#score").val();
+	            var content = $("textarea#r_content").text();
+	           
+	          
+	            
+	            
+	            //url로 삭제에 필요한 변수들을 보낸다.
+	            document.form1.action="review_delete.do?reseq="+reseq+"&rseq="+rseq+"&score="+score+"&content="+content;
+	            
+	            document.form1.submit();
+	            
+	            alert("댓글이 삭제되었습니다.")
+	            
+	        }
+	    });
+	});		
+		  */
 	}
 </script>

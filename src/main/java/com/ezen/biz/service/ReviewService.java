@@ -18,7 +18,7 @@ public interface ReviewService {
 	void updateReview(ReviewVO vo);
 
 	// 리뷰삭제
-	void deleteReview(int reseq);
+	void deleteReview(ReviewVO vo);
 
 	// 전체 리뷰 조회
 	List<ReviewVO> getListReview();

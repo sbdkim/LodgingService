@@ -10,6 +10,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+ <link rel="stylesheet" href="/webapp/star-rating/css/star-rating.css" media="all" type="text/css"/>
+<link rel="stylesheet" href="/LodgingService/star-rating/themes/krajee-svg/theme.css" media="all" type="text/css"/> 
+<script src="/LodgingService/star-rating/js/star-rating.js" type="text/javascript" ></script>
+<script src="/LodgingService/star-rating/themes/krajee-svg/theme.js" type="text/javascript"></script>
     
     <style>
     #cCnt {
@@ -53,8 +57,15 @@
                 <span><h4>리뷰</h4></span> <span id="cCnt"></span>
             </div>
             <div id="reply">
-                <table id="rep_input" style="width: 650px">                    
-                    <tr>
+         
+					<br>
+					&nbsp;&nbsp;&nbsp;<label for="score" class="control-label">별점 주기</label>
+					<table>
+						<tr>
+				<td width="30"></td>
+				<td width="250">
+					<input id="score" name="score" class="rating rating-loading" data-min="0" data-max="5" data-step="1" >
+				</td>
                         <td style="width:80%;">
                             <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
                         </td>
