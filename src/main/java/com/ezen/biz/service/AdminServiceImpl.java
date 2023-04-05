@@ -47,7 +47,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int loginAdmin(HostVO vo) {
-		String email = vo.getEmail();
+		String email = vo.getHemail();
 		String inputPwd = vo.getPwd();
 		return aDao.loginAdmin(email , inputPwd);
 	

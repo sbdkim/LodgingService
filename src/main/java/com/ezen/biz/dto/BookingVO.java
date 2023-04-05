@@ -5,6 +5,7 @@ import java.util.Date;
 public class BookingVO {
 	private int bseq;
 	private int rseq;
+	private String email;
 	private String memail;
 	private String hemail;
 	private String checkin;
@@ -34,6 +35,15 @@ public class BookingVO {
 
 	public void setRseq(int rseq) {
 		this.rseq = rseq;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getMemail() {
@@ -142,14 +152,10 @@ public class BookingVO {
 
 	@Override
 	public String toString() {
-		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", memail=" + memail + ", hemail=" + hemail + ", checkin="
-				+ checkin + ", checkout=" + checkout + ", rprice=" + rprice + ", bprice=" + bprice + ", payment="
-				+ payment + ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname + ", rname=" + rname
-				+ ", aseq=" + aseq + ", mname=" + mname + "]";
+
+		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", email=" + email + ", memail=" + memail + ", hemail="
+				+ hemail + ", checkin=" + checkin + ", checkout=" + checkout + ", rprice=" + rprice + ", bprice="
+				+ bprice + ", payment=" + payment + ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname
+				+ ", rname=" + rname + ", aseq=" + aseq + ", mname=" + mname + "]";
 	}
-
-
-
-	
-
 }

@@ -6,11 +6,8 @@ import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.SalesQuantity;
 
 public interface BookingService {
-	
-	int selectMaxBseq();
-
 	// 예약하기
-	int insertBooking(BookingVO vo);
+	void insertBooking(BookingVO vo);
 
 	// 이름, 이메일로 예약내역 조회
 	List<BookingVO> getListBookByEmail(BookingVO vo);

@@ -5,6 +5,7 @@
 	<insert id="insertBooking">
 		INSERT INTO booking(bseq, rseq, email, checkin, checkout, price, payment, status)
 		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{checkin}, #{checkout}, #{price}, #{payment}, #{status})
+
 	</insert>
 	
 	<!-- 예약번호로 예약내역 조회 -->
@@ -27,7 +28,7 @@
 	<!-- 숙소업체별 객실 조회 -->
 	<select id="listRoomByAccommodation" resultType="room">
 		SELECT * FROM list_room_view
-		WHERE email=#{email}
+		WHERE hemail=#{hemail}
 	</select>
 
 	
@@ -44,8 +45,6 @@
 		    AND checkout >= #{checkout}) ORDER BY price
 		]]>
 
-	
-		
 	</select>
 	
 	<select id="countRoomList" parameterType="int" resultType="int">
@@ -55,7 +54,7 @@
 	<select id="listRoomWithPaging" resultType="room">
 		<![CDATA[
 		SELECT * FROM
-		(SELECT row_number() OVER (ORDER BY rname) rn, rname, price, maxcap, ckintime, ckouttime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, coffeemachine, fridge, bathtub, parking, heater, microwave, kettle, washer, bbq, hairdrier, amenity, towel, elevator, breakfast, smoking, gym, roomservice, image1, image2, image3, image4, image5
+		(SELECT row_number() OVER (ORDER BY rname) rn, rname, price, maxcap, ckintime, ckouttime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, coffeemachine, fridge, bathtub, parking, heater, microwave, kettle, washer, bbq, hairdrier, amenity, towel, elevator, breakfast, smoking, gym, roomservice, image
 		FROM room WHERE aseq = #{aseq}
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}

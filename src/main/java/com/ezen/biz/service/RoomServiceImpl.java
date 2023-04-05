@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.RoomDAO;
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.RoomVO;
 
 import utils.Criteria;
@@ -17,8 +18,8 @@ public class RoomServiceImpl implements RoomService {
 	private RoomDAO rDao;
 	
 	@Override
-	public List<RoomVO> getRoomByAcc(int aseq) {
-		return rDao.selectRoomByAcc(aseq);
+	public List<RoomVO> getRoomByAcc(BookingVO vo) {
+		return rDao.selectRoomByAcc(vo);
 	}
 
 	@Override
