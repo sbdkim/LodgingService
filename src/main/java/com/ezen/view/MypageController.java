@@ -32,14 +32,12 @@ public class MypageController {
 	@PostMapping("booking_insert")
 	public String insertBooking(BookingVO vo, HttpSession session) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setMemail(loginUser.getEmail());
+			vo.setEmail(loginUser.getEmail());
 			bookingService.insertBooking(vo);
-
-			return "mypage/bookingList";
+			return "redirect:mypage";
 		}
 	}
 
@@ -56,7 +54,7 @@ public class MypageController {
 
 			model.addAttribute("bookingList", bookingList);
 
-			return "mypage/bookingList";
+			return "mypage/mypage";
 		}
 	}
 
@@ -68,8 +66,8 @@ public class MypageController {
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-						
-			vo.setMemail(loginUser.getEmail());
+
+			vo.setEmail(loginUser.getEmail());
 			vo.setBseq(vo.getBseq());
 			vo.setStatus(0);
 			vo.setRseq(vo.getRseq());
@@ -91,7 +89,6 @@ public class MypageController {
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-
 
 			vo.setMemail(loginUser.getEmail());
 			vo.setStatus(0);
@@ -117,7 +114,7 @@ public class MypageController {
 		if (loginHost == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
 
 			model.addAttribute("accommodationList", accommodationList);
@@ -125,6 +122,5 @@ public class MypageController {
 			return "mypage/accommodationList";
 		}
 	}
-
 
 }

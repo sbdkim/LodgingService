@@ -25,7 +25,7 @@
 						<div style="display:inline-block">
 							<input type='date' id="checkout"
 								class="main_checkout_1" name="checkout"
-								" required>
+								 required>
 						</div>
 					</div>
 				</div>
