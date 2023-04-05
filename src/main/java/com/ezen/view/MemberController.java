@@ -62,7 +62,7 @@ public class MemberController {
 
 				model.addAttribute("loginAdmin", adminService.getAdmin(vo.getHemail()));
 
-				return "redirect:index";
+				return "admin/member/memberList";
 			} else {
 				return "host/login_fail";
 			}

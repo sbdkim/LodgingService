@@ -5,7 +5,7 @@
 <script type="text/javascript">
   function go_search()
   {
-     document.frm.action="admin_member_list";
+     document.frm.action="admin_host_list";
      document.frm.submit();
   }
 </script>
@@ -25,28 +25,27 @@
 <br>
 <table id="orderList">
   <tr>
-    <th> 아이디(탈퇴여부) </th>    <th> 이름 </th>
-    <th> 이메일 </th>             <th> 우편번호 </th>  
-    <th> 주소 </th>  <th> 전화 </th>  <th> 가입일 </th>
+    <th> (탈퇴여부) </th>    
+    <th> 이름 </th>
+    <th> 이메일 </th>            
+    <th> 전화 </th>  
+    
   </tr>
-  <c:forEach items="${memberList}" var="memberVO">  
+  <c:forEach items="${hostList}" var="hostVO">  
   <tr>
-    <td>${memberVO.id} 
+    <td> 
     <c:choose>
-      <c:when test='${memberVO.useyn=="y"}'>
-        <input type="checkbox" name="useyn" disabled="disabled">
+      <c:when test='${hostVO.status=="0"}'>
+        <input type="checkbox" name="status" disabled="disabled">
       </c:when>
       <c:otherwise>
-        <input type="checkbox" name="useyn" checked="checked" disabled="disabled">
+        <input type="checkbox" name="status" checked="checked" disabled="disabled">
       </c:otherwise>
     </c:choose>
     </td>
-    <td> ${memberVO.name} </td>
-    <td> ${memberVO.email} </td> 
-    <td> ${memberVO.zip_num} </td>
-    <td> ${memberVO.address} </td>
-    <td> ${memberVO.phone} </td> 
-    <td> <fmt:formatDate value="${memberVO.regdate}"/></td>
+    <td> ${hostVO.name} </td>
+    <td> ${hostVO.hemail} </td> 
+    <td> ${hostVO.phone} </td>
   </tr>
   </c:forEach>
 </table>

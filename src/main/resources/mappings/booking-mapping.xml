@@ -2,55 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="BookingMapper">
 	
-	<!-- 예약하기 -->
-	<insert id="insertBooking">
-
-		INSERT INTO booking(bseq, rseq, email, checkin, checkout, bprice, payment, status)
-		VALUES(book_seq.NEXTVAL, #{rseq}, #{email}, #{checkin}, #{checkout}, #{bprice}, #{payment}, #{status})
-
-	</insert>
-	
-	<!-- 자신의 예약내역 조회 -->
-	<select id="listBookByEmail" resultType="booking">
-		SELECT * FROM booking_view
-		WHERE email=#{email}
-	</select>
-	
-	<!-- 예약번호로 예약내역 조회 -->
-	<select id="selectBookByBseq" resultType="booking">
-		SELECT * FROM booking_view
-		WHERE bseq=#{bseq}
-	</select>
-	
-	<!-- 예약번호별로 예약내용 조회 -->
-	<select id="selectSeqBooking" resultType="int">
-		SELECT distinct(bseq) FROM booking_view
-		WHERE memail=#{memail} 
-		AND status LIKE '%'||#{status}||'%'
-		ORDER BY bseq DESC
-	</select>
-	
-	<!-- 예약번호로 예약수정 -->
-	<update id="updateBookByBseq">
-		UPDATE booking SET status=1
-		WHERE bseq=#{bseq}
-	</update>
-	
-	<!-- 예약번호로 예약취소 -->
-	<delete id="deleteBookByBseq">
-		DELETE booking WHERE bseq=#{bseq}
-	</delete>
-	
-	<!-- 전체 예약 내역 조회 -->
-	<select id="getListBooking" resultType="booking">
-		SELECT * FROM booking ORDER BY bseq DESC
-	</select>
+<!-- 예약하기 -->
+   <insert id="insertBooking">
+      INSERT INTO booking(bseq, rseq, email, checkin, checkout, bprice, payment, status)
+      VALUES(book_seq.NEXTVAL, #{rseq}, #{email}, #{checkin}, #{checkout}, #{bprice}, #{payment}, #{status})
+   </insert>
+   
+   <!-- 자신의 예약내역 조회 -->
+   <select id="listBookByEmail" resultType="booking">
+      SELECT * FROM booking_view
+      WHERE email=#{email}
+   </select>
+   
+   <!-- 예약번호로 예약내역 조회 -->
+   <select id="selectBookByBseq" resultType="booking">
+      SELECT * FROM booking_view
+      WHERE bseq=#{bseq}
+   </select>
+   
+   <!-- 예약번호별로 예약내용 조회 -->
+   <select id="selectSeqBooking" resultType="int">
+      SELECT distinct(bseq) FROM booking_view
+      WHERE memail=#{memail} 
+      AND status LIKE '%'||#{status}||'%'
+      ORDER BY bseq DESC
+   </select>
+   
+   <!-- 예약번호로 예약수정 -->
+   <update id="updateBookByBseq">
+      UPDATE booking SET status=1
+      WHERE bseq=#{bseq}
+   </update>
+   
+   <!-- 예약번호로 예약취소 -->
+   <delete id="deleteBookByBseq">
+      DELETE booking WHERE bseq=#{bseq}
+   </delete>
+   
+   <!-- 전체 예약 내역 조회 -->
+   <select id="getListBooking" resultType="booking">
+      SELECT * FROM booking ORDER BY bseq DESC
+   </select>
 
      <resultMap type="com.ezen.biz.dto.SalesQuantity" id="salesMap">
  
-	 <result column="aname" property= "aname"/>
-	 <result column="bprice" property= "bprice"/>
-	 </resultMap>
+    <result column="aname" property= "aname"/>
+    <result column="bprice" property= "bprice"/>
+    </resultMap>
  
     <!--판매실적 -->
     <select id="getListBookingSales" resultMap="salesMap">
@@ -60,17 +58,16 @@
      <!-- home page  -->
      <select id="listBestAccom" resultType="booking">
      <![CDATA[
-      	SELECT * FROM (
-			select aseq, count(aseq),aname,
-	        dense_rank() over(order by count(aseq) desc) rank
-	        from booking_view 
-	        group by aseq , aname
-	        order by count(aseq) desc
-		)
-		WHERE rownum <= 4
-  		]]>
-   </select>		
-     
+         SELECT * FROM (
+         select aseq, count(aseq),aname,
+           dense_rank() over(order by count(aseq) desc) rank
+           from booking_view 
+           group by aseq , aname
+           order by count(aseq) desc
+      )
+      WHERE rownum <= 4
+        ]]>
+   </select>      
      
      
      

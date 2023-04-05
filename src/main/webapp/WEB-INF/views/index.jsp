@@ -138,7 +138,7 @@
 		
 	    	<div class="cell" style="padding:5px">
 	    	<a href="#" onclick="location.href='room?aseq=${bookingVO.aseq}&checkin='+document.getElementById('today').value+'&checkout='+document.getElementById('tomorrow').value">
-		        <img src="css/${bookingVO.aseq}.jpg" style="width:100%">
+		        <img src="accommodation_images/${bookingVO.aseq}.jpg" style="width:100%">
 			     <p>${bookingVO.aname}</p>
 			   </a>
 		    </div>
