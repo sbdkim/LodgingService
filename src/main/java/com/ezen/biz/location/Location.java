@@ -3,8 +3,26 @@ package com.ezen.biz.location;
 public class Location {
 
 	private int id;
-	private String name;
+	private int aseq;
+	private String aname;
 	private String address;
+	private String aimage;
+
+	public int getAseq() {
+		return aseq;
+	}
+
+	public String getAimage() {
+		return aimage;
+	}
+
+	public void setAimage(String aimage) {
+		this.aimage = aimage;
+	}
+
+	public void setAseq(int aseq) {
+		this.aseq = aseq;
+	}
 
 	public int getId() {
 		return id;
@@ -14,12 +32,12 @@ public class Location {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getAname() {
+		return aname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAname(String name) {
+		this.aname = name;
 	}
 
 	public String getAddress() {
@@ -32,8 +50,11 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [name=" + name + ", address=" + address + "]";
+		return "Location [id=" + id + ", aseq=" + aseq + ", aname=" + aname + ", address=" + address + ", aimage="
+				+ aimage + "]";
 	}
+
+
 
 	
 	

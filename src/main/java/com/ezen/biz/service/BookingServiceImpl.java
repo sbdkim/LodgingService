@@ -19,31 +19,31 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public int selectMaxBseq() {
-		
+
 		return bDao.selectMaxBseq();
 	}
-	
+
 	@Override
 	public int insertBooking(BookingVO vo) {
-		
-		// 1.신규 예약번호 
+
+		// 1.신규 예약번호
 		int bseq = selectMaxBseq();
 		vo.setBseq(bseq);
-		
+
 		// 2.신규 예약을 예약 테이블에 저장
 		bDao.insertBooking(vo);
-		
+
 		List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
-		
-		for(BookingVO booking : bookingList) {
+
+		for (BookingVO booking : bookingList) {
 			booking.setBseq(bseq);
 			booking.setRseq(bseq);
-			
+
 			insertBooking(booking);
-			
+
 			bookingService.updateBookByBseq(vo);
 		}
-	
+
 		return bseq;
 	}
 
@@ -74,23 +74,27 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public List<Integer> getSeqBooking(BookingVO vo) {
-		
+
 		return bDao.selectSeqBooking(vo);
 	}
 
 	@Override
 	public List<BookingVO> getListBookingByEmail(BookingVO vo) {
-		
+
 		return bDao.listBookingByEmail(vo);
+	}
+
+	@Override
+	public List<BookingVO> getBookingListByAseq(BookingVO vo) {
+
+		return bDao.bookingListByAseq(vo);
 	}
 
 	@Override
 
 	public List<SalesQuantity> getListBookingSales() {
-		
+
 		return bDao.getListBookingSales();
 
 	}
-	
-
 }

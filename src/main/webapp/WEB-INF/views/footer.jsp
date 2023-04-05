@@ -36,8 +36,7 @@
 	</div>
 </footer>
 
-</div> <%-- End of wrap --%>
-</body>
+
 
 
 </html>

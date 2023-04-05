@@ -9,8 +9,9 @@
 	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, reseq, rseq, bseq,
 	        content,score,indate,reply FROM review
 	        WHERE rseq=#{rseq})
+
 	        WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
-	        AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	        AND rn > (#{criteria.pageNum}-1) * {criteria.rowsPerPage}
 	   ]]>
 	
 	</select>

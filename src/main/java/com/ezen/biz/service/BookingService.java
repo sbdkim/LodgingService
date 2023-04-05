@@ -29,9 +29,9 @@ public interface BookingService {
 	// 전체 예약 내역 조회
 	List<BookingVO> getListBooking();
 	
+	 List<BookingVO> getListBookingByEmail(BookingVO vo);
 
-	List<BookingVO> getListBookingByEmail(BookingVO vo);
-    //판매실적
-	List<SalesQuantity> getListBookingSales();
-
+	 List<BookingVO> getBookingListByAseq(BookingVO vo);
+	 
+	 List<SalesQuantity> getListBookingSales();
 }

@@ -3,7 +3,7 @@
 <%@ include file="../header.jsp"%>
 <%@ include file="../sub_menu.jsp"%>
 <script type="text/javascript">
-  function go_booking_save() {
+  function go_order_save() {
     var count = 0;
     if (document.frm.result.length == undefined) {
       if (document.frm.result.checked == true) {
@@ -19,14 +19,14 @@
     if (count == 0) {
       alert("주문처리할 항목을 선택해 주세요.");
     } else {
-      document.frm.action = "admin_booking_save";
+      document.frm.action = "admin_order_save";
       document.frm.submit();
     }
   }
   
   function go_search() {
 	var theForm = document.frm;
-	theForm.action =  "admin_booking_list";
+	theForm.action =  "admin_order_list";
 	theForm.submit();
   }
 </script>
@@ -41,26 +41,26 @@
     </tr>
   </table>
   <br>
-  <table id="bookingList">
+  <table id="orderList">
   <tr>
     <th>주문번호(처리여부)</th><th>주문자</th><th>상품명</th><th>수량</th>
     <th>우편번호</th><th>배송지</th><th>전화</th><th>주문일</th>
   </tr>
-  <c:forEach items="${bookingList}" var="bookingVO">
+  <c:forEach items="${orderList}" var="orderVO">
   <tr>
     <td>
       <c:choose>
-        <c:when test='${bookingVO.status=="2"}'>
-        <span style="font-weight: bold; color: blue">${bookingVO.bseq}</span>
-        (<input type="checkbox" name="result" value="${bookingVO.bseq}"> 미처리)
+        <c:when test='${orderVO.result=="1"}'>
+        <span style="font-weight: bold; color: blue">${orderVO.odseq}</span>
+        (<input type="checkbox" name="result" value="${orderVO.odseq}"> 미처리)
         </c:when>
         <c:otherwise>
-          <span style="font-weight: bold; color: red">${bookingVO.bseq}</span>
+          <span style="font-weight: bold; color: red">${orderVO.odseq}</span>
           (<input type="checkbox" checked="checked" disabled="disabled">처리완료)
         </c:otherwise>
       </c:choose>
     </td>
-    <td>${bookingVO.mname}</td> <td>${orderVO.pname}</td>
+    <td>${orderVO.mname}</td> <td>${orderVO.pname}</td>
     <td>${orderVO.quantity}</td> <td>${orderVO.zip_num}</td>
     <td>${orderVO.address}</td>  <td>${orderVO.phone}</td>
     <td><fmt:formatDate value="${orderVO.indate}" /></td>

@@ -37,7 +37,6 @@ public class RoomVO {
 	private String rimage;
 	private String aimage;
 
-
 	// Getter, Setter 메소드
 	public int getRseq() {
 		return rseq;
@@ -54,8 +53,6 @@ public class RoomVO {
 	public void setAseq(int aseq) {
 		this.aseq = aseq;
 	}
-
-
 
 	public int getPrice() {
 		return price;
@@ -289,8 +286,6 @@ public class RoomVO {
 		this.roomservice = roomservice;
 	}
 
-
-
 	public String getAname() {
 		return aname;
 	}
@@ -298,8 +293,7 @@ public class RoomVO {
 	public void setAname(String aname) {
 		this.aname = aname;
 	}
-	
-	
+
 
 	public String getRname() {
 		return rname;
@@ -325,18 +319,4 @@ public class RoomVO {
 		this.aimage = aimage;
 	}
 
-	// ToString
-	@Override
-	public String toString() {
-		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", rname=" + rname + ", aname=" + aname + ", price=" + price
-				+ ", maxcap=" + maxcap + ", ckintime=" + ckintime + ", ckouttime=" + ckouttime + ", rooms=" + rooms
-				+ ", bathroom=" + bathroom + ", bed=" + bed + ", wifi=" + wifi + ", kitchen=" + kitchen + ", pool="
-				+ pool + ", ac=" + ac + ", tv=" + tv + ", coffeemachine=" + coffeemachine + ", fridge=" + fridge
-				+ ", bathtub=" + bathtub + ", parking=" + parking + ", heater=" + heater + ", microwave=" + microwave
-				+ ", kettle=" + kettle + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier
-				+ ", amenity=" + amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast
-				+ ", smoking=" + smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", rimage=" + rimage
-				+ ", aimage=" + aimage + "]";
-	}
-	
 }

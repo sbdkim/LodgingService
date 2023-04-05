@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="LocationMapper">
 
-	<select id="selectAccomodation" resultType="location">
-		SELECT aname, address FROM accommodation
+	<select id="selectAccommodation" resultType="location">
+		SELECT aname, address, aimage, aseq FROM accommodation
 	</select>
 	
 

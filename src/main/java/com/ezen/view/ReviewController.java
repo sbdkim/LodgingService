@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,17 +30,21 @@ public class ReviewController {
 	
 	
 	@GetMapping(value="/list", produces="application/json; cjarset=UTF-8")
+
 	public Map<String, Object> reviewList(@RequestParam(value="rseq") int rseq ,
 			Criteria criteria, Model model){
+
 		Map<String, Object> reviewInfo= new HashMap<>();
-		System.out.println("reviewList()....rseq="+rseq);
 		//댓글 목록 조회
+
 		List<ReviewVO> reviewList=reviewService.getReviewListwithPaging(criteria, rseq);
 		
 		// 페이지 정보 작성
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCriteria(criteria);
 		pageMaker.setTotalCount(reviewService.getCountReviewList(rseq));
+
+
 	    reviewInfo.put("total", reviewList.size());
 	    reviewInfo.put("reviewList", reviewList);
 	    reviewInfo.put("pageInfo", pageMaker);

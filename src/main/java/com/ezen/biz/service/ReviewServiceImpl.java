@@ -53,7 +53,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int getCountReviewList(int rseq) {
+	public int getCountReviewList(int bseq) {
 	
 		return rDao.getCountReviewList(rseq);
 	}
@@ -68,6 +68,7 @@ public class ReviewServiceImpl implements ReviewService {
 		vo.setRseq(rseq);
 		vo.setScore(avgScore);
 		return rDao.avgScore(rseq);
+
 	}
 
 }

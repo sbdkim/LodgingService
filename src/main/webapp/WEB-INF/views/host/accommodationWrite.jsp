@@ -29,7 +29,7 @@
 <tr>
   <th>주소</th>
   <td width="300" colspan="5">
-       <input type="text" name="adderess" id="adderess" size="47" maxlength="100">
+       <input type="text" name="address" id="address" size="47" maxlength="100">
   </td>
 </tr>
 <tr>
@@ -65,9 +65,9 @@ function go_save() {
 		alert("이름을 입력하세요");
 		document.getElementById("aname").focus();
 		return false;
-	} else if(document.getElementById("adderess").value=="") {
+	} else if(document.getElementById("address").value=="") {
 		alert("주소를 입력하세요");
-		document.getElementById("adderess").focus();
+		document.getElementById("address").focus();
 		return false;
 	} else if(document.getElementById("tel").value=="") {
 		alert("전화번호를 입력하세요");
@@ -80,6 +80,4 @@ function go_save() {
 		form.submit();
 	}
 }
-
-
 </script>

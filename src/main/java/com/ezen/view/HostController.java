@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezen.biz.dto.AccommodationVO;
-import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.dto.SalesQuantity;
@@ -44,6 +43,7 @@ public class HostController {
 		return "host/accommodationWrite";
 	}
 	
+
 //	@PostMapping("/host_accommodation_write")
 //	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, @RequestParam(value="default") MultipartFile uploadFile) {
 //		
@@ -64,6 +64,44 @@ public class HostController {
 //		
 //		
 //	}
+
+	@PostMapping("/host_accommodation_write")
+	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, @RequestParam(value="default") MultipartFile uploadFile) {
+HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+		
+		if(loginHost == null) {
+			return "member/login";
+		} else {
+			
+			vo.setEmail(loginHost.getEmail());
+			
+				if(!uploadFile.isEmpty()) {
+					String fileName = uploadFile.getOriginalFilename();
+					vo.setAimage(fileName);
+					
+					String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
+					
+					try {
+						uploadFile.transferTo(new File(image_path + fileName));
+					} catch (IllegalStateException | IOException e) {
+						
+						e.printStackTrace();
+					} 			
+					
+				} else {
+					vo.setAimage("default.jpg");
+				}
+			
+			
+		}
+		accommodationService.insertAccommodation(vo);
+		
+		
+		return "redirect:host_mypage";
+		
+		
+	}
+
 	
 	@GetMapping("/hostmypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
@@ -87,9 +125,9 @@ public class HostController {
 		}
 		
 	}
-	
-	@GetMapping("/accommodation_list")
-	public String AccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
+
+	@GetMapping("/host_accommodation_list")
+	public String HostAccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		
 		if(loginHost == null) {
