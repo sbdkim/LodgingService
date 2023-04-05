@@ -3,24 +3,45 @@
 <!DOCTYPE html>
 <%@ include file="../header.jsp"%>
 
+<script>
+
+
+$(document).ready(function() {
+	  // Get today's date
+	  const today = new Date().toISOString().split('T')[0];
+	  // Set the minimum date of the input
+	  document.getElementById("checkin").setAttribute("min", today);
+	  document.getElementById("checkout").setAttribute("min", today);  	
+	  
+	  $("#refreshDate").click(function() {
+		  var form = document.getElementById("date_form");
+			form.action = "updateRoom";
+			form.submit();
+	  })
+});
+	
+</script>
+
 <h1>숙소 검색 결과</h1>
 <h2> ${accommodationName} 의 객실 목록</h2>
+			<form name="date_form" id="date_form" method="post" style="display:block">
+				<input type="hidden" name="aseq" value="${param.aseq}">
 						<div class=main_checkinout style="display:inline-block">
 							<div role=button style="display:inline-block">
 								<div class="main_checkinout_buttonbox" style="display:inline-block">
 									<div style="display:inline-block">
 										<input type='date' id="checkin"  
-											class="main_checkin_1" name="checkin" value= "${checkin}" onchange="dateChk()"
-											required>
+											class="main_checkin_1" name="checkin" value= "${checkin}" required>
 									</div>
 									<div style="display:inline-block">
 										<input type='date' id="checkout"
-											class="main_checkout_1" name="checkout" value = "${checkout}"
-											onchange="dateChk()" required>
+											class="main_checkout_1" name="checkout" value = "${checkout}" required>
 									</div>
 								</div>
 							</div>
+							<input class="btn" type="button" name="refreshDate" id="refreshDate" value="검색" >
 						</div>
+					</form>
 <article>
 <form name="roomForm" id="room_form" method="post" style="display:block">
 
@@ -63,10 +84,6 @@
 </form>
 </article>
 
-<script>
-  document.getElementById("checkin").readOnly = true;
-  document.getElementById("checkout").readOnly = true;
-</script>
 
 
 
