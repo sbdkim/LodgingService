@@ -47,18 +47,18 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewVO> getReviewListwithPaging(Criteria criteria, int bseq) {
+	public List<ReviewVO> getReviewListwithPaging(Criteria criteria, int rseq) {
 		
-		return rDao.reviewListwithPaging(criteria, bseq);
+		return rDao.reviewListwithPaging(criteria, rseq);
 	}
 
 	@Override
-	public int getCountReviewList(int bseq) {
+	public int getCountReviewList(int rseq) {
 	
 		return rDao.getCountReviewList(rseq);
 	}
 
-	@Override
+	/*@Override
 	public double avgScore(int rseq) {
 		
 		Double avgScore= rDao.avgScore(rseq);
@@ -69,6 +69,6 @@ public class ReviewServiceImpl implements ReviewService {
 		vo.setScore(avgScore);
 		return rDao.avgScore(rseq);
 
-	}
+	}*/
 
 }

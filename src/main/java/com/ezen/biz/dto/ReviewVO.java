@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class ReviewVO {
 	private int reseq;
+	private int rseq;
 	private int bseq;
 	private String content;
-	private double score;
+	private String score;
 	private Date indate;
 	private String reply;
 	private String email;
-	private int  rseq;
 	
 	// Getter, Setter 메소드
 	public int getReseq() {
@@ -39,11 +39,11 @@ public class ReviewVO {
 
 
 
-	public double getScore() {
+	public String getScore() {
 		return score;
 	}
 
-	public void setScore(double score) {
+	public void setScore(String score) {
 		this.score = score;
 	}
 

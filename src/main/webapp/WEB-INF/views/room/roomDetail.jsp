@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
+
 <%@ include file="../header.jsp" %>  
+ 
     <article>
     <h2> 객실상세정보 </h2>
-
-    <form name="formm" method="post" action="booking">
-    	<input type="hidden" name="rseq" value="${roomDetail.rseq}">
-    	<input type="hidden" name="checkin" value="${param.checkin}">
-    	<input type="hidden" name="checkout" value="${param.checkout}">
+    <form name="formm" method="post">
+      <input type="hidden" name="rseq" value="${roomDetail.rseq}">
       <table id="roomDetail" align="center" border="1" width="500">      
       <tr>
         <td rowspan="6" width="225" height="225">
 	        <c:choose>
-				<c:when test="${empty roomDetail.rimage}"><img src="room_images/default.jpg" /></c:when>    
+				<c:when test="${roomDetail.rimage == null}"><img src="room_images/default.jpg" /></c:when>    
 				<c:otherwise><img src="room_images/${roomDetail.rimage}" /></c:otherwise>
 			</c:choose>
 		</td>
@@ -41,80 +40,61 @@
      	<td colspan="3" height="200">
      		<c:choose>
      			<c:when test='${roomDetail.wifi=="1"}'>와이파이&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.kitchen=="1"}'>주방(가스)&nbsp;</c:when>
      			<c:when test='${roomDetail.kitchen=="2"}'>주방(인덕션)&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.pool=="1"}'>수영장&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.ac=="1"}'>에어컨&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.tv=="1"}'>TV&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.coffeemachine=="1"}'>커피머신&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.fridge=="1"}'>냉장고&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.bathtub=="1"}'>욕조&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.parking=="1"}'>주차&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.heater=="1"}'>난방&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.microwave=="1"}'>전자레인지&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.kettle=="1"}'>전기포트&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.washer=="1"}'>세탁기&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.bbq=="1"}'>바비큐&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.hairdrier=="1"}'>헤어드라이어&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.amenity=="1"}'>어메니티&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.towel=="1"}'>수건&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.elevator=="1"}'>엘리베이터&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.breakfast=="1"}'>조식&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.smoking=="1"}'>흡연&nbsp;</c:when>
@@ -122,11 +102,9 @@
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.gym=="1"}'>피트니스&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.roomservice=="1"}'>룸서비스&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		
      	</td>
@@ -135,16 +113,14 @@
           
      <div class="clear"></div>
      <div id="buttons" style="float: right">
-       <input type="submit" value="예약하기">
-       <input type="button"   value="다른 객실 보기" onclick="history.back(1)">
+       <input type="button"    value="다른 객실 보기" onclick="history.back(1)">
      </div>
     </form>  
-  </article>
 
 
- <%@ include file="reviewList.jsp" %>
+
    </article>
- <%@ include file="../footer.jsp" %> 
+ <%@ include file="reviewList.jsp" %> 
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -186,7 +162,7 @@
 				html += "<div>";
 				html += "<div id=\"review_item\"> <strong>작성자: " + item.reseq + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
-				html += "<span id=\"write_score\">" + item.score + "</span><br>";
+				html += "<span id=\"write_item\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
 			});
@@ -285,30 +261,27 @@
 			}
 		});
 		/*
-		function delete_review(reseq) {
-		$("#btn_reply_Delete").click(function(){
-	        
-	        if(confirm("삭제 하시겠습니까?")){
-	        
-	        //댓글 삭제를 하기위해 댓글 번호, 글 번호, 댓글 내용, 그리고 게시글 세부 페이지로 포워딩 하기 위해 페이지 관련 값들을 변수에 저장한다.
-	            var reseq = $("#reseq").val();
-	            var rseq = $("#rseq").val();
-	            var score = $("#score").val();
-	            var content = $("textarea#r_content").text();
-	           
-	          
-	            
-	            
-	            //url로 삭제에 필요한 변수들을 보낸다.
-	            document.form1.action="review_delete.do?reseq="+reseq+"&rseq="+rseq+"&score="+score+"&content="+content;
-	            
-	            document.form1.submit();
-	            
-	            alert("댓글이 삭제되었습니다.")
-	            
-	        }
-	    });
-	});		
+	function reDelCheck(contIdx) {
+        var query = {idx : contIdx};
+        var ans = confirm("선택하신 댓글을 삭제하시겠습니까?");
+        if(!ans) return false;
+        
+        $.ajax({
+            url  : "${contextPath}/bReplyDel",
+            type : "get",
+            data : query,
+            success : function(data) {
+                    //alert("댓글이 삭제 되었습니다.");
+                  location.reload();
+            },
+            error : function(data) {
+                alert("댓글이 삭제되지 않았습니다.");
+            }
+        });
+    }
+
 		  */
 	}
 </script>
+
+ <%@ include file="../footer.jsp" %> 

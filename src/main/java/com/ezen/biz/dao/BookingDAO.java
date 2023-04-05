@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.SalesQuantity;
 
@@ -63,7 +64,7 @@ public class BookingDAO {
 		return mybatis.selectList("BookingMapper.bookingListByAseq", vo);
 	}
 
-	public List<SalesQuantity> getListBookingSales() {
-		return mybatis.selectList("BookingMapper.getListBookingSales");
+	public List<SalesQuantity> getListBookingSales(AccommodationVO vo) {
+		return mybatis.selectList("BookingMapper.getListBookingSales",vo);
 	}
 }

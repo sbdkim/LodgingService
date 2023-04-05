@@ -103,7 +103,7 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 	}
 
 	
-	@GetMapping("/hostmypage")
+	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
 		
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
@@ -227,7 +227,7 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 	//상품별 판매 실적 화면 출력
 		@RequestMapping("/host_booking_record_form")
 		public String adminProductSalesForm() {
-		   return "admin/host/salesRecords";
+		   return "host/salesRecords";
 	    }
 		
 	    @RequestMapping("/booking_record_chart")
@@ -236,8 +236,8 @@ HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		    HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		    
 		    
-			vo.setEmail(loginHost.getEmail());
-			List<SalesQuantity> listSales = bookingService.getListBookingSales();
+			vo.setHemail(loginHost.getEmail());
+			List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
 			return listSales;
 		}
 	   }

@@ -25,6 +25,7 @@ $(document).ready(function() {
 			alert("Chart drawing error!");
 		}
 	});
+	arrBprice = JSON.parse("[" + price + "]");
 	
 	function drawChart(result) {
 		// 차트 그리는데 사용할 데이터 객체 생성
@@ -33,11 +34,15 @@ $(document).ready(function() {
 		data.addColumn("string", "aname");
 		data.addColumn("number", "bprice");
 		
+		
+	
+		
 		// 콘트롤러에서 json타입으로 전달된 데이터를 
 		// 자바스크립트의 배열로 저장
 		var dataArray = [];
 		$.each(result, function(i, obj){
 			dataArray.push([obj.aname, obj.bprice]);
+		
 		})
 		
 		// data객체에 dataArray의 내용을 저장
@@ -50,9 +55,18 @@ $(document).ready(function() {
 		
 		// 바차트 그리기
 		var barchart_options = {
-			title: '연도별 숙소 예약 현황',
-			width: 300,
-			height: 300
+			title: '숙소 예약 현황',
+			width: 800,
+			height: 600,
+			vAxis : {title : '숙소이름'},
+		    hAxis : {title : '매출'},
+		    font: { // [타이틀 폰트 스타일 변경]
+				family: 'Comic Sans MS',
+				size: 20,
+				weight: 'bold',
+				lineHeight: 1.2,    							
+			}
+			
 		}
 		
 		var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));

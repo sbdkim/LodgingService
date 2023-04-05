@@ -4,16 +4,15 @@
 	
 	<!--리뷰 페이징  -->
 	<select id="reviewListwithPaging" parameterType="hashmap" resultType="review">
-	  <![CDATA[
-	  SELECT reseq, rseq, bseq,content,score,indate,reply
-	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, reseq, rseq, bseq,
-	        content,score,indate,reply FROM review
-	        WHERE rseq=#{rseq})
-
-	        WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
-	        AND rn > (#{criteria.pageNum}-1) * {criteria.rowsPerPage}
+		<![CDATA[
+		  SELECT reseq, rseq, bseq, content, score, indate, reply
+		    FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, reseq, rseq, bseq,
+		        		 content,score,indate,reply 
+		            FROM review
+		           WHERE rseq=#{rseq})
+		   WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+		     AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
 	   ]]>
-	
 	</select>
 	<!-- 리뷰 등록 -->
 	<insert id="insertReview">
@@ -59,10 +58,10 @@
    </select>
    
    
-   <select id="avgScore" resultType= "double">
+   <!--<select id="avgScore" resultType= "double">
    SELECT AVG(score)
    FROM review WHERE rseq=#{rseq}
-   </select>
+   </select>  -->
    
    
 </mapper>
