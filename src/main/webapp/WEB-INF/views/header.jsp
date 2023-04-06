@@ -11,6 +11,38 @@
   <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script> 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!--구글차트  -->
   <script type="text/javascript" src="member/member.js"></script>
+  <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+  <!-- jQuery -->										<!-- cdn(네트워크연결)방식으로 불러오는 것임 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <script>
+  function requestPay() {
+	  IMP.init("imp80657743"); // 예: imp00000000 
+	  IMP.request_pay({
+      pg: 'html5_inicis.INIpayTest',
+      pay_method: 'card',
+      merchant_uid: 'merchant_'+new Date().getTime(),   // 주문번호
+      name: "KozyNest 결제",
+      amount: 150000,                         // 숫자 타입
+      buyer_email: "${loginUser.email}",
+      buyer_name: "${loginUser.name}",
+      buyer_tel: "${loginUser.phone}",
+      buyer_postcode: "123-456"
+    }, function (rsp) { // callback
+      if (rsp.success) {
+        // 결제 성공 시 로직
+    	  console.log(rsp)
+    	  alert("결제 성공")
+    	  return true;
+      } else {
+    	  console.log(rsp)
+          alert("결제 실패")// 결제 실패 시 로직
+      }
+    });
+	  return false;
+  }
+</script>
 </head>
 
 <body >
@@ -48,4 +80,3 @@
     </ul>
   </nav>
 </header>
-

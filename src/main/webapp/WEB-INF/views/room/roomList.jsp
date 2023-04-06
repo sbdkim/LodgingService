@@ -83,8 +83,4 @@ $(document).ready(function() {
 	</table>
 </form>
 </article>
-
-
-
-
 <%@ include file="../footer.jsp"%>

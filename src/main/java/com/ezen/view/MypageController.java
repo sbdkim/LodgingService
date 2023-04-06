@@ -9,12 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
-import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.RoomService;
@@ -35,9 +35,10 @@ public class MypageController {
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-			vo.setEmail(loginUser.getEmail());
-			bookingService.insertBooking(vo);
-			return "redirect:mypage";
+				vo.setEmail(loginUser.getEmail());
+				bookingService.insertBooking(vo);
+				return "redirect:mypage";
+			
 		}
 	}
 
