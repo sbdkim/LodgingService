@@ -1,5 +1,7 @@
 package com.ezen.biz.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +54,11 @@ public class HostServiceImpl implements HostService {
 	@Override
 	public void changePwd(HostVO vo) {
 		hDao.changePwd(vo);
+	}
+
+	@Override
+	public List<HostVO> getListHost(String name) {
+		return hDao.listHost(name);
 	}
 
 }

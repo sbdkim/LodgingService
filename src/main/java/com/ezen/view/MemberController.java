@@ -1,10 +1,14 @@
 package com.ezen.view;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -13,6 +17,7 @@ import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.service.AdminService;
 import com.ezen.biz.service.HostService;
 import com.ezen.biz.service.MemberService;
+
 
 @Controller
 @SessionAttributes({ "loginUser", "loginHost" })
@@ -62,7 +67,7 @@ public class MemberController {
 
 				model.addAttribute("loginAdmin", adminService.getAdmin(vo.getHemail()));
 
-				return "admin/member/memberList";
+				return "redirect:admin_hostList";
 			} else {
 				return "host/login_fail";
 			}
@@ -85,6 +90,22 @@ public class MemberController {
 		
 		
 	}
+	//after admin login, add the hostlist to be pased to the hostList page
+	@RequestMapping("/admin_hostList")
+	public String adminMemberList(
+			@RequestParam(value="key", defaultValue="") String name,
+			Model model) {
+		
+		List<HostVO> hostList = hostService.getListHost(name);
+		
+		model.addAttribute("hostList", hostList);
+		
+		return "admin/host/hostList";
+	}
+	
+	
+	
+	
 
 	@GetMapping("/logout")
 	public String logout(SessionStatus status) {

@@ -2,6 +2,7 @@
   pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <%@ include file="../sub_menu.jsp"%>
+
 <script type="text/javascript">
   function go_search()
   {
@@ -11,12 +12,12 @@
 </script>
 
 <article>
-<h1>회원리스트</h1>  
+<h1>사업자리스트</h1>  
 <form name="frm" method="post">
 <table style="float:right; ">
   <tr>
   <td> 
-  회원 이름
+ 사업자 이름
   <input type="text" name="key" id="key">
   <input class="btn" type="button" value="검색" onclick="go_search()">
   </td>

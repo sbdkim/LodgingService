@@ -49,8 +49,3 @@
   </nav>
 </header>
 
-
-</body>
-</html>
-
-

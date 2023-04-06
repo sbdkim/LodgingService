@@ -1,5 +1,7 @@
 package com.ezen.biz.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -67,6 +69,14 @@ public class HostDAO {
 		// 비밀번호 변경
 		public void changePwd(HostVO vo) {
 			mybatis.update("HostMapper.changePwd", vo);
+		}
+		
+		
+		
+		
+		//호스트 조회
+		public List<HostVO> listHost(String name){
+			return mybatis.selectList("HostMapper.getHostList", name);
 		}
 	
 	
