@@ -319,4 +319,20 @@ public class RoomVO {
 		this.aimage = aimage;
 	}
 
+	@Override
+	public String toString() {
+		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", rname=" + rname + ", aname=" + aname + ", price=" + price
+				+ ", maxcap=" + maxcap + ", ckintime=" + ckintime + ", ckouttime=" + ckouttime + ", rooms=" + rooms
+				+ ", bathroom=" + bathroom + ", bed=" + bed + ", wifi=" + wifi + ", kitchen=" + kitchen + ", pool="
+				+ pool + ", ac=" + ac + ", tv=" + tv + ", coffeemachine=" + coffeemachine + ", fridge=" + fridge
+				+ ", bathtub=" + bathtub + ", parking=" + parking + ", heater=" + heater + ", microwave=" + microwave
+				+ ", kettle=" + kettle + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier
+				+ ", amenity=" + amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast
+				+ ", smoking=" + smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", rimage=" + rimage
+				+ ", aimage=" + aimage + "]";
+	}
+	
+	
+	
+
 }

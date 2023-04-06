@@ -98,4 +98,11 @@ public class BookingServiceImpl implements BookingService {
 		return bDao.getListBookingSales(vo);
 
 	}
+
+	@Override
+	public List<BookingVO> getListBookByEmailAseq(BookingVO vo) {
+
+		return bDao.listBookByEmailAseq(vo);
+	}
+
 }

@@ -34,18 +34,14 @@
 
 	<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
 	<select id="selectRoomByAcc" resultType="room">
-
 	<![CDATA[
 		SELECT * FROM room WHERE aseq=#{aseq} AND 
 		rseq NOT IN (
 		  SELECT rseq 
 		  FROM booking 
-		  WHERE checkin <= #{checkout}
+		  WHERE checkin <= #{checkin}
 		    AND checkout>= #{checkout}) ORDER BY price
 		]]>
-
-	
-		
 	</select>
 	
 	<select id="countRoomList" parameterType="int" resultType="int">
@@ -74,6 +70,16 @@
 	</select>
 
 	<!-- HOST -->
+	<select id="hostSelectRoomByAcc" resultType="room">
+	<![CDATA[
+		SELECT * FROM room WHERE aseq=#{aseq} AND 
+		rseq NOT IN (
+		  SELECT rseq 
+		  FROM booking 
+		  WHERE checkin <= #{checkin}
+		    AND checkout>= #{checkout}) ORDER BY price
+		]]>
+	</select>
 	<!-- host가 accommodation 등록 -->
 	<insert id="insertRoom" parameterType="room">
 		INSERT INTO room(rseq, aseq, rname, price, maxcap, ckintime, ckoutime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, 
@@ -93,5 +99,9 @@
 						towel=#{towel},elevator=#{elevator}, breakfast=#{breakfast}, smoking=#{smoking}, gym=#{gym}, roomservice=#{roomservice}, image=#{image}
 		WHERE rseq=#{rseq}
 	</update>
+	
+	<delete id="deleteRoom" parameterType="room">
+		DELETE FROM room WHERE rseq=#{rseq}
+	</delete>
 
 </mapper>

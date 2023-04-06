@@ -29,6 +29,10 @@ public class BookingDAO {
 	public List<BookingVO> listBookByEmail(BookingVO vo) {
 		return mybatis.selectList("BookingMapper.listBookByEmail", vo);
 	}
+	
+	public List<BookingVO> listBookByEmailAseq(BookingVO vo){
+		return mybatis.selectList("BookingMapper.listBookByEmailAseq",vo);
+	}
 
 	// 예약번호로 예약내역 조회
 	public BookingVO selectBookByBseq(int bseq) {

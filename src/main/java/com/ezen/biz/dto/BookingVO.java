@@ -19,7 +19,7 @@ public class BookingVO {
 	private int aseq;	
 	private String mname;
 	private int tprice;
-	private int email;
+	private String email;
 	
 	// Getter, Setter 메소드
 	public int getBseq() {
@@ -39,11 +39,11 @@ public class BookingVO {
 	}
 
 	
-	public int getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(int email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -67,7 +67,7 @@ public class BookingVO {
 		return checkin;
 	}
 
-	public void setCkindate(String checkin) {
+	public void setCheckin(String checkin) {
 		this.checkin = checkin;
 	}
 

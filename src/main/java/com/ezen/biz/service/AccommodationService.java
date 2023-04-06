@@ -34,5 +34,7 @@ public interface AccommodationService {
 	 void updateAccommodation(AccommodationVO vo);
 	 
 	 List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
+	 
+	 void deleteAccommodation(int aseq);
 
 }

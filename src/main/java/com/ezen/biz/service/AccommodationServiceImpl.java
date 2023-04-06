@@ -77,6 +77,10 @@ public class AccommodationServiceImpl implements AccommodationService {
 	
 		return aDao.countHostAccList(hemail);
 	}
+	@Override
+	public void deleteAccommodation(int aseq) {
+		aDao.deleteAccommodation(aseq);		
+	}
 
 
 

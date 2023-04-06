@@ -94,7 +94,8 @@ public class MypageController {
 
 			vo.setMemail(loginUser.getEmail());
 			vo.setStatus(0);
-			List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
+			
+			List<BookingVO> bookingList = bookingService.getListBookByEmailAseq(vo);
 
 			BookingVO bookingDetail = new BookingVO();
 			bookingDetail.setBookdate(bookingList.get(0).getBookdate());

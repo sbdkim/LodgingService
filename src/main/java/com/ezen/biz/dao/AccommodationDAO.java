@@ -73,5 +73,9 @@ public class AccommodationDAO {
 		
 		return mybatis.selectList("AccommodationMapper.listHostAccommodation",vo);
 	}
+	
+	public void deleteAccommodation(int aseq) {
+		mybatis.delete("AccommodationMapper.deleteAccommodation",aseq);
+	}
 
 }

@@ -19,7 +19,7 @@
 		<td align="center" width="150px"> ${bookingVO.rname} </td>
 
         <td align="center"  width="100px"> <fmt:formatNumber value="${bookingVO.bprice}" type="currency" currencySymbol="￦"/> </td>
-        <td align="center" width="100px"> <a href="booking_detail?bseq=${bookingVO.bseq}"> 조회 </a></td>
+        <td align="center" width="100px"> <a href="booking_detail?aseq=${bookingVO.aseq}"> 조회 </a></td>
       </tr>
       </c:forEach>    
       </table>   

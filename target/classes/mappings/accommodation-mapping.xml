@@ -73,5 +73,10 @@
 		UPDATE accommodation SET aname=#{aname}, category=#{category}, address=#{address}, tel=#{tel}, bestyn=#{bestyn}, aimage=#{aimage}
 		WHERE aseq=#{aseq}
 	</update>
+	
+	<!-- 삭제 -->
+	<delete id="deleteAccommodation" parameterType="accommodation">
+		DELETE FROM accommodation WHERE aseq=#{aseq}
+	</delete>
 
 </mapper>
