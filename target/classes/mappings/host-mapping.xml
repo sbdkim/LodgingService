@@ -53,9 +53,19 @@
 		WHERE hemail=#{hemail}
 	</update>
 	
-
+	<select id="listHostWithPaging" resultType="host">
+		<![CDATA[
+		SELECT hemail, pwd, phone, name, status FROM
+		(SELECT row_number() OVER (ORDER BY name) rn, hemail, pwd, phone, name, status
+		FROM host WHERE name like '%'||#{name}||'%')
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+		]]>
+	</select>
 	
-	
+	<select id="countHostList" parameterType="String" resultType="int">
+		SELECT count(*) FROM host WHERE name like '%'||#{name}||'%'
+	</select>
 	
 	
 </mapper>

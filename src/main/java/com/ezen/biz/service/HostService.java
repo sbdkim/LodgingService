@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ezen.biz.dto.HostVO;
 
+import utils.Criteria;
+
 public interface HostService {
 
 	// Email 존재 여부 확인
@@ -35,5 +37,7 @@ public interface HostService {
 	
 	public void updateHostStatus(String email);
 	
+	List<HostVO> getListHostWithPaging(Criteria criteria, String name);
 	
+	int countHostList(String name);
 }

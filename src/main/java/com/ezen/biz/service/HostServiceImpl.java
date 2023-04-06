@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import com.ezen.biz.dao.HostDAO;
 import com.ezen.biz.dto.HostVO;
 
+import utils.Criteria;
+
 @Service("hostService")
 public class HostServiceImpl implements HostService {
-	
+
 	@Autowired
 	private HostDAO hDao;
 
@@ -47,7 +49,7 @@ public class HostServiceImpl implements HostService {
 	}
 
 	@Override
-	public String selectPwdByEmailNamePhone(HostVO vo) {	
+	public String selectPwdByEmailNamePhone(HostVO vo) {
 		return hDao.selectPwdByEmailNamePhone(vo);
 	}
 
@@ -64,7 +66,17 @@ public class HostServiceImpl implements HostService {
 	@Override
 	public void updateHostStatus(String email) {
 		hDao.updateHostStatus(email);
-		
+
+	}
+
+	@Override
+	public List<HostVO> getListHostWithPaging(Criteria criteria, String name) {
+		return hDao.listHostWithPaging(criteria, name);
+	}
+
+	@Override
+	public int countHostList(String name) {
+		return hDao.countHostList(name);
 	}
 
 }

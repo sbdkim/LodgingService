@@ -203,7 +203,7 @@ public class HostController {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
 		vo.setHemail(loginHost.getHemail());
-		List<SalesQuantity> listSales = bookingService.getListBookingSales();
+		List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
 		return listSales;
 	}
 }

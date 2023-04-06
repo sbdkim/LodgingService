@@ -13,6 +13,7 @@
        <tr>      
        <td> ${bookingVO.indate} </td>
         <td>
+        <input type="hidden" name="bseq" id="bseq" value="${bookingVO.bseq}">
             <a href="booking_detail?bseq=${bookingVO.bseq}">
               <h3> ${bookingVO.name} </h3>              
           </a>    

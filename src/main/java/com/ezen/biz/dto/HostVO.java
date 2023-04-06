@@ -16,13 +16,10 @@ public class HostVO {
 		this.hemail = hemail;
 	}
 
-	
-
 	public String getPwd() {
 		return pwd;
 	}
 
-	
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
@@ -54,7 +51,7 @@ public class HostVO {
 	// ToString
 	@Override
 	public String toString() {
-		return "HostVO [hemail=" + hemail + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status=" + status
-				+ "]";
+		return "HostVO [hemail=" + hemail + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status="
+				+ status + "]";
 	}
 }

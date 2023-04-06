@@ -49,7 +49,7 @@
      <div class="clear"></div>
      <div id="buttons" style="float: right">
        <button onclick="return requestPay();">결제하기</button>  
-       <input type="submit" value="예약하기">
+       <%-- <input type="submit" value="예약하기"> --%>
        <input type="button" value="다른 객실 예약" onclick="history.go(-2)">
      </div>
     </form>  

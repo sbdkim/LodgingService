@@ -29,7 +29,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public BookingVO SelectBookByBseq(int bseq) {
+	public BookingVO selectBookByBseq(int bseq) {
 		return bDao.selectBookByBseq(bseq);
 	}
 
