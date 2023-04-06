@@ -9,6 +9,22 @@
      document.frm.action="admin_host_list";
      document.frm.submit();
   }
+  
+  function approve_host(){
+	  
+	  
+  }
+  
+  function delete_host(){
+	  
+  }
+  
+  
+  
+  
+  
+  
+  
 </script>
 
 <article>
@@ -37,7 +53,7 @@
     <td> 
     <c:choose>
       <c:when test='${hostVO.status=="0"}'>
-        <input type="checkbox" name="status" disabled="disabled">
+        <input type="checkbox" name="status">
       </c:when>
       <c:otherwise>
         <input type="checkbox" name="status" checked="checked" disabled="disabled">
@@ -50,6 +66,11 @@
   </tr>
   </c:forEach>
 </table>
+<input type="button" class="btn" style="width: 200px"
+      value="HOST 승인" onClick="approve_host()">
+ <input type="button" class="btn" style="width: 200px"
+      value="HOST 삭제" onClick="delete_host()">
+
 </form>
 </article>
 <%@ include file="../footer.jsp"%>
