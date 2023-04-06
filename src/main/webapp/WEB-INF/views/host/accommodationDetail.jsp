@@ -7,10 +7,10 @@
       <h3> 업체 정보 </h3>     
       <table id="accommodationList">      
       <tr>
-        <th>번호</th><th>이메일</th><th>이 름</th>     
+        <th>번호<th><th>이메일</th><th>이 름</th>     
      </tr>     
      <tr>  
-       <td align="center" width="100px"> ${accommodationDetail.aseq} </td>    
+       <td align="center" width="100px"> ${accommodationDetail.aseq} </td> 
        <td align="center" width="100px"> ${accommodationDetail.hemail} </td> 
        <td align="center" width="300px"> ${accommodationDetail.aname} </td> 
      </tr>    

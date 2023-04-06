@@ -5,25 +5,22 @@
   <article>
       <h2> Booking List </h2>
       <form name="formm" method="post">
-        <table id="bookingList">
+        <table id="bookingList" >
        <tr>
        <th>예약번호</th> <th>예약날짜</th> <th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th>  <th>가격</th>  
        </tr>
-       <c:forEach items="${bookingList}"  var="bookingVO">
-       <tr>      
-       <td> ${bookingVO.indate} </td>
+       <tr>
+       <td> ${bookingList.bseq} </td>      
+       <td> ${bookingList.indate} </td>
         <td>
-            <a href="booking_detail?bseq=${bookingVO.bseq}">
-              <h3> ${bookingVO.name} </h3>              
+            <a href="booking_detail?bseq=${bookingList.bseq}">
+              <h3> ${bookingList.name} </h3>              
           </a>    
         </td>
-        <td> ${bookingVO.checkin} </td>
-        <td> ${bookingVO.checkout} </td>
-        <td> <fmt:formatNumber value="${bookingVO.price}" type="currency"/> </td>      
-      
-       
+        <td> ${bookingList.checkin} </td>
+        <td> ${bookingList.checkout} </td>
+        <td> <fmt:formatNumber value="${bookingList.price}" type="currency"/> </td>      
        </tr>
-       </c:forEach>
        <tr>
          <th colspan="3"> 총 액 </th>
          <th colspan="3"> <fmt:formatNumber value="${totalPrice}" type="currency"/><br>     </th> 

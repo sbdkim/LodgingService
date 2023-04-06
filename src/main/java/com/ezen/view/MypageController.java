@@ -91,19 +91,21 @@ public class MypageController {
 			return "member/login";
 		} else {
 
-
 			vo.setMemail(loginUser.getEmail());
-			vo.setStatus(0);
+			vo.setBseq(vo.getBseq());
+			vo.setBookdate(vo.getBookdate());
+			vo.setMname(vo.getMname());
+			vo.setBprice(vo.getBprice());
+			vo.setAname(vo.getAname());
+			vo.setRname(vo.getRname());
+			vo.setCheckin(vo.getCheckin());
+			vo.setCheckout(vo.getCheckout());
+			vo.setStatus(vo.getStatus());
+			BookingVO bookingList = bookingService.selectBookByBseq(vo);
 			
-			List<BookingVO> bookingList = bookingService.getListBookByEmailAseq(vo);
+			
 
-			BookingVO bookingDetail = new BookingVO();
-			bookingDetail.setBookdate(bookingList.get(0).getBookdate());
-			bookingDetail.setBseq(bookingList.get(0).getBseq());
-			bookingDetail.setMemail(bookingList.get(0).getMemail());
-			bookingDetail.setBprice(bookingList.get(0).getBprice());
-
-			model.addAttribute("bookingDetail", bookingDetail);
+			
 			model.addAttribute("bookingList", bookingList);
 
 			return "mypage/bookingDetail";

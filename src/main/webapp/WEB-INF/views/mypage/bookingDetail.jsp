@@ -10,10 +10,10 @@
         <th>예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
      </tr>     
      <tr>  
-       <td> <fmt:formatDate value="${bookingDetail.bookdate}" type="date"/></td>
-       <td> ${bookingDetail.bseq} </td>    
-       <td> ${bookingDetail.memail} </td>
-       <td> <fmt:formatNumber type="currency" value="${bookingDetail.bprice}" /> </td>
+       <td> <fmt:formatDate value="${bookingList.bookdate}" type="date"/></td>
+       <td> ${bookingList.bseq} </td>    
+       <td> ${bookingList.mname} </td>
+       <td> <fmt:formatNumber type="currency" value="${bookingList.bprice}" /> </td>
      </tr>    
      </table>      
       
@@ -22,24 +22,22 @@
      <tr>
        <th>예약숙박업체</th><th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th> <th>처리 상태</th>    
      </tr>
-     <c:forEach items="${bookingList}"  var="bookingVO">
      <tr>
- 	   <td> ${bookingVO.aname} </td>
-       <td> ${bookingVO.rname} </td>
+ 	   <td> ${bookingList.aname} </td>
+       <td> ${bookingList.rname} </td>
 
-       <td> ${bookingVO.checkin} </td>
-       <td> ${bookingVO.checkout} </td>
+       <td> ${bookingList.checkin} </td>
+       <td> ${bookingList.checkout} </td>
 
        <td>
          <c:choose>
-         <c:when test='${bookingVO.status=="0"}'> 예약완료 </c:when>
-         <c:when test='${bookingVO.status=="1"}'> 입실완료 </c:when>
-         <c:when test='${bookingVO.status=="3"}'> 이용완료 </c:when>
+         <c:when test='${bookingList.status=="0"}'> 예약완료 </c:when>
+         <c:when test='${bookingList.status=="1"}'> 입실완료 </c:when>
+         <c:when test='${bookingList.status=="3"}'> 이용완료 </c:when>
          <c:otherwise> <span style="color:red"> 취소완료 </span></c:otherwise>
          </c:choose>
        </td>
      </tr>
-     </c:forEach>    
      </table>   
           
      <div class="clear"></div>

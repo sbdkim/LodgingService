@@ -44,7 +44,7 @@
 			<table>
 			 <tr>
 			 <td><label>Host email</label> </td>
-			 <td><input name="email" type="text"
+			 <td><input name="hemail" type="text"
 				></td>
 			 </tr> 
 			 <tr>

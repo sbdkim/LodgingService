@@ -54,8 +54,8 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public BookingVO SelectBookByBseq(int bseq) {
-		return bDao.selectBookByBseq(bseq);
+	public BookingVO selectBookByBseq(BookingVO vo) {
+		return bDao.selectBookByBseq(vo);
 	}
 
 	@Override
@@ -100,9 +100,9 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<BookingVO> getListBookByEmailAseq(BookingVO vo) {
-
-		return bDao.listBookByEmailAseq(vo);
+	public List<BookingVO> getListBookByAseq(int aseq) {
+		
+		return bDao.listBookByAseq(aseq);
 	}
 
 }

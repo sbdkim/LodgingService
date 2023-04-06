@@ -72,8 +72,7 @@ public class HostController {
 				} else {
 					vo.setAimage("default.jpg");
 				}
-			
-			
+
 		}
 		accommodationService.insertAccommodation(vo);
 		
@@ -123,7 +122,7 @@ public class HostController {
 		
 	}
 	
-	@PostMapping("/host_acc_delete")
+	@RequestMapping("/host_acc_delete")
 	public String hostAccDelete(@RequestParam(value="aseq") int aseq) {
 		
 		accommodationService.deleteAccommodation(aseq);
@@ -140,10 +139,8 @@ public class HostController {
 		if(loginHost == null) {
 			return "member/login";
 		} else {
-						
-		
+	
 			vo.setHemail(loginHost.getHemail());
-			
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
 			
 					
@@ -164,7 +161,7 @@ public class HostController {
 		} else {
 			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-				
+			
 			
 			model.addAttribute("accommodationList", accommodationList);
 			
@@ -180,25 +177,20 @@ public class HostController {
 			return "member/login";
 		} else {
 			vo.setHemail(loginHost.getHemail());
-			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
+			AccommodationVO accommodationDetail = accommodationService.getAccommodaiton(vo);
 			
-			AccommodationVO accommodationDetail = new AccommodationVO();
-			accommodationDetail.setAseq(accommodationList.get(0).getAseq());
-			accommodationDetail.setHemail(accommodationList.get(0).getHemail());
-			accommodationDetail.setAname(accommodationList.get(0).getAname());
+			accommodationDetail.setAseq(accommodationDetail.getAseq());
+			accommodationDetail.setHemail(accommodationDetail.getHemail());
+			accommodationDetail.setAname(accommodationDetail.getAname());
 			
+			List<RoomVO> roomList = roomService.hostGetRoomByAcc(vo.getAseq());
 			
-			int aseq = vo.getAseq();
-			List<RoomVO> roomList = roomService.hostGetRoomByAcc(aseq);
-			
-			RoomVO RoomDetail = new RoomVO();
-			RoomDetail.setRseq(roomList.get(0).getRseq());
-			RoomDetail.setRname(roomList.get(0).getRname());
-			RoomDetail.setPrice(roomList.get(0).getPrice());
+			RoomVO roomDetail = new RoomVO();
+			roomDetail.setAseq(vo.getAseq());
+			roomDetail.setRname(roomList.get(0).getRname());
+			roomDetail.setPrice(roomList.get(0).getPrice());
 	
-			
 			model.addAttribute("accommodationDetail", accommodationDetail);
-			model.addAttribute("accommodationList", accommodationList);
 			model.addAttribute("roomList", roomList);
 			
 			return "host/accommodationDetail";
@@ -223,33 +215,40 @@ public class HostController {
 		}
 	}
 	
-//	@GetMapping("/host_booking_detail")
-//	public String HostBookingDetail(HttpSession session, BookingVO booking, Model model) {
-//		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-//		
-//		if(loginHost == null) {
-//			return "member/login";
-//		} else {
-//
-//			List<BookingVO> bookingList = bookingService.getBookingListByAseq(booking);
+	@GetMapping("/host_booking_detail")
+	public String HostBookingDetail(HttpSession session, AccommodationVO vo, Model model) {
+		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+		
+		if(loginHost == null) {
+			return "member/login";
+		} else {
+			vo.setHemail(loginHost.getHemail());
+			vo.setAseq(vo.getAseq());
+			
+			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo.getAseq());
+			System.out.println("aseq()=" + vo.getAseq());
+			
+			model.addAttribute("bookingList", bookingList);
+//			AccommodationVO accommodationDetail = accommodationService.getAccommodaiton(vo);
 //			
+//			accommodationDetail.setAseq(accommodationDetail.getAseq());
+//			accommodationDetail.setHemail(accommodationDetail.getHemail());
+//			accommodationDetail.setAname(accommodationDetail.getAname());
 //			
+//			List<RoomVO> roomList = roomService.hostGetRoomByAcc(vo.getAseq());
 //			
-//			BookingVO book = new BookingVO();
-//			book.setBseq(bookingList.get(0).getBseq());
-//			book.setRseq(bookingList.get(0).getRseq());
-//			book.setBookdate(bookingList.get(0).getBookdate());
-//			book.setMname(bookingList.get(0).getMname());
-//			book.setCkindate(bookingList.get(0).getCkindate());
-//			book.setCkoutdate(bookingList.get(0).getCkoutdate());
-//			book.setRprice(bookingList.get(0).getRprice());
-//			book.setBprice(bookingList.get(0).getBprice());
-//			
-//
-//			model.addAttribute("bookingList", bookingList);
-//							
-//			return "host/hostBookingListDetail";
-//		}
+//			RoomVO roomDetail = new RoomVO();
+//			roomDetail.setAseq(vo.getAseq());
+//			roomDetail.setRname(roomList.get(0).getRname());
+//			roomDetail.setPrice(roomList.get(0).getPrice());
+//	
+//			model.addAttribute("accommodationDetail", accommodationDetail);
+//			model.addAttribute("roomList", roomList);
+			
+			return "host/hostBookingListDetail";
+		}
+	
+	}
 	
 	
 	//상품별 판매 실적 화면 출력
