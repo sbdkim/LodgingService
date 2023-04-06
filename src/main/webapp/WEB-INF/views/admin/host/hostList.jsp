@@ -10,31 +10,68 @@
      document.frm.submit();
   }
   
-  function approve_host(){
-	  var count = 0;
-	    if (document.frm.status.length == undefined) {
-	      if (document.frm.status.checked == true) {
+  
+  function approve_host() {
+	  alert("approve_host()");
+	  var count = 0; // Initialize a counter variable to keep track of how many checkboxes are checked
+	  /*
+	  // Check if there's only one checkbox with the name "status"
+	  if (document.frm.status.length == undefined) {
+	    // If the checkbox is checked, increment the count variable
+	    if (document.frm.status.checked == true) {
+	      count++;
+	    }
+	  } 
+	  // If there are multiple checkboxes with the name "status"
+	  else {
+	    // Loop through all the checkboxes and check if they're checked
+	    for (var i = 0; i < document.frm.status.length; i++) {
+	      if (document.frm.status[i].checked == true) {
 	        count++;
 	      }
-	    } else {
-	      for ( var i = 0; i < document.frm.status.length; i++) {
-	        if (document.frm.status[i].checked == true) {
-	          count++;
-	        }
-	      }
 	    }
-	    if (count == 0) {
-	      alert("주문처리할 항목을 선택해 주세요.");
-	    } else {
-	      document.frm.action = "approve_host_save";
-	      document.frm.submit();
-	    }
+	  }
+	  */
 	  
-  }
+	  const query = 'input[name="status"]:checked';
+	  count = document.querySelectorAll(query).length;
+	  
+	  // If no checkboxes are checked, show an alert message
+	  if (count == 0) {
+	    alert("주문처리할 항목을 선택해 주세요.");
+	  } 
+	  // If at least one checkbox is checked, submit the form
+	  else {
+	    var form = document.getElementById("theform");
+	    form.action = "approve_host_save";
+	    form.submit();
+	  }
+	}
+
+
   
-  function delete_host(){
+  
+  function delete_host() {
+	  var count = 0; // Initialize a counter variable to keep track of how many checkboxes are checked
 	  
-  }
+	  // Loop through all checkboxes with the name "delete" and count the number that are checked
+	  for (var i = 0; i < document.frm.delete.length; i++) {
+	    if (document.frm.delete[i].checked == true) {
+	      count++;
+	    }
+	  }
+	  
+	  // If no checkboxes are checked, show an alert message
+	  if (count == 0) {
+	    alert("지울 호스트를 선택해 주세요.");
+	  } 
+	  // If at least one checkbox is checked, submit the form
+	  else {
+	    document.frm.action = "delete_host";
+	    document.frm.submit();
+	  }
+	}
+
   
   
   
@@ -47,7 +84,7 @@
 
 <article>
 <h1>사업자리스트</h1>  
-<form name="frm" method="post">
+<form name="frm" id="theform" method="post">
 <table style="float:right; ">
   <tr>
   <c:if test="${empty button2.visible}">
@@ -85,7 +122,7 @@
     <td id="statuscheck"> 
     <c:choose>
       <c:when test='${hostVO.status=="0"}'>
-        <input type="checkbox" name="status">
+        <input type="checkbox" name="status" value="${hostVO.hemail}">
       </c:when>
       <c:otherwise>
         <input type="checkbox" name="status" checked="checked" disabled="disabled">

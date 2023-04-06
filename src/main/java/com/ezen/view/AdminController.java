@@ -102,6 +102,19 @@ public class AdminController {
 		
 		return "redirect:admin_hostList";
 	}
+	
+	
+	
+	@RequestMapping("/delete_host")
+	public String deleteHost(@RequestParam(value="delete") String[] hemail) {
+		
+		for(int i=0; i<hemail.length; i++) {
+			hostService.deleteHost(hemail[i]);
+		}
+		
+		return "redirect:admin_hostList";
+	}
+	
 		
 	
 	

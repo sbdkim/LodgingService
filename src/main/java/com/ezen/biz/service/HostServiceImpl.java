@@ -62,8 +62,14 @@ public class HostServiceImpl implements HostService {
 	}
 
 	@Override
-	public void updateHostStatus(String email) {
-		hDao.updateHostStatus(email);
+	public void updateHostStatus(String hemail) {
+		hDao.updateHostStatus(hemail);
+		
+	}
+
+	@Override
+	public void deleteHost(String hemail) {
+		hDao.deleteHost(hemail);
 		
 	}
 

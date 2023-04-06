@@ -77,8 +77,12 @@ public class HostDAO {
 			return mybatis.selectList("HostMapper.getHostList", name);
 		}
 		
-		public void updateHostStatus(String email) {	
-			mybatis.update("HostMapper.approveHost", email);
+		public void updateHostStatus(String hemail) {	
+			mybatis.update("HostMapper.approveHost", hemail);
+		}
+		
+		public void deleteHost(String hemail) {
+			mybatis.delete("HostMapper.deleteHost", hemail);
 		}
 	
 	
