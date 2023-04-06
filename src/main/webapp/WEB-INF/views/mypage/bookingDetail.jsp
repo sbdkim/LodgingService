@@ -28,8 +28,8 @@
  	   <td> ${bookingVO.aname} </td>
        <td> ${bookingVO.rname} </td>
        <td> ${bookingVO.rseq} </td>          
-       <td> ${bookingVO.ckindate} </td>
-       <td> ${bookingVO.ckoutdate} </td>
+       <td> ${bookingVO.checkin} </td>
+       <td> ${bookingVO.checkout} </td>
        <td> <fmt:formatNumber type="currency" value="${totalPrice}" /> </td>
        <td>
          <c:choose>

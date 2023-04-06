@@ -34,7 +34,7 @@
 		<td align="center" width="100px"> ${accommodationVO.tel} </td>
 		<td align="center" width="100px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
 		<td align="center" width="50px"> <a href=# onclick="go_mod('${accommodationVO.aseq}')"> 수 정 / </a></td>
-		<td align="center" width="40px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 삭 제 </a></td>
+		<td align="center" width="40px"> <a href=# onclick="go_acc_delete('${accommodationVO.aseq}')"> 삭 제 </a></td>
       </tr>
       </c:forEach>   
       <tr><td colspan="8" style="text-align:center">${paging}</td></tr> 
@@ -71,7 +71,16 @@ function go_mod(aseq) {
 	form.submit();
 }
 
-
+function go_acc_delete(aseq){
+	const query = 'input[name="aseq"]:checked';
+	
+	
+	var form = document.getElementById("acc_form");
+	form.action = "host_acc_delete";
+	form.submit();
+	
+	if()
+}
 
 </script>
 

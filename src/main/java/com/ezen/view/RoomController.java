@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ezen.biz.dto.AccommodationVO;
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.service.AccommodationService;
@@ -28,11 +28,11 @@ public class RoomController {
 	private AccommodationService accommodationService;
 
 	@RequestMapping("/room")
-	public String roomView(AccommodationVO vo, Model model, int aseq,
+	public String roomView(BookingVO vo, Model model, int aseq,
 			@RequestParam(value="checkin") String checkin, 
 			@RequestParam(value="checkout") String checkout) {
 		String accommodationName = accommodationService.getNameByAseq(aseq);
-		List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
+		List<RoomVO> roomList = roomService.getRoomByAcc(vo);
 		model.addAttribute("roomList", roomList);	
 		model.addAttribute("checkin", checkin);
 		model.addAttribute("checkout", checkout);

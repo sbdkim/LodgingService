@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.RoomVO;
 
 import utils.Criteria;
@@ -17,8 +18,8 @@ public class RoomDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public List<RoomVO> selectRoomByAcc(int aseq) {
-		return mybatis.selectList("RoomMapper.selectRoomByAcc", aseq);
+	public List<RoomVO> selectRoomByAcc(BookingVO vo) {
+		return mybatis.selectList("RoomMapper.selectRoomByAcc", vo);
 	}// selectRoomByAcc
 
 	public List<RoomVO> listRoomWithPaging(Criteria criteria, int aseq) {
@@ -49,5 +50,10 @@ public class RoomDAO {
 	public void updateRoom(RoomVO vo) {
 		mybatis.update("RoomMapper.updateRoom", vo);
 	}
+	
+	public List<RoomVO> hostSelectRoomByAcc(int aseq) {
+		return mybatis.selectList("RoomMapper.hostSelectRoomByAcc", aseq);
+	}
+	
 }//RoomDAO
 

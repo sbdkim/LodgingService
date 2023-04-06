@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.biz.dao.RoomDAO;
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.RoomVO;
 
 import utils.Criteria;
@@ -16,11 +17,13 @@ public class RoomServiceImpl implements RoomService {
 	@Autowired
 	private RoomDAO rDao;
 	
-	@Override
-	public List<RoomVO> getRoomByAcc(int aseq) {
-		return rDao.selectRoomByAcc(aseq);
-	}
 
+	@Override
+	public List<RoomVO> getRoomByAcc(BookingVO vo) {
+
+		return  rDao.selectRoomByAcc(vo);
+	}
+	
 	@Override
 	public List<RoomVO> getRoomListWithPaging(Criteria criteria, int aseq) {
 		
@@ -58,11 +61,12 @@ public class RoomServiceImpl implements RoomService {
 	public RoomVO selectRoomByRseq(int rseq) {
 		return rDao.selectRoomByRseq(rseq);
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public List<RoomVO> hostGetRoomByAcc(int aseq) {
+
+		return rDao.hostSelectRoomByAcc(aseq);
+	}
+
 
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezen.biz.dto.AccommodationVO;
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
 import com.ezen.biz.dto.SalesQuantity;
@@ -122,6 +123,14 @@ public class HostController {
 		
 	}
 	
+	@PostMapping("/host_acc_delete")
+	public String hostAccDelete(@RequestParam(value="aseq") int aseq) {
+		
+		accommodationService.deleteAccommodation(aseq);
+		
+		return "redirect:host_mypage";
+	}
+	
 
 	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
@@ -179,9 +188,8 @@ public class HostController {
 			accommodationDetail.setAname(accommodationList.get(0).getAname());
 			
 			
-			
 			int aseq = vo.getAseq();
-			List<RoomVO> roomList = roomService.getRoomByAcc(aseq);
+			List<RoomVO> roomList = roomService.hostGetRoomByAcc(aseq);
 			
 			RoomVO RoomDetail = new RoomVO();
 			RoomDetail.setRseq(roomList.get(0).getRseq());
@@ -257,7 +265,7 @@ public class HostController {
 		    
 		    
 
-			vo.setHemail(loginHost.getEmail());
+			vo.setHemail(loginHost.getHemail());
 			List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
 
 			return listSales;

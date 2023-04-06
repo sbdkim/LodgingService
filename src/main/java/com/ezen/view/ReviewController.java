@@ -32,14 +32,16 @@ public class ReviewController {
 	
 	@GetMapping(value="/list", produces="application/json; cjarset=UTF-8")
 
-	public Map<String, Object> reviewList( ReviewVO reviewVO,
-			Criteria criteria, Model model){
-
+	public Map<String, Object> reviewList(Criteria criteria, ReviewVO reviewVO){
+		
+		
 		Map<String, Object> reviewInfo= new HashMap<>();
+		
+				
 		//댓글 목록 조회
-		 
-		List<ReviewVO> reviewList= reviewService.getReviewListwithPaging(criteria, reviewVO.getRseq());
-		System.out.println("rseq= "+reviewVO.getRseq());
+		List<ReviewVO> reviewList = reviewService.getReviewListwithPaging(criteria, reviewVO.getRseq());
+		
+		
 		
 		// 페이지 정보 작성
 		PageMaker pageMaker = new PageMaker();
