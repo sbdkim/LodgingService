@@ -13,6 +13,7 @@ public class AccommodationVO {
 	private String rimage;
 	private String hemail;
 
+	
 	// Getter, Setter 메소드
 	public int getAseq() {
 		return aseq;

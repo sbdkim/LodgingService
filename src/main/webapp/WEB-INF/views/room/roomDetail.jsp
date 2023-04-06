@@ -119,8 +119,10 @@
 
 
 
+ 
+<%@ include file="reviewList.jsp" %> 
    </article>
- <%@ include file="reviewList.jsp" %> 
+   
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -150,7 +152,33 @@
 			}
 		});
 	}
-	alert(reviewList);
+	
+	function getReviewPaging(pagenum, rowsperpage, rseq) {
+		$.ajax({
+			type: 'GET',
+			url: 'review/list',
+			dataType: 'json',
+			data:{"pageNum": pagenum,
+				  "rowsPerPage": rowsperpage,
+				  "rseq": rseq},
+			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+			success: function(data) {
+				var pageMaker = data.pageInfo;
+				var totalCount = data.total;
+				var reviewList = data.reviewList;
+				console.log("pageMaker=", pageMaker);
+				console.log("count=", totalCount);
+				console.log("review=", reviewList);
+				
+				showHTML(pageMaker, reviewList, totalCount);
+			},
+			error: function() {
+				alert("상품평 목록을 조회하지 못했습니다.")
+			}
+		});
+	}
+	
+	
 	
 	function showHTML(pageMaker, reviewList, total) {
 		var html = "";
@@ -162,9 +190,10 @@
 				html += "<div>";
 				html += "<div id=\"review_item\"> <strong>작성자: " + item.reseq + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
-				html += "<span id=\"write_item\">" + item.score + "</span><br>";
+				html += "<span id=\"write_score\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
+				html +="<button type ='button' class='review_delete' date-repNum='"+item.reseq+"'>삭 제</button>"
 			});
 			
 		
@@ -260,17 +289,19 @@
 				alert("error:" + error);
 			}
 		});
-		/*
-	function reDelCheck(contIdx) {
-        var query = {idx : contIdx};
+	}
+		
+	function review_delete(reseq) {
+       
         var ans = confirm("선택하신 댓글을 삭제하시겠습니까?");
         if(!ans) return false;
         
         $.ajax({
-            url  : "${contextPath}/bReplyDel",
-            type : "get",
-            data : query,
+            url  : 'review/delete',
+            type : "delete",
+            data:$("#reviewListForm"),
             success : function(data) {
+            	  $("#reseq").val()
                     //alert("댓글이 삭제 되었습니다.");
                   location.reload();
             },
@@ -280,8 +311,8 @@
         });
     }
 
-		  */
-	}
+		  
+	
 </script>
 
- <%@ include file="../footer.jsp" %> 
+<%@ include file="../footer.jsp" %>

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.MemberVO;
-import com.ezen.biz.dto.ReviewVO;import com.ezen.biz.dto.RoomVO;
+import com.ezen.biz.dto.ReviewVO;
 import com.ezen.biz.service.ReviewService;
 
 import utils.Criteria;
@@ -31,20 +31,20 @@ public class ReviewController {
 	
 	
 	@GetMapping(value="/list", produces="application/json; cjarset=UTF-8")
-
-	public Map<String, Object> reviewList( ReviewVO reviewVO,
+	public Map<String, Object> reviewList( ReviewVO reviewVO, @RequestParam(value="rseq") int rseq,
 			Criteria criteria, Model model){
 
 		Map<String, Object> reviewInfo= new HashMap<>();
 		//댓글 목록 조회
 		 
-		List<ReviewVO> reviewList= reviewService.getReviewListwithPaging(criteria, reviewVO.getRseq());
+		List<ReviewVO> reviewList= reviewService.getReviewListwithPaging(criteria, rseq);
+		int score = reviewVO.getScore();
 		System.out.println("rseq= "+reviewVO.getRseq());
 		
 		// 페이지 정보 작성
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCriteria(criteria);
-		pageMaker.setTotalCount(reviewService.getCountReviewList(reviewVO.getRseq()));
+		pageMaker.setTotalCount(reviewService.getCountReviewList(rseq));
 
 	  
 	    reviewInfo.put("total", reviewList.size());
