@@ -18,13 +18,14 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
   <script>
   function requestPay() {
+	  var result = false;
 	  IMP.init("imp80657743"); // 예: imp00000000 
 	  IMP.request_pay({
       pg: 'html5_inicis.INIpayTest',
       pay_method: 'card',
       merchant_uid: 'merchant_'+new Date().getTime(),   // 주문번호
       name: "KozyNest 결제",
-      amount: 150000,                         // 숫자 타입
+      amount: 100,                         // 숫자 타입
       buyer_email: "${loginUser.email}",
       buyer_name: "${loginUser.name}",
       buyer_tel: "${loginUser.phone}",
@@ -34,13 +35,18 @@
         // 결제 성공 시 로직
     	  console.log(rsp)
     	  alert("결제 성공")
-    	  return true;
+    	  
+    	  var theform = document.getElementById("book_form");
+          theform.action = "booking_insert";
+          theform.submit();
       } else {
     	  console.log(rsp)
           alert("결제 실패")// 결제 실패 시 로직
+          result = false;
       }
     });
-	  return false;
+
+	return false;
   }
 </script>
 </head>

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
@@ -35,10 +35,10 @@ public class MypageController {
 		if (loginUser == null) {
 			return "member/login";
 		} else {
-				vo.setEmail(loginUser.getEmail());
-				bookingService.insertBooking(vo);
-				return "redirect:mypage";
-			
+			vo.setEmail(loginUser.getEmail());
+			bookingService.insertBooking(vo);
+			return "redirect:mypage";
+
 		}
 	}
 
@@ -84,28 +84,17 @@ public class MypageController {
 	}
 
 	@GetMapping("/booking_detail")
-	public String BookingDetail(HttpSession session, BookingVO vo, Model model) {
-		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+	public String BookingDetail(int bseq, Model model) {
+		BookingVO booking = bookingService.selectBookByBseq(bseq);
+		model.addAttribute("booking", booking);
+		return "mypage/bookingDetail";
+	}
 
-		if (loginUser == null) {
-			return "member/login";
-		} else {
-
-			vo.setMemail(loginUser.getEmail());
-			vo.setStatus(0);
-			List<BookingVO> bookingList = bookingService.getListBookByEmail(vo);
-
-			BookingVO bookingDetail = new BookingVO();
-			bookingDetail.setBookdate(bookingList.get(0).getBookdate());
-			bookingDetail.setBseq(bookingList.get(0).getBseq());
-			bookingDetail.setMemail(bookingList.get(0).getMemail());
-			bookingDetail.setBprice(bookingList.get(0).getBprice());
-
-			model.addAttribute("bookingDetail", bookingDetail);
-			model.addAttribute("bookingList", bookingList);
-
-			return "mypage/bookingDetail";
-		}
+	@RequestMapping("/booking_delete")
+	public String BookingDelete(int bseq) {
+		System.out.println("bseq=" + bseq);
+		bookingService.deleteBookByBseq(bseq);
+		return "redirect:bookingList";
 	}
 
 	@GetMapping("/accommodation_list")

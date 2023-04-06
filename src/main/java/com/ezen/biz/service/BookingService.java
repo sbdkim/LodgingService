@@ -2,6 +2,7 @@ package com.ezen.biz.service;
 
 import java.util.List;
 
+import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.SalesQuantity;
 
@@ -9,11 +10,13 @@ public interface BookingService {
 	// 예약하기
 	void insertBooking(BookingVO vo);
 
-	// 이름, 이메일로 예약내역 조회
+	//이메일로 예약내역 조회
 	List<BookingVO> getListBookByEmail(BookingVO vo);
+	
+	List<BookingVO> getListBookByEmailAseq(BookingVO vo);
 
 	// 예약번호로 예약내역 조회
-	BookingVO SelectBookByBseq(int bseq);
+	BookingVO selectBookByBseq(int bseq);
 
 	List<Integer> getSeqBooking(BookingVO vo);
 	
@@ -30,7 +33,7 @@ public interface BookingService {
 
 	 List<BookingVO> getBookingListByAseq(BookingVO vo);
 	 
-	 List<SalesQuantity> getListBookingSales();
+	 List<SalesQuantity> getListBookingSales(AccommodationVO vo);
 	 
 	 public List<BookingVO> listBestAccom();
 }

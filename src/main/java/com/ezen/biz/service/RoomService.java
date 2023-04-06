@@ -24,5 +24,7 @@ public interface RoomService {
 	void insertRoom(RoomVO vo);
 	
 	void updateRoom(RoomVO vo);
+	
+	List<RoomVO> hostGetRoomByAcc(int aseq);
 
 }

@@ -148,6 +148,7 @@
       value="HOST 삭제" onClick="delete_host()">
 
 </form>
+<%@ include file="page_area.jsp" %>
 </article>
 
 

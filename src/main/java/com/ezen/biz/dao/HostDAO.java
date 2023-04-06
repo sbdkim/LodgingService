@@ -1,5 +1,6 @@
 package com.ezen.biz.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.biz.dto.HostVO;
+
+import utils.Criteria;
 
 
 @Repository
@@ -17,8 +20,8 @@ public class HostDAO {
 	
 
 	// Email 존재 여부 확인
-	public int confirmEmail(String email) {
-		String pwd = mybatis.selectOne("HostMapper.confirmEmail", email);
+	public int confirmEmail(String hemail) {
+		String pwd = mybatis.selectOne("HostMapper.confirmEmail", hemail);
 		if (pwd != null) {
 			return 1;
 		} else {
@@ -46,13 +49,13 @@ public class HostDAO {
 		}
 	
 		// 호스트 상세정보 조회
-		public HostVO getHost(String email) {
-			return mybatis.selectOne("HostMapper.getHost", email);
+		public HostVO getHost(String hemail) {
+			return mybatis.selectOne("HostMapper.getHost", hemail);
 		}
 		
 		// 호스트 정보 변경
-		public void updateHost(String email) {
-			mybatis.update("HostMapper.updateHost", email);
+		public void updateHost(String hemail) {
+			mybatis.update("HostMapper.updateHost", hemail);
 		}
 		
 		
@@ -85,6 +88,14 @@ public class HostDAO {
 			mybatis.delete("HostMapper.deleteHost", hemail);
 		}
 	
+		public List<HostVO> listHostWithPaging(Criteria criteria, String name) {
+			HashMap<String, Object> map = new HashMap<>();
+			map.put("criteria", criteria);
+			map.put("name", name);
+			return mybatis.selectList("HostMapper.listHostWithPaging", map);
+		}
 	
-	
+		public int countHostList(String name) {
+			return mybatis.selectOne("HostMapper.countHostList", name);
+		}
 }//HostDAO

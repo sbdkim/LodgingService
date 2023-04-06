@@ -8,15 +8,17 @@ import org.springframework.stereotype.Service;
 import com.ezen.biz.dao.HostDAO;
 import com.ezen.biz.dto.HostVO;
 
+import utils.Criteria;
+
 @Service("hostService")
 public class HostServiceImpl implements HostService {
-	
+
 	@Autowired
 	private HostDAO hDao;
 
 	@Override
-	public int confirmEmail(String email) {
-		return hDao.confirmEmail(email);
+	public int confirmEmail(String hemail) {
+		return hDao.confirmEmail(hemail);
 	}
 
 	@Override
@@ -31,13 +33,13 @@ public class HostServiceImpl implements HostService {
 	}
 
 	@Override
-	public HostVO getHost(String email) {
-		return hDao.getHost(email);
+	public HostVO getHost(String hemail) {
+		return hDao.getHost(hemail);
 	}
 
 	@Override
-	public void updateHost(String email) {
-		hDao.updateHost(email);
+	public void updateHost(String hemail) {
+		hDao.updateHost(hemail);
 
 	}
 
@@ -47,7 +49,7 @@ public class HostServiceImpl implements HostService {
 	}
 
 	@Override
-	public String selectPwdByEmailNamePhone(HostVO vo) {	
+	public String selectPwdByEmailNamePhone(HostVO vo) {
 		return hDao.selectPwdByEmailNamePhone(vo);
 	}
 
@@ -62,15 +64,25 @@ public class HostServiceImpl implements HostService {
 	}
 
 	@Override
-	public void updateHostStatus(String hemail) {
-		hDao.updateHostStatus(hemail);
+	public void updateHostStatus(String email) {
+		hDao.updateHostStatus(email);
 		
 	}
 
 	@Override
-	public void deleteHost(String hemail) {
-		hDao.deleteHost(hemail);
-		
+	public void deleteHost(String email) {
+		hDao.deleteHost(email);
+	}
+
+
+	@Override
+	public List<HostVO> getListHostWithPaging(Criteria criteria, String name) {
+		return hDao.listHostWithPaging(criteria, name);
+	}
+
+	@Override
+	public int countHostList(String name) {
+		return hDao.countHostList(name);
 	}
 
 }

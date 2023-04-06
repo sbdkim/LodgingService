@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
+
 <%@ include file="../header.jsp" %>  
+ 
     <article>
     <h2> 객실상세정보 </h2>
-
     <form name="formm" method="post" action="booking">
-    	<input type="hidden" name="rseq" value="${roomDetail.rseq}">
-    	<input type="hidden" name="checkin" value="${param.checkin}">
-    	<input type="hidden" name="checkout" value="${param.checkout}">
+      <input type="hidden" name="rseq" value="${roomDetail.rseq}">
+      <input type="hidden" name="checkin" id="checkin" value="${param.checkin}">
+      <input type="hidden" name="checkout" id="checkout" value="${param.checkout}">
       <table id="roomDetail" align="center" border="1" width="500">      
       <tr>
         <td rowspan="6" width="225" height="225">
 	        <c:choose>
-				<c:when test="${empty roomDetail.rimage}"><img src="room_images/default.jpg" /></c:when>    
+				<c:when test="${roomDetail.rimage == null}"><img src="room_images/default.jpg" /></c:when>    
 				<c:otherwise><img src="room_images/${roomDetail.rimage}" /></c:otherwise>
 			</c:choose>
 		</td>
@@ -41,80 +42,61 @@
      	<td colspan="3" height="200">
      		<c:choose>
      			<c:when test='${roomDetail.wifi=="1"}'>와이파이&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.kitchen=="1"}'>주방(가스)&nbsp;</c:when>
      			<c:when test='${roomDetail.kitchen=="2"}'>주방(인덕션)&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.pool=="1"}'>수영장&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.ac=="1"}'>에어컨&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.tv=="1"}'>TV&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.coffeemachine=="1"}'>커피머신&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.fridge=="1"}'>냉장고&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.bathtub=="1"}'>욕조&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.parking=="1"}'>주차&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.heater=="1"}'>난방&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.microwave=="1"}'>전자레인지&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.kettle=="1"}'>전기포트&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.washer=="1"}'>세탁기&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.bbq=="1"}'>바비큐&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.hairdrier=="1"}'>헤어드라이어&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.amenity=="1"}'>어메니티&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.towel=="1"}'>수건&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.elevator=="1"}'>엘리베이터&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.breakfast=="1"}'>조식&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.smoking=="1"}'>흡연&nbsp;</c:when>
@@ -122,11 +104,9 @@
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.gym=="1"}'>피트니스&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		<c:choose>
      			<c:when test='${roomDetail.roomservice=="1"}'>룸서비스&nbsp;</c:when>
-     			<c:otherwise></c:otherwise>
      		</c:choose>
      		
      	</td>
@@ -136,15 +116,14 @@
      <div class="clear"></div>
      <div id="buttons" style="float: right">
        <input type="submit" value="예약하기">
-       <input type="button"   value="다른 객실 보기" onclick="history.back(1)">
+       <input type="button" value="다른 객실 보기" onclick="history.back(1)">
      </div>
     </form>  
-  </article>
 
 
- <%@ include file="reviewList.jsp" %>
+
    </article>
- <%@ include file="../footer.jsp" %> 
+ <%@ include file="reviewList.jsp" %> 
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -170,7 +149,7 @@
 				showHTML(pageMaker, reviewList, total);
 			},
 			error: function() {
-				alert("상품평 목록을 조회하지 못했습니다.")
+				alert("리뷰 목록을 조회하지 못했습니다.")
 			}
 		});
 	}
@@ -184,8 +163,9 @@
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"review_item\"> <strong>작성자: " + item.bseq + "</strong>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.reseq + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
+				html += "<span id=\"write_item\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
 				html += "</div>";
 			});
@@ -269,18 +249,42 @@
 			success: function(data) {
 				if (data=='success') {	// 상품평 등록 성공
 					getListReview(); 	// 상품평 목록 요청함수 호출
+			        $("#score").val(),
 					$("#content").val("");
 				} else if (data=='fail') {
-					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");
+					alert("리뷰 등록이 실패하였습니다. 다시 시도해 주세요.");
 				} else if (data=='not_logedin') {
-					alert("상품평 등록은 로그인이 필요합니다.");
-					
-					
+
+					alert("리뷰 등록은 로그인이 필요합니다.");
+
 				}
 			},
 			error: function(request, status, error) {
 				alert("error:" + error);
 			}
 		});
+		/*
+	function reDelCheck(contIdx) {
+        var query = {idx : contIdx};
+        var ans = confirm("선택하신 댓글을 삭제하시겠습니까?");
+        if(!ans) return false;
+        
+        $.ajax({
+            url  : "${contextPath}/bReplyDel",
+            type : "get",
+            data : query,
+            success : function(data) {
+                    //alert("댓글이 삭제 되었습니다.");
+                  location.reload();
+            },
+            error : function(data) {
+                alert("댓글이 삭제되지 않았습니다.");
+            }
+        });
+    }
+
+		  */
 	}
 </script>
+
+ <%@ include file="../footer.jsp" %> 

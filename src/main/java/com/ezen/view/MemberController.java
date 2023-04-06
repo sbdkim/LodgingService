@@ -18,6 +18,8 @@ import com.ezen.biz.service.AdminService;
 import com.ezen.biz.service.HostService;
 import com.ezen.biz.service.MemberService;
 
+import utils.Criteria;
+import utils.PageMaker;
 
 @Controller
 @SessionAttributes({ "loginUser", "loginHost" })
@@ -28,7 +30,7 @@ public class MemberController {
 
 	@Autowired
 	private HostService hostService;
-	
+
 	@Autowired
 	private AdminService adminService;
 
@@ -57,12 +59,13 @@ public class MemberController {
 	public String loginAction(HostVO vo, Model model) {
 		System.out.println(vo.toString());
 		String hostEmail = vo.getHemail();
-		
-		//admin login
-		if(hostEmail.equals("kozynest0330@gmail.com") || hostEmail.equals("kozynest1104@gmail.com") || hostEmail.equals("kozynest0116@gmail.com") || hostEmail.equals("kozynest0331@gmail.com")) {
+
+		// admin login
+		if (hostEmail.equals("kozynest0330@gmail.com") || hostEmail.equals("kozynest1104@gmail.com")
+				|| hostEmail.equals("kozynest0116@gmail.com") || hostEmail.equals("kozynest0331@gmail.com")) {
 			System.out.println(hostEmail);
 			int result = adminService.loginAdmin(vo);
-			
+
 			if (result == 1) {
 
 				model.addAttribute("loginAdmin", adminService.getAdmin(vo.getHemail()));
@@ -72,9 +75,8 @@ public class MemberController {
 				return "host/login_fail";
 			}
 
-			
-		}else {
-			//host login
+		} else {
+			// host login
 			int result = hostService.loginHost(vo);
 
 			if (result == 1) {
@@ -86,26 +88,30 @@ public class MemberController {
 				return "host/login_fail";
 			}
 		}
-		
-		
-		
+
 	}
-	//after admin login, add the hostlist to be pased to the hostList page
+
+	// after admin login, add the hostlist to be pased to the hostList page
 	@RequestMapping("/admin_hostList")
-	public String adminMemberList(
-			@RequestParam(value="key", defaultValue="") String name,
-			Model model) {
-		
-		List<HostVO> hostList = hostService.getListHost(name);
-		
+	public String adminMemberList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
+			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
+			@RequestParam(value = "key", defaultValue = "") String name, Model model) {
+
+		Criteria criteria = new Criteria();
+		criteria.setPageNum(Integer.parseInt(pageNum));
+		criteria.setRowsPerPage(Integer.parseInt(rowsPerPage));
+		List<HostVO> hostList = hostService.getListHostWithPaging(criteria, name);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalCount(hostService.countHostList(name));
+
 		model.addAttribute("hostList", hostList);
-		
+		model.addAttribute("hostListSize", hostList.size());
+		model.addAttribute("pageMaker", pageMaker);
+
 		return "admin/host/hostList";
 	}
-	
-	
-	
-	
 
 	@GetMapping("/logout")
 	public String logout(SessionStatus status) {
@@ -152,7 +158,7 @@ public class MemberController {
 	public String hostEmailCheckView(HostVO vo, Model model) {
 		// email 중복확인 조회
 		int result = hostService.confirmEmail(vo.getHemail());
-		model.addAttribute("email", vo.getHemail());
+		model.addAttribute("hemail", vo.getHemail());
 		model.addAttribute("message", result);
 		return "member/hostemailcheck";
 	}
@@ -162,7 +168,7 @@ public class MemberController {
 	public String hostEmailCheckAction(HostVO vo, Model model) {
 		// email 중복 확인 조회
 		int result = hostService.confirmEmail(vo.getHemail());
-		model.addAttribute("email", vo.getHemail());
+		model.addAttribute("hemail", vo.getHemail());
 		model.addAttribute("message", result);
 		return "member/hostemailcheck";
 	}
@@ -211,7 +217,7 @@ public class MemberController {
 		}
 		return "member/findPwdResult"; // 비밀번호 조회결과 화면표시
 	}
-	
+
 	@PostMapping("/change_pwd")
 	public String changePwdAction(MemberVO vo) {
 		memberService.changePwd(vo);
@@ -225,10 +231,10 @@ public class MemberController {
 
 	@PostMapping("/find_host_email")
 	public String findHostEmailAction(HostVO vo, Model model) {
-		String email = hostService.selectEmailByNamePhone(vo);
-		if (email != null) { // 아이디 조회 성공
+		String hemail = hostService.selectEmailByNamePhone(vo);
+		if (hemail != null) { // 아이디 조회 성공
 			model.addAttribute("message", 1);
-			model.addAttribute("email", email);
+			model.addAttribute("hemail", hemail);
 		} else {
 			model.addAttribute("message", -1);
 		}
@@ -238,10 +244,10 @@ public class MemberController {
 	@PostMapping("/find_host_pwd")
 	public String findHostPwdAction(HostVO vo, Model model) {
 		String pwd = hostService.selectPwdByEmailNamePhone(vo);
-		String email = hostService.selectEmailByNamePhone(vo);
+		String hemail = hostService.selectEmailByNamePhone(vo);
 		if (pwd != null) { // 아이디 조회 성공
 			model.addAttribute("message", 1);
-			model.addAttribute("email", email);
+			model.addAttribute("hemail", hemail);
 			model.addAttribute("pwd", pwd);
 		} else {
 			model.addAttribute("message", -1);

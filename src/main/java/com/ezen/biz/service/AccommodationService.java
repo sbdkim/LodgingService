@@ -8,6 +8,8 @@ import utils.Criteria;
 
 public interface AccommodationService {
 
+	// aseq로 숙소 검색
+	AccommodationVO getAccommodaiton(AccommodationVO vo);
 	// 주소로 숙소 검색
 	List<AccommodationVO> selectAccByAdd(String address);
 
@@ -18,7 +20,7 @@ public interface AccommodationService {
 	List<AccommodationVO> getListAccWithPaging(Criteria criteria, String address);
 	
 	//host별 숙소 조회 페이징
-	List<AccommodationVO> getlistHostAccWithPaging(Criteria criteria, String email);
+	List<AccommodationVO> getlistHostAccWithPaging(Criteria criteria, String hemail);
 	
 	// 전체 숙소 갯수 조회
 	 int countAccList(String address);
@@ -32,6 +34,8 @@ public interface AccommodationService {
 	 void updateAccommodation(AccommodationVO vo);
 	 
 	 List<AccommodationVO> getListHostAccommodation(AccommodationVO vo);
+	 
+	 void deleteAccommodation(int aseq);
 
 	 
 	 public List<AccommodationVO> getAccByRegion(String address);

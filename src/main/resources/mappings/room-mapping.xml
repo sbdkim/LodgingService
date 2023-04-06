@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="RoomMapper">
-	<!-- 예약하기 -->
-	<insert id="insertBooking">
-		INSERT INTO booking(bseq, rseq, email, checkin, checkout, price, payment, status)
-		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{checkin}, #{checkout}, #{price}, #{payment}, #{status})
-
-	</insert>
 	
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">
@@ -35,7 +29,6 @@
 
 	<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
 	<select id="selectRoomByAcc" resultType="room">
-
 	<![CDATA[
 		SELECT * FROM room WHERE aseq=#{aseq} AND 
 		rseq NOT IN (
@@ -73,6 +66,16 @@
 	</select>
 
 	<!-- HOST -->
+	<select id="hostSelectRoomByAcc" resultType="room">
+	<![CDATA[
+		SELECT * FROM room WHERE aseq=#{aseq} AND 
+		rseq NOT IN (
+		  SELECT rseq 
+		  FROM booking 
+		  WHERE checkin <= #{checkin}
+		    AND checkout>= #{checkout}) ORDER BY price
+		]]>
+	</select>
 	<!-- host가 accommodation 등록 -->
 	<insert id="insertRoom" parameterType="room">
 		INSERT INTO room(rseq, aseq, rname, price, maxcap, ckintime, ckoutime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, 
@@ -92,5 +95,9 @@
 						towel=#{towel},elevator=#{elevator}, breakfast=#{breakfast}, smoking=#{smoking}, gym=#{gym}, roomservice=#{roomservice}, image=#{image}
 		WHERE rseq=#{rseq}
 	</update>
+	
+	<delete id="deleteRoom" parameterType="room">
+		DELETE FROM room WHERE rseq=#{rseq}
+	</delete>
 
 </mapper>

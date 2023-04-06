@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="AccommodationMapper">
+	<!-- aseq로 숙소 검색 -->
+	<select id="getAccommodaiton" resultType="accommodation">
+		SELECT * FROM accommodation WHERE aseq=#{aseq}
+	</select>
 	<!-- 지역으로 숙소 검색 -->
 	<select id="selectAccByAdd" resultType="accommodation">
 		SELECT * FROM accommodation
@@ -49,17 +53,18 @@
 		SELECT aname from accommodation
 		WHERE aseq=#{aseq}
 	</select>
-
-   <select id="listHostAccommodation" resultType="accommodation">
+	
+	<!-- HOST -->
+	<!-- host 이메일로 등록된 업체 찾기 -->
+	<select id="listHostAccommodation" resultType="accommodation">
       SELECT * FROM accommodation
       WHERE hemail=#{hemail}
    </select>
-
+   	<!-- host가 accommodation 등록 -->
 	<insert id="insertAccommodation" parameterType="accommodation">
 		INSERT INTO accommodation(aseq, hemail, aname, category, address, tel, aimage)
 		VALUES(accommodation_seq.NEXTVAL, #{hemail}, #{aname}, #{category}, #{address}, #{tel}, #{aimage})
 	</insert>
-	
 	
 	<!-- home page  -->
 	<select id="listAccomByRegion" resultType="accommodation">
@@ -68,10 +73,16 @@
       WHERE address like '%'||#{address}||'%'  
       	]]>  
    </select>
+
+	<!-- 수정 -->
+	<update id="updateAccommodation" parameterType="accommodation">
+		UPDATE accommodation SET aname=#{aname}, category=#{category}, address=#{address}, tel=#{tel}, bestyn=#{bestyn}, aimage=#{aimage}
+		WHERE aseq=#{aseq}
+	</update>
 	
-	
-	
-	
-	
+	<!-- 삭제 -->
+	<delete id="deleteAccommodation" parameterType="accommodation">
+		DELETE FROM accommodation WHERE aseq=#{aseq}
+	</delete>
 
 </mapper>

@@ -44,27 +44,6 @@ public class HostController {
 		return "host/accommodationWrite";
 	}
 
-//	@PostMapping("/host_accommodation_write")
-//	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, @RequestParam(value="default") MultipartFile uploadFile) {
-//		
-//		if(!uploadFile.isEmpty()) {
-//			String fileName = uploadFile.getOriginalFilename();
-//			vo.setAimage(fileName);
-//			
-//			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
-//			
-//			try {
-//				uploadFile.transferTo(new File(image_path + fileName));
-//			} catch (IllegalStateException | IOException e) {
-//				
-//				e.printStackTrace();
-//			} 			
-//			
-//		}
-//		
-//		
-//	}
-
 	@PostMapping("/host_accommodation_write")
 	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session,
 			@RequestParam(value = "default") MultipartFile uploadFile) {
@@ -224,7 +203,7 @@ public class HostController {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
 		vo.setHemail(loginHost.getHemail());
-		List<SalesQuantity> listSales = bookingService.getListBookingSales();
+		List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
 		return listSales;
 	}
 }

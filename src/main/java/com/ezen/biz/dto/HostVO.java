@@ -12,7 +12,7 @@ public class HostVO {
 		return hemail;
 	}
 
-	public void setEmail(String hemail) {
+	public void setHemail(String hemail) {
 		this.hemail = hemail;
 	}
 
@@ -51,7 +51,7 @@ public class HostVO {
 	// ToString
 	@Override
 	public String toString() {
-		return "HostVO [hemail=" + hemail + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status=" + status
-				+ "]";
+		return "HostVO [hemail=" + hemail + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status="
+				+ status + "]";
 	}
 }
