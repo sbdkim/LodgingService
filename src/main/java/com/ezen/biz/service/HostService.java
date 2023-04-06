@@ -1,5 +1,7 @@
 package com.ezen.biz.service;
 
+import java.util.List;
+
 import com.ezen.biz.dto.HostVO;
 
 public interface HostService {
@@ -27,4 +29,11 @@ public interface HostService {
 
 	// 비밀번호 변경
 	void changePwd(HostVO vo);
+	
+	//호스트 list 조회
+	public List<HostVO> getListHost(String name);
+	
+	public void updateHostStatus(String email);
+	
+	
 }

@@ -134,30 +134,19 @@
 		
 		
 	<div id = "trendingacc" class="row" style="display: flex ; justify-content: center">
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 5" style="width:100%">
-			<p>Accommodation1</p>
-		</div>
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 6" style="width:100%">
-			<p>Accommodation2</p>
-		</div>
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 7" style="width:100%">
-			<p>Accommodation3</p>
-		</div>
-		<div class="cell" style="padding:5px">
-			<img src="css/dummy.jpg" alt="City 8" style="width:100%">
-			<p>Accommodation4</p>
-		</div>
+		<c:forEach items="${bestAccommodationList}" var="bookingVO">
+		
+	    	<div class="cell" style="padding:5px">
+	    	<a href="#" onclick="location.href='room?aseq=${bookingVO.aseq}&checkin='+document.getElementById('today').value+'&checkout='+document.getElementById('tomorrow').value">
+		        <img src="accommodation_images/${bookingVO.aseq}.jpg" style="width:100%">
+			     <p>${bookingVO.aname}</p>
+			   </a>
+		    </div>
+		   
+		</c:forEach>
 	</div>
 	
-	<div>
-		<c:forEach items="${bestAccommodationList}" var="bookingVO">
-			<p>${bookingVO.aname}</p>
-		</c:forEach>
-
-	</div>
+	
 	
 	
 	
