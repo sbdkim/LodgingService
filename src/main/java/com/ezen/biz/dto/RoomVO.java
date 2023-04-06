@@ -36,6 +36,7 @@ public class RoomVO {
 	private int roomservice;
 	private String rimage;
 	private String aimage;
+	private String hemail;
 
 	// Getter, Setter 메소드
 	public int getRseq() {
@@ -319,6 +320,15 @@ public class RoomVO {
 		this.aimage = aimage;
 	}
 
+	
+	public String getHemail() {
+		return hemail;
+	}
+
+	public void setHemail(String hemail) {
+		this.hemail = hemail;
+	}
+
 	@Override
 	public String toString() {
 		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", rname=" + rname + ", aname=" + aname + ", price=" + price
@@ -329,10 +339,9 @@ public class RoomVO {
 				+ ", kettle=" + kettle + ", washer=" + washer + ", bbq=" + bbq + ", hairdrier=" + hairdrier
 				+ ", amenity=" + amenity + ", towel=" + towel + ", elevator=" + elevator + ", breakfast=" + breakfast
 				+ ", smoking=" + smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", rimage=" + rimage
-				+ ", aimage=" + aimage + "]";
+				+ ", aimage=" + aimage + ", hemail=" + hemail + "]";
 	}
-	
-	
+
 	
 
 }

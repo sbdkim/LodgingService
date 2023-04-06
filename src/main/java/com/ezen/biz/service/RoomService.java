@@ -15,15 +15,15 @@ public interface RoomService {
 	
 	int countRoomList(int aseq);
 	
-	RoomVO getRoomByRseq(int rseq);
+	RoomVO getRoomByRseq(RoomVO vo);
 	
 	RoomVO getAccByRseq(int rseq);
-
-	RoomVO selectRoomByRseq(int rseq);
 	
 	void insertRoom(RoomVO vo);
 	
 	void updateRoom(RoomVO vo);
+	
+	void deleteRoom(int rseq);
 	
 	List<RoomVO> hostGetRoomByAcc(int aseq);
 

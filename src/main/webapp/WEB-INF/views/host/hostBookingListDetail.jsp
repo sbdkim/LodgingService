@@ -17,12 +17,12 @@
      <tr>
        <td align="center" width="100px"> ${bookingVO.bseq} </td>
  	   <td align="center" width="100px"> ${bookingVO.rseq} </td>
- 	   <td align="center"><fmt:formatDate value="${bookingVO.bookdate}"/></td>
+ 	   <td align="center" width="100px"> ${bookingVO.bookdate}</td>
  	   <td align="center" width="100px"> ${bookingVO.mname} </td>
  	   <td align="center" width="100px"> ${bookingVO.phone} </td>
- 	   <td align="center" width="100px"> ${bookingVO.email} </td>
- 	   <td align="center"><fmt:parseDate value="${bookingVO.checkin}"/></td>
- 	   <td align="center"><fmt:parseDate value="${bookingVO.checkout}"/></td>
+ 	   <td align="center" width="100px"> ${bookingVO.memail} </td>
+ 	   <td align="center" width="100px">${bookingVO.checkin}</td>
+ 	   <td align="center" width="100px">${bookingVO.checkout}</td>
  	   <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.rprice}"/></td>
        <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
      </tr>

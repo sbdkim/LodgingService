@@ -100,9 +100,9 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<BookingVO> getListBookByAseq(int aseq) {
+	public List<BookingVO> getListBookByAseq(BookingVO vo) {
 		
-		return bDao.listBookByAseq(aseq);
+		return bDao.listBookByAseq(vo);
 	}
 
 }

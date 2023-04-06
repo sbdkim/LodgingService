@@ -48,7 +48,7 @@
 
 <script type="text/javascript">
 
-/* 상품 등록 */
+/* 업체 등록 */
 function go_wrt() {
 	var form = document.getElementById("acc_form");
 	

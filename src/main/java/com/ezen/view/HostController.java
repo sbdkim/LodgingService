@@ -198,6 +198,95 @@ public class HostController {
 	
 	}
 	
+	@PostMapping("/host_room_write_form")
+	public String hostRoomWriteView() {
+				
+		return "host/accommodationWrite";
+	}
+	
+
+	@PostMapping("/host_room_write")
+	public String hostRoomWrit(RoomVO vo, HttpSession session, 
+			@RequestParam(value="default") MultipartFile uploadFile) {
+		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+		
+		if(loginHost == null) {
+			return "member/login";
+		} else {
+			
+			vo.setHemail(loginHost.getHemail());
+			
+				if(!uploadFile.isEmpty()) {
+					String fileName = uploadFile.getOriginalFilename();
+					vo.setRimage(fileName);
+					
+					String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
+					
+					try {
+						uploadFile.transferTo(new File(image_path + fileName));
+					} catch (IllegalStateException | IOException e) {
+						
+						e.printStackTrace();
+					} 			
+					
+				} else {
+					vo.setRimage("default.jpg");
+				}
+
+		}
+		roomService.insertRoom(vo);
+		
+		
+		return "redirect:accommodation_detail";
+		
+		
+	}
+	
+
+	@RequestMapping("/host_room_update_form")
+	public String hostRoomUpdateView(RoomVO vo, Model model) {
+		RoomVO room = roomService.getRoomByRseq(vo);	
+			
+		model.addAttribute("roomVO", room);
+		
+		return "host/roomUpdate";
+	}
+
+	@PostMapping("/host_room_update")
+	public String hostRoomUpdate(RoomVO vo,
+			@RequestParam(value="accommodation_images") MultipartFile uploadFile,
+			@RequestParam(value="nonmakeImg") String org_image,
+			HttpSession session) {
+		
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			vo.setRimage(fileName);
+			
+			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
+			
+			try {
+				uploadFile.transferTo(new File(image_path + fileName));
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			vo.setRimage(org_image);
+		}
+		
+		roomService.updateRoom(vo);
+		
+		return "redirect:accommodation_detail";
+		
+	}
+	
+	@RequestMapping("/host_room_delete")
+	public String hostRoomDelete(@RequestParam(value="rseq") int rseq) {
+		
+		roomService.deleteRoom(rseq);
+		
+		return "redirect:accommodation_detail";
+	}
+	
 	@GetMapping("/hostBookingList")
 	public String HostBookingListAction(HttpSession session, AccommodationVO vo, Model model) {
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
@@ -216,35 +305,29 @@ public class HostController {
 	}
 	
 	@GetMapping("/host_booking_detail")
-	public String HostBookingDetail(HttpSession session, AccommodationVO vo, Model model) {
+	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		
 		if(loginHost == null) {
 			return "member/login";
 		} else {
+			
 			vo.setHemail(loginHost.getHemail());
 			vo.setAseq(vo.getAseq());
+			vo.setRseq(vo.getRseq());
+			vo.setMname(vo.getMname());
+			vo.setPhone(vo.getPhone());
+			vo.setMemail(vo.getMemail());
+			vo.setCheckin(vo.getCheckin());
+			vo.setCheckout(vo.getCheckout());
+			vo.setRprice(vo.getRprice());
+			vo.setBprice(vo.getBprice());
 			
-			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo.getAseq());
-			System.out.println("aseq()=" + vo.getAseq());
-			
+			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo);
+		
 			model.addAttribute("bookingList", bookingList);
-//			AccommodationVO accommodationDetail = accommodationService.getAccommodaiton(vo);
-//			
-//			accommodationDetail.setAseq(accommodationDetail.getAseq());
-//			accommodationDetail.setHemail(accommodationDetail.getHemail());
-//			accommodationDetail.setAname(accommodationDetail.getAname());
-//			
-//			List<RoomVO> roomList = roomService.hostGetRoomByAcc(vo.getAseq());
-//			
-//			RoomVO roomDetail = new RoomVO();
-//			roomDetail.setAseq(vo.getAseq());
-//			roomDetail.setRname(roomList.get(0).getRname());
-//			roomDetail.setPrice(roomList.get(0).getPrice());
-//	
-//			model.addAttribute("accommodationDetail", accommodationDetail);
-//			model.addAttribute("roomList", roomList);
 			
+		
 			return "host/hostBookingListDetail";
 		}
 	
