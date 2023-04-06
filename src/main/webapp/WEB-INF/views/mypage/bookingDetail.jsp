@@ -26,9 +26,10 @@
      <tr>
  	   <td> ${bookingVO.aname} </td>
        <td> ${bookingVO.rname} </td>
+
        <td> ${bookingVO.checkin} </td>
        <td> ${bookingVO.checkout} </td>
-      
+
        <td>
          <c:choose>
          <c:when test='${bookingVO.status=="0"}'> 예약완료 </c:when>
