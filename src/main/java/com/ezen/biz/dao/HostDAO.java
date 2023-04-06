@@ -71,12 +71,14 @@ public class HostDAO {
 			mybatis.update("HostMapper.changePwd", vo);
 		}
 		
-		
-		
-		
+
 		//호스트 조회
 		public List<HostVO> listHost(String name){
 			return mybatis.selectList("HostMapper.getHostList", name);
+		}
+		
+		public void updateHostStatus(String email) {	
+			mybatis.update("HostMapper.approveHost", email);
 		}
 	
 	

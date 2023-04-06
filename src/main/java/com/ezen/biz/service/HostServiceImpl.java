@@ -61,4 +61,10 @@ public class HostServiceImpl implements HostService {
 		return hDao.listHost(name);
 	}
 
+	@Override
+	public void updateHostStatus(String email) {
+		hDao.updateHostStatus(email);
+		
+	}
+
 }

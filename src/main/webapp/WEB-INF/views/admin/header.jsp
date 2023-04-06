@@ -19,10 +19,10 @@
 	<div id="wrap">
 		<header>			
 			<div id="logo">
-				<a href="admin_	login_form"> 
-					<img style="width:800px" src="admin/images/bar_01.gif">
+				
+					<img style="width:800px" src="admin/images/bar_01.gif" onclick="location.href='index.html'">
 					<img src="admin/images/text.gif">
-				</a>
+
 			</div>	
 			<input class="btn" type="button"  value="logout"  style="float: right;"
 			   onClick="location.href='admin_logout'">			

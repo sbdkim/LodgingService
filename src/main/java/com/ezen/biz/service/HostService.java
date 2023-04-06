@@ -33,5 +33,7 @@ public interface HostService {
 	//호스트 list 조회
 	public List<HostVO> getListHost(String name);
 	
+	public void updateHostStatus(String email);
+	
 	
 }
