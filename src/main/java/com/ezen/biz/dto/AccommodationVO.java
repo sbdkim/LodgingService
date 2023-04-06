@@ -93,6 +93,8 @@ public class AccommodationVO {
 		this.rimage = rimage;
 	}
 
+
+
 	// ToString
 	@Override
 	public String toString() {

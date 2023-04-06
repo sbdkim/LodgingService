@@ -12,14 +12,17 @@ public class HostVO {
 		return hemail;
 	}
 
-	public void setEmail(String hemail) {
+	public void setHemail(String hemail) {
 		this.hemail = hemail;
 	}
+
+	
 
 	public String getPwd() {
 		return pwd;
 	}
 
+	
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}

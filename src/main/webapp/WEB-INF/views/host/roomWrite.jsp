@@ -1,44 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+5<%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../header.jsp"%>
 <%@ include file="sub_menu_host.jsp"%>
 
 <article>
-<h1>상품등록</h1>  
+<h1>객실 등록</h1>  
 <!-- [1] 파일을 업로드 하기 위해서는 폼태그를 post 방식으로 전송하고,
 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
-<form name="frm" id="write_form" method="post" enctype="multipart/form-data">
+<form name="frm" id="room_write_form" method="post" enctype="multipart/form-data">
+
 <table id="list">
 <tr>
-  <th>상품분류</th>
-  <td colspan="5">
-  <select name="kind" id="kind">
-    <c:forEach items="${kindList}" var="kind" varStatus="status">
-      <option value="${status.count}">${kind}</option>
-   </c:forEach>
-  </select>      
-<tr>
-  <th>상품명</th>
+  <th>이  름</th>
   <td width="343" colspan="5">
-       <input type="text" name="name" id="name" size="47" maxlength="100" value="킬힐">
+       <input type="text" name="rname" id="rname" size="47" maxlength="100">
   </td>
 </tr>
 <tr>
-  <th>원가[A]</th>
+  <th>1박가격</th>
   <td width="70">
-    <input type="text" name="price1" id="price1" size="11" onKeyUp='NumFormat(this)' value="10000">
+    <input type="text" name="price" id="price" size="11" onKeyUp='NumFormat(this)' value="10000">
   </td>
-  <th>판매가[B]</th>
-  <td width="70">
-     <input type="text" name="price2" id="price2" size="11" onBlur="go_ab()" onKeyUp='NumFormat(this)' value="20000">
+</tr>
+<tr>
+  <th>수용인원</th>
+  <td>
+    <input type="text" name="maxcap" id="maxcap" size="11" onKeyUp='NumFormat(this)' value="1">
   </td>
-  <th>[B-A]</th>
-    <td width="72">
-      <input type="text" name="price3" id="price3" size="11" readonly onKeyUp='NumFormat(this)'>
-    </td>
-  </tr>
-    
+</tr>  
+<tr>
+  <th>체크인시간</th>
+  <td>
+    <input type="text" name="ckintime" id="ckintime" size="15" >
+  </td>
+  <th>체크아웃시간</th>
+  <td>
+    <input>
+  </td>
+</tr> 
+<tr>
+  <th>방개수</th>
+  <td>
+    <input>
+  </td>
+</tr> 
+<tr>
+  <th>화장실개수</th>
+  <td>
+    <input>
+  </td>
+</tr> 
+<tr>
+  <th>침대</th>
+  <td>
+    <input>
+  </td>
+</tr>     
   <tr>
     <th>상세설명</th>
     <td colspan="5">

@@ -17,8 +17,8 @@
               <h3> ${bookingVO.name} </h3>              
           </a>    
         </td>
-        <td> ${bookingVO.ckindate} </td>
-        <td> ${bookingVO.ckoutdate} </td>
+        <td> ${bookingVO.checkin} </td>
+        <td> ${bookingVO.checkout} </td>
         <td> <fmt:formatNumber value="${bookingVO.price}" type="currency"/> </td>      
       
        

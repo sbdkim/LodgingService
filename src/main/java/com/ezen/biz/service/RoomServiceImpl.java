@@ -23,6 +23,12 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
+	public List<RoomVO> getRoomByAcc(BookingVO vo) {
+
+		return  rDao.selectRoomByAcc(vo);
+	}
+	
+	@Override
 	public List<RoomVO> getRoomListWithPaging(Criteria criteria, int aseq) {
 		
 		return rDao.listRoomWithPaging(criteria, aseq);
@@ -59,11 +65,12 @@ public class RoomServiceImpl implements RoomService {
 	public RoomVO selectRoomByRseq(int rseq) {
 		return rDao.selectRoomByRseq(rseq);
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public List<RoomVO> hostGetRoomByAcc(int aseq) {
+
+		return rDao.hostSelectRoomByAcc(aseq);
+	}
+
 
 }

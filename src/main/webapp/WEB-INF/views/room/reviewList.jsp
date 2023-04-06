@@ -9,8 +9,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <!-- link rel="stylesheet" href="css/bootstrap.min.css"> -->
-    <link href="starrating.css" rel="stylesheet"/>
+
+ <link rel="stylesheet" href="/webapp/star-rating/css/star-rating.css" media="all" type="text/css"/>
+<link rel="stylesheet" href="/LodgingService/star-rating/themes/krajee-svg/theme.css" media="all" type="text/css"/> 
+<!--<link href="starrating.css" rel="stylesheet"/>  -->
+<script src="/LodgingService/star-rating/js/star-rating.js" type="text/javascript" ></script>
+<script src="/LodgingService/star-rating/themes/krajee-svg/theme.js" type="text/javascript"></script>
+    
+
     <style>
     #cCnt {
        border-radius: 3px;
@@ -51,7 +57,7 @@
                 <span><h3>객실 리뷰</h3></span> <span id="cCnt"></span>
             </div>
         
-	    <fieldset>
+	    <!--  <fieldset>
 		<span class="text-bold">별점을 선택해주세요</span>
 		<input type="radio" name="reviewStar" value="5" id="rate1"><label
 			for="rate1">★</label>
@@ -63,11 +69,18 @@
 			for="rate4">★</label>
 		<input type="radio" name="reviewStar" value="1" id="rate5"><label
 			for="rate5">★</label>
-	</fieldset>
+	</fieldset>-->
             
             <div id="reply">
-                <table id="rep_input" style="width: 650px">                    
-                    <tr>
+         
+					<br>
+					&nbsp;&nbsp;&nbsp;<label for="score" class="control-label">별점 주기</label>
+					<table>
+						<tr>
+				<td width="30"></td>
+				<td width="250">
+					<input id="score" name="score" class="rating rating-loading" data-min="0" data-max="5" data-step="1" >
+				</td>
                         <td style="width:80%;">
                             <textarea  rows="3" cols="75" id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
                         </td>
@@ -78,7 +91,7 @@
                 </table>
             </div>
         </div>
-        <input type="hidden" id="pseq" name="pseq" value="${roomVO.rseq }" />        
+        <!-- <input type="hidden" id="pseq" name="pseq" value="${roomVO.rseq }" />   -->      
     </form>
 </div>
 <div class="container">
@@ -93,170 +106,10 @@
    </div>
 </div>
 
-<script type="text/javascript">
 
-   $(document).ready(function() {
-      // 상품상세정보 로딩 시에 상품평 목록을 조회하여 출력
-      getReviewList();
-   });
-   
-   // 상품평 목록 불러오기
-   function getReviewList() {
-      
-      $.ajax({
-         type: 'GET',
-         url: 'review/list',
-         dataType: 'json',
-         data:$("#reviewForm").serialize(),
-         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-         success: function(data) {
-            var pageMaker = data.pageInfo;
-            var totalCount = data.total;
-            var reviewList = data.reviewList;
-            
-            showHTML(pageMaker, reviewList, totalCount);
-         },
-         error: function() {
-            alert("상품평 목록을 조회하지 못했습니다.")
-         }
-      });
-   }
-   
-   /*
-   ** 상품평 페이지별 목록 요청
-   */
-   function getReviewPaging(pagenum, rowsperpage, rseq) {
-      $.ajax({
-         type: 'GET',
-         url: 'review/list',
-         dataType: 'json',
-         data:{"pageNum": pagenum,
-              "rowsPerPage": rowsperpage,
-              "pseq": pseq},
-         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-         success: function(data) {
-            var pageMaker = data.pageInfo;
-            var totalCount = data.total;
-            var reviewList = data.reviewList;
-            console.log("pageMaker=", pageMaker);
-            console.log("count=", totalCount);
-            console.log("review=", reviewList);
-            
-            showHTML(pageMaker, reviewList, totalCount);
-         },
-         error: function() {
-            alert("상품평 목록을 조회하지 못했습니다.")
-         }
-      });
-   }
-   
-   function showHTML(pageMaker, reviewList, totalCount) {
-      var html = "";
-      var p_html = "";
-      
-      if (reviewList.length > 0) {
-         // 상품평의 각 항목별로 HTML 생성
-         $.each(reviewList, function(index, item){
-            html += "<div>";
-            html += "<div id=\"review_item\"> <strong>작성자: " + item.writer + "</strong>";
-            html += "<span id=\"write_date\">" + displayTime(item.regdate) + "</span><br>";
-            html += item.content+"<br></div>";
-            html += "</div>";
-         });
-         
-         // 페이징 버튼 출력
-         if (pageMaker.prev == true) {
-            p_html += "<li class=\"paginate_button previous\">";
-            p_html += "<a href='javascript:getReviewPaging("
-                 +pageMaker.startPage-1+","+pageMaker.criteria.rowsPerPage+","+${roomVO.rseq}+")'>[이전]</a></li>";
-         }
-         
-         for(var i=pageMaker.startPage; i<=pageMaker.endPage; i++){
-            p_html += "<a href='javascript:getReviewPaging("
-                 + i +","+pageMaker.criteria.rowsPerPage+","+${roomVO.rseq}+")'>["+i+"]</a></li>";
-            console.log(p_html);
-         }
-         
-         if (pageMaker.next == true) {
-            p_html += "<li class=\"paginate_button next\">";
-            p_html += "<a href='javascript:getReviewPaging("
-                 +(pageMaker.endPage+1)+","+pageMaker.criteria.rowsPerPage+","+${roomVO.rseq}+")'>[다음]</a></li>";
-         }
-         
-      } else { // 조회된 상품평이 없을 경우
-         html += "<div>";
-         html += "<h5>등록된 상품평이 없습니다.</h5>";
-         html += "</div>";
-      }
-      
-      // 상품평 갯수 출력
-      $("#cCnt").html("리뷰 " + "<span style='color:#00f;'>" + totalCount+"</span>");
-      // 상품평 목록 출력
-      $("#reviewList").html(html);
-      // 페이징 버튼 출력
-      $("#pagination").html(p_html);
-      
-   }
-   
-   /*
-   ** 입력 파라미터:
-   **     timeValue - 상품평 등록 시간
-   */
-   function displayTime(timeValue) {
-      var today = new Date();
-      
-      console.log("timeValue=", timeValue);
-      
-      // 현재시간에서 댓글등록시간을 빼줌
-      var timeGap = today.getTime() - timeValue;
-      
-      // timeValue를 Date객체로 변환
-      var dateObj = new Date(timeValue);
-      
-      // timeGap이 24시간 이내인지 판단
-      if (timeGap < (1000 * 60 * 60 * 24)) {  // 시, 분, 초를 구함
-         var hh = dateObj.getHours();
-         var mi = dateObj.getMinutes();
-         var ss = dateObj.getSeconds();
-         
-         //return hh + ':' + mi + ':' + ss;
-         return [(hh>9 ? '':'0')+hh, ':', (mi>9 ? '':'0')+mi, ':', 
-                (ss>9 ? '':'0')+ss].join('');
-      } else {
-         var yy = dateObj.getFullYear();
-         var mm = dateObj.getMonth() + 1;
-         var dd = dateObj.getDate();
-         
-         //return yy + "-" + mm + "-" + dd;
-         return [yy, '/', (mm>9 ? '':'0')+mm, '/', (dd>9 ? '':'0')+dd].join('');
-      }
-   }
-   
-   /*
-   ** 상품 댓글 등록
-   */
-   function save_review(rseq) {
-      $.ajax({
-         type:'POST',
-         url:'review/save',
-         data:$("#reviewForm").serialize(),
-         success: function(data) {
-            if (data=='success') {   // 상품평 등록 성공
-               getReviewList();    // 상품평 목록 요청함수 호출
-               $("#content").val("");
-            } else if (data=='fail') {
-               alert("리뷰 등록이 실패하였습니다. 다시 시도해 주세요.");
-            } else if (data=='not_logedin') {
-               alert("리뷰 등록은 로그인이 필요합니다.");
-            }
-         },
-         error: function(request, status, error) {
-            alert("error:" + error);
-         }
-      });
-   }
-</script>
+
 </body>
+
 </html>
 
 

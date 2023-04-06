@@ -13,8 +13,8 @@ public class HostServiceImpl implements HostService {
 	private HostDAO hDao;
 
 	@Override
-	public int confirmEmail(String email) {
-		return hDao.confirmEmail(email);
+	public int confirmEmail(String hemail) {
+		return hDao.confirmEmail(hemail);
 	}
 
 	@Override
@@ -29,13 +29,13 @@ public class HostServiceImpl implements HostService {
 	}
 
 	@Override
-	public HostVO getHost(String email) {
-		return hDao.getHost(email);
+	public HostVO getHost(String hemail) {
+		return hDao.getHost(hemail);
 	}
 
 	@Override
-	public void updateHost(String email) {
-		hDao.updateHost(email);
+	public void updateHost(String hemail) {
+		hDao.updateHost(hemail);
 
 	}
 

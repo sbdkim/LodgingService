@@ -20,17 +20,16 @@
      <h3> 예약 상품 정보 </h3> 
      <table>
      <tr>
-       <th>예약숙박업체</th><th>예약객실명</th> <th>객실번호</th> <th>체크인 날짜</th> <th>체크아웃 날짜</th>
- <th>가격</th> <th>처리 상태</th>    
+       <th>예약숙박업체</th><th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th> <th>처리 상태</th>    
      </tr>
      <c:forEach items="${bookingList}"  var="bookingVO">
      <tr>
  	   <td> ${bookingVO.aname} </td>
        <td> ${bookingVO.rname} </td>
-       <td> ${bookingVO.rseq} </td>          
-       <td> ${bookingVO.ckindate} </td>
-       <td> ${bookingVO.ckoutdate} </td>
-       <td> <fmt:formatNumber type="currency" value="${totalPrice}" /> </td>
+
+       <td> ${bookingVO.checkin} </td>
+       <td> ${bookingVO.checkout} </td>
+
        <td>
          <c:choose>
          <c:when test='${bookingVO.status=="0"}'> 예약완료 </c:when>

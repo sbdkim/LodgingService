@@ -131,7 +131,7 @@ public class MemberController {
 	public String hostEmailCheckView(HostVO vo, Model model) {
 		// email 중복확인 조회
 		int result = hostService.confirmEmail(vo.getHemail());
-		model.addAttribute("email", vo.getHemail());
+		model.addAttribute("hemail", vo.getHemail());
 		model.addAttribute("message", result);
 		return "member/hostemailcheck";
 	}
@@ -141,7 +141,7 @@ public class MemberController {
 	public String hostEmailCheckAction(HostVO vo, Model model) {
 		// email 중복 확인 조회
 		int result = hostService.confirmEmail(vo.getHemail());
-		model.addAttribute("email", vo.getHemail());
+		model.addAttribute("hemail", vo.getHemail());
 		model.addAttribute("message", result);
 		return "member/hostemailcheck";
 	}
@@ -204,10 +204,10 @@ public class MemberController {
 
 	@PostMapping("/find_host_email")
 	public String findHostEmailAction(HostVO vo, Model model) {
-		String email = hostService.selectEmailByNamePhone(vo);
-		if (email != null) { // 아이디 조회 성공
+		String hemail = hostService.selectEmailByNamePhone(vo);
+		if (hemail != null) { // 아이디 조회 성공
 			model.addAttribute("message", 1);
-			model.addAttribute("email", email);
+			model.addAttribute("hemail", hemail);
 		} else {
 			model.addAttribute("message", -1);
 		}
@@ -217,10 +217,10 @@ public class MemberController {
 	@PostMapping("/find_host_pwd")
 	public String findHostPwdAction(HostVO vo, Model model) {
 		String pwd = hostService.selectPwdByEmailNamePhone(vo);
-		String email = hostService.selectEmailByNamePhone(vo);
+		String hemail = hostService.selectEmailByNamePhone(vo);
 		if (pwd != null) { // 아이디 조회 성공
 			model.addAttribute("message", 1);
-			model.addAttribute("email", email);
+			model.addAttribute("hemail", hemail);
 			model.addAttribute("pwd", pwd);
 		} else {
 			model.addAttribute("message", -1);

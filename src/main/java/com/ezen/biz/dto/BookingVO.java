@@ -19,7 +19,9 @@ public class BookingVO {
 	private String rname;
 	private int aseq;
 	private String mname;
-
+	private int tprice;
+	private String email;
+	
 	// Getter, Setter 메소드
 	public int getBseq() {
 		return bseq;
@@ -37,7 +39,7 @@ public class BookingVO {
 		this.rseq = rseq;
 	}
 
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -148,6 +150,15 @@ public class BookingVO {
 
 	public void setMname(String mname) {
 		this.mname = mname;
+	}
+
+	
+	public int getTprice() {
+		return tprice;
+	}
+
+	public void setTprice(int tprice) {
+		this.tprice = tprice;
 	}
 
 	@Override

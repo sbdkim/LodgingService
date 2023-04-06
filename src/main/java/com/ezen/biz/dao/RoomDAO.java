@@ -48,4 +48,10 @@ public class RoomDAO {
 	public void updateRoom(RoomVO vo) {
 		mybatis.update("RoomMapper.updateRoom", vo);
 	}
-}// RoomDAO
+	
+	public List<RoomVO> hostSelectRoomByAcc(int aseq) {
+		return mybatis.selectList("RoomMapper.hostSelectRoomByAcc", aseq);
+	}
+	
+}//RoomDAO
+

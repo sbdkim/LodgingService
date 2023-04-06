@@ -14,6 +14,12 @@
 		WHERE email=#{email}
 	</select>
 	
+	<!-- 이메일과 aseq로 예약내역 조회 -->
+	<select id="listBookByEmailAseq" resultType="booking">
+		SELECT * FROM booking_view
+		WHERE memail=#{memail} AND aseq=#{aseq}
+	</select>
+	
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">
 		SELECT * FROM booking_view
@@ -52,7 +58,7 @@
  
     <!--판매실적 -->
     <select id="getListBookingSales" resultMap="salesMap">
-        SELECT aname ,sum(bprice) as sales_count FROM booking_view GROUP BY aname
+        SELECT aname ,sum(bprice) as sales_count FROM booking_view where hemail=#{hemail} GROUP BY aname
      </select>
      
      <!-- home page  -->
