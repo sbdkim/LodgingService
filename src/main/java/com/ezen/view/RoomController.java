@@ -87,5 +87,4 @@ public class RoomController {
 			return "room/booking";
 		}
 	}
-
 }// RoomController

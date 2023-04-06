@@ -64,8 +64,7 @@
 </article>
 
 <script>
-  document.getElementById("checkin").readOnly = true;
-  document.getElementById("checkout").readOnly = true;
+
 </script>
 
 

@@ -3,7 +3,7 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 객실예약 </h2>
-    <form name="formm" method="post" action="booking_insert">
+    <form name="formm" id="book_form" method="post" action="booking_insert">
     <input type="hidden" id="rseq" name="rseq" value="${accRoom.rseq}">
       <table id="accRoom" align="center" border="1" width="600">      
       <tr>
@@ -44,19 +44,11 @@
         <td colspan="1"><b>결제 금액</b></td>
         <td colspan="2"><input type="text" id="bprice" name="bprice" readonly></td>
      </tr>
-     <tr>
-     	<td colspan="1"><b>결제 방법</b></td>
-     	<td colspan="2">
-     	<input type="radio" name="payment" value="0" style="display:block" checked>신용카드
-     	<input type="radio" name="payment" value="1" style="display:block">무통장입금
-     	<input type="radio" name="payment" value="2" style="display:block">간편결제
-     	<input type="radio" name="payment" value="3" style="display:block">계좌이체
-     	</td>
-     </tr>
      </table>      
-          
+     
      <div class="clear"></div>
      <div id="buttons" style="float: right">
+       <button onclick="return requestPay();">결제하기</button>  
        <input type="submit" value="예약하기">
        <input type="button" value="다른 객실 예약" onclick="history.go(-2)">
      </div>
@@ -92,7 +84,12 @@
 		document.getElementById("bprice").value = bprice;
 	});
 </script>
-       
-       
-       
+<<script type="text/javascript">
+function go_book() {
+	var form = document.getElementById("book_form");
+	form.action = "booking_insert";
+	form.submit();
+}
+</script>
+
  <%@ include file="../footer.jsp" %>

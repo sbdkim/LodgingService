@@ -4,10 +4,8 @@
 	
 	<!-- 예약하기 -->
 	<insert id="insertBooking">
-
 		INSERT INTO booking(bseq, rseq, email, checkin, checkout, bprice, payment, status)
 		VALUES(book_seq.NEXTVAL, #{rseq}, #{email}, #{checkin}, #{checkout}, #{bprice}, #{payment}, #{status})
-
 	</insert>
 	
 	<!-- 자신의 예약내역 조회 -->
@@ -71,9 +69,4 @@
   		]]>
    </select>		
      
-     
-     
-     
-	
-
 </mapper>

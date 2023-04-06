@@ -12,7 +12,7 @@
 	rel="stylesheet">
 
 
-
+</body>
 <footer>
 	<div class="footer">
 		<div class="row">
