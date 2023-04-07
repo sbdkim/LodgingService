@@ -35,8 +35,10 @@ public class ReviewDAO {
 	}
 
 	// 리뷰삭제
-	public  void deleteReview(int reseq) {
-		mybatis.delete("ReviewMapper.deleteReview", reseq);
+	public  void deleteReview(ReviewVO vo) {
+		System.out.println("email: " + vo.getEmail());
+		System.out.println("reseq: " + vo.getReseq());
+		mybatis.delete("ReviewMapper.deleteReview", vo);
 	}
 
 	// 전체 리뷰 조회
