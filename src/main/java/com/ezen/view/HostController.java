@@ -79,7 +79,7 @@ public class HostController {
 
 	}
 
-	@GetMapping("/hostmypage")
+	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
 
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
@@ -194,7 +194,7 @@ public class HostController {
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
 	public String adminProductSalesForm() {
-		return "admin/host/salesRecords";
+		return "host/salesRecords";
 	}
 
 	@RequestMapping("/booking_record_chart")

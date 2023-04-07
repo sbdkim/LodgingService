@@ -55,20 +55,26 @@ public class ReviewController {
 	}
 
 	@PostMapping(value = "/save")
-	public String saveReviewAction(ReviewVO reviewVO, @RequestParam(value = "rseq") int rseq, HttpSession session) {
+	public String saveReviewAction(ReviewVO reviewVO, 
+			@RequestParam(value = "rating") int[] rating,
+			@RequestParam(value = "rseq") int rseq, 
+			HttpSession session) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		System.out.println("넘어온 별점:" + reviewVO.getScore());
 		System.out.println("넘어온 댓글:" + reviewVO.getContent());
-		System.out.println(rseq);
 		reviewVO.setRseq(rseq);
 		if (loginUser == null) {
 
 			return "not_logedin";
 		} else {
+			System.out.println(">>>>> Rating");
+			for(int i=0; i<rating.length; i++) {
+				System.out.println(rating[i]);
+			}
 			reviewVO.setEmail(loginUser.getEmail());
-
+           
 			// 상품명 저장
-			if (reviewService.insertReview(reviewVO) > 0) {
+			if ( reviewService.insertReview(reviewVO) > 0) {
 
 				return "success";
 			} else {

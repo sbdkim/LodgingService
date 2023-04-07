@@ -25,7 +25,7 @@ $(document).ready(function() {
 			alert("Chart drawing error!");
 		}
 	});
-	arrBprice = JSON.parse("[" + price + "]");
+	<%--arrBprice = JSON.parse("[" + price + "]");--%>
 	
 	function drawChart(result) {
 		// 차트 그리는데 사용할 데이터 객체 생성
