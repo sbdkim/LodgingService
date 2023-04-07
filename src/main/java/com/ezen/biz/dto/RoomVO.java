@@ -331,9 +331,4 @@ public class RoomVO {
 				+ ", smoking=" + smoking + ", gym=" + gym + ", roomservice=" + roomservice + ", rimage=" + rimage
 				+ ", aimage=" + aimage + "]";
 	}
-
-	
-	
-	
-	
 }

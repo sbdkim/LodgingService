@@ -13,12 +13,13 @@
        <tr>      
        <td> ${bookingVO.indate} </td>
         <td>
+        <input type="hidden" name="bseq" id="bseq" value="${bookingVO.bseq}">
             <a href="booking_detail?bseq=${bookingVO.bseq}">
               <h3> ${bookingVO.name} </h3>              
           </a>    
         </td>
-        <td> ${bookingVO.ckindate} </td>
-        <td> ${bookingVO.ckoutdate} </td>
+        <td> ${bookingVO.checkin} </td>
+        <td> ${bookingVO.checkout} </td>
         <td> <fmt:formatNumber value="${bookingVO.price}" type="currency"/> </td>      
       
        

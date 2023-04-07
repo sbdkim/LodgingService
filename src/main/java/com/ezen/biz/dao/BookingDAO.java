@@ -16,10 +16,6 @@ public class BookingDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public int selectMaxBseq() {
-		return mybatis.selectOne("BookingMapper.selectMaxBseq");
-	}
-
 	// 예약하기
 	public void insertBooking(BookingVO vo) {
 		mybatis.insert("BookingMapper.insertBooking", vo);
@@ -28,6 +24,10 @@ public class BookingDAO {
 	// 자신의 예약내역 조회
 	public List<BookingVO> listBookByEmail(BookingVO vo) {
 		return mybatis.selectList("BookingMapper.listBookByEmail", vo);
+	}
+	
+	public List<BookingVO> listBookByEmailAseq(BookingVO vo){
+		return mybatis.selectList("BookingMapper.listBookByEmailAseq",vo);
 	}
 
 	// 예약번호로 예약내역 조회
@@ -67,4 +67,15 @@ public class BookingDAO {
 	public List<SalesQuantity> getListBookingSales(AccommodationVO vo) {
 		return mybatis.selectList("BookingMapper.getListBookingSales",vo);
 	}
+	
+	public List<BookingVO> listBestAccom() {
+		return mybatis.selectList("BookingMapper.listBestAccom");
+	}
+	
+	
+	
+	
+	
+	
+	
 }

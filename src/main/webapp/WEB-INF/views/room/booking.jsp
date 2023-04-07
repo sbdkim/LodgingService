@@ -3,7 +3,8 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 객실예약 </h2>
-    <form name="formm" method="post" action="booking_insert">
+    <form name="formm" id="book_form" method="post" action="booking_insert">
+    <input type="hidden" id="rseq" name="rseq" value="${accRoom.rseq}">
       <table id="accRoom" align="center" border="1" width="600">      
       <tr>
         <td rowspan="9" width="225">
@@ -13,45 +14,42 @@
 			</c:choose>
 		</td>
 		<td width="100"><b>숙소명</b></td>
-		<td>${accRoom.aname}</td>
+		<td><input type="text" id="aname" name="aname" readonly value="${accRoom.aname}"></td>
      </tr>
       <tr>
-        <td><b>객실명</b></td><td>${accRoom.rname}</td>
+        <td><b>객실명</b></td><td><input type="text" id="rname" name="rname" readonly value="${accRoom.rname}"></td>
      </tr>
       <tr>
-        <td><b>수용 인원</b></td><td>${accRoom.maxcap}</td>
+        <td><b>수용 인원</b></td><td><input type="text" id="maxcap" name="maxcap" readonly value="${accRoom.maxcap}"></td>
      </tr>
      <tr>
-        <td><b>1박 가격</b></td><td>${accRoom.price}</td>
+        <td><b>1박 가격</b></td><td><input type="text" id="price" name="price" readonly value="${accRoom.price}"></td>
      </tr>
       <tr>
-        <td><b>체크인</b></td><td>${param.checkin}</td>
+        <td><b>체크인</b></td><td><input type="text" id="checkin" name="checkin" readonly value="${param.checkin}"></td>
      </tr>
       <tr>
-        <td><b>체크아웃</b></td><td>${param.checkout}</td>
+        <td><b>체크아웃</b></td><td><input type="text" id="checkout" name="checkout" readonly value="${param.checkout}"></td>
      </tr>
      <tr>
-        <td><b>이름</b></td><td>${loginUser.name}</td>
+        <td><b>이름</b></td><td><input type="text" id="mname" name="mname" readonly value="${loginUser.name}"></td>
      </tr>
       <tr>
-        <td><b>전화번호</b></td><td>${loginUser.phone}</td>
+        <td><b>전화번호</b></td><td><input type="text" id="phone" name="phone" readonly value="${loginUser.phone}"></td>
      </tr>
       <tr>
-        <td><b>이메일</b></td><td>${loginUser.email}</td>
+        <td><b>이메일</b></td><td><input type="text" id="memail" name="memail" readonly value="${loginUser.email}"></td>
      </tr>
       <tr>
-        <td colspan="3"><b>시설 및 서비스</b></td>
-     </tr>
-     <tr>
-     	<td colspan="3" height="200">
-     		
-     	</td>
+        <td colspan="1"><b>결제 금액</b></td>
+        <td colspan="2"><input type="text" id="bprice" name="bprice" readonly></td>
      </tr>
      </table>      
-          
+     
      <div class="clear"></div>
      <div id="buttons" style="float: right">
-       <input type="submit" value="예약하기">
+       <button onclick="return requestPay();">결제하기</button>  
+       <%-- <input type="submit" value="예약하기"> --%>
        <input type="button" value="다른 객실 예약" onclick="history.go(-2)">
      </div>
     </form>  
@@ -62,17 +60,36 @@
   <%
   String checkin = request.getParameter("checkin");
   String checkout = request.getParameter("checkout");
-%>
+  %>
 
 <script>
   // Set the values of the date inputs
-
   document.getElementById("checkin").value = '<%= checkin %>';
   document.getElementById("checkout").value = '<%= checkout %>';
-       
-  </script>
-       
-       
-       
-       
- <%@ include file="../footer.jsp" %>    
+</script>
+
+<script language=JavaScript>
+	$(document).ready(function(){
+		var date1='<c:out value="${checkin}"/>';
+		var date2='<c:out value="${checkout}"/>';
+		var arr1 = date1.split('-');
+		var arr2 = date2.split('-');
+		var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+		var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+		var diff = dat2 - dat1;
+		var currDay = 1000 * 60 * 60 * 24;
+		var diffDay = parseInt(diff/currDay);
+		var price = document.getElementById("price").value;
+		var bprice = diffDay*price;
+		document.getElementById("bprice").value = bprice;
+	});
+</script>
+<<script type="text/javascript">
+function go_book() {
+	var form = document.getElementById("book_form");
+	form.action = "booking_insert";
+	form.submit();
+}
+</script>
+
+ <%@ include file="../footer.jsp" %>

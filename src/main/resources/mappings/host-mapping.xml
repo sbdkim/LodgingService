@@ -4,41 +4,41 @@
 	<!-- Email 존재 여부 확인 -->
 	<select id="confirmEmail" resultType="String">
 		SELECT pwd FROM host
-		WHERE email=#{email}
+		WHERE hemail=#{email}
 	</select>
 	
 	<!-- 회원가입 -->
 	<insert id="insertHost">
-		INSERT INTO host(email, pwd, phone, name)
-		VALUES(#{email}, #{pwd}, #{phone}, #{name})
+		INSERT INTO host(hemail, pwd, phone, name)
+		VALUES(#{hemail}, #{pwd}, #{phone}, #{name})
 	</insert>
 	
 	<!-- 회원정보 조회 -->
 	<select id="getHost" resultType="host">
 		SELECT * FROM host
-		WHERE email=#{email}
+		WHERE hemail=#{email}
 	</select>
 
 	<!-- 회원정보 변경 -->
 	<update id="upateHost">
-		UPDATE host SET pwd=#{pwd}, name=#{name}, phone=#{phone} where email=#{email}
+		UPDATE host SET pwd=#{pwd}, name=#{name}, phone=#{phone} where hemail=#{email}
 	</update>
 	
 	<!-- 비밀번호 변경 -->
 	<update id="changePwd">
-		UPDATE host SET pwd=#{pwd} WHERE email=#{email}
+		UPDATE host SET pwd=#{pwd} WHERE hemail=#{email}
 	</update>
 	
 	<!-- 이름, 번호로 이메일 찾기 -->
 	<select id="selectEmailByNamePhone" resultType="String">
-		SELECT email FROM host
+		SELECT hemail FROM host
 		WHERE name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- 이메일, 이름, 번호로 비밀번호 찾기 -->
 	<select id="selectPwdByEmailNamePhone" resultType="String">
 		SELECT pwd FROM host
-		WHERE email=#{email} AND name=#{name} AND phone=#{phone}
+		WHERE hemail=#{email} AND name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- admin이 모든 호스트 조회하기 -->
@@ -50,12 +50,29 @@
 	<!--  admin이 호스트 승인하기 -->
 	<update id="approveHost">
 		UPDATE host SET status='1'
-		WHERE email=#{email}
+		WHERE hemail=#{email}
 	</update>
 	
+	<delete id="deleteHost">
+		DELETE FROM host where hemail=${email}
+	</delete>	
+
 	
+
+	<select id="listHostWithPaging" resultType="host">
+		<![CDATA[
+		SELECT hemail, pwd, phone, name, status FROM
+		(SELECT row_number() OVER (ORDER BY name) rn, hemail, pwd, phone, name, status
+		FROM host WHERE name like '%'||#{name}||'%')
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+		]]>
+	</select>
+
 	
-	
+	<select id="countHostList" parameterType="String" resultType="int">
+		SELECT count(*) FROM host WHERE name like '%'||#{name}||'%'
+	</select>
 	
 	
 </mapper>

@@ -35,6 +35,8 @@ public class ReviewController {
 			Criteria criteria, Model model){
 
 		Map<String, Object> reviewInfo= new HashMap<>();
+		
+				
 		//댓글 목록 조회
 		 
 		List<ReviewVO> reviewList= reviewService.getReviewListwithPaging(criteria, rseq);
@@ -55,10 +57,12 @@ public class ReviewController {
 	}
 	
 	@PostMapping(value="/save")
-	public String saveReviewAction(
-			
-		 ReviewVO reviewVO,HttpSession session) {
+	public String saveReviewAction(ReviewVO reviewVO, @RequestParam(value="rseq") int rseq,  HttpSession session) {
 		 MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		 System.out.println("넘어온 별점:" + reviewVO.getScore());
+		 System.out.println("넘어온 댓글:" + reviewVO.getContent());
+		 System.out.println(rseq);
+		 reviewVO.setRseq(rseq);
 		 if (loginUser == null) {
 			 
 			 return "not_logedin";

@@ -11,7 +11,7 @@
      </tr>     
      <tr>  
        <td align="center" width="100px"> ${accommodationDetail.aseq} </td>    
-       <td align="center" width="100px"> ${accommodationDetail.email} </td> 
+       <td align="center" width="100px"> ${accommodationDetail.hemail} </td> 
        <td align="center" width="300px"> ${accommodationDetail.aname} </td> 
      </tr>    
      </table>      

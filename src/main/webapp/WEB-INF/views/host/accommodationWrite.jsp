@@ -8,7 +8,7 @@
 <h1>숙소 등록</h1>  
 <!-- [1] 파일을 업로드 하기 위해서는 폼태그를 post 방식으로 전송하고,
 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
-<form name="frm" id="write_form" method="post" enctype="multipart/form-data">
+<form name="frm" id="acc_write_form" method="post" enctype="multipart/form-data">
 
 <table id="list">
 <tr>
@@ -74,7 +74,7 @@ function go_save() {
 		document.getElementById("tel").focus();
 		return false;
 	} else {
-		var form = document.getElementById("write_form");
+		var form = document.getElementById("acc_update_form");
 		form.enctype = "multipart/form-data"; //꼭 해줘야 함!!
 		form.action = "host_accommodation_write";
 		form.submit();

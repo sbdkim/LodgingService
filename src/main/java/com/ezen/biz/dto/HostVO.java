@@ -1,19 +1,19 @@
 package com.ezen.biz.dto;
 
 public class HostVO {
-	private String email;
+	private String hemail;
 	private String pwd;
 	private String phone;
 	private String name;
 	private int status;
 
 	// Getter, Setter 메소드
-	public String getEmail() {
-		return email;
+	public String getHemail() {
+		return hemail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setHemail(String hemail) {
+		this.hemail = hemail;
 	}
 
 	public String getPwd() {
@@ -51,7 +51,7 @@ public class HostVO {
 	// ToString
 	@Override
 	public String toString() {
-		return "HostVO [email=" + email + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status=" + status
-				+ "]";
+		return "HostVO [hemail=" + hemail + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status="
+				+ status + "]";
 	}
 }
