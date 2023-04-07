@@ -192,8 +192,8 @@
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
 				html += "<span id=\"write_score\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
+				html += "<a href='review_delete(" + item.reseq + ");'>삭제</a>";
 				html += "</div>";
-				html +="<button type ='button' class='review_delete' date-repNum='"+item.reseq+"'>삭 제</button>"
 			});
 			
 		
@@ -278,9 +278,9 @@
 			        $("#score").val(),
 					$("#content").val("");
 				} else if (data=='fail') {
-					alert("상품평 등록이 실패하였습니다. 다시 시도해 주세요.");
+					alert("리뷰 등록이 실패하였습니다. 다시 시도해 주세요.");
 				} else if (data=='not_logedin') {
-					alert("상품평 등록은 로그인이 필요합니다.");
+					alert("리뷰 등록은 로그인이 필요합니다.");
 					
 					
 				}
@@ -291,28 +291,24 @@
 		});
 	}
 		
-	function review_delete(reseq) {
-       
-        var ans = confirm("선택하신 댓글을 삭제하시겠습니까?");
-        if(!ans) return false;
-        
-        $.ajax({
-            url  : 'review/delete',
-            type : "delete",
-            data:$("#reviewListForm"),
-            success : function(data) {
-            	  $("#reseq").val()
-                    //alert("댓글이 삭제 되었습니다.");
-                  location.reload();
-            },
-            error : function(data) {
-                alert("댓글이 삭제되지 않았습니다.");
-            }
-        });
-    }
+	// 삭제 함수
+	function review_delete(reseq){
+    $.ajax({
+        url:"review/delete"
+        ,type:"post"
+        ,success:function(data){
+            if(data==1){
+            getListReview();
+            
+        }else if (data==0) {
+			alert("리뷰 삭제가 실패하였습니다. 다시 시도해 주세요.");
+        } else if (data=='not_logedin') {
+			alert("리뷰 삭제는 로그인이 필요합니다.");
+        }
+        }
+    }); // ajax() end
+} // commentDelete() end
 
-		  
-	
 </script>
 
 <%@ include file="../footer.jsp" %>

@@ -76,10 +76,18 @@ public class ReviewController {
 	
 	
 	}
-	@RequestMapping(value="/delete" , method = RequestMethod.POST)
-	public String reviewDelete(ReviewVO vo) {
-		reviewService.deleteReview(vo);
-		return "redirect:/roomDetail";
+	@RequestMapping(value="/delete" , produces="application/json; cjarset=UTF-8")
+	public int reviewDelete(ReviewVO vo, MemberVO memberVO) {
+		int result=0;
+		if(memberVO.getEmail().equals(vo.getEmail())) {
+			reviewService.deleteReview(vo);
+			return 1;
+		}else {
+			return result;
+		}
+			
+		
+	
 	}
 	
 }
