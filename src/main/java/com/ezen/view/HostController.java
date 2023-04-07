@@ -184,6 +184,7 @@ public class HostController {
 
 	}
 
+
 	@PostMapping("/host_room_write_form")
 	public String hostRoomWriteView() {
 				
@@ -272,6 +273,7 @@ public class HostController {
 		
 		return "redirect:accommodation_detail";
 	}
+
 
 	@GetMapping("/hostBookingList")
 	public String HostBookingListAction(HttpSession session, AccommodationVO vo, Model model) {

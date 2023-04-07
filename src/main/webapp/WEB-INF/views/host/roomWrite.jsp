@@ -59,8 +59,10 @@
 </tr>     
   <tr>
     <th>객실 정보</th>
+    
     <td colspan="4">
-      <input type="checkbox" name="info" id="wifi" value="1">와이파이<br>
+      <input type="checkbox" name="wifi" id="wifi" value="1">와이파이 &nbsp;
+      <input type="hidden" name="wifi" id="wifi" value="0">
       <input type="checkbox" name="kitchen" id="kitchen" value="0">주방<br>
       <input type="checkbox" name="pool" id="pool" value="1">와이파이<br>
       <input type="checkbox" name="wifi" id="wifi" value="1">와이파이<br>

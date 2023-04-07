@@ -22,6 +22,7 @@ public class BookingVO {
 	private int tprice;
 	private String phone;
 
+
 	// Getter, Setter 메소드
 	public int getBseq() {
 		return bseq;
