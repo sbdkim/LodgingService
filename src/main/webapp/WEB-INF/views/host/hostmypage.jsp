@@ -19,6 +19,7 @@
 	  </c:when>
 	  <c:otherwise>
       <c:forEach items="${accommodationList}"  var="accommodationVO">
+      <input type="hidden" name="aseq" value="${accommodationVO.aseq}">
       <tr>  
         <td align="center" width="100px">
         <c:choose>
@@ -65,7 +66,19 @@ function go_list() {
 	form.submit();
 }
 
-
+function go_acc_delete(aseq){
+	const query = 'input[name="aseq"]:checked';
+	var len = document.querySelectorAll(query).length;
+	console.log(len);
+	
+	if(len == 0){
+		alert("삭제할 항목을 선택해 주세요")
+	} else{
+		var form = document.getElementById("acc_form");
+		form.action = "host_acc_delete";
+		form.submit();
+	}
+}
 
 </script>
 

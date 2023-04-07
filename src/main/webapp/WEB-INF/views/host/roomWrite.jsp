@@ -90,23 +90,17 @@
       
       <input type="checkbox" name="hairdrier" id="input_check" value="1">헤어드라이어&nbsp;<br>
 
-      
       <input type="checkbox" name="amenity" id="input_check" value="1" checked>어메니티&nbsp;
 
-      
       <input type="checkbox" name="towel" id="input_check" value="1" checked>수건&nbsp;
-
       
       <input type="checkbox" name="elevator" id="input_check" value="1">엘리베이터&nbsp;
 
-      
       <input type="checkbox" name="breakfast" id="input_check" value="1">조식&nbsp;
- 
       
       <input type="checkbox" name="smoking" id="input_check" value="0" checked>금연&nbsp;
  
       <input type="checkbox" name="gym" id="input_check" value="1">피트니스&nbsp;
-
       
       <input type="checkbox" name="roomservice" id="input_check" value="1">룸서비스&nbsp;
     </td>
