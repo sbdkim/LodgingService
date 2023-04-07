@@ -36,9 +36,11 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public RoomVO getRoomByRseq(RoomVO vo) {
-		return rDao.selectRoomByRseq(vo);
+	public RoomVO getRoomByRseq(int rseq) {
+		return rDao.selectRoomByRseq(rseq);
 	}
+	
+	
 
 	@Override
 	public RoomVO getAccByRseq(int rseq) {
@@ -66,6 +68,12 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public void deleteRoom(int rseq) {
 		rDao.deleteRoom(rseq);
+	}
+
+	@Override
+	public RoomVO selectRoomByRseq(RoomVO vo) {
+		
+		return rDao.selectRoomByRseq(vo);
 	}
 
 

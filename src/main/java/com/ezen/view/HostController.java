@@ -245,7 +245,7 @@ public class HostController {
 
 	@RequestMapping("/host_room_update_form")
 	public String hostRoomUpdateView(RoomVO vo, Model model) {
-		RoomVO room = roomService.getRoomByRseq(vo);	
+		RoomVO room = roomService.selectRoomByRseq(vo);	
 			
 		model.addAttribute("roomVO", room);
 		

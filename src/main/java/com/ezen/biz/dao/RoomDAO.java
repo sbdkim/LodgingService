@@ -36,7 +36,11 @@ public class RoomDAO {
 	public RoomVO selectRoomByRseq(RoomVO vo) {
 		return mybatis.selectOne("RoomMapper.selectRoomByRseq", vo);
 	}
-
+	
+	
+	public RoomVO selectRoomByRseq(int resq) {
+		return mybatis.selectOne("RoomMapper.selectRoomByRseq", resq);
+	}
 
 	public RoomVO selectAccByRseq(int rseq) {
 		return mybatis.selectOne("RoomMapper.selectAccByRseq", rseq);
