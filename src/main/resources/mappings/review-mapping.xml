@@ -5,8 +5,8 @@
 	<!--리뷰 페이징  -->
 	<select id="reviewListwithPaging" parameterType="hashmap" resultType="review">
 	  <![CDATA[
-	  SELECT reseq, rseq, bseq,content,score,indate,reply
-	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, reseq, rseq, bseq,
+	  SELECT reseq, rseq, bseq, email,content,score,indate,reply
+	  FROM (SELECT row_number() OVER (ORDER BY indate DESC) rn, reseq, rseq, bseq,email,
 	        content,score,indate,reply FROM review
 	        WHERE rseq=#{rseq})
 	        WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
@@ -15,8 +15,8 @@
 	</select>
 	<!-- 리뷰 등록 -->
 	<insert id="insertReview">
-		INSERT INTO review(reseq,  rseq, score,content)
-		VALUES(review_seq.NEXTVAL, #{rseq}, #{score}, #{content})
+		INSERT INTO review(reseq,  rseq, email, score,content)
+		VALUES(review_seq.NEXTVAL, #{rseq}, #{email}, #{score}, #{content})
 	</insert>
 	
 	<!-- 객실번호로 리뷰 조회 -->
@@ -33,7 +33,7 @@
 	
 	<!-- 리뷰삭제 -->
 	<delete id="deleteReview">
-		DELETE review WHERE reseq=#{reseq}
+		DELETE review WHERE reseq=#{reseq} AND email=#{email}
 	</delete>
 	
 	<!-- 전체 리뷰 조회 -->

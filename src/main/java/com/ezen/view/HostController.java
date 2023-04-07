@@ -128,6 +128,7 @@ public class HostController {
 	}
 	
 
+
 	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
 
@@ -313,7 +314,6 @@ public class HostController {
 			return "host/hostBookingList";
 		}
 	}
-
 	
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
@@ -341,7 +341,40 @@ public class HostController {
 		
 			return "host/hostBookingListDetail";
 		}
-	
+
+//	@GetMapping("/host_booking_detail")
+//	public String HostBookingDetail(HttpSession session, BookingVO booking, Model model) {
+//		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
+//		
+//		if(loginHost == null) {
+//			return "member/login";
+//		} else {
+//
+//			List<BookingVO> bookingList = bookingService.getBookingListByAseq(booking);
+//			
+//			
+//			
+//			BookingVO book = new BookingVO();
+//			book.setBseq(bookingList.get(0).getBseq());
+//			book.setRseq(bookingList.get(0).getRseq());
+//			book.setBookdate(bookingList.get(0).getBookdate());
+//			book.setMname(bookingList.get(0).getMname());
+//			book.setCkindate(bookingList.get(0).getCkindate());
+//			book.setCkoutdate(bookingList.get(0).getCkoutdate());
+//			book.setRprice(bookingList.get(0).getRprice());
+//			book.setBprice(bookingList.get(0).getBprice());
+//			
+//
+//			model.addAttribute("bookingList", bookingList);
+//							
+//			return "host/hostBookingListDetail";
+//		}
+
+	// 상품별 판매 실적 화면 출력
+	@RequestMapping("/host_booking_record_form")
+	public String adminProductSalesForm() {
+		return "host/salesRecords";
+
 	}
 	
 	@RequestMapping("/host_booking_delete")

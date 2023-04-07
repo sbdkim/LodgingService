@@ -12,6 +12,7 @@
 	<select id="listBookByEmail" resultType="booking">
 		SELECT * FROM booking_view
 		WHERE memail=#{memail}
+
 	</select>
 	
 	<!-- aseq로 예약내역 조회 -->
