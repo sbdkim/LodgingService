@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ezen.biz.dto.MemberVO;
 
+import utils.Criteria;
+
 
 public interface MemberService {
 
@@ -33,4 +35,17 @@ public interface MemberService {
 	
 	// 비밀번호 변경
 	void changePwd(MemberVO vo);
+	
+
+	List<MemberVO> getMemberList(String name);
+
+	void deleteMember(String email);
+	
+	List<MemberVO> getListMemberWithPaging(Criteria criteria, String name);
+	
+	int countMemberList(String name);
+
+	
+	
+	
 }

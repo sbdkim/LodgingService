@@ -46,4 +46,32 @@
 	<select id="listMember" resultType="member">
 		SELECT * FROM member ORDER BY name
 	</select>
+	
+	<!-- 전체 회원 정보 조회 -->
+	<select id="memberList" resultType="member">
+		SELECT * FROM member ORDER BY ASC
+	</select>
+	
+	
+	<delete id="deleteMember">
+		DELETE FROM member where email='${email}'
+	</delete>	
+	
+	<select id="listMemberWithPaging" resultType="member">
+		<![CDATA[
+		SELECT email, pwd, name, phone, joindate FROM
+		(SELECT row_number() OVER (ORDER BY name) rn, email, pwd, name, phone, joindate
+		FROM member WHERE name like '%'||#{name}||'%')
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+		]]>
+	</select>
+	
+	<select id="countMemberList" parameterType="String" resultType="int">
+		SELECT count(*) FROM member WHERE name like '%'||#{name}||'%'
+	</select>
+	
+	
+	
+	
 </mapper>

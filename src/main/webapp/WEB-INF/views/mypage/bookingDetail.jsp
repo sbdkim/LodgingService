@@ -5,7 +5,7 @@
     <h2> 주문상세정보 </h2>
     <form name="formm" method="post" action="booking_delete">
       <h3> 주문자 정보 </h3>     
-      <table id="bookingList">      
+      <table id="booking">      
       <tr>
         <th>예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
      </tr>     
@@ -24,17 +24,17 @@
        <th>예약숙박업체</th><th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th> <th>처리 상태</th> <th>예약 취소</th>   
      </tr>
      <tr>
- 	   <td> ${bookingList.aname} </td>
-       <td> ${bookingList.rname} </td>
+ 	   <td> ${booking.aname} </td>
+       <td> ${booking.rname} </td>
 
-       <td> ${bookingList.checkin} </td>
-       <td> ${bookingList.checkout} </td>
+       <td> ${booking.checkin} </td>
+       <td> ${booking.checkout} </td>
 
        <td>
          <c:choose>
-         <c:when test='${bookingList.status=="0"}'> 예약완료 </c:when>
-         <c:when test='${bookingList.status=="1"}'> 입실완료 </c:when>
-         <c:when test='${bookingList.status=="3"}'> 이용완료 </c:when>
+         <c:when test='${booking.status=="0"}'> 예약완료 </c:when>
+         <c:when test='${booking.status=="1"}'> 입실완료 </c:when>
+         <c:when test='${booking.status=="3"}'> 이용완료 </c:when>
          <c:otherwise> <span style="color:red"> 취소완료 </span></c:otherwise>
          </c:choose>
        </td>  

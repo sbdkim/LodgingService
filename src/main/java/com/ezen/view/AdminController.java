@@ -9,58 +9,44 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.ezen.biz.dto.AdminVO;
+import com.ezen.biz.dto.BookingVO;
+import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.QnaVO;
-import com.ezen.biz.service.AdminService;
+import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.HostService;
+import com.ezen.biz.service.MemberService;
 import com.ezen.biz.service.QnaService;
+
+import utils.Criteria;
+import utils.PageMaker;
 
 @Controller
 @SessionAttributes("admin")
 public class AdminController {
-
-	@Autowired
-	private AdminService adminService;
 	@Autowired
 	private QnaService qnaService;
 	@Autowired
 	private HostService hostService;
+	@Autowired
+	private MemberService memberService;
+	@Autowired
+	private BookingService bookingService;
 	
 	@GetMapping("/admin_login_form")
 	public String adminLoginView() {
 		return "admin/main";
 	}// adminLoginView
 
-	@PostMapping("/admin_login")
-	public String adminLogin(AdminVO vo, Model model) {
-		// (1) 관리자 ID 인증
-		int result = adminService.adminCheck(vo);
-
-		// (2) 정상적인 관리자이면
-		// 관리자 정보 조회
-		// 상품 목록 화면으로 이동
-		if (result == 1) {
-			model.addAttribute("admin", adminService.getAdmin(vo.getEmail()));
-			return "redirect:admin_product_list";
-		} else {
-			// (3) 비정상적인 관리자이면
-			// 메시지를 설정하고 로그인화면으로 이동
-			if (result == 0) {
-				model.addAttribute("message", "비밀번호를 확인해 주세요.");
-			} else {
-				model.addAttribute("message", "아이디를 확인해 주세요.");
-			}
-			return "admin/main";
-		}
-	}// adminLogin
+	
 
 	@GetMapping("/admin_logout")
 	public String adminLogout(SessionStatus status) {
 		status.setComplete();
-		return "admin/main";
+		return "index";
 	}// adminLogout
 	
 	
@@ -114,6 +100,56 @@ public class AdminController {
 		
 		return "redirect:admin_hostList";
 	}
+	
+	@RequestMapping("/delete_member")
+	public String deleteMember(@RequestParam(value="delete") String[] email) {
+		
+		for(int i=0; i<email.length; i++) {
+			memberService.deleteMember(email[i]);
+		}
+		
+		return "redirect:admin_memberList";
+	}
+	
+	
+	
+	@RequestMapping("/admin_memberList")
+	public String adminMemberList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
+			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
+			@RequestParam(value = "key", defaultValue = "") String name, Model model) {
+
+		Criteria criteria = new Criteria();
+		criteria.setPageNum(Integer.parseInt(pageNum));
+		criteria.setRowsPerPage(Integer.parseInt(rowsPerPage));
+		List<MemberVO> memberList = memberService.getListMemberWithPaging(criteria, name);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalCount(memberService.countMemberList(name));
+
+		model.addAttribute("memberList", memberList);
+		model.addAttribute("memberListSize", memberList.size());
+		model.addAttribute("pageMaker", pageMaker);
+
+		return "admin/member/memberList";
+	}
+	
+	
+	@RequestMapping("/admin_revenue")
+	public String adminRevenueDisplay() {
+		return "admin/revenue/revenueRecords";
+	}
+	
+	@RequestMapping("/monthlyChart")
+	@ResponseBody  // 화면이 아닌 데이터를 리턴하는 메소드로 지정
+	public List<BookingVO> salesRecordChart() {
+		List<BookingVO> listMonthRevenue = bookingService.getMonthlyRevenue();
+		System.out.println(listMonthRevenue);
+		return listMonthRevenue;
+		
+	}
+	
+	
 	
 		
 	

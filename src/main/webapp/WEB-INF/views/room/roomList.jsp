@@ -58,6 +58,13 @@ $(document).ready(function() {
 					</td>
 				</tr>
 			</c:when>
+			<c:when test="${empty roomList}">
+				<tr>
+					<td width="100%" colspan="5" align="center" height="23">
+					해당 날짜에 남아있는 방이 없습니다.
+					</td>
+				</tr>
+			</c:when>
 			<c:otherwise>
 				<c:forEach items="${roomList}" var="roomVO">
 				<tr>

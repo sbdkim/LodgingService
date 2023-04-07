@@ -1,5 +1,6 @@
 package com.ezen.biz.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.biz.dto.MemberVO;
+
+import utils.Criteria;
 
 @Repository
 public class MemberDAO {
@@ -72,4 +75,29 @@ public class MemberDAO {
 	public void changePwd(MemberVO vo) {
 		mybatis.update("MemberMapper.changePwd", vo);
 	}
+	
+	
+	public List<MemberVO> getMemberList(String name) {
+		return mybatis.selectList("MemberMapper.memberList", name);
+	}
+
+
+	public void deleteMember(String email) {
+		mybatis.delete("MemberMapper.deleteMember", email);
+		
+	}
+
+	public List<MemberVO> getListMemberWithPaging(Criteria criteria, String name) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("name", name);
+		return mybatis.selectList("MemberMapper.listMemberWithPaging", map);
+	}
+
+
+	public int countMemberList(String name) {
+		// TODO Auto-generated method stub
+		return mybatis.selectOne("MemberMapper.countMemberList", name);
+	}
+
 }

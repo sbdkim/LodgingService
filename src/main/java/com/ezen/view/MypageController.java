@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
@@ -114,10 +115,8 @@ public class MypageController {
 
 	@RequestMapping("/booking_delete")
 	public String BookingDelete(int bseq) {
-		System.out.println("bseq=" + bseq);
 		bookingService.deleteBookByBseq(bseq);
 		return "redirect:mypage";
-
 	}
 
 	@GetMapping("/accommodation_list")

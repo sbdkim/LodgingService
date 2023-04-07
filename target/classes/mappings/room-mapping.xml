@@ -31,9 +31,11 @@
 		SELECT * FROM room WHERE aseq=#{aseq} AND 
 		rseq NOT IN (
 		  SELECT rseq 
-		  FROM booking 
-		  WHERE checkin <= #{checkin}
-		    AND checkout >= #{checkout}) ORDER BY price
+		    FROM booking 
+		   WHERE checkin BETWEEN #{checkin} AND #{checkout}
+		      OR checkout BETWEEN #{checkin} AND #{checkout}
+		      OR #{checkin} BETWEEN checkin AND checkout
+		      OR #{checkout} BETWEEN checkin AND checkout) ORDER BY price
 		]]>
 
 	</select>

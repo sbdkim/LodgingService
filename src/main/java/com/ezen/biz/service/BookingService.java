@@ -40,4 +40,6 @@ public interface BookingService {
 	 List<SalesQuantity> getListBookingSales(AccommodationVO vo);
 	 
 	 public List<BookingVO> listBestAccom();
+	 
+	 public List<BookingVO> getMonthlyRevenue();
 }

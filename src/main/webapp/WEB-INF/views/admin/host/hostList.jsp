@@ -87,7 +87,7 @@
 <script type="text/javascript">
 function go_search()
 {
-   document.frm.action="admin_host_list";
+	document.frm.action="admin_hostList";
    document.frm.submit();
 }
 

@@ -79,13 +79,15 @@ public class BookingServiceImpl implements BookingService {
 	public List<BookingVO> listBestAccom() {
 		return bDao.listBestAccom();
 	}
-	
-
 
 	@Override
 	public List<BookingVO> getListBookByAseq(BookingVO vo) {
-		
 		return bDao.listBookByAseq(vo);
+	}
+
+	@Override
+	public List<BookingVO> getMonthlyRevenue() {
+		return bDao.getMonthlyRevenue();
 	}
 
 	@Override
