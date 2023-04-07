@@ -11,7 +11,7 @@
 	<!-- 자신의 예약내역 조회 -->
 	<select id="listBookByEmail" resultType="booking">
 		SELECT * FROM booking_view
-		WHERE email=#{email}
+		WHERE memail=#{email}
 	</select>
 	
 	<!-- aseq로 예약내역 조회 -->

@@ -24,7 +24,7 @@
       <td>
       ${qnaVO.qseq}  
       <c:choose>          
-        <c:when test='${qnaVO.rep=="1"}'>(미처리)</c:when>
+        <c:when test='${qnaVO.rep=="0"}'>(미처리)</c:when>
         <c:otherwise>(답변처리완료)</c:otherwise>
       </c:choose>      
       </td>
@@ -33,7 +33,7 @@
         ${qnaVO.subject} 
       </a>
       </td>
-      <td> ${qnaVO.id} </td>
+      <td> ${qnaVO.email} </td>
       <td> <fmt:formatDate value="${qnaVO.indate}"/></td>
       </tr>
     </c:forEach>
