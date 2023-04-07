@@ -14,11 +14,12 @@
 		WHERE email=#{email}
 	</select>
 	
-	<!-- 이메일과 aseq로 예약내역 조회 -->
-	<select id="listBookByEmailAseq" resultType="booking">
+	<!-- aseq로 예약내역 조회 -->
+	<select id="listBookByAseq" resultType="booking">
 		SELECT * FROM booking_view
-		WHERE memail=#{memail} AND aseq=#{aseq}
+		WHERE aseq=#{aseq}
 	</select>
+	
 	
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">

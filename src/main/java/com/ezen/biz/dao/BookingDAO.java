@@ -26,15 +26,15 @@ public class BookingDAO {
 		return mybatis.selectList("BookingMapper.listBookByEmail", vo);
 	}
 	
-	public List<BookingVO> listBookByEmailAseq(BookingVO vo){
-		return mybatis.selectList("BookingMapper.listBookByEmailAseq",vo);
+	public List<BookingVO> listBookByAseq(BookingVO vo){
+		return mybatis.selectList("BookingMapper.listBookByAseq",vo);
 	}
 
 	// 예약번호로 예약내역 조회
-	public BookingVO selectBookByBseq(int bseq) {
-		return mybatis.selectOne("BookingMapper.selectBookByBseq", bseq);
+	public BookingVO selectBookByBseq(BookingVO vo) {
+		return mybatis.selectOne("BookingMapper.selectBookByBseq", vo);
 	}
-
+	
 	public List<Integer> selectSeqBooking(BookingVO vo) {
 
 		return mybatis.selectList("BookingMapper.selectSeqBooking", vo);
@@ -42,12 +42,12 @@ public class BookingDAO {
 
 	// 예약번호로 예약수정
 	public void updateBookByBseq(BookingVO vo) {
-		mybatis.update("Booking.updateBookByBseq", vo);
+		mybatis.update("BookingMapper.updateBookByBseq", vo);
 	}
 
 	// 예약번호로 예약취소
 	public void deleteBookByBseq(int bseq) {
-		mybatis.delete("Booking.deleteBookByBseq", bseq);
+		mybatis.delete("BookingMapper.deleteBookByBseq", bseq);
 	}
 
 	// 전체 예약 내역 조회

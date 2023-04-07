@@ -13,10 +13,11 @@ public interface BookingService {
 	//이메일로 예약내역 조회
 	List<BookingVO> getListBookByEmail(BookingVO vo);
 	
-	List<BookingVO> getListBookByEmailAseq(BookingVO vo);
+	List<BookingVO> getListBookByAseq(BookingVO vo);
 
 	// 예약번호로 예약내역 조회
-	BookingVO selectBookByBseq(int bseq);
+	BookingVO selectBookByBseq(BookingVO vo);
+	
 
 	List<Integer> getSeqBooking(BookingVO vo);
 	

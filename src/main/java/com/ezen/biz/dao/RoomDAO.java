@@ -49,6 +49,10 @@ public class RoomDAO {
 		mybatis.update("RoomMapper.updateRoom", vo);
 	}
 	
+	public void deleteRoom(int rseq) {
+		mybatis.delete("RoomMapper.deleteRoom", rseq);
+	}
+	
 	public List<RoomVO> hostSelectRoomByAcc(int aseq) {
 		return mybatis.selectList("RoomMapper.hostSelectRoomByAcc", aseq);
 	}

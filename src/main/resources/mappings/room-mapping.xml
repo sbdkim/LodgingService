@@ -25,17 +25,17 @@
 		WHERE hemail=#{hemail}
 	</select>
 
-	
-
 	<!-- accommodation List에서 하나를 누르면 그 accommodation에 관련된 모든 room출력 -->
 	<select id="selectRoomByAcc" resultType="room">
 	<![CDATA[
 		SELECT * FROM room WHERE aseq=#{aseq} AND 
 		rseq NOT IN (
 		  SELECT rseq 
-		  FROM booking 
-		  WHERE checkin <= #{checkin}
-		    AND checkout >= #{checkout}) ORDER BY price
+		    FROM booking 
+		   WHERE checkin BETWEEN #{checkin} AND #{checkout}
+		      OR checkout BETWEEN #{checkin} AND #{checkout}
+		      OR #{checkin} BETWEEN checkin AND checkout
+		      OR #{checkout} BETWEEN checkin AND checkout) ORDER BY price
 		]]>
 
 	</select>
@@ -67,14 +67,7 @@
 
 	<!-- HOST -->
 	<select id="hostSelectRoomByAcc" resultType="room">
-	<![CDATA[
-		SELECT * FROM room WHERE aseq=#{aseq} AND 
-		rseq NOT IN (
-		  SELECT rseq 
-		  FROM booking 
-		  WHERE checkin <= #{checkin}
-		    AND checkout>= #{checkout}) ORDER BY price
-		]]>
+		SELECT * FROM room WHERE aseq=#{aseq}
 	</select>
 	<!-- host가 accommodation 등록 -->
 	<insert id="insertRoom" parameterType="room">

@@ -18,12 +18,12 @@ public interface RoomService {
 	RoomVO getRoomByRseq(int rseq);
 	
 	RoomVO getAccByRseq(int rseq);
-
-	RoomVO selectRoomByRseq(int rseq);
 	
 	void insertRoom(RoomVO vo);
 	
 	void updateRoom(RoomVO vo);
+	
+	void deleteRoom(int rseq);
 	
 	List<RoomVO> hostGetRoomByAcc(int aseq);
 

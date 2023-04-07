@@ -5,92 +5,70 @@
 
 <article>
 <h1>상품수정</h1>  
-<form name="frm" id="update_form" method="post" enctype="multipart/form-data">
-<input type="hidden" name="pseq" value="${productVO.pseq}">
-<input type="hidden" name="code" >
-<input type="hidden" name="nonmakeImg" value="${productVO.image}"> <!-- 기존 이미지 저장  -->
+<form name="frm" id="room_update_form" method="post" enctype="multipart/form-data">
+<input type="hidden" name="aseq" value="${roomVO.aseq}">
+<input type="hidden" name="email" >
+<input type="hidden" name="nonmakeImg" value="${roomVO.rimage}"> <!-- 기존 이미지 저장  -->
 <table id="list">
   <tr>
-    <th>상품분류</th>
-    <td colspan="5">
-    <select name="kind" id="kind">
-      <c:forEach items="${kindList}" var="kind" varStatus="status">
-        <c:choose>
-          <c:when test="${productVO.kind==status.count}">
-            <option value="${status.count}" selected="selected">${kind}</option>
-          </c:when>
-          <c:otherwise>
-            <option value="${status.count}">${kind}</option>
-          </c:otherwise>
-        </c:choose>
-      </c:forEach>
-    </select> 
-    </td>
-  </tr>
-  <tr>
-    <th>상품명</th>
+    <th>이  름</th>
     <td width="343" colspan="5">
-      <input type="text" name="name" id="name" size="47" maxlength="100" value="${productVO.name}">
+      <input type="text" name="aname" id="aname" size="100" maxlength="500" value="${accommodationVO.aname}">
     </td>
   </tr>
   <tr>
-    <th>원가[A]</th>
-    <td width="70">        
-      <input type="text" name="price1" id="price1" size="11" onKeyUp='NumFormat(this)' value="${productVO.price1}">
-    </td>
-    <th>판매가[B]</th>
-    <td width="70">
-      <input type="text" name="price2" id="price2" size="11" onBlur="go_ab()" onKeyUp='NumFormat(this)' value="${productVO.price2}">
-    </td>
-    <th>[B-A]</th>
-    <td width="72">
-      <input type="text" name="price3" id="price3" size="11" readonly onKeyUp='NumFormat(this)'>
-    </td>
+    <th>주  소</th>
+    <td width="343" colspan="5">
+      <input type="text" name="address" id="address" size="47" maxlength="100" value="${accommodationVO.address}">
+    </td> 
   </tr>
-  <tr>
-    <th>베스트상품</th>
-    <td>
-      <c:choose>
-        <c:when test='${productVO.bestyn=="y"}'>
-          <input type="checkbox" name="bestyn" value="y" id="bestyn" checked="checked">
-        </c:when>
-        <c:otherwise>
-          <input type="checkbox" name="bestyn" value="n" id="bestyn" >
-        </c:otherwise>
-      </c:choose>
-    </td>        
-    <th>사용유무</th>
-    <td>
-      <c:choose>
-        <c:when test='${productVO.useyn=="y"}'>
-          <input type="checkbox" name="useyn" id="useyn" value="y" checked="checked">
-        </c:when>
-      <c:otherwise>
-        <input type="checkbox" name="useyn" id="useyn" value="n">
-      </c:otherwise>
-    </c:choose>
-    </td>
-  </tr>
-  <tr>
-    <th>상세설명</th>
-    <td colspan="5">
-      <textarea name="content" id="content" rows="8" cols="70" >${productVO.content}</textarea>
-    </td>
+    <tr>
+    <th>전화번호</th>
+    <td width="343" colspan="5">
+      <input type="text" name="tel" id="tel" size="47" maxlength="100" value="${accommodationVO.tel}">
+    </td> 
   </tr>
   <tr>
     <th>상품이미지</th>
     <td colspan="5">
-      <img src="product_images/${productVO.image}" width="200pt">     
+      <img src="accommodation_images/${accommodationVO.aimage}" width="200pt">     
       <br>
-      <input type="file" name="product_image" id="product_image">
-      <input type="hidden" name="image" value="${productVO.image}">
+      <input type="file" name="accommodation_images" id="accommodation_images">
+      <input type="hidden" name="image" value="${accommodationVO.aimage}">
     </td> 
   </tr>    
 </table>
-<input class="btn" type="button" value="수정" onClick="go_mod_save('${productVO.pseq}')">           
+<input class="btn" type="button" value="수정" onClick="go_mod_save('${accommodationVO.aseq}')">           
 <input class="btn" type="button" value="취소" onClick="go_mov()">
 </form> 
 </article>
 <%@ include file="../footer.jsp"%>
 </body>
 </html>
+<script type="text/javascript">
+function go_mod_save(aseq) {
+	if(document.getElementById("category").value=="") {
+		alert("카테고리를 입력하세요");
+		document.getElementById("kind").focus();
+		return false;
+	} else if(document.getElementById("aname").value=="") {
+		alert("이름을 입력하세요");
+		document.getElementById("aname").focus();
+		return false;
+	} else if(document.getElementById("address").value=="") {
+		alert("주소를 입력하세요");
+		document.getElementById("address").focus();
+		return false;
+	}else if(document.getElementById("tel").value=="") {
+		alert("전화번호를 입력하세요");
+		document.getElementById("tel").focus();
+		return false;
+	} else {
+		var form = document.getElementById("acc_update_form");
+		
+		form.enctype = "multipart/form-data";
+		form.action = "host_acc_update";
+		form.submit();
+	}
+}
+</script>

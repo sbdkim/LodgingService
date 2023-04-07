@@ -3,14 +3,15 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 상세 정보 </h2>
-    <form name="formm" method="post">
+    <input class="btn" type="button" name="btn_write" value="객실 등록" onClick="go_rwrt()">
+    <form name="formm" id="room_form" method="post">
       <h3> 업체 정보 </h3>     
       <table id="accommodationList">      
       <tr>
-        <th>번호</th><th>이메일</th><th>이 름</th>     
+        <th>번호<th><th>이메일</th><th>이 름</th>     
      </tr>     
      <tr>  
-       <td align="center" width="100px"> ${accommodationDetail.aseq} </td>    
+       <td align="center" width="100px"> ${accommodationDetail.aseq} </td> 
        <td align="center" width="100px"> ${accommodationDetail.hemail} </td> 
        <td align="center" width="300px"> ${accommodationDetail.aname} </td> 
      </tr>    
@@ -26,8 +27,8 @@
        <td align="center" width="100px"> ${roomVO.rseq} </td>
  	   <td align="center" width="250px"> ${roomVO.rname} </td>
        <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${roomVO.price}"/></td>
-	   <td align="center" width="50px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 수 정 / </a></td>
-	   <td align="center" width="40px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 삭 제 </a></td>
+	   <td align="center" width="50px"> <a href="host_room_update_form?rseq=${roomVO.rseq}"> 수 정 / </a></td>
+	   <td align="center" width="40px"> <a href="host_room_delete?rseq=${roomVO.rseq}"> 삭 제 </a></td>
      </tr>
      </c:forEach>    
      </table>   
@@ -40,4 +41,14 @@
   </article>
     
        
- <%@ include file="../footer.jsp" %>    
+ <%@ include file="../footer.jsp" %> 
+ 
+ <script type="text/javascript">
+ /* 업체 등록 */
+ function go_rwrt() {
+ 	var form = document.getElementById("room_form");
+ 	
+ 	form.action = "host_room_write_form";
+ 	form.submit();
+ }
+ </script>   

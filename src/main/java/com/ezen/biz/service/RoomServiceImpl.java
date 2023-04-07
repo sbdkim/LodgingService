@@ -56,14 +56,14 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public RoomVO selectRoomByRseq(int rseq) {
-		return rDao.selectRoomByRseq(rseq);
-	}
-
-	@Override
 	public List<RoomVO> hostGetRoomByAcc(int aseq) {
 
 		return rDao.hostSelectRoomByAcc(aseq);
+	}
+
+	@Override
+	public void deleteRoom(int rseq) {
+		rDao.deleteRoom(rseq);
 	}
 
 
