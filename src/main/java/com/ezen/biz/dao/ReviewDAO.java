@@ -35,8 +35,8 @@ public class ReviewDAO {
 	}
 
 	// 리뷰삭제
-	public  int deleteReview(ReviewVO vo) {
-		return mybatis.delete("ReviewMapper.deleteReview", vo);
+	public  void deleteReview(int reseq) {
+		mybatis.delete("ReviewMapper.deleteReview", reseq);
 	}
 
 	// 전체 리뷰 조회

@@ -80,7 +80,7 @@ public class ReviewController {
 	public int reviewDelete(ReviewVO vo, MemberVO memberVO) {
 		int result=0;
 		if(memberVO.getEmail().equals(vo.getEmail())) {
-			reviewService.deleteReview(vo);
+			reviewService.deleteReview(vo.getReseq());
 			return 1;
 		}else {
 			return result;

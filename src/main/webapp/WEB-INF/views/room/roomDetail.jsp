@@ -192,7 +192,7 @@
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
 				html += "<span id=\"write_score\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
-				html += "<a href='review_delete(" + item.reseq + ");'>삭제</a>";
+				html += "<a href='review_delete(" + item.reseq + ")'>삭제</a>";
 				html += "</div>";
 			});
 			

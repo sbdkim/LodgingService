@@ -32,9 +32,9 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int deleteReview(ReviewVO vo) {
-		 int result =  rDao.deleteReview(vo);
-		return result;
+	public void deleteReview(int reseq) {
+		 rDao.deleteReview(reseq);
+		
 	}
 
 	@Override
