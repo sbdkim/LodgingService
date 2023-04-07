@@ -17,7 +17,10 @@ public interface BookingService {
 
 	// 예약번호로 예약내역 조회
 	BookingVO selectBookByBseq(BookingVO vo);
-	
+
+
+	BookingVO getBookByBseq(int bseq);
+
 
 	List<Integer> getSeqBooking(BookingVO vo);
 	

@@ -4,7 +4,7 @@
 <%@ include file="sub_menu_host.jsp"%>
 
 <article>
-<h1>상품수정</h1>  
+<h1>객실 수정</h1>  
 <form name="frm" id="acc_update_form" method="post" enctype="multipart/form-data">
 <input type="hidden" name="aseq" value="${accommodationVO.aseq}">
 <input type="hidden" name="email" >
@@ -47,7 +47,7 @@
     </td> 
   </tr>
   <tr>
-    <th>상품이미지</th>
+    <th>업체 이미지</th>
     <td colspan="5">
       <img src="accommodation_images/${accommodationVO.aimage}" width="200pt">     
       <br>

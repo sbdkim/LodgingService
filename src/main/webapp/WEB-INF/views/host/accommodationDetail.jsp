@@ -3,14 +3,15 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 상세 정보 </h2>
-    <input class="btn" type="button" name="btn_write" value="객실 등록" onClick="go_rwrt()">
     <form name="formm" id="room_form" method="post">
-      <h3> 업체 정보 </h3>     
+      <h3> 업체 정보 </h3>   
+      <input type="hidden" name="aseq" value="${accommodationDetail.aseq}"> 
       <table id="accommodationList">      
       <tr>
-        <th>번호<th><th>이메일</th><th>이 름</th>     
+        <th>번호</th><th>이메일</th><th>이 름</th>     
      </tr>     
      <tr>  
+     
        <td align="center" width="100px"> ${accommodationDetail.aseq} </td> 
        <td align="center" width="100px"> ${accommodationDetail.hemail} </td> 
        <td align="center" width="300px"> ${accommodationDetail.aname} </td> 
@@ -35,6 +36,7 @@
           
      <div class="clear"></div>
      <div id="buttons" style="float: right">
+       <input class="btn" type="button" name="btn_write" value="객실 등록" onClick="go_rwrt()">
        <input type="button"    value="이전단계로" onclick="history.back(1)">
      </div>
     </form>  

@@ -4,8 +4,7 @@
 <%@ include file="sub_menu_host.jsp" %>        
 <article>
   <h2 align="center">  '${sessionScope.loginHost.name}'님이 등록한 숙소 </h2>
-  <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()">
-  <form name="frm" id="acc_form" method="post">
+    <form name="frm" id="acc_form" method="post">
     <table id="accommodationList">
       <tr>
         <th>카테고리</th><th>이 름</th> <th>주 소</th> <th>전화번호</th> <th>상 세</th> <th colspan="3">수정하기</th>
@@ -41,6 +40,7 @@
       </c:otherwise>
       </c:choose>
       </table>   
+      <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()">
     </form>  
     <%@ include file="page_area.jsp" %>  
   </article>
@@ -66,16 +66,6 @@ function go_list() {
 }
 
 
-function go_acc_delete(aseq){
-	const query = 'input[name="aseq"]:checked';
-	
-	
-	var form = document.getElementById("acc_form");
-	form.action = "host_acc_delete";
-	form.submit();
-	
-	if()
-}
 
 </script>
 

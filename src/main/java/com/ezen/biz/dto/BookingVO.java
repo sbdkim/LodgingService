@@ -21,7 +21,7 @@ public class BookingVO {
 	private String mname;
 	private int tprice;
 	private String phone;
-	
+
 
 	// Getter, Setter 메소드
 	public int getBseq() {
@@ -171,14 +171,13 @@ public class BookingVO {
 
 	@Override
 	public String toString() {
+
 		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", memail=" + memail + ", hemail=" + hemail + ", checkin="
 				+ checkin + ", checkout=" + checkout + ", rprice=" + rprice + ", bprice=" + bprice + ", payment="
 				+ payment + ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname + ", rname=" + rname
 				+ ", aseq=" + aseq + ", mname=" + mname + ", tprice=" + tprice + ", email=" + email + ", phone=" + phone
 				+ "]";
 	}
-
-
 
 
 }

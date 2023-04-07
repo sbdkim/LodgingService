@@ -47,6 +47,7 @@
     </td>
   </tr>    
 </table>
+<br><br>
 <input class="btn" type="button" value="등록" onClick="go_save()">           
 <input class="btn" type="button" value="취소" onClick="go_mov()">
 </form> 
@@ -74,7 +75,7 @@ function go_save() {
 		document.getElementById("tel").focus();
 		return false;
 	} else {
-		var form = document.getElementById("acc_update_form");
+		var form = document.getElementById("acc_write_form");
 		form.enctype = "multipart/form-data"; //꼭 해줘야 함!!
 		form.action = "host_accommodation_write";
 		form.submit();

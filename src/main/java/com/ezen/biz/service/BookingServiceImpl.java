@@ -31,8 +31,8 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public BookingVO selectBookByBseq(BookingVO vo) {
 		return bDao.selectBookByBseq(vo);
-
 	}
+
 
 	@Override
 	public void updateBookByBseq(BookingVO vo) {
@@ -89,5 +89,13 @@ public class BookingServiceImpl implements BookingService {
 	public List<BookingVO> getMonthlyRevenue() {
 		return bDao.getMonthlyRevenue();
 	}
+
+	@Override
+	public BookingVO getBookByBseq(int bseq) {
+
+		return bDao.selectBookByBseq(bseq);
+	}
+
+
 
 }

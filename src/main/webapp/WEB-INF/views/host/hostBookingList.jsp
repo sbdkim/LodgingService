@@ -10,6 +10,7 @@
        <c:forEach items="${accommodationList}"  var="accommodationVO">
        <tr>      
          <td align="center">
+
             <a href="host_booking_detail?aseq=${accommodationVO.aseq}">
               <h3> ${accommodationVO.aname} </h3>              
           </a>    

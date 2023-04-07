@@ -69,7 +69,7 @@ public class MypageController {
 			return "member/login";
 		} else {
 
-			vo.setEmail(loginUser.getEmail());
+			vo.setMemail(loginUser.getEmail());
 			vo.setBseq(vo.getBseq());
 			vo.setStatus(0);
 			vo.setRseq(vo.getRseq());
@@ -85,20 +85,32 @@ public class MypageController {
 	}
 
 	@GetMapping("/booking_detail")
-	public String BookingDetail(BookingVO vo, Model model) {
-		BookingVO booking = bookingService.selectBookByBseq(vo);
-		vo.setBseq(vo.getBseq());
-		vo.setBookdate(vo.getBookdate());
-		vo.setMname(vo.getMname());
-		vo.setBprice(vo.getBprice());
-		vo.setAname(vo.getAname());
-		vo.setRname(vo.getRname());
-		vo.setCheckin(vo.getCheckin());
-		vo.setCheckout(vo.getCheckout());
-		vo.setStatus(vo.getStatus());
-		model.addAttribute("booking", booking);
+	public String BookingDetail(HttpSession session, BookingVO vo, Model model) {
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 
-		return "mypage/bookingDetail";
+		if (loginUser == null) {
+			return "member/login";
+		} else {
+
+			vo.setMemail(loginUser.getEmail());
+			vo.setBseq(vo.getBseq());
+			vo.setBookdate(vo.getBookdate());
+			vo.setMname(vo.getMname());
+			vo.setBprice(vo.getBprice());
+			vo.setAname(vo.getAname());
+			vo.setRname(vo.getRname());
+			vo.setCheckin(vo.getCheckin());
+			vo.setCheckout(vo.getCheckout());
+			vo.setStatus(vo.getStatus());
+			BookingVO bookingList = bookingService.selectBookByBseq(vo);
+			
+			
+
+			
+			model.addAttribute("bookingList", bookingList);
+
+			return "mypage/bookingDetail";
+		}
 	}
 
 	@RequestMapping("/booking_delete")

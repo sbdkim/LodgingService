@@ -46,6 +46,7 @@
 			 <tr>
 			 <td><label>Host email</label> </td>
 			 <td><input name="hemail" type="text"></td>
+
 			 </tr> 
 			 <tr>
 			 <td><label>Password</label> </td>
