@@ -16,13 +16,11 @@
 			<table>
 			 <tr>
 			 <td><label>User email</label> </td>
-			 <td><input name="email" type="text"
-				></td>
+			 <td><input name="email" type="text"></td>
 			 </tr> 
 			 <tr>
 			 <td><label>Password</label> </td>
-			 <td><input
-				name="pwd" type="password"></td>
+			 <td><input name="pwd" type="password"></td>
 			 </tr> 
 			 </table>		
 		</fieldset>
@@ -44,13 +42,11 @@
 			<table>
 			 <tr>
 			 <td><label>Host email</label> </td>
-			 <td><input name="hemail" type="text"
-				></td>
+			 <td><input name="hemail" type="text"></td>
 			 </tr> 
 			 <tr>
 			 <td><label>Password</label> </td>
-			 <td><input
-				name="pwd" type="password"></td>
+			 <td><input	name="pwd" type="password"></td>
 			 </tr> 
 			 </table>
 		</fieldset>

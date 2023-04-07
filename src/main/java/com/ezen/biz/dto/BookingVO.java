@@ -5,6 +5,7 @@ import java.util.Date;
 public class BookingVO {
 	private int bseq;
 	private int rseq;
+	private String email;
 	private String memail;
 	private String hemail;
 	private String checkin;
@@ -16,12 +17,13 @@ public class BookingVO {
 	private Date bookdate;
 	private String aname;
 	private String rname;
-	private int aseq;	
+	private int aseq;
 	private String mname;
 	private int tprice;
 	private String email;
 	private String phone;
 	
+
 	// Getter, Setter 메소드
 	public int getBseq() {
 		return bseq;
@@ -39,7 +41,6 @@ public class BookingVO {
 		this.rseq = rseq;
 	}
 
-	
 	public String getEmail() {
 		return email;
 	}
@@ -144,7 +145,6 @@ public class BookingVO {
 		this.aseq = aseq;
 	}
 
-	
 	public String getMname() {
 		return mname;
 	}
@@ -153,7 +153,6 @@ public class BookingVO {
 		this.mname = mname;
 	}
 
-	
 	public int getTprice() {
 		return tprice;
 	}
@@ -179,6 +178,7 @@ public class BookingVO {
 				+ ", aseq=" + aseq + ", mname=" + mname + ", tprice=" + tprice + ", email=" + email + ", phone=" + phone
 				+ "]";
 	}
+
 
 
 

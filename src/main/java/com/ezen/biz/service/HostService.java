@@ -1,6 +1,10 @@
 package com.ezen.biz.service;
 
+import java.util.List;
+
 import com.ezen.biz.dto.HostVO;
+
+import utils.Criteria;
 
 public interface HostService {
 
@@ -27,4 +31,15 @@ public interface HostService {
 
 	// 비밀번호 변경
 	void changePwd(HostVO vo);
+	
+	//호스트 list 조회
+	public List<HostVO> getListHost(String name);
+	
+	public void updateHostStatus(String email);
+	
+	public void deleteHost(String email);
+	
+	List<HostVO> getListHostWithPaging(Criteria criteria, String name);
+	
+	int countHostList(String name);
 }

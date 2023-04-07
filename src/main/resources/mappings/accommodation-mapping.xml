@@ -53,9 +53,7 @@
 		SELECT aname from accommodation
 		WHERE aseq=#{aseq}
 	</select>
-
-
-   
+	
 	<!-- HOST -->
 	<!-- host 이메일로 등록된 업체 찾기 -->
 	<select id="listHostAccommodation" resultType="accommodation">
@@ -68,6 +66,14 @@
 		VALUES(accommodation_seq.NEXTVAL, #{hemail}, #{aname}, #{category}, #{address}, #{tel}, #{aimage})
 	</insert>
 	
+	<!-- home page  -->
+	<select id="listAccomByRegion" resultType="accommodation">
+	<![CDATA[
+      SELECT * FROM accommodation
+      WHERE address like '%'||#{address}||'%'  
+      	]]>  
+   </select>
+
 	<!-- 수정 -->
 	<update id="updateAccommodation" parameterType="accommodation">
 		UPDATE accommodation SET aname=#{aname}, category=#{category}, address=#{address}, tel=#{tel}, bestyn=#{bestyn}, aimage=#{aimage}
