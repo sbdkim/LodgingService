@@ -72,7 +72,6 @@ public class HostController {
 				vo.setAimage("default.jpg");
 			}
 
-
 		}
 		accommodationService.insertAccommodation(vo);
 
@@ -80,19 +79,17 @@ public class HostController {
 
 	}
 
-
 	@PostMapping("/host_acc_update")
 	public String hostAccUpdate(AccommodationVO vo,
-			@RequestParam(value="accommodation_images") MultipartFile uploadFile,
-			@RequestParam(value="nonmakeImg") String org_image,
-			HttpSession session) {
-		
-		if(!uploadFile.isEmpty()) {
+			@RequestParam(value = "accommodation_images") MultipartFile uploadFile,
+			@RequestParam(value = "nonmakeImg") String org_image, HttpSession session) {
+
+		if (!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
 			vo.setAimage(fileName);
-			
+
 			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
-			
+
 			try {
 				uploadFile.transferTo(new File(image_path + fileName));
 			} catch (IllegalStateException | IOException e) {
@@ -101,21 +98,20 @@ public class HostController {
 		} else {
 			vo.setAimage(org_image);
 		}
-		
+
 		accommodationService.updateAccommodation(vo);
-		
+
 		return "redirect:host_mypage";
-		
+
 	}
-	
+
 	@RequestMapping("/host_acc_delete")
-	public String hostAccDelete(@RequestParam(value="aseq") int aseq) {
-		
+	public String hostAccDelete(@RequestParam(value = "aseq") int aseq) {
+
 		accommodationService.deleteAccommodation(aseq);
-		
+
 		return "redirect:host_mypage";
 	}
-	
 
 	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
@@ -125,7 +121,7 @@ public class HostController {
 		if (loginHost == null) {
 			return "member/login";
 		} else {
-	
+
 			vo.setHemail(loginHost.getHemail());
 
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
@@ -163,19 +159,19 @@ public class HostController {
 		} else {
 			vo.setHemail(loginHost.getHemail());
 
-			AccommodationVO accommodationDetail = accommodationService.getAccommodaiton(vo);
-			
+			AccommodationVO accommodationDetail = accommodationService.getAccommodaiton(acc);
+
 			accommodationDetail.setAseq(accommodationDetail.getAseq());
 			accommodationDetail.setHemail(accommodationDetail.getHemail());
 			accommodationDetail.setAname(accommodationDetail.getAname());
-			
+
 			List<RoomVO> roomList = roomService.hostGetRoomByAcc(vo.getAseq());
-			
+
 			RoomVO roomDetail = new RoomVO();
 			roomDetail.setAseq(vo.getAseq());
 			roomDetail.setRname(roomList.get(0).getRname());
 			roomDetail.setPrice(roomList.get(0).getPrice());
-	
+
 			model.addAttribute("accommodationDetail", accommodationDetail);
 			model.addAttribute("roomList", roomList);
 
@@ -184,73 +180,67 @@ public class HostController {
 
 	}
 
-	
 	@PostMapping("/host_room_write_form")
 	public String hostRoomWriteView() {
-				
+
 		return "host/accommodationWrite";
 	}
-	
 
 	@PostMapping("/host_room_write")
-	public String hostRoomWrit(RoomVO vo, HttpSession session, 
-			@RequestParam(value="default") MultipartFile uploadFile) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+	public String hostRoomWrit(RoomVO vo, HttpSession session,
+			@RequestParam(value = "default") MultipartFile uploadFile) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
-			
+
 			vo.setHemail(loginHost.getHemail());
-			
-				if(!uploadFile.isEmpty()) {
-					String fileName = uploadFile.getOriginalFilename();
-					vo.setRimage(fileName);
-					
-					String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
-					
-					try {
-						uploadFile.transferTo(new File(image_path + fileName));
-					} catch (IllegalStateException | IOException e) {
-						
-						e.printStackTrace();
-					} 			
-					
-				} else {
-					vo.setRimage("default.jpg");
+
+			if (!uploadFile.isEmpty()) {
+				String fileName = uploadFile.getOriginalFilename();
+				vo.setRimage(fileName);
+
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
+
+				try {
+					uploadFile.transferTo(new File(image_path + fileName));
+				} catch (IllegalStateException | IOException e) {
+
+					e.printStackTrace();
 				}
+
+			} else {
+				vo.setRimage("default.jpg");
+			}
 
 		}
 		roomService.insertRoom(vo);
-		
-		
+
 		return "redirect:accommodation_detail";
-		
-		
+
 	}
-	
 
 	@RequestMapping("/host_room_update_form")
 	public String hostRoomUpdateView(RoomVO vo, Model model) {
-		RoomVO room = roomService.getRoomByRseq(vo);	
-			
+		int rseq = vo.getRseq();
+		RoomVO room = roomService.getRoomByRseq(rseq);
+
 		model.addAttribute("roomVO", room);
-		
+
 		return "host/roomUpdate";
 	}
 
 	@PostMapping("/host_room_update")
-	public String hostRoomUpdate(RoomVO vo,
-			@RequestParam(value="accommodation_images") MultipartFile uploadFile,
-			@RequestParam(value="nonmakeImg") String org_image,
-			HttpSession session) {
-		
-		if(!uploadFile.isEmpty()) {
+	public String hostRoomUpdate(RoomVO vo, @RequestParam(value = "accommodation_images") MultipartFile uploadFile,
+			@RequestParam(value = "nonmakeImg") String org_image, HttpSession session) {
+
+		if (!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
 			vo.setRimage(fileName);
-			
+
 			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
-			
+
 			try {
 				uploadFile.transferTo(new File(image_path + fileName));
 			} catch (IllegalStateException | IOException e) {
@@ -259,21 +249,20 @@ public class HostController {
 		} else {
 			vo.setRimage(org_image);
 		}
-		
+
 		roomService.updateRoom(vo);
-		
+
 		return "redirect:accommodation_detail";
-		
+
 	}
-	
+
 	@RequestMapping("/host_room_delete")
-	public String hostRoomDelete(@RequestParam(value="rseq") int rseq) {
-		
+	public String hostRoomDelete(@RequestParam(value = "rseq") int rseq) {
+
 		roomService.deleteRoom(rseq);
-		
+
 		return "redirect:accommodation_detail";
 	}
-	
 
 	@GetMapping("/hostBookingList")
 	public String HostBookingListAction(HttpSession session, AccommodationVO vo, Model model) {
@@ -291,15 +280,14 @@ public class HostController {
 		}
 	}
 
-	
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
-			
+
 			vo.setHemail(loginHost.getHemail());
 			vo.setAseq(vo.getAseq());
 			vo.setRseq(vo.getRseq());
@@ -310,35 +298,20 @@ public class HostController {
 			vo.setCheckout(vo.getCheckout());
 			vo.setRprice(vo.getRprice());
 			vo.setBprice(vo.getBprice());
-			
+
 			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo);
-		
+
 			model.addAttribute("bookingList", bookingList);
-			
-		
+
 			return "host/hostBookingListDetail";
 		}
-	
+
 	}
-	
-	
-	//상품별 판매 실적 화면 출력
-		@RequestMapping("/host_booking_record_form")
-		public String adminProductSalesForm() {
-		   return "host/salesRecords";
-	    }
-		
-	    @RequestMapping("/booking_record_chart")
-		@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
-		public List<SalesQuantity> salesRecordChart(HttpSession session,AccommodationVO vo){
-		    HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		    
-		    
 
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
 	public String adminProductSalesForm() {
-		return "admin/host/salesRecords";
+		return "host/salesRecords";
 	}
 
 	@RequestMapping("/booking_record_chart")

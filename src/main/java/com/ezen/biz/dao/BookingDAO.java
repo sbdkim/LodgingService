@@ -42,12 +42,12 @@ public class BookingDAO {
 
 	// 예약번호로 예약수정
 	public void updateBookByBseq(BookingVO vo) {
-		mybatis.update("Booking.updateBookByBseq", vo);
+		mybatis.update("BookingMapper.updateBookByBseq", vo);
 	}
 
 	// 예약번호로 예약취소
 	public void deleteBookByBseq(int bseq) {
-		mybatis.delete("Booking.deleteBookByBseq", bseq);
+		mybatis.delete("BookingMapper.deleteBookByBseq", bseq);
 	}
 
 	// 전체 예약 내역 조회

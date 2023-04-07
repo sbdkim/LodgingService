@@ -33,8 +33,8 @@ public class RoomDAO {
 		return mybatis.selectOne("RomMapper.countRoomList", aseq);
 	}
 
-	public RoomVO selectRoomByRseq(RoomVO vo) {
-		return mybatis.selectOne("RoomMapper.selectRoomByRseq", vo);
+	public RoomVO selectRoomByRseq(int rseq) {
+		return mybatis.selectOne("RoomMapper.selectRoomByRseq", rseq);
 	}
 
 	public RoomVO selectAccByRseq(int rseq) {

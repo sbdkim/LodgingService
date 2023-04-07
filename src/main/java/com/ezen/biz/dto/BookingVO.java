@@ -20,7 +20,6 @@ public class BookingVO {
 	private int aseq;
 	private String mname;
 	private int tprice;
-	private String email;
 	private String phone;
 	
 
