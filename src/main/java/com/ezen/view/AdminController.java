@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.QnaVO;
-import com.ezen.biz.service.AdminService;
+import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.HostService;
 import com.ezen.biz.service.MemberService;
 import com.ezen.biz.service.QnaService;
@@ -25,15 +27,14 @@ import utils.PageMaker;
 @Controller
 @SessionAttributes("admin")
 public class AdminController {
-
-	@Autowired
-	private AdminService adminService;
 	@Autowired
 	private QnaService qnaService;
 	@Autowired
 	private HostService hostService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private BookingService bookingService;
 	
 	@GetMapping("/admin_login_form")
 	public String adminLoginView() {
@@ -139,7 +140,14 @@ public class AdminController {
 		return "admin/revenue/revenueRecords";
 	}
 	
-	
+	@RequestMapping("/monthlyChart")
+	@ResponseBody  // 화면이 아닌 데이터를 리턴하는 메소드로 지정
+	public List<BookingVO> salesRecordChart() {
+		List<BookingVO> listMonthRevenue = bookingService.getMonthlyRevenue();
+		System.out.println(listMonthRevenue);
+		return listMonthRevenue;
+		
+	}
 	
 	
 	

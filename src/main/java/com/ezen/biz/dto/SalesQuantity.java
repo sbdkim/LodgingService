@@ -4,6 +4,7 @@ public class SalesQuantity {
 
 	private String aname;
 	private int bprice;
+	
 
 	public String getAname() {
 		return aname;

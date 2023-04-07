@@ -74,6 +74,25 @@
 		)
 		WHERE rownum <= 4
   		]]>
+   </select>
+   
+   
+   <resultMap type="MonthlyRevenue" id="monthlyRevenue">
+ 
+    <result column="month" property= "month"/>
+    <result column="price" property= "price"/>
+    </resultMap>
+   
+   
+   
+   <select id = "listMonthlyRevenue" resultType="monthlyRevenue">
+   			SELECT TO_CHAR(BOOKDATE, 'YYYY-MM') AS MONTH, SUM(BPRICE) AS PRICE
+			FROM booking
+			GROUP BY TO_CHAR(BOOKDATE, 'YYYY-MM')
+			ORDER BY MONTH ASC
    </select>		
+   
+   
+   
      
 </mapper>

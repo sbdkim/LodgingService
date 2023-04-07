@@ -72,6 +72,9 @@ public class BookingDAO {
 		return mybatis.selectList("BookingMapper.listBestAccom");
 	}
 	
+	public List<BookingVO> getMonthlyRevenue(){
+		return mybatis.selectList("BookingMapper.listMonthlyRevenue");
+	}
 	
 	
 	
