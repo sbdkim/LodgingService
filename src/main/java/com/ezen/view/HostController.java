@@ -213,7 +213,7 @@ public class HostController {
 		if(loginHost == null) {
 			return "member/login";
 		} else {
-
+			
 			vo.setHemail(loginHost.getHemail());
 					
 			
@@ -235,15 +235,16 @@ public class HostController {
 			}
 			
 
-			} else {
-				vo.setRimage("default.jpg");
-			}
+		}
+
 		roomService.insertRoom(vo);
 		
 		rattr.addAttribute("aseq", vo.getAseq());
 		
 		return "redirect:accommodation_detail";
-		}
+		
+		
+	}
 
 		
 		
