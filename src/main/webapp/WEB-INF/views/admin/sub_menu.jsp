@@ -7,6 +7,6 @@
 <li><a href='admin_hostList'> 호스트 조회 </a></li>
 <li><a href='admin_memberList'> 게스트 조회</a></li>
 <li><a href='admin_qna_list'> Q&amp;A리스트</a></li>
-<li><a href='admin_sales_record_form'> 매출 실적</a></li>
+<li><a href='admin_revenue'> 매출 실적</a></li>
 </ul>
 </nav>

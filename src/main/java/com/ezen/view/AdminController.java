@@ -134,6 +134,12 @@ public class AdminController {
 	}
 	
 	
+	@RequestMapping("/admin_revenue")
+	public String adminRevenueDisplay() {
+		return "admin/revenue/revenueRecords";
+	}
+	
+	
 	
 	
 	
