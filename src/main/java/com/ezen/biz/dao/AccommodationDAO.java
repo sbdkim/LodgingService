@@ -18,8 +18,8 @@ public class AccommodationDAO {
 	private SqlSessionTemplate mybatis;
 
 	// aseq로 숙소 검색
-	public AccommodationVO getAccommodaiton(AccommodationVO vo) {
-		return mybatis.selectOne("AccommodationMapper.getAccommodaiton", vo);
+	public AccommodationVO getAccommodation(AccommodationVO vo) {
+		return mybatis.selectOne("AccommodationMapper.getAccommodation", vo);
 	}
 	
 	// 주소로 숙소 검색

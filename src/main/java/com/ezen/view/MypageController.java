@@ -68,7 +68,7 @@ public class MypageController {
 			return "member/login";
 		} else {
 
-			vo.setEmail(loginUser.getEmail());
+			vo.setMemail(loginUser.getEmail());
 			vo.setBseq(vo.getBseq());
 			vo.setStatus(0);
 			vo.setRseq(vo.getRseq());
@@ -84,12 +84,8 @@ public class MypageController {
 	}
 
 	@GetMapping("/booking_detail")
-	public String BookingDetail(int bseq, Model model) {
-		BookingVO booking = bookingService.selectBookByBseq(bseq);
-		model.addAttribute("booking", booking);
-		return "mypage/bookingDetail";
-	}
-
+	public String BookingDetail(HttpSession session, BookingVO vo, Model model) {
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 
 		if (loginUser == null) {
 			return "member/login";
@@ -114,12 +110,13 @@ public class MypageController {
 
 			return "mypage/bookingDetail";
 		}
+	}
 
 	@RequestMapping("/booking_delete")
 	public String BookingDelete(int bseq) {
 		System.out.println("bseq=" + bseq);
 		bookingService.deleteBookByBseq(bseq);
-		return "redirect:bookingList";
+		return "redirect:mypage";
 
 	}
 

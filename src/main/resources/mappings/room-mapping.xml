@@ -69,21 +69,21 @@
 	</select>
 	<!-- host가 accommodation 등록 -->
 	<insert id="insertRoom" parameterType="room">
-		INSERT INTO room(rseq, aseq, rname, price, maxcap, ckintime, ckoutime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, 
+		INSERT INTO room(rseq, aseq, rname, price, maxcap, ckintime, ckouttime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, 
 						coffeemachine, fridge, bathtub, parking, heater, microwave, kettle, washer, bbq, hairdrier, amenity, towel, 
-						elevator, breakfast, smoking, gym, roomservice, image)
-		VALUES(room_seq.NEXTVAL, #{aseq}, #{rname}, #{price}, #{maxcap}, #{ckintime}, #{ckoutime}, #{rooms}, #{bathroom}, #{bed}, #{wifi},
+						elevator, breakfast, smoking, gym, roomservice, rimage)
+		VALUES(room_seq.NEXTVAL, #{aseq}, #{rname}, #{price}, #{maxcap}, #{ckintime}, #{ckouttime}, #{rooms}, #{bathroom}, #{bed}, #{wifi},
 			 #{kitchen}, #{pool}, #{ac}, #{tv},#{coffeemachine}, #{fridge}, #{bathtub}, #{parking}, #{heater}, #{microwave}, #{kettle},
-			 #{washer}, #{bbq}, #{hairdrier}, #{amenity}, #{towel}, #{elevator}, #{breakfast}, #{smoking},#{gym}, #{roomservice}, #{image})
+			 #{washer}, #{bbq}, #{hairdrier}, #{amenity}, #{towel}, #{elevator}, #{breakfast}, #{smoking},#{gym}, #{roomservice}, #{rimage})
 	</insert>
 	
 	<!-- 수정 -->
 	<update id="updateRoom" parameterType="room">
-		UPDATE room SET rname=#{rname}, price=#{price}, maxcap=#{maxcap}, ckintime=#{ckintime}, ckoutime=#{ckoutime}, rooms=#{rooms}, 
+		UPDATE room SET rname=#{rname}, price=#{price}, maxcap=#{maxcap}, ckintime=#{ckintime}, ckouttime=#{ckouttime}, rooms=#{rooms}, 
 						bathroom=#{bathroom}, bed=#{bed}, wifi=#{wifi}, kitchen=#{kitchen}, pool=#{pool}, ac=#{ac}, tv=#{tv}, 
 						coffeemachine=#{coffeemachine}, fridge=#{fridge}, bathtub=#{bathtub}, parking=#{parking}, heater=#{heater}, 
 						microwave=#{microwave}, kettle=#{kettle}, washer=#{washer}, bbq=#{bbq}, hairdrier=#{hairdrier}, amenity=#{amenity},
-						towel=#{towel},elevator=#{elevator}, breakfast=#{breakfast}, smoking=#{smoking}, gym=#{gym}, roomservice=#{roomservice}, image=#{image}
+						towel=#{towel},elevator=#{elevator}, breakfast=#{breakfast}, smoking=#{smoking}, gym=#{gym}, roomservice=#{roomservice}, rimage=#{rimage}
 		WHERE rseq=#{rseq}
 	</update>
 	

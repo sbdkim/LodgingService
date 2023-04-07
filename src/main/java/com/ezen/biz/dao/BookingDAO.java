@@ -35,6 +35,10 @@ public class BookingDAO {
 		return mybatis.selectOne("BookingMapper.selectBookByBseq", vo);
 	}
 	
+	public BookingVO selectBookByBseq(int  resq) {
+		return mybatis.selectOne("BookingMapper.selectBookByBseq", resq);
+	}
+	
 	public List<Integer> selectSeqBooking(BookingVO vo) {
 
 		return mybatis.selectList("BookingMapper.selectSeqBooking", vo);

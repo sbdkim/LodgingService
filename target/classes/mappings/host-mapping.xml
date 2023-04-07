@@ -4,7 +4,7 @@
 	<!-- Email 존재 여부 확인 -->
 	<select id="confirmEmail" resultType="String">
 		SELECT pwd FROM host
-		WHERE hemail=#{email}
+		WHERE hemail=#{hemail}
 	</select>
 	
 	<!-- 회원가입 -->
@@ -16,7 +16,7 @@
 	<!-- 회원정보 조회 -->
 	<select id="getHost" resultType="host">
 		SELECT * FROM host
-		WHERE hemail=#{email}
+		WHERE hemail=#{hemail}
 	</select>
 
 	<!-- 회원정보 변경 -->
@@ -26,7 +26,7 @@
 	
 	<!-- 비밀번호 변경 -->
 	<update id="changePwd">
-		UPDATE host SET pwd=#{pwd} WHERE hemail=#{email}
+		UPDATE host SET pwd=#{pwd} WHERE hemail=#{hemail}
 	</update>
 	
 	<!-- 이름, 번호로 이메일 찾기 -->
@@ -38,7 +38,7 @@
 	<!-- 이메일, 이름, 번호로 비밀번호 찾기 -->
 	<select id="selectPwdByEmailNamePhone" resultType="String">
 		SELECT pwd FROM host
-		WHERE hemail=#{email} AND name=#{name} AND phone=#{phone}
+		WHERE hemail=#{hemail} AND name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- admin이 모든 호스트 조회하기 -->

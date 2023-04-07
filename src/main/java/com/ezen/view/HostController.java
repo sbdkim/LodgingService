@@ -11,16 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
-import com.ezen.biz.dto.SalesQuantity;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.RoomService;
@@ -37,9 +37,9 @@ public class HostController {
 
 	@PostMapping("/host_accommodation_write_form")
 	public String hostAccommodationWriteView(Model model) {
-		String[] kindList = { "호텔", "모텔", "펜션,풀빌라", "게스트 하우스" };
+		String[] categoryList = { "호텔", "모텔", "펜션,풀빌라", "게스트 하우스" };
 
-		model.addAttribute("kindList", kindList);
+		model.addAttribute("categoryList", categoryList);
 
 		return "host/accommodationWrite";
 	}
@@ -78,6 +78,18 @@ public class HostController {
 
 		return "redirect:host_mypage";
 
+	}
+	
+	@RequestMapping("/host_acc_update_form")
+	public String hostAccUpdateView(AccommodationVO vo, Model model) {
+		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
+		
+		AccommodationVO accommodation = accommodationService.getAccommodation(vo);
+		
+		model.addAttribute("accommodationVO", accommodation);
+		model.addAttribute("categoryList", categoryList);
+		
+		return "host/accommodationUpdate";
 	}
 
 	@PostMapping("/host_acc_update")
@@ -154,7 +166,7 @@ public class HostController {
 	}
 
 	@GetMapping("/accommodation_detail")
-	public String AccommodationDetail(HttpSession session, BookingVO vo, AccommodationVO acc, Model model) {
+	public String AccommodationDetail(HttpSession session, AccommodationVO vo, AccommodationVO acc, Model model) {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
 		if (loginHost == null) {
@@ -162,7 +174,8 @@ public class HostController {
 		} else {
 			vo.setHemail(loginHost.getHemail());
 
-			AccommodationVO accommodationDetail = accommodationService.getAccommodaiton(vo);
+			System.out.println("AccommodationDetail(): Accommodation="+vo);
+			AccommodationVO accommodationDetail = accommodationService.getAccommodation(vo);
 			
 			accommodationDetail.setAseq(accommodationDetail.getAseq());
 			accommodationDetail.setHemail(accommodationDetail.getHemail());
@@ -186,15 +199,18 @@ public class HostController {
 
 
 	@PostMapping("/host_room_write_form")
-	public String hostRoomWriteView() {
-				
-		return "host/accommodationWrite";
+	public String hostRoomWriteView(RoomVO vo, Model model) {
+		
+		model.addAttribute("aseq", vo.getAseq());
+		
+		return "host/roomWrite";
 	}
 	
-
-	@PostMapping("/host_room_write")
-	public String hostRoomWrit(RoomVO vo, HttpSession session, 
-			@RequestParam(value="default") MultipartFile uploadFile) {
+	
+	@RequestMapping(value = "/host_room_write")
+	public String hostRoomWrite(RoomVO vo, HttpSession session, 
+			@RequestParam(value="default") MultipartFile uploadFile 
+			, RedirectAttributes rattr) {
 		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
 		
 		if(loginHost == null) {
@@ -202,48 +218,53 @@ public class HostController {
 		} else {
 			
 			vo.setHemail(loginHost.getHemail());
+					
 			
-				if(!uploadFile.isEmpty()) {
-					String fileName = uploadFile.getOriginalFilename();
-					vo.setRimage(fileName);
+			if(!uploadFile.isEmpty()) {
+				String fileName = uploadFile.getOriginalFilename();
+				vo.setRimage(fileName);
+				
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
+				
+				try {
+					uploadFile.transferTo(new File(image_path + fileName));
+				} catch (IllegalStateException | IOException e) {
 					
-					String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
-					
-					try {
-						uploadFile.transferTo(new File(image_path + fileName));
-					} catch (IllegalStateException | IOException e) {
-						
-						e.printStackTrace();
-					} 			
-					
-				} else {
-					vo.setRimage("default.jpg");
-				}
+					e.printStackTrace();
+				} 			
+				
+			} else {
+				vo.setRimage("default.jpg");
+			}
+			
 
 		}
+
 		roomService.insertRoom(vo);
 		
+		rattr.addAttribute("aseq", vo.getAseq());
 		
 		return "redirect:accommodation_detail";
 		
 		
 	}
-	
-
 	@RequestMapping("/host_room_update_form")
 	public String hostRoomUpdateView(RoomVO vo, Model model) {
 		RoomVO room = roomService.selectRoomByRseq(vo);	
 			
+		model.addAttribute("aseq", vo.getAseq());
 		model.addAttribute("roomVO", room);
+
 		
 		return "host/roomUpdate";
 	}
 
 	@PostMapping("/host_room_update")
 	public String hostRoomUpdate(RoomVO vo,
-			@RequestParam(value="accommodation_images") MultipartFile uploadFile,
+			@RequestParam(value="room_images") MultipartFile uploadFile,
 			@RequestParam(value="nonmakeImg") String org_image,
-			HttpSession session) {
+			HttpSession session, Model model, RedirectAttributes rattr) {
+		
 		
 		if(!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
@@ -261,6 +282,8 @@ public class HostController {
 		}
 		
 		roomService.updateRoom(vo);
+
+		rattr.addAttribute("aseq", vo.getAseq());
 		
 		return "redirect:accommodation_detail";
 		
@@ -321,18 +344,13 @@ public class HostController {
 	
 	}
 	
-	
-	//상품별 판매 실적 화면 출력
-		@RequestMapping("/host_booking_record_form")
-		public String adminProductSalesForm() {
-		   return "host/salesRecords";
-	    }
+	@RequestMapping("/host_booking_delete")
+	public String hostBookingDelete(@RequestParam(value="bseq") int bseq) {
 		
-	    @RequestMapping("/booking_record_chart")
-		@ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
-		public List<SalesQuantity> salesRecordChart(HttpSession session,AccommodationVO vo){
-		    HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		    
+		bookingService.deleteBookByBseq(bseq);
+		
+		return "redirect:accommodation_detail";
+	}
 		    
 
 }

@@ -9,7 +9,7 @@ import utils.Criteria;
 public interface AccommodationService {
 
 	// aseq로 숙소 검색
-	AccommodationVO getAccommodaiton(AccommodationVO vo);
+	AccommodationVO getAccommodation(AccommodationVO vo);
 	// 주소로 숙소 검색
 	List<AccommodationVO> selectAccByAdd(String address);
 

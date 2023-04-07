@@ -19,7 +19,7 @@ public interface BookingService {
 	BookingVO selectBookByBseq(BookingVO vo);
 
 
-	BookingVO selectBookByBseq(int bseq);
+	BookingVO getBookByBseq(int bseq);
 
 
 	List<Integer> getSeqBooking(BookingVO vo);
