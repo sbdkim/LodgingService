@@ -37,12 +37,10 @@
     </tr>
 </table>
 <c:choose>          
-  <c:when test='${qnaVO.rep=="1"}'>
+  <c:when test='${qnaVO.rep=="0"}'>
   <table id="orderList">
       <tr>
-          <td colspan="2">
-      <img src="admin/images/opinionimg01.gif">
-      </td>
+        
       </tr>
     <tr>
           <td colspan="2">    
