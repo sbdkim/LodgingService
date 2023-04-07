@@ -192,7 +192,8 @@
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
 				html += "<span id=\"write_score\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
-				html += "<a href='review_delete(" + item.reseq + ")'>삭제</a>";
+				html += "<a href='review_delete(" + item.reseq + ");'>삭제</a>";
+				/* html += "<input type="hidden" value="'+ item.reseq +'">"; */
 				html += "</div>";
 			});
 			
@@ -294,7 +295,7 @@
 	// 삭제 함수
 	function review_delete(reseq){
     $.ajax({
-        url:"review/delete"
+        url:'review/delete'
         ,type:"post"
         ,success:function(data){
             if(data==1){
@@ -307,8 +308,40 @@
         }
         }
     }); // ajax() end
-} // commentDelete() end
+} // review_delete end
 
+  
+   /*
+    //원댓글 번호를 대댓글 참초 댓글 번호로 가저오기
+   $(document).on("click",".save_review",function(){
+	   insertReply($(this).prev().val());
+   });
+   
+    // ajax 대댓글 작성
+   function insertReply(reseq){
+	 if("")
+		 $.ajax({
+		        url: 'review/save'
+		        data:{
+		        	rseq : $("#rseq"),
+					content: $("#content").val(""),
+					refReseq : reseq
+		        },success:function(data){
+		        	if(date == "success") {
+		        		getListReview();
+		        		$("#insertReply").val("");
+		        	}
+		        
+		        
+		        }
+		        }
+		 
+}
+
+
+
+
+*/
 </script>
 
 <%@ include file="../footer.jsp" %>
