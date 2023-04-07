@@ -12,6 +12,7 @@ public class AccommodationVO {
 	private String aimage;
 	private String rimage;
 
+	
 	// Getter, Setter 메소드
 	public int getAseq() {
 		return aseq;

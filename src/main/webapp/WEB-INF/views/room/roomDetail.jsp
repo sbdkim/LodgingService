@@ -122,8 +122,10 @@
 
 
 
+ 
+<%@ include file="reviewList.jsp" %> 
    </article>
- <%@ include file="reviewList.jsp" %> 
+   
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -153,7 +155,33 @@
 			}
 		});
 	}
-	alert(reviewList);
+	
+	function getReviewPaging(pagenum, rowsperpage, rseq) {
+		$.ajax({
+			type: 'GET',
+			url: 'review/list',
+			dataType: 'json',
+			data:{"pageNum": pagenum,
+				  "rowsPerPage": rowsperpage,
+				  "rseq": rseq},
+			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+			success: function(data) {
+				var pageMaker = data.pageInfo;
+				var totalCount = data.total;
+				var reviewList = data.reviewList;
+				console.log("pageMaker=", pageMaker);
+				console.log("count=", totalCount);
+				console.log("review=", reviewList);
+				
+				showHTML(pageMaker, reviewList, totalCount);
+			},
+			error: function() {
+				alert("상품평 목록을 조회하지 못했습니다.")
+			}
+		});
+	}
+	
+	
 	
 	function showHTML(pageMaker, reviewList, total) {
 		var html = "";
@@ -165,8 +193,9 @@
 				html += "<div>";
 				html += "<div id=\"review_item\"> <strong>작성자: " + item.reseq + "</strong>";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
-				html += "<span id=\"write_item\">" + item.score + "</span><br>";
+				html += "<span id=\"write_score\">" + item.score + "</span><br>";
 				html += item.content+"<br></div>";
+				html += "<a href='review_delete(" + item.reseq + ");'>삭제</a>";
 				html += "</div>";
 			});
 			
@@ -263,28 +292,26 @@
 				alert("error:" + error);
 			}
 		});
-		/*
-	function reDelCheck(contIdx) {
-        var query = {idx : contIdx};
-        var ans = confirm("선택하신 댓글을 삭제하시겠습니까?");
-        if(!ans) return false;
-        
-        $.ajax({
-            url  : "${contextPath}/bReplyDel",
-            type : "get",
-            data : query,
-            success : function(data) {
-                    //alert("댓글이 삭제 되었습니다.");
-                  location.reload();
-            },
-            error : function(data) {
-                alert("댓글이 삭제되지 않았습니다.");
-            }
-        });
-    }
-
-		  */
 	}
+		
+	// 삭제 함수
+	function review_delete(reseq){
+    $.ajax({
+        url:"review/delete"
+        ,type:"post"
+        ,success:function(data){
+            if(data==1){
+            getListReview();
+            
+        }else if (data==0) {
+			alert("리뷰 삭제가 실패하였습니다. 다시 시도해 주세요.");
+        } else if (data=='not_logedin') {
+			alert("리뷰 삭제는 로그인이 필요합니다.");
+        }
+        }
+    }); // ajax() end
+} // commentDelete() end
+
 </script>
 
- <%@ include file="../footer.jsp" %> 
+<%@ include file="../footer.jsp" %>
