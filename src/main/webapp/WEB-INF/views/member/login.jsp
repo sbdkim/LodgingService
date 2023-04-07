@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+	<main>
 <div class="tap_wrapper" align="center" style="display: inline-block">
 	<input id="tab_first" type="radio" name="tab_menu" value="tab_first" checked="checked">
 	<input id="tab_second" type="radio" name="tab_menu" value="tab_second">
@@ -60,5 +61,5 @@
 	</div>
 	</div>
 </div>
-
+</main>
 <%@ include file="../footer.jsp"%>
