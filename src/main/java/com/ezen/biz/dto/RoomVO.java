@@ -342,6 +342,4 @@ public class RoomVO {
 				+ ", aimage=" + aimage + ", hemail=" + hemail + "]";
 	}
 
-	
-
 }

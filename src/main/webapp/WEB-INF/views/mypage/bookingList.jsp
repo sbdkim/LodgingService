@@ -13,8 +13,9 @@
        <td> ${bookingList.bseq} </td>      
        <td> ${bookingList.indate} </td>
         <td>
-            <a href="booking_detail?bseq=${bookingList.bseq}">
-              <h3> ${bookingList.name} </h3>              
+        <input type="hidden" name="bseq" id="bseq" value="${bookingVO.bseq}">
+            <a href="booking_detail?bseq=${bookingVO.bseq}">
+              <h3> ${bookingVO.name} </h3>              
           </a>    
         </td>
         <td> ${bookingList.checkin} </td>

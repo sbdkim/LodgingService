@@ -125,7 +125,7 @@
 				        	  // get the aseq value
 				        	  var aseq = location.aseq; // replace this with your actual aseq value
 				        	  // set the URL of the new page to navigate to, including the aseq value as a query parameter
-				        	  var url = "room?aseq=" + aseq + "&checkin1=" + today + "&checkout1=" +tomorrow;
+				        	  var url = "room?aseq=" + aseq + "&checkin=" + today + "&checkout=" +tomorrow;
 				        	  // navigate to the new page
 				        	  window.location.href = url;
 				          });

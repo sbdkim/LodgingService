@@ -40,6 +40,6 @@
             5: 'Pięć Gwiazdek'
         },
         clearButtonTitle: 'Powrót',
-        clearCaption: 'Brak oceny'
+        clearCaption: 'Nie Oceniać'
     };
 }));

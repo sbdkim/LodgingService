@@ -37,4 +37,6 @@ public interface AccommodationService {
 	 
 	 void deleteAccommodation(int aseq);
 
+	 
+	 public List<AccommodationVO> getAccByRegion(String address);
 }

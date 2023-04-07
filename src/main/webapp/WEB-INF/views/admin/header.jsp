@@ -6,10 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Nonage Admin</title>
+<title>KozyNest Admin</title>
 <link rel="stylesheet" href="admin/css/admin.css">
+<!-- <link rel="stylesheet" href="admin/css/bootstrap.min.css"> -->
 <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- 구글 차트 사용 --%>
+
 <script type="text/javascript" src="admin/product/product.js"></script>
 </head>
 
@@ -17,10 +19,10 @@
 	<div id="wrap">
 		<header>			
 			<div id="logo">
-				<a href="admin_login_form"> 
-					<img style="width:800px" src="admin/images/bar_01.gif">
+				
+					<img style="width:800px" src="admin/images/bar_01.gif" onclick="location.href='index.html'">
 					<img src="admin/images/text.gif">
-				</a>
+
 			</div>	
 			<input class="btn" type="button"  value="logout"  style="float: right;"
 			   onClick="location.href='admin_logout'">			

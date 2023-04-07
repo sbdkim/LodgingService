@@ -28,18 +28,35 @@ public class RoomController {
 	private AccommodationService accommodationService;
 
 	@RequestMapping("/room")
-	public String roomView(BookingVO vo, Model model, int aseq,
-			@RequestParam(value="checkin") String checkin, 
-			@RequestParam(value="checkout") String checkout) {
+	public String roomView(BookingVO vo, Model model, int aseq, @RequestParam(value = "checkin") String checkin,
+			@RequestParam(value = "checkout") String checkout) {
 		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(vo);
-		model.addAttribute("roomList", roomList);	
+		model.addAttribute("roomList", roomList);
 		model.addAttribute("checkin", checkin);
 		model.addAttribute("checkout", checkout);
 		model.addAttribute("accommodationName", accommodationName);
 		return "room/roomList";
 
 	}
+	
+	@RequestMapping("/updateRoom")
+	public String roomViewUpdate(BookingVO vo, Model model, @RequestParam(value = "aseq") int aseq, @RequestParam(value = "checkin") String checkin,
+			@RequestParam(value = "checkout") String checkout) {
+		String accommodationName = accommodationService.getNameByAseq(aseq);
+		List<RoomVO> roomList = roomService.getRoomByAcc(vo);
+		model.addAttribute("roomList", roomList);
+		model.addAttribute("checkin", checkin);
+		model.addAttribute("checkout", checkout);
+		model.addAttribute("accommodationName", accommodationName);
+		return "room/roomList";
+
+	}
+	
+	
+	
+	
+	
 
 	@RequestMapping("/selectedAccommodation")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
@@ -74,10 +91,8 @@ public class RoomController {
 	}
 
 	@RequestMapping("/booking")
-	public String booking(HttpSession session, RoomVO vo, 
-			@RequestParam(value="checkin") String checkin, 
-			@RequestParam(value="checkout") String checkout,
-			Model model) {
+	public String booking(HttpSession session, RoomVO vo, @RequestParam(value = "checkin") String checkin,
+			@RequestParam(value = "checkout") String checkout, Model model) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
 			return "member/login";
@@ -90,5 +105,6 @@ public class RoomController {
 			return "room/booking";
 		}
 	}
+	
 
 }// RoomController

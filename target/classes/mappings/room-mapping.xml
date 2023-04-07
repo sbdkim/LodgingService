@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="RoomMapper">
-	<!-- 예약하기 -->
-	<insert id="insertBooking">
-		INSERT INTO booking(bseq, rseq, email, checkin, checkout, price, payment, status)
-		VALUES(book_seq.NEXTVAL, #{resq}, #{email}, #{checkin}, #{checkout}, #{price}, #{payment}, #{status})
-	</insert>
 	
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">
@@ -38,8 +33,9 @@
 		  SELECT rseq 
 		  FROM booking 
 		  WHERE checkin <= #{checkin}
-		    AND checkout>= #{checkout}) ORDER BY price
+		    AND checkout >= #{checkout}) ORDER BY price
 		]]>
+
 	</select>
 	
 	<select id="countRoomList" parameterType="int" resultType="int">
@@ -49,7 +45,7 @@
 	<select id="listRoomWithPaging" resultType="room">
 		<![CDATA[
 		SELECT * FROM
-		(SELECT row_number() OVER (ORDER BY rname) rn, rname, price, maxcap, ckintime, ckouttime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, coffeemachine, fridge, bathtub, parking, heater, microwave, kettle, washer, bbq, hairdrier, amenity, towel, elevator, breakfast, smoking, gym, roomservice, image1, image2, image3, image4, image5
+		(SELECT row_number() OVER (ORDER BY rname) rn, rname, price, maxcap, ckintime, ckouttime, rooms, bathroom, bed, wifi, kitchen, pool, ac, tv, coffeemachine, fridge, bathtub, parking, heater, microwave, kettle, washer, bbq, hairdrier, amenity, towel, elevator, breakfast, smoking, gym, roomservice, image
 		FROM room WHERE aseq = #{aseq}
 		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}

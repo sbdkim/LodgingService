@@ -27,72 +27,57 @@ import com.ezen.biz.service.RoomService;
 
 @Controller
 public class HostController {
-	
+
 	@Autowired
 	private BookingService bookingService;
 	@Autowired
 	private AccommodationService accommodationService;
 	@Autowired
 	private RoomService roomService;
-	
+
 	@PostMapping("/host_accommodation_write_form")
 	public String hostAccommodationWriteView(Model model) {
-		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
-		
-		model.addAttribute("categoryList", categoryList);
-		
+		String[] kindList = { "호텔", "모텔", "펜션,풀빌라", "게스트 하우스" };
+
+		model.addAttribute("kindList", kindList);
+
 		return "host/accommodationWrite";
 	}
-	
 
 	@PostMapping("/host_accommodation_write")
-	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session, 
-			@RequestParam(value="default") MultipartFile uploadFile) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+	public String hostAccommodationWrite(AccommodationVO vo, HttpSession session,
+			@RequestParam(value = "default") MultipartFile uploadFile) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
-			
+
 			vo.setHemail(loginHost.getHemail());
-			
-				if(!uploadFile.isEmpty()) {
-					String fileName = uploadFile.getOriginalFilename();
-					vo.setAimage(fileName);
-					
-					String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
-					
-					try {
-						uploadFile.transferTo(new File(image_path + fileName));
-					} catch (IllegalStateException | IOException e) {
-						
-						e.printStackTrace();
-					} 			
-					
-				} else {
-					vo.setAimage("default.jpg");
+
+			if (!uploadFile.isEmpty()) {
+				String fileName = uploadFile.getOriginalFilename();
+				vo.setAimage(fileName);
+
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/accommodation_images/");
+
+				try {
+					uploadFile.transferTo(new File(image_path + fileName));
+				} catch (IllegalStateException | IOException e) {
+
+					e.printStackTrace();
 				}
+
+			} else {
+				vo.setAimage("default.jpg");
+			}
+
 
 		}
 		accommodationService.insertAccommodation(vo);
-		
-		
-		return "redirect:host_mypage";
-		
-		
-	}
-	
 
-	@RequestMapping("/host_acc_update_form")
-	public String hostAccUpdateView(AccommodationVO vo, Model model) {
-		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
-		
-		AccommodationVO accommodation = accommodationService.getAccommodaiton(vo);
-		
-		model.addAttribute("accommodationVO", accommodation);
-		model.addAttribute("categoryList", categoryList);
-		
-		return "host/accommodationUpdate";
+		return "redirect:host_mypage";
+
 	}
 
 	@PostMapping("/host_acc_update")
@@ -133,50 +118,50 @@ public class HostController {
 
 	@GetMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
-		
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
 	
 			vo.setHemail(loginHost.getHemail());
+
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-			
-					
+
 			model.addAttribute("accommodationList", accommodationList);
-			
+
 			return "host/hostmypage";
-						
+
 		}
-		
+
 	}
 
 	@GetMapping("/host_accommodation_list")
 	public String HostAccommodationListAction(HttpSession session, Model model, AccommodationVO vo) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
 			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-			
-			
+
 			model.addAttribute("accommodationList", accommodationList);
-			
+
 			return "host/accommodationList";
 		}
 	}
-	
+
 	@GetMapping("/accommodation_detail")
-	public String AccommodationDetail(HttpSession session, AccommodationVO vo, Model model) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+	public String AccommodationDetail(HttpSession session, BookingVO vo, AccommodationVO acc, Model model) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
 			vo.setHemail(loginHost.getHemail());
+
 			AccommodationVO accommodationDetail = accommodationService.getAccommodaiton(vo);
 			
 			accommodationDetail.setAseq(accommodationDetail.getAseq());
@@ -190,14 +175,15 @@ public class HostController {
 			roomDetail.setRname(roomList.get(0).getRname());
 			roomDetail.setPrice(roomList.get(0).getPrice());
 	
+
 			model.addAttribute("accommodationDetail", accommodationDetail);
 			model.addAttribute("roomList", roomList);
-			
+
 			return "host/accommodationDetail";
 		}
-	
+
 	}
-	
+
 	@PostMapping("/host_room_write_form")
 	public String hostRoomWriteView() {
 				
@@ -286,23 +272,23 @@ public class HostController {
 		
 		return "redirect:accommodation_detail";
 	}
-	
+
 	@GetMapping("/hostBookingList")
 	public String HostBookingListAction(HttpSession session, AccommodationVO vo, Model model) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
 			vo.setHemail(loginHost.getHemail());
 			List<AccommodationVO> accommodationList = accommodationService.getListHostAccommodation(vo);
-				
-			
+
 			model.addAttribute("accommodationList", accommodationList);
-			
+
 			return "host/hostBookingList";
 		}
 	}
+
 	
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
@@ -347,12 +333,4 @@ public class HostController {
 		    
 		    
 
-			vo.setHemail(loginHost.getHemail());
-			List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
-
-			return listSales;
-		}
-	   }
-
-//	}?
-
+}

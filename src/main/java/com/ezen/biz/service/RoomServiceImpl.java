@@ -17,11 +17,9 @@ public class RoomServiceImpl implements RoomService {
 	@Autowired
 	private RoomDAO rDao;
 	
-
 	@Override
 	public List<RoomVO> getRoomByAcc(BookingVO vo) {
-
-		return  rDao.selectRoomByAcc(vo);
+		return rDao.selectRoomByAcc(vo);
 	}
 	
 	@Override

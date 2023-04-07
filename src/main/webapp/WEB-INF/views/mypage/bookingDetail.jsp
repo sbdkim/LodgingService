@@ -3,24 +3,25 @@
 <%@ include file="../header.jsp" %>  
     <article>
     <h2> 주문상세정보 </h2>
-    <form name="formm" method="post">
+    <form name="formm" method="post" action="booking_delete">
       <h3> 주문자 정보 </h3>     
       <table id="bookingList">      
       <tr>
         <th>예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
      </tr>     
      <tr>  
-       <td> <fmt:formatDate value="${bookingList.bookdate}" type="date"/></td>
-       <td> ${bookingList.bseq} </td>    
-       <td> ${bookingList.mname} </td>
-       <td> <fmt:formatNumber type="currency" value="${bookingList.bprice}" /> </td>
+       <td> <fmt:formatDate value="${booking.bookdate}" type="date"/></td>
+       <td> <input type="hidden" name="bseq" id="bseq" value="${booking.bseq}">
+       ${booking.bseq} </td>    
+       <td> ${booking.memail} </td>
+       <td> <fmt:formatNumber type="currency" value="${booking.bprice}" /> </td>
      </tr>    
      </table>      
       
      <h3> 예약 상품 정보 </h3> 
      <table>
      <tr>
-       <th>예약숙박업체</th><th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th> <th>처리 상태</th>    
+       <th>예약숙박업체</th><th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th> <th>처리 상태</th> <th>예약 취소</th>   
      </tr>
      <tr>
  	   <td> ${bookingList.aname} </td>
@@ -36,6 +37,9 @@
          <c:when test='${bookingList.status=="3"}'> 이용완료 </c:when>
          <c:otherwise> <span style="color:red"> 취소완료 </span></c:otherwise>
          </c:choose>
+       </td>  
+       <td>
+       <input type="submit" value="예약취소">
        </td>
      </tr>
      </table>   
@@ -46,6 +50,7 @@
      </div>
     </form>  
   </article>
-
+<script>
+</script>
             
  <%@ include file="../footer.jsp" %>    

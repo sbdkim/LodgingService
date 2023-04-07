@@ -82,6 +82,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 		aDao.deleteAccommodation(aseq);		
 	}
 
+	@Override
+	public List<AccommodationVO> getAccByRegion(String address) {
+		
+		return aDao.getAccByRegion(address);
+	}
+
 
 
 
