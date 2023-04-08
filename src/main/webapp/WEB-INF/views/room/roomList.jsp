@@ -119,7 +119,7 @@ $(document).ready(function() {
 });
 	
 </script>
-<article style="padding-top: 70px">
+
 <h1>숙소 검색 결과</h1>
 <h2> ${accommodationName} 의 객실 목록</h2>
 			<form name="date_form" id="date_form" method="post" style="display:block">
@@ -140,7 +140,7 @@ $(document).ready(function() {
 							<input class="btn" type="button" name="refreshDate" id="refreshDate" value="검색" >
 						</div>
 					</form>
-
+<article>
 <form name="roomForm" id="room_form" method="post" style="display:block">
 
 	

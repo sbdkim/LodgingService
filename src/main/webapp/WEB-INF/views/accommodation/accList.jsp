@@ -98,7 +98,7 @@ td:last-child {
   
 
 </style>
-<article style="padding-top: 70px">
+<article>
 <h1>숙소 검색</h1>
 <form name="frm" id="acc_form" action="room" method="post" style="display:flex">
 	<input type="hidden" name="ro_count" id="ro_count" value="${ro_count}">
