@@ -10,7 +10,7 @@
 	<!-- image + search box -->
 	<div class="alignform" style="padding-top: 10px;  height: 100%; align-items: center; "> 
 	<!-- Title -->
-    <div class="main_title" style="text-align: left;  padding-left: 30% ;font-size: 56px; font-weight: bold; padding-top: 50px; margin-top: 150px;">
+    <div class="main_title" style="text-align: left;  padding-left: 30% ;font-size: 60px; font-weight: bold; padding-top: 50px; margin-top: 130px;">
         다음 여행지를 찾아보세요!
     </div>
 	<form action="acc_search_list" name="f" method="get" style="margin-top: 20px;">
@@ -173,8 +173,6 @@
 	</div>
 </section>
 
-
-</body>
 <script>
   document.getElementById("today").setAttribute("value", today);
   document.getElementById("tomorrow").setAttribute("value", tomorrowISO);
