@@ -18,9 +18,9 @@ public class AccommodationServiceImpl implements AccommodationService {
 
 	
 	@Override
-	public AccommodationVO getAccommodaiton(AccommodationVO vo) {
+	public AccommodationVO getAccommodation(AccommodationVO vo) {
 	
-		return aDao.getAccommodaiton(vo);
+		return aDao.getAccommodation(vo);
 	}
 	@Override
 	public List<AccommodationVO> selectAccByAdd(String address) {

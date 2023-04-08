@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ include file="../header.jsp"%>
 <!DOCTYPE html>
@@ -98,7 +99,12 @@
 				          
 				          
 				       		// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-				          var iwContent = '<div style="padding:5px;">' + location.aname + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				         // var iwContent = '<div style="padding:5px;">' + location.aname + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				          
+				         var iwContent = '<div style="padding:5px; margin:5px"><table style="border:none"><tr><td width="50" height="50"><img src="accommodation_images/'+ location.aseq + '.jpg" style="width:50px; height:50px;  margin:5px "></td><td style="padding:5px"><p>' + location.aname + '</p><p>' + location.address + '</p></td></tr></table></div>'; 
+				          
+				          
+				          
 
 				          // 인포윈도우를 생성합니다
 				          var infowindow = new kakao.maps.InfoWindow({

@@ -15,8 +15,6 @@ public class BookingServiceImpl implements BookingService {
 
 	@Autowired
 	private BookingDAO bDao;
-	@Autowired
-	private BookingService bookingService;
 
 	@Override
 	public void insertBooking(BookingVO vo) {
@@ -31,7 +29,6 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public BookingVO selectBookByBseq(BookingVO vo) {
 		return bDao.selectBookByBseq(vo);
-
 	}
 
 	@Override
@@ -51,28 +48,23 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public List<Integer> getSeqBooking(BookingVO vo) {
-
 		return bDao.selectSeqBooking(vo);
 	}
 
 	@Override
 	public List<BookingVO> getListBookingByEmail(BookingVO vo) {
-
 		return bDao.listBookingByEmail(vo);
 	}
 
 	@Override
 	public List<BookingVO> getBookingListByAseq(BookingVO vo) {
-
 		return bDao.bookingListByAseq(vo);
 	}
 
 	@Override
 
 	public List<SalesQuantity> getListBookingSales(AccommodationVO vo) {
-
 		return bDao.getListBookingSales(vo);
-
 	}
 
 	@Override
@@ -83,6 +75,16 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public List<BookingVO> getListBookByAseq(BookingVO vo) {
 		return bDao.listBookByAseq(vo);
+	}
+
+	@Override
+	public List<BookingVO> getMonthlyRevenue() {
+		return bDao.getMonthlyRevenue();
+	}
+
+	@Override
+	public BookingVO getBookByBseq(int bseq) {
+		return bDao.selectBookByBseq(bseq);
 	}
 
 }

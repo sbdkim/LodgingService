@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.biz.dto.AdminVO;
-import com.ezen.biz.dto.HostVO;
 
 @Repository
 public class AdminDAO {
@@ -48,7 +47,5 @@ public class AdminDAO {
 			result = 0;
 		}
 		return result;
-	}
-	
-	
-}
+	}	
+}//AdminDAO

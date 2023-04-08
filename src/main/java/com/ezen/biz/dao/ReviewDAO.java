@@ -2,7 +2,6 @@ package com.ezen.biz.dao;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,23 +50,16 @@ public class ReviewDAO {
 		mybatis.update("ReviewMapper.insertReply", vo);
 	}
 	
-	public List<ReviewVO> reviewListwithPaging(Criteria criteria, int rseq){
-		
+	public List<ReviewVO> reviewListwithPaging(Criteria criteria, int rseq){	
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("criteria", criteria);
 		map.put("rseq", rseq);
 		List<ReviewVO> list = mybatis.selectList("ReviewMapper.reviewListwithPaging", map);
-		
-	
-		
 		return list;
 	}
 	
 	public int getCountReviewList(int rseq) {
-		
 		return mybatis.selectOne("ReviewMapper.countReviewList",rseq);
 	}
 	
-	
-	
-}
+}//ReviewDAO

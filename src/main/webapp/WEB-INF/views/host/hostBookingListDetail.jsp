@@ -25,6 +25,7 @@
  	   <td align="center" width="100px">${bookingVO.checkout}</td>
  	   <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.rprice}"/></td>
        <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
+       <td align="center" width="40px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}"> 삭 제 </a></td>
      </tr>
      </c:forEach> 
       </table>

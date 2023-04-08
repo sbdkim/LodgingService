@@ -76,15 +76,12 @@ public class MemberDAO {
 		mybatis.update("MemberMapper.changePwd", vo);
 	}
 	
-	
 	public List<MemberVO> getMemberList(String name) {
 		return mybatis.selectList("MemberMapper.memberList", name);
 	}
 
-
 	public void deleteMember(String email) {
 		mybatis.delete("MemberMapper.deleteMember", email);
-		
 	}
 
 	public List<MemberVO> getListMemberWithPaging(Criteria criteria, String name) {
@@ -94,10 +91,8 @@ public class MemberDAO {
 		return mybatis.selectList("MemberMapper.listMemberWithPaging", map);
 	}
 
-
 	public int countMemberList(String name) {
-		// TODO Auto-generated method stub
 		return mybatis.selectOne("MemberMapper.countMemberList", name);
 	}
 
-}
+}//MemberDAO

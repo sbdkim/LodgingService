@@ -18,8 +18,8 @@ public class AccommodationDAO {
 	private SqlSessionTemplate mybatis;
 
 	// aseq로 숙소 검색
-	public AccommodationVO getAccommodaiton(AccommodationVO vo) {
-		return mybatis.selectOne("AccommodationMapper.getAccommodaiton", vo);
+	public AccommodationVO getAccommodation(AccommodationVO vo) {
+		return mybatis.selectOne("AccommodationMapper.getAccommodation", vo);
 	}
 	
 	// 주소로 숙소 검색
@@ -37,8 +37,7 @@ public class AccommodationDAO {
 		return mybatis.selectOne("AccommodationMapper.countAccList", address);
 	}
 
-	public int countHostAccList(String hemail) {
-		
+	public int countHostAccList(String hemail) {	
 		return mybatis.selectOne("AccommodationMapper.countHostAccList",hemail);
 	}
 	// 페이지별 숙소 조회
@@ -70,7 +69,6 @@ public class AccommodationDAO {
 	}
 	
 	public List<AccommodationVO> listHostAccommodation(AccommodationVO vo){
-		
 		return mybatis.selectList("AccommodationMapper.listHostAccommodation",vo);
 	}
 	
@@ -78,11 +76,8 @@ public class AccommodationDAO {
 		return mybatis.selectList("AccommodationMapper.listAccomByRegion", address);
 	}
 	
-	
-	
-	
 	public void deleteAccommodation(int aseq) {
 		mybatis.delete("AccommodationMapper.deleteAccommodation",aseq);
 	}
 
-}
+}//AccommodationDAO

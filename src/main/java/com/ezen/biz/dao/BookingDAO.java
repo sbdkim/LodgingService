@@ -35,6 +35,10 @@ public class BookingDAO {
 		return mybatis.selectOne("BookingMapper.selectBookByBseq", vo);
 	}
 	
+	public BookingVO selectBookByBseq(int  resq) {
+		return mybatis.selectOne("BookingMapper.selectBookByBseq", resq);
+	}
+	
 	public List<Integer> selectSeqBooking(BookingVO vo) {
 
 		return mybatis.selectList("BookingMapper.selectSeqBooking", vo);
@@ -72,10 +76,8 @@ public class BookingDAO {
 		return mybatis.selectList("BookingMapper.listBestAccom");
 	}
 	
+	public List<BookingVO> getMonthlyRevenue(){
+		return mybatis.selectList("BookingMapper.listMonthlyRevenue");
+	}
 	
-	
-	
-	
-	
-	
-}
+}//BookingDAO

@@ -39,10 +39,10 @@ public class RoomController {
 		return "room/roomList";
 
 	}
-	
+
 	@RequestMapping("/updateRoom")
-	public String roomViewUpdate(BookingVO vo, Model model, @RequestParam(value = "aseq") int aseq, @RequestParam(value = "checkin") String checkin,
-			@RequestParam(value = "checkout") String checkout) {
+	public String roomViewUpdate(BookingVO vo, Model model, @RequestParam(value = "aseq") int aseq,
+			@RequestParam(value = "checkin") String checkin, @RequestParam(value = "checkout") String checkout) {
 		String accommodationName = accommodationService.getNameByAseq(aseq);
 		List<RoomVO> roomList = roomService.getRoomByAcc(vo);
 		model.addAttribute("roomList", roomList);
@@ -52,11 +52,6 @@ public class RoomController {
 		return "room/roomList";
 
 	}
-	
-	
-	
-	
-	
 
 	@RequestMapping("/selectedAccommodation")
 	public String accSearchList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
@@ -105,6 +100,5 @@ public class RoomController {
 			return "room/booking";
 		}
 	}
-	
 
 }// RoomController

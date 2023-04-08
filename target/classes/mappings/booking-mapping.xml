@@ -11,7 +11,8 @@
 	<!-- 자신의 예약내역 조회 -->
 	<select id="listBookByEmail" resultType="booking">
 		SELECT * FROM booking_view
-		WHERE memail=#{email}
+		WHERE memail=#{memail}
+
 	</select>
 	
 	<!-- aseq로 예약내역 조회 -->
@@ -50,7 +51,7 @@
 	<select id="getListBooking" resultType="booking">
 		SELECT * FROM booking ORDER BY bseq DESC
 	</select>
-
+	
      <resultMap type="com.ezen.biz.dto.SalesQuantity" id="salesMap">
  
     <result column="aname" property= "aname"/>
@@ -59,7 +60,7 @@
  
     <!--판매실적 -->
     <select id="getListBookingSales" resultMap="salesMap">
-        SELECT aname ,sum(bprice) as sales_count FROM booking_view where hemail=#{hemail} GROUP BY aname
+        SELECT aname , sum(bprice) as bprice FROM booking_view where hemail=#{hemail} GROUP BY aname
      </select>
      
      <!-- home page  -->
@@ -74,6 +75,25 @@
 		)
 		WHERE rownum <= 4
   		]]>
+   </select>
+   
+   
+   <resultMap type="MonthlyRevenue" id="monthlyRevenue">
+ 
+    <result column="month" property= "month"/>
+    <result column="price" property= "price"/>
+    </resultMap>
+   
+   
+   
+   <select id = "listMonthlyRevenue" resultType="monthlyRevenue">
+   			SELECT TO_CHAR(BOOKDATE, 'YYYY-MM') AS MONTH, SUM(BPRICE) AS PRICE
+			FROM booking
+			GROUP BY TO_CHAR(BOOKDATE, 'YYYY-MM')
+			ORDER BY MONTH ASC
    </select>		
+   
+   
+   
      
 </mapper>

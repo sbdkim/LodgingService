@@ -38,7 +38,7 @@
 	<!-- 이메일, 이름, 번호로 비밀번호 찾기 -->
 	<select id="selectPwdByEmailNamePhone" resultType="String">
 		SELECT pwd FROM host
-		WHERE hemail=#{email} AND name=#{name} AND phone=#{phone}
+		WHERE hemail=#{hemail} AND name=#{name} AND phone=#{phone}
 	</select>
 	
 	<!-- admin이 모든 호스트 조회하기 -->

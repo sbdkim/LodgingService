@@ -52,10 +52,9 @@
 </head>
 
 <body >
-<div id="wrap">
   <header>
 	<div id="logo">
-	<img class="header-image" alt="logo" src="css/KozyNestLogo4.jpg" style="width:200px; float: left; padding: 5px;"
+	<img class="header-image" id="header-image" alt="logo" src="css/KozyNestLogo4.jpg" style="width:200px; float: left; padding: 5px;"
         		onclick="location.href='index.html'">
 
   </div>
