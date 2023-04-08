@@ -25,12 +25,12 @@ body {
 }
 
 main{
-	 min-height: 1500px;
+	 min-height: 800px;
 }
 
 
 .top_home {
-  background-image: url(background.jpg);
+  background-image: url(../images/home6.jpg);
   height: 500px;
   background-size: cover;
   background-position: center;
@@ -39,6 +39,10 @@ main{
   align-items: center;
   text-align: center;
   color: white;
+}
+
+#header-image{
+	margin:3px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -53,10 +57,10 @@ a {
 
 /* Header styles */
 header {
-  height: 50px;
+  height: 60px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+  position: fixed;
   width: 100%
 }
 
@@ -67,6 +71,17 @@ nav ul {
 }
 
 
+.tap_wrapper{
+	display: flex;
+	padding-top: 100px;
+	justify-content: center;
+  	align-items: center;
+	
+}
+
+.sub_wrapper{
+	display: inline-block;
+}
 
 
 
@@ -80,7 +95,7 @@ nav li {
 nav a {
   display: block;
   padding: 10px 10px;
-  margin: 0px;
+  margin: 6px;
 }
 
 nav a:hover {

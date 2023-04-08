@@ -3,9 +3,18 @@
 <%@ include file="header.jsp"%>
 
 <div class=top_home >
+
+	
+
+
 	<!-- image + search box -->
 	<div class="alignform" style="padding-top: 10px;  height: 100%; align-items: center; "> 
-	<form action="acc_search_list" name="f" method="get" style="margin-top: 200px;">
+	<!-- Title -->
+    <div class="main_title" style="text-align: left;  padding-left: 30% ;font-size: 56px; font-weight: bold; padding-top: 50px; margin-top: 150px;">
+        다음 여행지를 찾아보세요!
+    </div>
+	<form action="acc_search_list" name="f" method="get" style="margin-top: 20px;">
+	
 		<div class=search_room style="padding-top: 10px;  height: 50%; align-items: center; ">
 			<!-- searchbox start-->
 			<div style="border-left: 1px solid #c8c8c8; margin-right: 10px; display:inline-block">
