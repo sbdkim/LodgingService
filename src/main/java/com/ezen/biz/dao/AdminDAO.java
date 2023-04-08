@@ -48,7 +48,5 @@ public class AdminDAO {
 			result = 0;
 		}
 		return result;
-	}
-	
-	
-}
+	}	
+}//AdminDAO

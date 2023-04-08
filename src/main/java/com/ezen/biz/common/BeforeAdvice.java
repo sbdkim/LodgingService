@@ -22,5 +22,5 @@ public class BeforeAdvice {
 			System.out.printf("[사전 처리] 메소드명 : %s() 매개변수 : %s\n", method, args[0].toString());
 		}
 		
-	}
-}
+	}//beforeLog
+}//BeforeAdvice

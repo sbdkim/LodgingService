@@ -80,9 +80,4 @@ public class BookingDAO {
 		return mybatis.selectList("BookingMapper.listMonthlyRevenue");
 	}
 	
-	
-	
-	
-	
-	
-}
+}//BookingDAO
