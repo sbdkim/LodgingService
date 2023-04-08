@@ -14,7 +14,7 @@ public interface HostService {
 	// 로그인
 	int loginHost(HostVO vo);
 
-	//호스트 회원가입
+	// 호스트 회원가입
 	void insertHost(HostVO vo);
 
 	// 호스트 상세정보 조회
@@ -31,15 +31,15 @@ public interface HostService {
 
 	// 비밀번호 변경
 	void changePwd(HostVO vo);
-	
-	//호스트 list 조회
+
+	// 호스트 list 조회
 	public List<HostVO> getListHost(String name);
-	
+
 	public void updateHostStatus(String email);
-	
+
 	public void deleteHost(String email);
-	
+
 	List<HostVO> getListHostWithPaging(Criteria criteria, String name);
-	
+
 	int countHostList(String name);
 }

@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ezen.biz.location.Location;
+import com.ezen.biz.dto.Location;
 
 @Repository
 public class MapDAO {

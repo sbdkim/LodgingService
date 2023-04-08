@@ -12,7 +12,6 @@ public class AccommodationVO {
 	private String aimage;
 	private String rimage;
 
-	
 	// Getter, Setter 메소드
 	public int getAseq() {
 		return aseq;
@@ -94,8 +93,6 @@ public class AccommodationVO {
 		this.rimage = rimage;
 	}
 
-
-
 	// ToString
 	@Override
 	public String toString() {
@@ -104,4 +101,4 @@ public class AccommodationVO {
 				+ ", aimage=" + aimage + ", rimage=" + rimage + "]";
 	}
 
-}
+}//AccommodationVO

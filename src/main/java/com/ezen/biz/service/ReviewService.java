@@ -26,8 +26,8 @@ public interface ReviewService {
 	// 리뷰 답글 달기
 	void insertReply(ReviewVO vo);
 	// 리뷰 페이징
-	
+
 	List<ReviewVO> getReviewListwithPaging(Criteria criteria, int rseq);
-	
+
 	int getCountReviewList(int rseq);
 }

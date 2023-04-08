@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -78,16 +77,16 @@ public class HostController {
 		return "redirect:host_mypage";
 
 	}
-	
+
 	@RequestMapping("/host_acc_update_form")
 	public String hostAccUpdateView(AccommodationVO vo, Model model) {
-		String[] categoryList = {"호텔","모텔","펜션,풀빌라","게스트 하우스"};
-		
+		String[] categoryList = { "호텔", "모텔", "펜션,풀빌라", "게스트 하우스" };
+
 		AccommodationVO accommodation = accommodationService.getAccommodation(vo);
-		
+
 		model.addAttribute("accommodationVO", accommodation);
 		model.addAttribute("categoryList", categoryList);
-		
+
 		return "host/accommodationUpdate";
 	}
 
@@ -171,9 +170,9 @@ public class HostController {
 		} else {
 			vo.setHemail(loginHost.getHemail());
 
-			System.out.println("AccommodationDetail(): Accommodation="+vo);
+			System.out.println("AccommodationDetail(): Accommodation=" + vo);
 			AccommodationVO accommodationDetail = accommodationService.getAccommodation(vo);
-			
+
 			accommodationDetail.setAseq(accommodationDetail.getAseq());
 			accommodationDetail.setHemail(accommodationDetail.getHemail());
 			accommodationDetail.setAname(accommodationDetail.getAname());
@@ -184,7 +183,6 @@ public class HostController {
 			roomDetail.setAseq(vo.getAseq());
 			roomDetail.setRname(roomList.get(0).getRname());
 			roomDetail.setPrice(roomList.get(0).getPrice());
-	
 
 			model.addAttribute("accommodationDetail", accommodationDetail);
 			model.addAttribute("roomList", roomList);
@@ -194,79 +192,68 @@ public class HostController {
 
 	}
 
-
 	@PostMapping("/host_room_write_form")
 	public String hostRoomWriteView(RoomVO vo, Model model) {
-		
+
 		model.addAttribute("aseq", vo.getAseq());
-		
+
 		return "host/roomWrite";
 	}
-	
-	
+
 	@RequestMapping(value = "/host_room_write")
-	public String hostRoomWrite(RoomVO vo, HttpSession session, 
-			@RequestParam(value="default") MultipartFile uploadFile 
-			, RedirectAttributes rattr) {
-		HostVO loginHost = (HostVO)session.getAttribute("loginHost");
-		
-		if(loginHost == null) {
+	public String hostRoomWrite(RoomVO vo, HttpSession session,
+			@RequestParam(value = "default") MultipartFile uploadFile, RedirectAttributes rattr) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
 			return "member/login";
 		} else {
-			
+
 			vo.setHemail(loginHost.getHemail());
-					
-			
-			if(!uploadFile.isEmpty()) {
+
+			if (!uploadFile.isEmpty()) {
 				String fileName = uploadFile.getOriginalFilename();
 				vo.setRimage(fileName);
-				
+
 				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/room_images/");
-				
+
 				try {
 					uploadFile.transferTo(new File(image_path + fileName));
 				} catch (IllegalStateException | IOException e) {
-					
+
 					e.printStackTrace();
-				} 			
-				
+				}
+
 			} else {
 				vo.setRimage("default.jpg");
 			}
-			
 
 		}
 
 		roomService.insertRoom(vo);
-		
+
 		rattr.addAttribute("aseq", vo.getAseq());
-		
+
 		return "redirect:accommodation_detail";
-		
-		
+
 	}
 
-		
-		
 	@RequestMapping("/host_room_update_form")
 	public String hostRoomUpdateView(RoomVO vo, Model model) {
-		RoomVO room = roomService.selectRoomByRseq(vo);	
-			
+		RoomVO room = roomService.selectRoomByRseq(vo);
+
 		model.addAttribute("aseq", vo.getAseq());
 		model.addAttribute("roomVO", room);
 
-		
 		return "host/roomUpdate";
 	}
 
 	@PostMapping("/host_room_update")
-	public String hostRoomUpdate(RoomVO vo,
-			@RequestParam(value="room_images") MultipartFile uploadFile,
-			@RequestParam(value="nonmakeImg") String org_image,
-			HttpSession session, Model model, RedirectAttributes rattr) {
-		
-		
-		if(!uploadFile.isEmpty()) {
+	public String hostRoomUpdate(RoomVO vo, @RequestParam(value = "room_images") MultipartFile uploadFile,
+			@RequestParam(value = "nonmakeImg") String org_image, HttpSession session, Model model,
+			RedirectAttributes rattr) {
+
+		if (!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
 			vo.setRimage(fileName);
 
@@ -284,7 +271,7 @@ public class HostController {
 		roomService.updateRoom(vo);
 
 		rattr.addAttribute("aseq", vo.getAseq());
-		
+
 		return "redirect:accommodation_detail";
 
 	}
@@ -312,7 +299,7 @@ public class HostController {
 			return "host/hostBookingList";
 		}
 	}
-	
+
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
@@ -340,21 +327,19 @@ public class HostController {
 		}
 	}
 
-
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
 	public String adminProductSalesForm() {
 		return "host/salesRecords";
 
 	}
-	
+
 	@RequestMapping("/host_booking_delete")
-	public String hostBookingDelete(@RequestParam(value="bseq") int bseq) {
-		
+	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {
+
 		bookingService.deleteBookByBseq(bseq);
-		
+
 		return "redirect:accommodation_detail";
 	}
-		    
 
 }

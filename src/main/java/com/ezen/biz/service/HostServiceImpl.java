@@ -66,14 +66,13 @@ public class HostServiceImpl implements HostService {
 	@Override
 	public void updateHostStatus(String email) {
 		hDao.updateHostStatus(email);
-		
+
 	}
 
 	@Override
 	public void deleteHost(String email) {
 		hDao.deleteHost(email);
 	}
-
 
 	@Override
 	public List<HostVO> getListHostWithPaging(Criteria criteria, String name) {

@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
@@ -18,7 +17,6 @@ import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
-import com.ezen.biz.service.RoomService;
 
 @Controller
 public class MypageController {
@@ -27,8 +25,6 @@ public class MypageController {
 	private BookingService bookingService;
 	@Autowired
 	private AccommodationService accommodationService;
-	@Autowired
-	private RoomService roomService;
 
 	@PostMapping("booking_insert")
 	public String insertBooking(BookingVO vo, HttpSession session) {
@@ -103,10 +99,7 @@ public class MypageController {
 			vo.setCheckout(vo.getCheckout());
 			vo.setStatus(vo.getStatus());
 			BookingVO bookingList = bookingService.selectBookByBseq(vo);
-			
-			
 
-			
 			model.addAttribute("bookingList", bookingList);
 
 			return "mypage/bookingDetail";

@@ -3,6 +3,8 @@ package com.ezen.biz.dto;
 import java.util.Date;
 
 public class MemberVO {
+	
+	// Fields
 	private String email;
 	private String pwd;
 	private String name;
@@ -58,4 +60,5 @@ public class MemberVO {
 				+ ", getPhone()=" + getPhone() + ", getJoindate()=" + getJoindate() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-}
+	
+}//MemberVO

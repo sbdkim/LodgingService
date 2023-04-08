@@ -35,44 +35,37 @@ public class AdminController {
 	private MemberService memberService;
 	@Autowired
 	private BookingService bookingService;
-	
+
 	@GetMapping("/admin_login_form")
 	public String adminLoginView() {
 		return "admin/main";
 	}// adminLoginView
-
-	
 
 	@GetMapping("/admin_logout")
 	public String adminLogout(SessionStatus status) {
 		status.setComplete();
 		return "index";
 	}// adminLogout
-	
-	
+
 	@RequestMapping("/admin_qna_list")
 	public String admingQnaList(Model model) {
-		List<QnaVO> qnaList=qnaService.getListAllQna();
+		List<QnaVO> qnaList = qnaService.getListAllQna();
 		model.addAttribute("qnaList", qnaList);
 		return "admin/qna/qnaList";
-	}//adminQnaList
-	
-	
+	}// adminQnaList
+
 	@PostMapping("/admin_qna_detail")
 	public String adminQnaDetail(Model model, QnaVO vo) {
-		QnaVO qna= qnaService.getQna(vo.getQseq());
+		QnaVO qna = qnaService.getQna(vo.getQseq());
 		model.addAttribute("qnaVO", qna);
 		return "admin/qna/qnaDetail";
-	}//adminQnaDetail
-	
-	
+	}// adminQnaDetail
+
 	@PostMapping("/admin_qna_repsave")
-	public String adminQnaRepSave(Model model,QnaVO vo) {
+	public String adminQnaRepSave(Model model, QnaVO vo) {
 		qnaService.updateQna(vo);
-		return "redirect:admin_qna_list";	
-		}//adminQnaRepSave
-	
-	
+		return "redirect:admin_qna_list";
+	}// adminQnaRepSave
 
 //	   //상품별 판매 실적 화면 출력
 //	@RequestMapping("/admin_booking_record_form")
@@ -80,39 +73,35 @@ public class AdminController {
 //		  return "admin/order/salesRecords";
 //	    }
 	@RequestMapping("/approve_host_save")
-	public String approveHostSave(@RequestParam(value="status") String[] hemail) {
-		
-		for(int i=0; i<hemail.length; i++) {
+	public String approveHostSave(@RequestParam(value = "status") String[] hemail) {
+
+		for (int i = 0; i < hemail.length; i++) {
 			hostService.updateHostStatus(hemail[i]);
 		}
-		
+
 		return "redirect:admin_hostList";
 	}
-	
-	
-	
+
 	@RequestMapping("/delete_host")
-	public String deleteHost(@RequestParam(value="delete") String[] hemail) {
-		
-		for(int i=0; i<hemail.length; i++) {
+	public String deleteHost(@RequestParam(value = "delete") String[] hemail) {
+
+		for (int i = 0; i < hemail.length; i++) {
 			hostService.deleteHost(hemail[i]);
 		}
-		
+
 		return "redirect:admin_hostList";
 	}
-	
+
 	@RequestMapping("/delete_member")
-	public String deleteMember(@RequestParam(value="delete") String[] email) {
-		
-		for(int i=0; i<email.length; i++) {
+	public String deleteMember(@RequestParam(value = "delete") String[] email) {
+
+		for (int i = 0; i < email.length; i++) {
 			memberService.deleteMember(email[i]);
 		}
-		
+
 		return "redirect:admin_memberList";
 	}
-	
-	
-	
+
 	@RequestMapping("/admin_memberList")
 	public String adminMemberList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
 			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
@@ -133,25 +122,19 @@ public class AdminController {
 
 		return "admin/member/memberList";
 	}
-	
-	
+
 	@RequestMapping("/admin_revenue")
 	public String adminRevenueDisplay() {
 		return "admin/revenue/revenueRecords";
 	}
-	
+
 	@RequestMapping("/monthlyChart")
-	@ResponseBody  // 화면이 아닌 데이터를 리턴하는 메소드로 지정
+	@ResponseBody // 화면이 아닌 데이터를 리턴하는 메소드로 지정
 	public List<BookingVO> salesRecordChart() {
 		List<BookingVO> listMonthRevenue = bookingService.getMonthlyRevenue();
 		System.out.println(listMonthRevenue);
 		return listMonthRevenue;
-		
+
 	}
-	
-	
-	
-		
-	
-	
+
 }// class

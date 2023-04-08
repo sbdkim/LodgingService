@@ -1,6 +1,8 @@
 package com.ezen.biz.dto;
 
 public class AdminVO {
+	
+	// Fields
 	private String email;
 	private String pwd;
 	private String name;

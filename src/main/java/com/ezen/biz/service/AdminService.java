@@ -6,11 +6,11 @@ import com.ezen.biz.dto.HostVO;
 public interface AdminService {
 
 	int adminCheck(AdminVO vo);
-	
+
 	// 회원정보 조회
 	AdminVO getAdmin(String email);
-	
-	//admin login
+
+	// admin login
 	int loginAdmin(HostVO vo);
 
 	// 회원정보 변경

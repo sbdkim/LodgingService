@@ -1,13 +1,15 @@
-package com.ezen.biz.location;
+package com.ezen.biz.dto;
 
 public class Location {
 
+	// Fields
 	private int id;
 	private int aseq;
 	private String aname;
 	private String address;
 	private String aimage;
 
+	// Getter, Setter 메소드
 	public int getAseq() {
 		return aseq;
 	}
@@ -48,16 +50,11 @@ public class Location {
 		this.address = address;
 	}
 
+	// ToString
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", aseq=" + aseq + ", aname=" + aname + ", address=" + address + ", aimage="
 				+ aimage + "]";
 	}
 
-
-
-	
-	
-	// Constructors, getters, and setters
-
-}
+}//Location
