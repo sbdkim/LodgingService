@@ -81,29 +81,23 @@ public class MypageController {
 	}
 
 	@GetMapping("/booking_detail")
-	public String BookingDetail(HttpSession session, BookingVO vo, Model model) {
-		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+	public String BookingDetail(BookingVO vo, Model model) {
 
-		if (loginUser == null) {
-			return "member/login";
-		} else {
+		vo.setBseq(vo.getBseq());
+		vo.setBookdate(vo.getBookdate());
+		vo.setMname(vo.getMname());
+		vo.setBprice(vo.getBprice());
+		vo.setAname(vo.getAname());
+		vo.setRname(vo.getRname());
+		vo.setCheckin(vo.getCheckin());
+		vo.setCheckout(vo.getCheckout());
+		vo.setStatus(vo.getStatus());
+		BookingVO booking = bookingService.selectBookByBseq(vo);
 
-			vo.setMemail(loginUser.getEmail());
-			vo.setBseq(vo.getBseq());
-			vo.setBookdate(vo.getBookdate());
-			vo.setMname(vo.getMname());
-			vo.setBprice(vo.getBprice());
-			vo.setAname(vo.getAname());
-			vo.setRname(vo.getRname());
-			vo.setCheckin(vo.getCheckin());
-			vo.setCheckout(vo.getCheckout());
-			vo.setStatus(vo.getStatus());
-			BookingVO bookingList = bookingService.selectBookByBseq(vo);
+		model.addAttribute("booking", booking);
 
-			model.addAttribute("bookingList", bookingList);
+		return "mypage/bookingDetail";
 
-			return "mypage/bookingDetail";
-		}
 	}
 
 	@RequestMapping("/booking_delete")
