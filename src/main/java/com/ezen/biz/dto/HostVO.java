@@ -1,6 +1,8 @@
 package com.ezen.biz.dto;
 
 public class HostVO {
+	
+	// Fields
 	private String hemail;
 	private String pwd;
 	private String phone;
@@ -54,4 +56,5 @@ public class HostVO {
 		return "HostVO [hemail=" + hemail + ", pwd=" + pwd + ", phone=" + phone + ", name=" + name + ", status="
 				+ status + "]";
 	}
-}
+	
+}//HostVO

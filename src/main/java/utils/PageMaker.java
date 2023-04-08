@@ -39,7 +39,6 @@ public class PageMaker {
 		this.totalCount = totalCount;
 		// 멤버변수 초기화
 		fieldInit();
-
 	}
 
 	public void fieldInit() {

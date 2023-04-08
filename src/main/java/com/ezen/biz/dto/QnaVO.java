@@ -3,6 +3,8 @@ package com.ezen.biz.dto;
 import java.util.Date;
 
 public class QnaVO {
+	
+	// Fields
 	private int qseq;
 	private String email;
 	private String subject;
@@ -74,4 +76,4 @@ public class QnaVO {
 		return "QnaVO [qseq=" + qseq + ", email=" + email + ", subject=" + subject + ", content=" + content + ", reply="
 				+ reply + ", indate=" + indate + ", rep=" + rep + "]";
 	}
-}
+} //QnaVO

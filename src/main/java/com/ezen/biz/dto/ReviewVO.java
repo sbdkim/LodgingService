@@ -3,6 +3,8 @@ package com.ezen.biz.dto;
 import java.util.Date;
 
 public class ReviewVO {
+	
+	// Fields
 	private int reseq;
 	private int rseq;
 	private int bseq;
@@ -37,8 +39,6 @@ public class ReviewVO {
 		this.content = content;
 	}
 
-
-
 	public int getScore() {
 		return score;
 	}
@@ -70,8 +70,6 @@ public class ReviewVO {
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
-     
-	
 	
 	public int getRseq() {
 		return rseq;
@@ -81,12 +79,11 @@ public class ReviewVO {
 		this.rseq = rseq;
 	}
 
+	// ToString
 	@Override
 	public String toString() {
 		return "ReviewVO [reseq=" + reseq + ", bseq=" + bseq + ", content=" + content + ", score=" + score + ", indate="
 				+ indate + ", reply=" + reply + ", email=" + email + ", rseq=" + rseq + "]";
 	}
 
-
-	
-}
+}//ReviewVO

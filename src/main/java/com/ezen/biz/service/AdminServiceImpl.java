@@ -49,8 +49,8 @@ public class AdminServiceImpl implements AdminService {
 	public int loginAdmin(HostVO vo) {
 		String email = vo.getHemail();
 		String inputPwd = vo.getPwd();
-		return aDao.loginAdmin(email , inputPwd);
-	
+		return aDao.loginAdmin(email, inputPwd);
+
 	}
 
 }

@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,10 +35,8 @@ public class ReviewController {
 		Map<String, Object> reviewInfo = new HashMap<>();
 
 		// 댓글 목록 조회
-
 		List<ReviewVO> reviewList = reviewService.getReviewListwithPaging(criteria, rseq);
-		int score = reviewVO.getScore();
-	
+
 		System.out.println("rseq= " + reviewVO.getRseq());
 
 		// 페이지 정보 작성
@@ -55,10 +52,8 @@ public class ReviewController {
 	}
 
 	@PostMapping(value = "/save")
-	public String saveReviewAction(ReviewVO reviewVO, 
-			@RequestParam(value = "rating") int[] rating,
-			@RequestParam(value = "rseq") int rseq, 
-			HttpSession session) {
+	public String saveReviewAction(ReviewVO reviewVO, @RequestParam(value = "rating") int[] rating,
+			@RequestParam(value = "rseq") int rseq, HttpSession session) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		System.out.println("넘어온 별점:" + reviewVO.getScore());
 		System.out.println("넘어온 댓글:" + reviewVO.getContent());
@@ -68,13 +63,13 @@ public class ReviewController {
 			return "not_logedin";
 		} else {
 			System.out.println(">>>>> Rating");
-			for(int i=0; i<rating.length; i++) {
+			for (int i = 0; i < rating.length; i++) {
 				System.out.println(rating[i]);
 			}
 			reviewVO.setEmail(loginUser.getEmail());
-           
+
 			// 상품명 저장
-			if ( reviewService.insertReview(reviewVO) > 0) {
+			if (reviewService.insertReview(reviewVO) > 0) {
 
 				return "success";
 			} else {
@@ -84,19 +79,19 @@ public class ReviewController {
 
 	}
 
-	@RequestMapping(value="/delete" , produces="application/json; cjarset=UTF-8")
+	@RequestMapping(value = "/delete", produces = "application/json; cjarset=UTF-8")
 	public String reviewDelete(ReviewVO vo, MemberVO memberVO, HttpSession session) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 
 		if (loginUser == null) {
-			 
-			 return "not_logedin";
+
+			return "not_logedin";
 		} else {
 			vo.setEmail(loginUser.getEmail());
 			System.out.println("email: " + vo.getEmail());
 			System.out.println("reseq: " + vo.getReseq());
 			reviewService.deleteReview(vo);
-			
+
 			return "success";
 		}
 	}

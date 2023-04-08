@@ -1,6 +1,8 @@
 package com.ezen.biz.dto;
 
 public class RoomVO {
+	
+	// Fields
 	private int rseq;
 	private int aseq;
 	private String rname;
@@ -329,6 +331,7 @@ public class RoomVO {
 		this.hemail = hemail;
 	}
 
+	// ToString
 	@Override
 	public String toString() {
 		return "RoomVO [rseq=" + rseq + ", aseq=" + aseq + ", rname=" + rname + ", aname=" + aname + ", price=" + price
@@ -342,4 +345,4 @@ public class RoomVO {
 				+ ", aimage=" + aimage + ", hemail=" + hemail + "]";
 	}
 
-}
+}//RoomVO

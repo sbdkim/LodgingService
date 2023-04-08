@@ -50,7 +50,7 @@
 	</select>
 	
 	<select id="selectAccByName" resultType="String">
-		SELECT aname from accommodation
+		SELECT aname FROM accommodation
 		WHERE aseq=#{aseq}
 	</select>
 	

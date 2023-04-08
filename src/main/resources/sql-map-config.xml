@@ -10,10 +10,9 @@
 		<typeAlias type="com.ezen.biz.dto.QnaVO" alias="qna"/>
 		<typeAlias type="com.ezen.biz.dto.ReviewVO" alias="review"/>
 		<typeAlias type="com.ezen.biz.dto.RoomVO" alias="room"/>
-		<typeAlias type="com.ezen.biz.location.Location" alias="location"/>
+		<typeAlias type="com.ezen.biz.dto.Location" alias="location"/>
 		<typeAlias type="com.ezen.biz.dto.SalesQuantity" alias="salesMap"/>
 		<typeAlias type="com.ezen.biz.dto.MonthlyRevenue" alias="monthlyRevenue"/>
-
 	</typeAliases>
 	
 	<!-- SQL 매핑 파일 -->

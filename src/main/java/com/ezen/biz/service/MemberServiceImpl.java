@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteMember(String email) {
 		mDao.deleteMember(email);
-		
+
 	}
 
 	@Override
@@ -79,7 +79,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int countMemberList(String name) {
-		// TODO Auto-generated method stub
 		return mDao.countMemberList(name);
 	}
 

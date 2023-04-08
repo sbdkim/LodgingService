@@ -3,6 +3,8 @@ package com.ezen.biz.dto;
 import java.util.Date;
 
 public class BookingVO {
+	
+	// Fields
 	private int bseq;
 	private int rseq;
 	private String email;
@@ -21,7 +23,6 @@ public class BookingVO {
 	private String mname;
 	private int tprice;
 	private String phone;
-
 
 	// Getter, Setter 메소드
 	public int getBseq() {
@@ -160,7 +161,6 @@ public class BookingVO {
 		this.tprice = tprice;
 	}
 	
-	
 	public String getPhone() {
 		return phone;
 	}
@@ -169,6 +169,7 @@ public class BookingVO {
 		this.phone = phone;
 	}
 
+	// ToString
 	@Override
 	public String toString() {
 
@@ -178,6 +179,5 @@ public class BookingVO {
 				+ ", aseq=" + aseq + ", mname=" + mname + ", tprice=" + tprice + ", email=" + email + ", phone=" + phone
 				+ "]";
 	}
-
-
-}
+	
+}//BookingVO
