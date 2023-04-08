@@ -19,17 +19,17 @@
      </table>      
       
      <h3>  객실 정보 </h3> 
-     <table id="roomList">
+          <table id="roomList">
      <tr>
        <th>번호</th><th>객실명</th><th>객실 가격</th> <th colspan="3">수정하기</th>  
      </tr>
      <c:forEach items="${roomList}"  var="roomVO">
      <tr>
-       <td align="center" width="100px"> ${roomVO.rseq} </td>
+       <td align="center" width="50px">${roomVO.rseq}</td>
  	   <td align="center" width="250px"> ${roomVO.rname} </td>
        <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${roomVO.price}"/></td>
 	   <td align="center" width="50px"> <a href="host_room_update_form?rseq=${roomVO.rseq}"> 수 정 / </a></td>
-	   <td align="center" width="40px"> <a href="host_room_delete?rseq=${roomVO.rseq}"> 삭 제 </a></td>
+	   <td align="center" width="40px"> <a href="host_room_delete?rseq=${roomVO.rseq}" onClick="delcheck();"> 삭 제 </a></td>
      </tr>
      </c:forEach>    
      </table>   
@@ -52,5 +52,9 @@
  	
  	form.action = "host_room_write_form";
  	form.submit();
+ }
+ 
+ function delcheck(){
+	 confirm()
  }
  </script>   

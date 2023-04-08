@@ -163,7 +163,7 @@ public class HostController {
 	}
 
 	@GetMapping("/accommodation_detail")
-	public String AccommodationDetail(HttpSession session, AccommodationVO vo, AccommodationVO acc, Model model) {
+	public String AccommodationDetail(HttpSession session, AccommodationVO vo, Model model) {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
 		if (loginHost == null) {
@@ -182,14 +182,24 @@ public class HostController {
 
 			RoomVO roomDetail = new RoomVO();
 			roomDetail.setAseq(vo.getAseq());
-			roomDetail.setRname(roomList.get(0).getRname());
-			roomDetail.setPrice(roomList.get(0).getPrice());
-	
+			if(roomList.size()!=0) {
+				roomDetail.setRname(roomList.get(0).getRname());
+				roomDetail.setPrice(roomList.get(0).getPrice());
+				
+				model.addAttribute("accommodationDetail", accommodationDetail);
+				model.addAttribute("roomList", roomList);
 
-			model.addAttribute("accommodationDetail", accommodationDetail);
-			model.addAttribute("roomList", roomList);
+				return "host/accommodationDetail";
+				
+			} else {
+				
+				model.addAttribute("accommodationDetail", accommodationDetail);
+				model.addAttribute("roomList", roomList);
 
-			return "host/accommodationDetail";
+				return "host/accommodationDetail";
+			}
+
+			
 		}
 
 	}
@@ -199,6 +209,7 @@ public class HostController {
 	public String hostRoomWriteView(RoomVO vo, Model model) {
 		
 		model.addAttribute("aseq", vo.getAseq());
+		model.addAttribute("rseq", vo.getRseq());
 		
 		return "host/roomWrite";
 	}

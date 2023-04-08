@@ -13,7 +13,7 @@
 <table id="list">
 <tr>
   <th>카테고리</th>
-  <td colspan="5">
+  <td>
   <select name="category" id="category">
     <c:forEach items="${categoryList}" var="categoryList" varStatus="status">
       <option value="${status.count}">${categoryList}</option>
@@ -21,27 +21,27 @@
   </select>      
 <tr>
   <th>업체명</th>
-  <td width="343" colspan="5">
-       <input type="text" name="aname" id="aname" size="47" maxlength="100">
+  <td width="300px">
+       <input type="text" name="aname" id="aname" size="500" maxlength="1500">
   </td>
 </tr>
 
 <tr>
   <th>주소</th>
-  <td width="300" colspan="5">
-       <input type="text" name="address" id="address" size="47" maxlength="100">
+  <td width="300px">
+       <input type="text" name="address" id="address" size="500" maxlength="1500">
   </td>
 </tr>
 <tr>
   <th>전화번호</th>
-  <td width="100e" colspan="5">
-       <input type="text" name="tel" id="tel" size="47" maxlength="100">
+  <td width="100px">
+       <input type="text" name="tel" id="tel" size="50" maxlength="100">
   </td>
 </tr>
 
   <tr>
     <th>상품이미지</th>
-    <td width="200" colspan="5">
+    <td width="200">
 <!--  [2] 파일 업로드를 하기 위한 input 태그는 타입 속성 값을 file로 지정해야 한다.  -->
       <input type="file" name="default" id="default">
     </td>

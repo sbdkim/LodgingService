@@ -10,6 +10,7 @@
 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
 <form name="frm" id="room_write_form" method="post" enctype="multipart/form-data">
 <input type="hidden" name="aseq" value="${aseq}">
+<input type="hidden" name="rseq" value="${rseq}">
 <table id="list">
 <tr>
   <th>객실 이름</th>
@@ -76,7 +77,7 @@
       
       <input type="checkbox" name="bathtub" id="input_check" value="1">욕조<br>
       
-      <input type="checkbox" name="parking" id="input_check" value="1">주방&nbsp;
+      <input type="checkbox" name="parking" id="input_check" value="1">주차장&nbsp;
       
       <input type="checkbox" name="heater" id="input_check" value="1">수영장&nbsp;
       

@@ -76,7 +76,7 @@
       
       <input type="checkbox" name="bathtub" id="input_check" value="1">욕조<br>
       
-      <input type="checkbox" name="parking" id="input_check" value="1">주방&nbsp;
+      <input type="checkbox" name="parking" id="input_check" value="1">주차장&nbsp;
       
       <input type="checkbox" name="heater" id="input_check" value="1">수영장&nbsp;
       
