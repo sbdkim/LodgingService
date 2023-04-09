@@ -65,9 +65,10 @@ public class ReviewController {
 			System.out.println(">>>>> Rating");
 			for (int i = 0; i < rating.length; i++) {
 				System.out.println(rating[i]);
+				 reviewVO.setScore(rating[i]);
 			}
 			reviewVO.setEmail(loginUser.getEmail());
-
+		
 			// 상품명 저장
 			if (reviewService.insertReview(reviewVO) > 0) {
 

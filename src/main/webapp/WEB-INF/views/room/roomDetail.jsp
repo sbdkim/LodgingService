@@ -286,9 +286,9 @@ td:last-child {
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>&nbsp&nbsp&nbsp";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
-				html += "<span id=\"write_score\">" + item.score + "</span><br>";
+				html += "<span id=\"write_score\"> <strong>별점: " + item.score + "</strong></span><br>";
 				html += item.content+"<br></div>";
 				html += "<a href='#' onclick='review_delete(" + item.reseq + ");'>삭제</a>";
 				/* html += "<input type="hidden" value="'+ item.reseq +'">"; */
