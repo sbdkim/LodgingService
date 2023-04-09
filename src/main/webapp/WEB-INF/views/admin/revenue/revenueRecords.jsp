@@ -66,6 +66,6 @@ $(document).ready(function() {
 
 	<div align="center">
 	<h1>월 별 매출</h1>
-		<div id="ColumnChart" style="width: 1200px; height: 600px;  margin-left:-125px;"></div>
+		<div id="ColumnChart" style="width: 700px; height: 600px;  "></div>
 	</div>
 <%@ include file="../footer.jsp"%>

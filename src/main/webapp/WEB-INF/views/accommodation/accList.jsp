@@ -50,11 +50,6 @@ tr {
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
  
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
 
  
 tr:first-child {
@@ -98,7 +93,7 @@ td:last-child {
   
 
 </style>
-<article>
+<article style=" text-align: center;">
 <h1>숙소 검색</h1>
 <form name="frm" id="acc_form" action="room" method="post" style="display:flex">
 	<input type="hidden" name="ro_count" id="ro_count" value="${ro_count}">
