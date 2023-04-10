@@ -31,7 +31,7 @@ input[type="button"], input[type="submit"], input[type="reset"]{
 		<div class="tab_first_content">
 			<h2>Guest</h2>
 			<form action="join" method="post"
-				name="formm">
+				name="formm" id="join">
 				<table width="500">
 					<tr align="center">
 						<td><b>User EMAIL</b></td>

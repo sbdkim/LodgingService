@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.ezen.biz.dao.QnaDAO;
 import com.ezen.biz.dto.QnaVO;
 
+import utils.Criteria;
+
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService {
 
@@ -38,6 +40,16 @@ public class QnaServiceImpl implements QnaService {
 	public void updateQna(QnaVO vo) {
 		qDao.updateQna(vo);
 
+	}
+
+	@Override
+	public List<QnaVO> getListQnaWithPaging(Criteria criteria) {
+		return qDao.listQnaWithPaging(criteria);
+	}
+
+	@Override
+	public int countQna() {
+		return qDao.countQna();
 	}
 
 }

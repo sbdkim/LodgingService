@@ -48,12 +48,6 @@ public class AdminController {
 		return "index";
 	}// adminLogout
 
-	@RequestMapping("/admin_qna_list")
-	public String admingQnaList(Model model) {
-		List<QnaVO> qnaList = qnaService.getListAllQna();
-		model.addAttribute("qnaList", qnaList);
-		return "admin/qna/qnaList";
-	}// adminQnaList
 
 	@PostMapping("/admin_qna_detail")
 	public String adminQnaDetail(Model model, QnaVO vo) {

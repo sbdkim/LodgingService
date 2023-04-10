@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>  
+
  <style>
  /*table */
  /*** Table Styles **/
@@ -116,8 +117,8 @@ td:last-child {
         <td><b>수용 인원</b></td><td>${accRoom.maxcap}</td>
      </tr>
      <tr>
-        <td><b>1박 가격</b></td><td><input type="hidden" id="price"
-					name="price" readonly value="${accRoom.price}">${accRoom.price}</td>
+        <td><b>1박 가격</b></td><td><input type="hidden" id="price" name="price" readonly value="${accRoom.price}">
+        ${accRoom.price}</td>
      </tr>
       <tr>
         <td><b>체크인</b></td><td>${param.checkin}</td>

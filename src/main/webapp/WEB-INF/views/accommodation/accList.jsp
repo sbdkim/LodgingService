@@ -147,7 +147,6 @@ td:last-child {
 					<td>${accommodationVO.address}</td>
 					  
 					<td>
-					
 						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
 						<a href="#" onclick="location.href='room?aseq=${accommodationVO.aseq}&checkin='+document.getElementById('checkin').value+'&checkout='+document.getElementById('checkout').value">숙소 살펴보기</a>
 						<%--  <button  type=submit>숙소 살펴보기</button> --%>
@@ -156,7 +155,7 @@ td:last-child {
 					<td>${accommodationVO.tel}</td>
 				</tr>
 				</c:forEach>
-				<tr id="pagenation" style="background:white"><td  colspan="4" style="text-align:center;"> <%@ include file="page_area.jsp" %> </td></tr>
+				<tr id="pagination" style="background:white"><td  colspan="4" style="text-align:center;"> <%@ include file="page_area.jsp" %> </td></tr>
 			</c:otherwise>
 		</c:choose>
 	</table>
@@ -183,8 +182,6 @@ function go_total() {
   document.getElementById("checkout").setAttribute("min", today);   
   
 </script>
-
-
 </article>
 </div>
 </div>
