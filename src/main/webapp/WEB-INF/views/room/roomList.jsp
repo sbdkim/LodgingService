@@ -2,13 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../header.jsp"%>
-
-
-
-
-
-
-
 <style>
  /*table */
  /*** Table Styles **/
@@ -102,15 +95,6 @@ td:last-child {
 </style>
 
 
-
-
-
-
-
-
-
-
-
 <script>
 
 
@@ -129,6 +113,7 @@ $(document).ready(function() {
 });
 	
 </script>
+<main>
 <div style="display:block;  text-align: center; ">
 <h1 >숙소 검색 결과</h1>
 <h2 > ${accommodationName} 의 객실 목록</h2>
@@ -199,4 +184,5 @@ $(document).ready(function() {
 	</table>
 </form>
 </article>
+</main>
 <%@ include file="../footer.jsp"%>

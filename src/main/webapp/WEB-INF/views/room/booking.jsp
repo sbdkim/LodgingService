@@ -49,6 +49,7 @@ tr {
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
 
+ 
 tr:first-child {
   border-top:none;
 }
@@ -90,6 +91,9 @@ td:last-child {
   
 
 </style>
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
     <article style="display:block; justify-content:center; text-align:center">
     <h2> 객실예약 </h2> <br>
     <form name="formm" id="book_form" method="post" action="booking_insert" style="display:block">
@@ -143,7 +147,9 @@ td:last-child {
      </div>
     </form>  
   </article>
-
+</div>
+</div>
+</main>
        
        
   <%

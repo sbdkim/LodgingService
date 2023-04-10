@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 
-<%@ include file="../header.jsp" %> 
-
+<%@ include file="../header.jsp" %>  
 <style>
  /*table */
  /*** Table Styles **/
@@ -94,9 +93,9 @@ td:last-child {
   
 
 </style>
-
-
-
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
     <article style="display:block; justify-content:center; text-align:center">
     <h2> 객실상세정보 </h2>
     <form name="formm" method="post" action="booking" style="display:block">
@@ -208,10 +207,8 @@ td:last-child {
      </table>      
           
      <div class="clear"></div>
-     <div id="buttons" style="  text-align: center; margin-top: 30px;">
        <input type="submit" value="예약하기">
        <input type="button" value="다른 객실 보기" onclick="history.back(1)">
-     </div>
     </form>  
 
 
@@ -219,7 +216,9 @@ td:last-child {
  
 <%@ include file="reviewList.jsp" %> 
    </article>
-   
+   </div>
+   </div>
+   </main>
 <script type="text/javascript">
 
 	$(document).ready(function() {

@@ -28,15 +28,15 @@ function emailcheck() {
 
 // 사업자 EMAIL 중복체크 화면 표시
 function hostemailcheck() {
-	if (document.getElementById("hostemail").value == "") {
+	if (document.getElementById("hemail").value == "") {
 		alert("이메일을 입력해 주세요.");
-		document.getElementById("hostemail").focus(); // 입력 대기
+		document.getElementById("hemail").focus(); // 입력 대기
 		return false;
 	}
 	// EMAIL 중복확인 화면 요청
 	// url - Controller 요청하는 URL
 	// _blank_ - 새로운 윈도우를 생성하여 표시
-	var url = "host_email_check_form?email=" + document.getElementById("hostemail").value;
+	var url = "host_email_check_form?hemail=" + document.getElementById("hemail").value;
 	window.open(url, "_blank_",
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=350");
 }

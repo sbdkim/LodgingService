@@ -23,7 +23,7 @@
 				</c:if>
 
 
-				<td>사업자 이름 <input type="text" name="key" id="key"> <input
+				<td>사업자 이름 <input type="text" name="key" id="key" value="${key}"> <input
 					class="btn" type="button" value="검색" onclick="go_search()">
 				</td>
 			</tr>

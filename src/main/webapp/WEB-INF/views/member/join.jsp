@@ -72,9 +72,9 @@ input[type="button"], input[type="submit"], input[type="reset"]{
 				<table width="500">
 					<tr align="center">
 						<td><b>Host EMAIL</b></td>
-						<td><input name="email" type="text" id="hostemail"
-							value="${email}"></td>
-						<td><input type="hidden" id="rehostemail" value="${email}"></td>
+						<td><input name="hemail" type="text" id="hemail"
+							value="${hemail}"></td>
+						<td><input type="hidden" id="rehemail" value="${hemail}"></td>
 						<td cols="2"><input type="button" value="중복체크" class="dup"
 							onclick="hostemailcheck()"></td>
 					</tr>

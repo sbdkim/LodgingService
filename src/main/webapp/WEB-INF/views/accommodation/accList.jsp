@@ -93,6 +93,9 @@ td:last-child {
   
 
 </style>
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
 <article style=" text-align: center;">
 <h1>숙소 검색</h1>
 <form name="frm" id="acc_form" action="room" method="post" style="display:flex">
@@ -182,4 +185,7 @@ function go_total() {
 
 
 </article>
+</div>
+</div>
+</main>
 <%@ include file="../footer.jsp"%>

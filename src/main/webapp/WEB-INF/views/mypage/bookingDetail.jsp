@@ -100,7 +100,7 @@ td:last-child {
     <form name="formm" method="post" action="booking_delete">   
       <table id="booking" border="1">      
       <tr>
-        <th>예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
+        <th height="87.5">예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
      </tr>     
      <tr>  
        <td> <fmt:formatDate value="${booking.bookdate}" type="date"/></td>

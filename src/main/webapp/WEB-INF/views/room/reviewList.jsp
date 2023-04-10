@@ -195,7 +195,7 @@ label {
 				<label for="1-star" class="star">★</label>
 			</div>
 			<div id="reply">
-				<table id="rep_input" style="width: 700px">
+				<table id="rep_input" style="width: 870px">
 					<tr>
 						<td style="width: 75%;"><textarea rows="3" cols="75"
 								id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
