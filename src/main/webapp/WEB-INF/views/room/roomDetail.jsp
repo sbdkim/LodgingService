@@ -286,13 +286,24 @@ td:last-child {
 				html += "<div>";
 				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>&nbsp&nbsp&nbsp";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
-				html += "<span id=\"write_score\"> <strong>별점: " + item.score + "</strong></span><br>";
+				if(item.score == 1){
+					html += "<td>★☆☆☆☆</td>";
+				}else if(item.score == 2){
+					html += "<td>★★☆☆☆</td>";
+				}else if(item.score == 3){
+					html += "<td>★★★☆☆</td>";
+				}else if(item.score == 4){
+					html += "<td>★★★★☆</td>";
+				}else if(item.score == 5){
+					html += "<td>★★★★★</td>";
+				}
+				html +="<br>"
 				html += item.content+"<br></div>";
 				html += "<a href='#' onclick='review_delete(" + item.reseq + ");'>삭제</a>";
 				/* html += "<input type="hidden" value="'+ item.reseq +'">"; */
 				html += "</div>";
 			});
-			
+		
 		
 			// 페이징 버튼 출력`
 			if (pageMaker.prev == true) {
