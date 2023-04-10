@@ -48,14 +48,7 @@ tr {
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
- 
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
 
- 
 tr:first-child {
   border-top:none;
 }
@@ -97,12 +90,12 @@ td:last-child {
   
 
 </style>
-    <article>
-    <h2> 객실예약 </h2>
-    <form name="formm" id="book_form" method="post" action="booking_insert">
+    <article style="display:block; justify-content:center; text-align:center">
+    <h2> 객실예약 </h2> <br>
+    <form name="formm" id="book_form" method="post" action="booking_insert" style="display:block">
     <input type="hidden" id="rseq" name="rseq" value="${accRoom.rseq}">
       <table id="accRoom" align="center" border="1" width="1000">      
-      <tr>
+      <tr>				
         <td rowspan="9" width="225">
 	        <c:choose>
 				<c:when test="${empty accRoom.rimage}"><img src="room_images/default.jpg" /></c:when>    
@@ -119,7 +112,8 @@ td:last-child {
         <td><b>수용 인원</b></td><td><input type="text" id="maxcap" name="maxcap" readonly value="${accRoom.maxcap}"></td>
      </tr>
      <tr>
-        <td><b>1박 가격</b></td><td><input type="text" id="price" name="price" readonly value="${accRoom.price}"></td>
+        <td><b>1박 가격</b></td><td><input type="text" id="price"
+					name="price" readonly value="${accRoom.price}"></td>
      </tr>
       <tr>
         <td><b>체크인</b></td><td><input type="text" id="checkin" name="checkin" readonly value="${param.checkin}"></td>
@@ -143,8 +137,8 @@ td:last-child {
      </table>      
      
      <div class="clear"></div>
-     <div id="buttons" style="float: right">
-       <button onclick="return requestPay();">결제하기</button>  
+     <div id="buttons" style="margin-top: 30px; text-align: center;">
+       <input type="button" onclick="return requestPay();" value="결제하기"> 
        <%-- <input type="submit" value="예약하기"> --%>
        <input type="button" value="다른 객실 예약" onclick="history.go(-2)">
      </div>
@@ -180,7 +174,7 @@ td:last-child {
 		document.getElementById("bprice").value = bprice;
 	});
 </script>
-<<script type="text/javascript">
+<script type="text/javascript">
 function go_book() {
 	var form = document.getElementById("book_form");
 	form.action = "booking_insert";

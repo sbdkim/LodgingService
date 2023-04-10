@@ -22,7 +22,7 @@ header{
 	
 		<div class=search_room style="padding-top: 10px;  height: 50%; align-items: center; ">
 			<!-- searchbox start-->
-			<div style="border-left: 1px solid #c8c8c8; margin-right: 10px; display:inline-block">
+			<div style="margin-right: 10px; display:inline-block">
 				<input type=search class=main_search_text placeholder=서울,서초구
 					name="key" id="key">
 			</div>
@@ -65,7 +65,7 @@ header{
 
 
 			<div class="main_search_button_box"  style="display:inline-block">
-				<button type=submit style="border-left: 1px solid #c8c8c8;"
+				<button type=submit
 					class="btn main_search_button">검색</button>
 			</div>
 		</div>

@@ -49,12 +49,6 @@ tr {
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
- 
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
 
  
 tr:first-child {
@@ -98,6 +92,9 @@ td:last-child {
   
 
 </style>    
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
 <article>
   <h2 align="center">  '${sessionScope.loginHost.name}'님이 등록한 숙소 </h2>
     <form name="frm" id="acc_form" method="post">
@@ -133,7 +130,6 @@ td:last-child {
 		<td align="center" width="100px"> <a href="host_acc_delete?aseq=${accommodationVO.aseq}"> 삭 제 </a></td>
       </tr>
       </c:forEach>   
-      <tr><td colspan="8" style="text-align:center">${paging}</td></tr> 
       </c:otherwise>
       </c:choose>
       </table>   
@@ -141,8 +137,10 @@ td:last-child {
       <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()">
       </div>
     </form>  
-    <%@ include file="page_area.jsp" %>  
   </article>
+  </div>
+  </div>
+  </main>
 <%@ include file="../footer.jsp" %>   
 
 <script type="text/javascript">
