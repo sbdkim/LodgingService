@@ -3,17 +3,107 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../header.jsp"%>
 <%@ include file="sub_menu_host.jsp"%>
+  <style>
+ /*table */
+ /*** Table Styles **/
 
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  /*background:#FFCDC3;*/
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+  
+
+</style>   
+<main>
 <article>
 <h1>객실 등록</h1>  
 <!-- [1] 파일을 업로드 하기 위해서는 폼태그를 post 방식으로 전송하고,
 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
 <form name="frm" id="room_write_form" method="post" enctype="multipart/form-data">
 <input type="hidden" name="aseq" value="${aseq}">
-<table id="list">
+<table id="list" border="1">
 <tr>
   <th>객실 이름</th>
-  <td width="343" colspan="5">
+  <td width="700" colspan="5">
        <input type="text" name="rname" id="rname" size="47" maxlength="100" autofocus>
   </td>
 </tr>
@@ -34,11 +124,13 @@
   <td>
     <input type="text" name="ckintime" id="ckintime" size="15" onKeyUp='NumFormat(this)' value="15:00">
   </td>
+</tr> 
+<tr>
   <th>체크아웃 시간</th>
   <td>
     <input type="text" name="ckouttime" id="ckouttime" size="15" onKeyUp='NumFormat(this)' value="11:00">
   </td>
-</tr> 
+</tr>
 <tr>
   <th>방 개수</th>
   <td>
@@ -114,10 +206,13 @@
   </tr>    
 </table>
 <br><br>
+<div id="buttons">
 <input class="btn" type="button" value="등록" onClick="go_save()">           
 <input class="btn" type="button" value="취소" onClick="go_mov()">
+</div>
 </form> 
 </article>
+</main>
 <%@ include file="../footer.jsp"%>
 </body>
 </html>

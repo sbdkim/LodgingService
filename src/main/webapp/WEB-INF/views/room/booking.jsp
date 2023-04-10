@@ -48,10 +48,7 @@ tr {
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
- 
 
-
- 
 tr:first-child {
   border-top:none;
 }
