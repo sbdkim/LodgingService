@@ -13,7 +13,7 @@
 									'&rowsPerPage=10&key='+document.getElementById('key').value+
 									'&checkin='+document.getElementById('checkin').value+
 									'&checkout='+document.getElementById('checkout').value+
-									'&ro_count='+document.getElementById('ro_count').value">[이전]</a>
+									'&ro_count='+document.getElementById('ro_count').value">이전</a>
 			</li>
 		</c:if>
 				
@@ -24,7 +24,7 @@
 								'&rowsPerPage=10&key='+document.getElementById('key').value+
 								'&checkin='+document.getElementById('checkin').value+
 								'&checkout='+document.getElementById('checkout').value+
-								'&ro_count='+document.getElementById('ro_count').value">[${index}]</a>
+								'&ro_count='+document.getElementById('ro_count').value">${index}</a>
 		</c:forEach>
 		
 		<c:if test="${pageMaker.next}">
@@ -34,7 +34,7 @@
 									'&rowsPerPage=10&key='+document.getElementById('key').value+
 									'&checkin='+document.getElementById('checkin').value+
 									'&checkout='+document.getElementById('checkout').value+
-									'&ro_count='+document.getElementById('ro_count').value">[다음]</a>
+									'&ro_count='+document.getElementById('ro_count').value">다음</a>
 			</li>
 		</c:if>	
 			
