@@ -5,7 +5,7 @@
 input[type="button"], input[type="submit"]{
   padding: 10px 20px;
   background-color: #fff;
-  color: #ff8f00;
+  color: tomato;
   border: none;
   border-radius: 4px;
   font-size: 16px;
