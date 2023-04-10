@@ -93,6 +93,9 @@ td:last-child {
   
 
 </style>
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
     <article>
     <h2> 객실상세정보 </h2>
     <form name="formm" method="post" action="booking">
@@ -215,7 +218,9 @@ td:last-child {
  
 <%@ include file="reviewList.jsp" %> 
    </article>
-   
+   </div>
+   </div>
+   </main>
 <script type="text/javascript">
 
 	$(document).ready(function() {

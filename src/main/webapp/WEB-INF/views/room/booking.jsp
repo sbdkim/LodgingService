@@ -91,6 +91,9 @@ td:last-child {
   
 
 </style>
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
     <article>
     <h2> 객실예약 </h2>
     <form name="formm" id="book_form" method="post" action="booking_insert">
@@ -144,7 +147,9 @@ td:last-child {
      </div>
     </form>  
   </article>
-
+</div>
+</div>
+</main>
        
        
   <%
