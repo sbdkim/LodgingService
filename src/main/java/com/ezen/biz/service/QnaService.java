@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ezen.biz.dto.QnaVO;
 
+import utils.Criteria;
+
 public interface QnaService {
 
 	List<QnaVO> getListQna(String email);
@@ -16,4 +18,7 @@ public interface QnaService {
 
 	void updateQna(QnaVO vo);
 
+	List<QnaVO> getListQnaWithPaging(Criteria criteria);
+	
+	int countQna();
 }

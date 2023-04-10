@@ -8,12 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.QnaVO;
 import com.ezen.biz.service.QnaService;
+
+import utils.Criteria;
+import utils.PageMaker;
 
 @Controller
 public class QnaController {
@@ -90,4 +94,24 @@ public class QnaController {
 		}
 	}
 
+	@RequestMapping("/admin_qna_list")
+	public String adminQnaList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
+			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage, Model model) {
+		
+		Criteria criteria = new Criteria();
+		criteria.setPageNum(Integer.parseInt(pageNum));
+		criteria.setRowsPerPage(Integer.parseInt(rowsPerPage));
+		
+		List<QnaVO> qnaList = qnaService.getListQnaWithPaging(criteria);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalCount(qnaService.countQna());
+		
+		model.addAttribute("qnaList", qnaList);
+		model.addAttribute("qnaListSize", qnaList.size());
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "admin/qna/qnaList";
+	}
 }
