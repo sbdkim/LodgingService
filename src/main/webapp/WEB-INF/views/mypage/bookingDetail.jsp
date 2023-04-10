@@ -48,12 +48,7 @@ tr {
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
- 
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
+
 
  
 tr:first-child {
@@ -97,10 +92,12 @@ td:last-child {
   
 
 </style>
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
     <article>
     <h2> 주문상세정보 </h2>
-    <form name="formm" method="post" action="booking_delete">
-      <h3> 주문자 정보 </h3>     
+    <form name="formm" method="post" action="booking_delete">   
       <table id="booking" border="1">      
       <tr>
         <th>예약일자</th> <th>예약번호</th> <th>예약자</th><th> 예약 가격</th>     
@@ -113,8 +110,6 @@ td:last-child {
        <td> <fmt:formatNumber type="currency" value="${booking.bprice}" /> </td>
      </tr>    
      </table>      
-      
-     <h3> 예약 상품 정보 </h3> 
      <table border="1">
      <tr>
        <th>예약숙박업체</th><th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th> <th>처리 상태</th> <th>예약 취소</th>   
@@ -146,7 +141,8 @@ td:last-child {
      </div>
     </form>  
   </article>
-<script>
-</script>
-            
+  </div>
+  </div>
+  </main>
+           
  <%@ include file="../footer.jsp" %>    
