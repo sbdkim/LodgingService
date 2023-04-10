@@ -95,7 +95,7 @@ td:last-child {
     <form name="formm" id="book_form" method="post" action="booking_insert" style="display:block">
     <input type="hidden" id="rseq" name="rseq" value="${accRoom.rseq}">
       <table id="accRoom" align="center" border="1" width="1000">      
-      <tr>
+      <tr>				
         <td rowspan="9" width="225">
 	        <c:choose>
 				<c:when test="${empty accRoom.rimage}"><img src="room_images/default.jpg" /></c:when>    
@@ -112,7 +112,8 @@ td:last-child {
         <td><b>수용 인원</b></td><td><input type="text" id="maxcap" name="maxcap" readonly value="${accRoom.maxcap}"></td>
      </tr>
      <tr>
-        <td><b>1박 가격</b></td><td><input type="text" id="price" name="price" readonly value="${accRoom.price}"></td>
+        <td><b>1박 가격</b></td><td><input type="text" id="price"
+					name="price" readonly value="${accRoom.price}"></td>
      </tr>
       <tr>
         <td><b>체크인</b></td><td><input type="text" id="checkin" name="checkin" readonly value="${param.checkin}"></td>
