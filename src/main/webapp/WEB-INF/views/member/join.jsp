@@ -3,6 +3,20 @@
 <%@ include file="../header.jsp"%>
 
 
+<style>
+input[type="button"], input[type="submit"], input[type="reset"]{
+  padding: 10px 20px;
+  background-color: #fff;
+  color: tomato;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+</style>
+
 <main>
 
 
@@ -17,7 +31,7 @@
 		<div class="tab_first_content">
 			<h2>Guest</h2>
 			<form action="join" method="post"
-				name="formm">
+				name="formm" id="join">
 				<table width="500">
 					<tr align="center">
 						<td><b>User EMAIL</b></td>
@@ -58,9 +72,9 @@
 				<table width="500">
 					<tr align="center">
 						<td><b>Host EMAIL</b></td>
-						<td><input name="email" type="text" id="hostemail"
-							value="${email}"></td>
-						<td><input type="hidden" id="rehostemail" value="${email}"></td>
+						<td><input name="hemail" type="text" id="hemail"
+							value="${hemail}"></td>
+						<td><input type="hidden" id="rehemail" value="${hemail}"></td>
 						<td cols="2"><input type="button" value="중복체크" class="dup"
 							onclick="hostemailcheck()"></td>
 					</tr>

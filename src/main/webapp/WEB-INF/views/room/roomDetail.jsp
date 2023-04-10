@@ -2,7 +2,7 @@
   pageEncoding="UTF-8"%>  
 
 <%@ include file="../header.jsp" %>  
- <style>
+<style>
  /*table */
  /*** Table Styles **/
 
@@ -50,11 +50,6 @@ tr {
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
  
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
 
  
 tr:first-child {
@@ -98,9 +93,12 @@ td:last-child {
   
 
 </style>
-    <article>
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper">
+    <article style="display:block; justify-content:center; text-align:center">
     <h2> 객실상세정보 </h2>
-    <form name="formm" method="post" action="booking">
+    <form name="formm" method="post" action="booking" style="display:block">
       <input type="hidden" name="rseq" value="${roomDetail.rseq}">
       <input type="hidden" name="checkin" id="checkin" value="${param.checkin}">
       <input type="hidden" name="checkout" id="checkout" value="${param.checkout}">
@@ -209,10 +207,8 @@ td:last-child {
      </table>      
           
      <div class="clear"></div>
-     <div id="buttons" style="float: right">
        <input type="submit" value="예약하기">
        <input type="button" value="다른 객실 보기" onclick="history.back(1)">
-     </div>
     </form>  
 
 
@@ -220,7 +216,9 @@ td:last-child {
  
 <%@ include file="reviewList.jsp" %> 
    </article>
-   
+   </div>
+   </div>
+   </main>
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -286,15 +284,26 @@ td:last-child {
 			// 상품평의 각 항목별로 HTML 생성
 			$.each(reviewList, function(index, item){
 				html += "<div>";
-				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>";
+				html += "<div id=\"review_item\"> <strong>작성자: " + item.email + "</strong>&nbsp&nbsp&nbsp";
 				html += "<span id=\"write_date\">" + displayTime(item.indate) + "</span><br>";
-				html += "<span id=\"write_score\">" + item.score + "</span><br>";
+				if(item.score == 1){
+					html += "<td>★☆☆☆☆</td>";
+				}else if(item.score == 2){
+					html += "<td>★★☆☆☆</td>";
+				}else if(item.score == 3){
+					html += "<td>★★★☆☆</td>";
+				}else if(item.score == 4){
+					html += "<td>★★★★☆</td>";
+				}else if(item.score == 5){
+					html += "<td>★★★★★</td>";
+				}
+				html +="<br>"
 				html += item.content+"<br></div>";
 				html += "<a href='#' onclick='review_delete(" + item.reseq + ");'>삭제</a>";
 				/* html += "<input type="hidden" value="'+ item.reseq +'">"; */
 				html += "</div>";
 			});
-			
+		
 		
 			// 페이징 버튼 출력`
 			if (pageMaker.prev == true) {

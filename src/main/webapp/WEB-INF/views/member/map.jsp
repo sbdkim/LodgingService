@@ -38,12 +38,14 @@
 <body >
 
 
-
-<table style="margin-right:0">
+<div style="display: flex;
+  justify-content: center;
+  align-items: center; margin: 30px">
+<table>
 			<tr>
 				<td>주소</td>
 				<td><input type="text" name="detailAddress" id="address"></td>
-				<td><button type="button" id="searchBtn">검색</button></td>
+				<td><input type="button" id="searchBtn" value="검색"></td>
 			</tr>
 			<tr>
 				<td>상세 주소</td>
@@ -51,8 +53,9 @@
 				<td></td>
 			</tr>
 		</table>
+		</div>
 		
-		<div id="map" style="width:100%; height: 700px; align:center"></div>
+		<div id="map" style="width:90%; height: 700px; margin: 0 auto;"></div>
   
   
   

@@ -27,8 +27,8 @@ input[type=button], input[type=submit] {
 </style>
 <script type="text/javascript">
 function hostemailok(){
-	opener.document.getElementById("hostemail").value="${email}";
-	opener.document.getElementById("rehostemail").value="${email}";
+	opener.document.getElementById("hemail").value="${hemail}";
+	opener.document.getElementById("rehemail").value="${hemail}";
  	self.close();
 }
 </script>
@@ -38,17 +38,17 @@ function hostemailok(){
   <h1>EMAIL 중복확인</h1>
   <form method="post" name="formm" id="theform" style="margin-right:0 "
   		action="email_check_form" >
-    User EMAIL <input type="text" name="email" value="${email}"> 
+    Host EMAIL <input type="text" name="hemail" value="${hemail}"> 
             <input type="submit" value="검색" class="submit"><br>     
     <div style="margin-top: 20px">   
       <c:if test="${message == 1}">
         <script type="text/javascript">
-          opener.document.formm.hostemail.value="";
+          opener.document.formm.hemail.value="";
         </script>
-        ${email}는 이미 사용중인 이메일입니다.
+        ${hemail}는 이미 사용중인 이메일입니다.
       </c:if>
       <c:if test="${message==0}">
-        ${email}는 사용 가능한 이메일입니다.
+        ${hemail}는 사용 가능한 이메일입니다.
         <input type="button" value="사용" class="cancel" onclick="hostemailok()">
       </c:if>
     </div>

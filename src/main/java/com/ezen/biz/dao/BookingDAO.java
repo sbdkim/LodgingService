@@ -76,6 +76,7 @@ public class BookingDAO {
 		return mybatis.selectList("BookingMapper.bookingListByAseq", vo);
 	}
 
+
 	public List<SalesQuantity> getListBookingSales() {
 		return mybatis.selectList("BookingMapper.getListBookingSales");
 	}

@@ -50,11 +50,6 @@ tr {
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
  
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
 
  
 tr:first-child {
@@ -98,11 +93,14 @@ td:last-child {
   
 
 </style>
-<article>
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper" 	>
+<article style=" text-align: center;">
 <h1>숙소 검색</h1>
 <form name="frm" id="acc_form" action="room" method="post" style="display:flex">
 	<input type="hidden" name="ro_count" id="ro_count" value="${ro_count}">
-	<table>
+	<table style="border:double">
 		<tr id="searchtr" style="background:white">
 			<td width="650">
 				지역
@@ -130,6 +128,7 @@ td:last-child {
 	<table id="accommodationList" border="1" width="1500">
 		<tr>
 			<th>번호</th><th>숙소명</th><th>주소</th><th>전화번호</th><th>숙소 살펴보기</th><!--  <th>사업자이메일</th>-->
+
 		</tr>
 		<c:choose>
 			<c:when test="${accommodationListSize<=0}">
@@ -149,19 +148,18 @@ td:last-child {
 					<td>${accommodationVO.address}</td>
 					<td>${accommodationVO.tel}</td>  
 					<td>
-					
 						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
 						<a href="#" onclick="location.href='room?aseq=${accommodationVO.aseq}&checkin='+document.getElementById('checkin').value+'&checkout='+document.getElementById('checkout').value">숙소 살펴보기</a>
 						<%--  <button  type=submit>숙소 살펴보기</button> --%>
 					</td>
      				<!-- <td>${accommodationVO.hemail}</td> -->
-					<!--    -->
 				</tr>
 				</c:forEach>
-				<tr id="pagenation" style="background:white"><td  colspan="4" style="text-align:center;"> <%@ include file="page_area.jsp" %> </td></tr>
+				<tr id="pagination" style="background:white"><td  colspan="4" style="text-align:center;"> <%@ include file="page_area.jsp" %> </td></tr>
 			</c:otherwise>
 		</c:choose>
 	</table>
+	
 </form>
 <script>
 function go_search() {
@@ -184,7 +182,8 @@ function go_total() {
   document.getElementById("checkout").setAttribute("min", today);   
   
 </script>
-
-
 </article>
+</div>
+</div>
+</main>
 <%@ include file="../footer.jsp"%>

@@ -23,7 +23,7 @@
 				</c:if>
 
 
-				<td>사업자 이름 <input type="text" name="key" id="key"> <input
+				<td>사업자 이름 <input type="text" name="key" id="key" value="${key}"> <input
 					class="btn" type="button" value="검색" onclick="go_search()">
 				</td>
 			</tr>
@@ -52,7 +52,7 @@
 								<input type="checkbox" name="status" value="${hostVO.hemail}">
 							</c:when>
 							<c:otherwise>
-								<input type="checkbox" name="status" checked="checked"
+								<input type="checkbox" name="status2" checked="checked"
 									disabled="disabled">
 							</c:otherwise>
 						</c:choose>
@@ -93,35 +93,21 @@ function go_search()
 
 
 function approve_host() {
-	  var count = 0; // Initialize a counter variable to keep track of how many checkboxes are checked
-	  /*
-	  // Check if there's only one checkbox with the name "status"
-	  if (document.frm.status.length == undefined) {
-	    // If the checkbox is checked, increment the count variable
-	    if (document.frm.status.checked == true) {
+  var count = 0; // Initialize a counter variable to keep track of how many checkboxes are checked
+	  
+  for (var i = 0; i < document.frm.status.length; i++) {
+	    if (document.frm.status[i].checked == true) {
 	      count++;
 	    }
-	  } 
-	  // If there are multiple checkboxes with the name "status"
-	  else {
-	    // Loop through all the checkboxes and check if they're checked
-	    for (var i = 0; i < document.frm.status.length; i++) {
-	      if (document.frm.status[i].checked == true) {
-	        count++;
-	      }
-	    }
 	  }
-	  */
-	  
-	  const query = 'input[name="status"]:checked';
-	  count = document.querySelectorAll(query).length;
 	  
 	  // If no checkboxes are checked, show an alert message
 	  if (count == 0) {
-	    alert("주문처리할 항목을 선택해 주세요.");
+	    alert("승인할 호스트를 선택해 주세요.");
 	  } 
 	  // If at least one checkbox is checked, submit the form
 	  else {
+		console.log(count)
 	    var form = document.getElementById("theform");
 	    form.action = "approve_host_save";
 	    form.submit();

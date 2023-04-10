@@ -36,12 +36,16 @@ table#rep_input td {
 }
 
 .btn {
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	background: #f00;
-	color: #fff;
-	padding: 5px;
-	margin: 0 5px;
+	width: 60px;
+	 padding: 10px 20px;
+  background-color: tomato;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 5px;
 }
 
 #reviewList {
@@ -124,6 +128,12 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
   content: '\2606'; /* optional. hollow star */
 }
 
+.star-rating{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+
 .star-rating input {
   display: none;
 }
@@ -144,6 +154,19 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
   -webkit-text-fill-color: #fff58c;
 }
 
+/*star box design*/
+/*TAB_DESIGN*/
+label { 
+	display: block; 
+	border: none;
+	width: 50px; 
+	height: 50px; 
+	float: left;
+	line-height: 50px;
+	text-align: center;
+}
+
+
 </style>
 </head>
 
@@ -155,11 +178,11 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
 			<input type="hidden" name="rseq" value="${roomDetail.rseq}">
 			<br>
 			<br>
-			<div class="wrap">
+			<div class="wrap" style="text-align:left">
 			<div>
-				<span><h4>리뷰</h4></span> <span id="cCnt"></span>
+				<span><h4>리뷰</h4></span> <span id="cCnt" ></span>
 			</div>
-			<div class="star-rating space-x-4 mx-auto">
+			<div class="star-rating space-x-4 mx-auto" style="justify-content: center;">
 				<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
 				<label for="5-stars" class="star pr-4">★</label>
 				<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
@@ -172,12 +195,12 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
 				<label for="1-star" class="star">★</label>
 			</div>
 			<div id="reply">
-				<table id="rep_input" style="width: 650px">
+				<table id="rep_input" style="width: 870px">
 					<tr>
 						<td style="width: 80%;"><textarea rows="3" cols="75"
 								id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
 						</td>
-						<td style="width: 10%;"><a href='#'
+						<td style="width: 80px;"><a href='#'
 							onClick="save_review('${bookingVO.bseq}')" class="btn">등록</a></td>
 					</tr>
 				</table>
@@ -194,7 +217,7 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
 
 	<input type="hidden" id="rseq" name="rseq" value="${roomVO.rseq }" />
 
-	<div class="container">
+	<div class="container" style="margin-bottom: 60px">
 			<form id="reviewListForm" name="reviewListForm" method="post">
 				<div id="reviewList"></div>
 			</form>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.ezen.biz.dto.BookingVO;
+import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.MemberVO;
 import com.ezen.biz.dto.QnaVO;
 import com.ezen.biz.service.BookingService;
@@ -47,12 +48,6 @@ public class AdminController {
 		return "index";
 	}// adminLogout
 
-	@RequestMapping("/admin_qna_list")
-	public String admingQnaList(Model model) {
-		List<QnaVO> qnaList = qnaService.getListAllQna();
-		model.addAttribute("qnaList", qnaList);
-		return "admin/qna/qnaList";
-	}// adminQnaList
 
 	@PostMapping("/admin_qna_detail")
 	public String adminQnaDetail(Model model, QnaVO vo) {
@@ -102,6 +97,29 @@ public class AdminController {
 		return "redirect:admin_memberList";
 	}
 
+	// after admin login, add the hostlist to be pased to the hostList page
+	@RequestMapping("/admin_hostList")
+	public String adminHostList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
+			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
+			@RequestParam(value = "key", defaultValue = "") String name, Model model) {
+
+		Criteria criteria = new Criteria();
+		criteria.setPageNum(Integer.parseInt(pageNum));
+		criteria.setRowsPerPage(Integer.parseInt(rowsPerPage));
+		List<HostVO> hostList = hostService.getListHostWithPaging(criteria, name);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalCount(hostService.countHostList(name));
+
+		model.addAttribute("hostList", hostList);
+		model.addAttribute("hostListSize", hostList.size());
+		model.addAttribute("key", name);
+		model.addAttribute("pageMaker", pageMaker);
+
+		return "admin/host/hostList";
+	}
+	
 	@RequestMapping("/admin_memberList")
 	public String adminMemberList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
 			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
@@ -118,6 +136,7 @@ public class AdminController {
 
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("memberListSize", memberList.size());
+		model.addAttribute("key", name);
 		model.addAttribute("pageMaker", pageMaker);
 
 		return "admin/member/memberList";

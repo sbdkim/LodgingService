@@ -421,8 +421,8 @@ public class HostController {
 
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
-	public String adminProductSalesForm() {
-		return "host/mypage/salesRecords";
+	public String hostBookingSalesForm() {
+		return "host/salesRecords";
 
 	}
 	
@@ -433,12 +433,16 @@ public class HostController {
       return listSales;
     }
 
-	@RequestMapping("/host_booking_delete")
-	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {
 
-		bookingService.deleteBookByBseq(bseq);
 
-		return "redirect:accommodation_detail";
+	@RequestMapping("/booking_record_chart")
+	@ResponseBody // 화면이 아닌 데이터를 리턴하는 메소드로 지정
+	public List<SalesQuantity> salesRecordChart(HttpSession session, AccommodationVO vo) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		vo.setHemail(loginHost.getHemail());
+		List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
+		return listSales;
 	}
 
 }

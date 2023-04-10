@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<style>
+input[type="button"], input[type="submit"]{
+  padding: 10px 20px;
+  background-color: #fff;
+  color: tomato;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+</style>
 <main>
 	<div class="tap_wrapper">
 		<div class="sub_wrapper">
@@ -56,9 +69,11 @@
 							</table>
 						</fieldset>
 						<div id="buttons">
-							<input type="submit" value="로그인" class="submit"> <input
+							<input type="submit" value="로그인" class="submit"> 
+							<input
 								type="button" value="회원가입" class="cancel"
-								onclick="location='contract'"> <input type="button"
+								onclick="location='contract'"> 
+								<input type="button"
 								value="이메일/비밀번호 찾기" class="submit"
 								onclick="find_host_email_form()">
 						</div>

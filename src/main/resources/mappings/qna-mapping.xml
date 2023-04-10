@@ -29,5 +29,18 @@
      UPDATE qna SET reply=#{reply}, rep='1' WHERE qseq=#{qseq}
      </update>
      
-     
+     <!-- 페이지별 qna 목록 조회 -->
+	<select id="listQnaWithPaging" resultType="qna">
+		<![CDATA[
+		SELECT qseq, email, subject, content, reply, indate, rep FROM
+		(SELECT row_number() OVER (ORDER BY rep) rn, qseq, email, subject, content, reply, indate, rep
+		FROM qna)
+		WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage}
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+		]]>
+	</select>
+	
+	<select id="countQna" resultType="int">
+		SELECT count(*) FROM qna
+	</select>
 </mapper>

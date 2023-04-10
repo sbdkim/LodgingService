@@ -97,28 +97,6 @@ public class MemberController {
 
 	}
 
-	// after admin login, add the hostlist to be pased to the hostList page
-	@RequestMapping("/admin_hostList")
-	public String adminMemberList(@RequestParam(value = "pageNum", defaultValue = "1") String pageNum,
-			@RequestParam(value = "rowsPerPage", defaultValue = "10") String rowsPerPage,
-			@RequestParam(value = "key", defaultValue = "") String name, Model model) {
-
-		Criteria criteria = new Criteria();
-		criteria.setPageNum(Integer.parseInt(pageNum));
-		criteria.setRowsPerPage(Integer.parseInt(rowsPerPage));
-		List<HostVO> hostList = hostService.getListHostWithPaging(criteria, name);
-
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCriteria(criteria);
-		pageMaker.setTotalCount(hostService.countHostList(name));
-
-		model.addAttribute("hostList", hostList);
-		model.addAttribute("hostListSize", hostList.size());
-		model.addAttribute("pageMaker", pageMaker);
-
-		return "admin/host/hostList";
-	}
-
 	@GetMapping("/logout")
 	public String logout(SessionStatus status) {
 

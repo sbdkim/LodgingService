@@ -48,7 +48,7 @@ $(document).ready(function() {
 	
 		
 		// 바차트 그리기
-		var barchart_options = {
+		var options = {
 			title: '숙소 예약 현황',
 			width: 800,
 			height: 600,
@@ -63,9 +63,11 @@ $(document).ready(function() {
 			
 		}
 		
-		var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+		//var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+		var chart = new google.visualization.ColumnChart(document.getElementById('ColumnChart'));
 		
-		barchart.draw(data, barchart_options);
+		//barchart.draw(data, barchart_options);
+		 chart.draw(data, options);
 	}
 	
 	
@@ -77,6 +79,7 @@ $(document).ready(function() {
 	<table>
 		<tr>
 			<td><div id="barchart_div" style="border:1px solid #ccc"></div></td>
+			<td><div id="ColumnChart" style="border:1px solid #ccc"></div></td>
 		</tr>
 	</table>
 	</div>

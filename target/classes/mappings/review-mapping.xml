@@ -21,15 +21,9 @@
 	
 	<!-- 객실번호로 리뷰 조회 -->
 	<select id="selectReviewByRseq" resultType="review">
-		SELECT * FROM review_view
+		SELECT * FROM revie
 		WHERE rseq=#{rseq}
 	</select>
-	
-	<!-- 리뷰수정 -->
-	<update id="updateReview">
-		UPDATE review SET content=#{content}, score=#{score}
-		WHERE reseq=#{reseq}
-	</update>
 	
 	<!-- 리뷰삭제 -->
 	<delete id="deleteReview">
@@ -41,21 +35,11 @@
 		SELECT * FROM review ORDER BY reseq DESC
 	</select>
 	
-	<!-- 리뷰 답글 달기 -->
-	<update id="insertReply">
-		UPDATE review SET reply=#{reply}
-		WHERE reseq=#{reseq}
-	</update>
 	
 	<select id="countReviewList" resultType="int">
 	SELECT COUNT(*) FROM review WHERE rseq=#{rseq}
     </select>
     
-    
-    <select id="getEmailView" resultType= "review">   
-    SELECT  email  FROM review_view
-   </select>
-   
    
    <!--<select id="avgScore" resultType= "double">
    SELECT AVG(score)

@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../header.jsp"%>
-
-
-
 <style>
-
  /*table */
  /*** Table Styles **/
 
@@ -54,11 +50,6 @@ tr {
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
  
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
 
  
 tr:first-child {
@@ -100,7 +91,10 @@ td:last-child {
   border-right: 0px;
 }
   
+
 </style>
+
+
 <script>
 
 
@@ -119,10 +113,12 @@ $(document).ready(function() {
 });
 	
 </script>
-
-<h1>숙소 검색 결과</h1>
-<h2> ${accommodationName} 의 객실 목록</h2>
-			<form name="date_form" id="date_form" method="post" style="display:block">
+<main>
+<div style="display:block;  text-align: center; ">
+<h1 >숙소 검색 결과</h1>
+<h2 > ${accommodationName} 의 객실 목록</h2>
+</div>
+			<form name="date_form" id="date_form" method="post" style="display:flex">
 				<input type="hidden" name="aseq" value="${param.aseq}">
 						<div class=main_checkinout style="display:inline-block">
 							<div role=button style="display:inline-block">
@@ -140,11 +136,11 @@ $(document).ready(function() {
 							<input class="btn" type="button" name="refreshDate" id="refreshDate" value="검색" >
 						</div>
 					</form>
-<article>
-<form name="roomForm" id="room_form" method="post" style="display:block">
+<article style="display:flex; justify-content:center;">
+<form name="roomForm" id="room_form" method="post" style="display:block; margin-bottom: 60px">
 
 	
-	<table id="roomList" border="1" width="1000">
+	<table id="roomList" border="1" width="1000" >
 		<tr>
 			<th width="225">Image</th><th>방 이름</th><th>가격</th><th>최대 인원</th><th>침대</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
 		</tr>
@@ -182,10 +178,11 @@ $(document).ready(function() {
 					<td>${roomVO.bed}</td>
 				</tr>
 				</c:forEach>
-				<tr><td colspan="6" style="text-align:center;"> ${paging} </td></tr>
+			
 			</c:otherwise>
 		</c:choose>
 	</table>
 </form>
 </article>
+</main>
 <%@ include file="../footer.jsp"%>

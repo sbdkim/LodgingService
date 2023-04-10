@@ -48,12 +48,6 @@ tr {
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
- 
-tr:not(#pagenation):not(#searchtr):hover td {
-  background:#FFCDC3;
-  color: black;
-  border-top: 1px solid #22262e;
-}
 
  
 tr:first-child {
@@ -94,13 +88,10 @@ td {
 td:last-child {
   border-right: 0px;
 }
-</style>   
-<nav float="left" id="sub_menu_booking">
-    <ul>
-		<li><a href="past_booking_detail?status=${bookingList.status}">지난 예약 내역</a></li>
-		<li><a href="go_booking_detail?status=${bookingList.status}">진행중인 예약 내역</a></li> 
-    </ul>
-  </nav>  
+</style>       
+<main>
+	<div class="tap_wrapper">
+		<div class="sub_wrapper"> 
   <article>
      <h2> 예약 목록 </h2>
      <input type="hidden" name="aseq" value="${aseq}"/>
@@ -178,9 +169,14 @@ td:last-child {
     </table>
     </form>
   </article>
+</div>
+</div>
+</main>
 <%@ include file="../footer.jsp" %>
 <script type="text/javascript">
 function delcheck(){
 	return confirm("취소하시겠습니까?");
 }
 </script>
+  
+
