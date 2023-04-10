@@ -137,10 +137,10 @@ $(document).ready(function() {
 						</div>
 					</form>
 <article style="display:flex; justify-content:center;">
-<form name="roomForm" id="room_form" method="post" style="display:block">
+<form name="roomForm" id="room_form" method="post" style="display:block; margin-bottom: 60px">
 
 	
-	<table id="roomList" border="1" width="1000">
+	<table id="roomList" border="1" width="1000" >
 		<tr>
 			<th width="225">Image</th><th>방 이름</th><th>가격</th><th>최대 인원</th><th>침대</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
 		</tr>

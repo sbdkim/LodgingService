@@ -16,8 +16,23 @@ header{
 	<div class="alignform" style="padding-top: 10px;  height: 100%; align-items: center; "> 
 	<!-- Title -->
     <div class="main_title" style="text-align: left;  padding-left: 30% ;font-size: 60px; font-weight: bold; padding-top: 50px; margin-top: 130px;">
-        다음 여행지를 찾아보세요!
+        다음  <span class = "auto-type"></span>
     </div>
+    
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    
+    <script>
+    var typed = new Typed('.auto-type', {
+      strings: ["여행지를 찾아보세요!", "여행지는 어디인가요?"],
+      typeSpeed: 150,
+      backSpeed: 150,
+      loop: true
+    });
+  </script>
+    
+    
+    
+    
 	<form action="acc_search_list" name="f" method="get" style="margin-top: 20px;">
 	
 		<div class=search_room style="padding-top: 10px;  height: 50%; align-items: center; ">

@@ -95,12 +95,12 @@ td:last-child {
 </style>
 <main>
 	<div class="tap_wrapper">
-		<div class="sub_wrapper">
+		<div class="sub_wrapper" 	>
 <article style=" text-align: center;">
 <h1>숙소 검색</h1>
 <form name="frm" id="acc_form" action="room" method="post" style="display:flex">
 	<input type="hidden" name="ro_count" id="ro_count" value="${ro_count}">
-	<table>
+	<table style="border:double">
 		<tr id="searchtr" style="background:white">
 			<td width="650">
 				지역
@@ -160,6 +160,7 @@ td:last-child {
 			</c:otherwise>
 		</c:choose>
 	</table>
+	
 </form>
 <script>
 function go_search() {

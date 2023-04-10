@@ -197,10 +197,10 @@ label {
 			<div id="reply">
 				<table id="rep_input" style="width: 870px">
 					<tr>
-						<td style="width: 75%;"><textarea rows="3" cols="75"
+						<td style="width: 80%;"><textarea rows="3" cols="75"
 								id="content" name="content" placeholder="리뷰를 입력하세요"></textarea>
 						</td>
-						<td style="width: 200px;"><a href='#'
+						<td style="width: 80px;"><a href='#'
 							onClick="save_review('${bookingVO.bseq}')" class="btn">등록</a></td>
 					</tr>
 				</table>
@@ -217,7 +217,7 @@ label {
 
 	<input type="hidden" id="rseq" name="rseq" value="${roomVO.rseq }" />
 
-	<div class="container">
+	<div class="container" style="margin-bottom: 60px">
 			<form id="reviewListForm" name="reviewListForm" method="post">
 				<div id="reviewList"></div>
 			</form>

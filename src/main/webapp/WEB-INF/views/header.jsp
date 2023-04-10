@@ -5,6 +5,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+  body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+ 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+  </style>
 <meta charset="UTF-8">
 <title>KozyNest : Korean Comfort Lodging</title>
  <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -12,6 +27,7 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!--구글차트  -->
   <script type="text/javascript" src="member/member.js"></script>
   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+  
   <!-- jQuery -->										<!-- cdn(네트워크연결)방식으로 불러오는 것임 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
@@ -51,7 +67,11 @@
 </script>
 </head>
 
+
+  
 <body >
+
+
   <header>
 	<div id="logo">
 	<img class="header-image" id="header-image" alt="logo" src="css/KozyNestLogo4.jpg" style="width:200px; float: left; padding: 5px;"
