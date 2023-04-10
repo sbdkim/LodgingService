@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>
-<%@ include file="sub_menu_host.jsp" %>    
+   
  <style>
  /*table */
  /*** Table Styles **/
@@ -93,12 +93,20 @@ td:last-child {
 
 </style>    
 <main>
-	<div class="tap_wrapper">
+	<div class="tap_wrapper" style="align-items: start">
+	<%@ include file="sub_menu_host.jsp" %> 
+	
+	
 		<div class="sub_wrapper">
-<article>
+<article style=" text-align: center;">
   <h2 align="center">  '${sessionScope.loginHost.name}'님이 등록한 숙소 </h2>
-    <form name="frm" id="acc_form" method="post">
-    <table id="accommodationList" border="1">
+  
+  <div id="buttons" >
+      <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()" style="width:270px; margin-bottom: 30px">
+      </div>
+      
+    <form name="frm" id="acc_form" method="post" style="display:flex">
+    <table id="accommodationList" border="1" style="margin-left: 80px">
       <tr>
         <th>카테고리</th><th>이 름</th> <th>주 소</th> <th>전화번호</th> <th>상 세</th> <th colspan="3">수정하기</th>
       </tr>
@@ -133,9 +141,7 @@ td:last-child {
       </c:otherwise>
       </c:choose>
       </table>   
-      <div id="buttons">
-      <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()">
-      </div>
+      
     </form>  
   </article>
   </div>
