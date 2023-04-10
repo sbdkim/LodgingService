@@ -3,6 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!--  각 화면의 페이지 번호가 표시되는 영역의 구현 -->
+<style>
+
+li{
+display: inline-block;
+}
+
+</style>
+
 <div>
 	<ul class="pagination">
 	
@@ -20,11 +28,11 @@
 		<!-- [1][2][3]... 표시 부분 -->
 		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
 			<%-- <a href="acc_search_list${pageMaker.makeQuery(index)}">[${index}]</a>--%>
-			<a href="#" onclick="location.href='acc_search_list?pageNum='+${index}+
+			<li><a href="#" onclick="location.href='acc_search_list?pageNum='+${index}+
 								'&rowsPerPage=10&key='+document.getElementById('key').value+
 								'&checkin='+document.getElementById('checkin').value+
 								'&checkout='+document.getElementById('checkout').value+
-								'&ro_count='+document.getElementById('ro_count').value">${index}</a>
+								'&ro_count='+document.getElementById('ro_count').value">${index}</a><li>
 		</c:forEach>
 		
 		<c:if test="${pageMaker.next}">

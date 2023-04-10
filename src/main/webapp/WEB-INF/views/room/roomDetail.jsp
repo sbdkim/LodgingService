@@ -96,9 +96,9 @@ td:last-child {
 <main>
 	<div class="tap_wrapper">
 		<div class="sub_wrapper">
-    <article>
+    <article style="display:block; justify-content:center; text-align:center">
     <h2> 객실상세정보 </h2>
-    <form name="formm" method="post" action="booking">
+    <form name="formm" method="post" action="booking" style="display:block">
       <input type="hidden" name="rseq" value="${roomDetail.rseq}">
       <input type="hidden" name="checkin" id="checkin" value="${param.checkin}">
       <input type="hidden" name="checkout" id="checkout" value="${param.checkout}">
@@ -207,7 +207,7 @@ td:last-child {
      </table>      
           
      <div class="clear"></div>
-     <div id="buttons" style="float: right">
+     <div id="buttons" style="  text-align: center; margin-top: 30px;">
        <input type="submit" value="예약하기">
        <input type="button" value="다른 객실 보기" onclick="history.back(1)">
      </div>
