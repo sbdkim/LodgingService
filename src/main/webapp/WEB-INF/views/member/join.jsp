@@ -7,7 +7,7 @@
 input[type="button"], input[type="submit"], input[type="reset"]{
   padding: 10px 20px;
   background-color: #fff;
-  color: tomato;
+  color: #ff8f00;
   border: none;
   border-radius: 4px;
   font-size: 16px;

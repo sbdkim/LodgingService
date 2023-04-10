@@ -4,7 +4,7 @@
 
 /* Variables */
 :root {
-  --primary-color: #ff5a5f;
+  --primary-color: #ff8f00;
   --secondary-color: #484848;
   --font-primary: 'Open Sans', sans-serif;
   --font-secondary: 'Noto Sans KR', sans-serif;
@@ -132,7 +132,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="numb
 
 button[type="submit"] {
   padding: 10px 20px;
-  background-color: #ff5a5f;
+  background-color: #ff8f00;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -147,7 +147,7 @@ button[type="submit"]:hover {
 
 input[type="button"], input[type="submit"]{
   padding: 10px 20px;
-  background-color: #ff5a5f;
+  background-color: #ff8f00;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -492,7 +492,6 @@ text-align:left;
 margin:0% 3%;
 }
 }
-
 /*RESET*/
 input[type="radio"] {display:none;}
 label { cursor: pointer; }
@@ -501,7 +500,7 @@ label { cursor: pointer; }
 /*TAB_DESIGN*/
 label { 
 	display: block; 
-	border: 1px solid #ff5a5f;
+	border: 1px solid #ff8f00;
 	width: 300px; 
 	height: 50px; 
 	float: left;
@@ -510,11 +509,11 @@ label {
 }
 label:nth-of-type(even) { border-left: none; }
 
-div.tab_first_content { width: 100%; background-color: #ff5a5f; display: none; }
+div.tab_first_content { width: 100%; background-color: #ff8f00; display: none; }
 
-div.tab_second_content { width: 100%; background-color: #ff5a5f; display: none; }
+div.tab_second_content { width: 100%; background-color: #ff8f00; display: none; }
 
-div.tab_contents { clear: both; border: 1px solid #ff5a5f; width: 600px; overflow: hidden; border-top: none; }
+div.tab_contents { clear: both; border: 1px solid #ff8f00; width: 600px; overflow: hidden; border-top: none; }
 div.tab_contents div { padding: 20px; }
 
 

@@ -11,7 +11,7 @@
 <script type="text/javascript" src="member/member.js"></script>
 <style type="text/css">
 body{   
-  background-color:tomato;
+  background-color:#ff8f00;
   font-family: Verdana;
 }
 #wrap{     
