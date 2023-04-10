@@ -103,32 +103,31 @@ td:last-child {
 			</c:choose>
 		</td>
 		<td width="300"><b>숙소명</b></td>
-		<td><input type="text" id="aname" name="aname" readonly value="${accRoom.aname}"></td>
+		<td>${accRoom.aname}</td>
      </tr>
       <tr>
-        <td><b>객실명</b></td><td><input type="text" id="rname" name="rname" readonly value="${accRoom.rname}"></td>
+        <td><b>객실명</b></td><td>${accRoom.rname}</td>
      </tr>
       <tr>
-        <td><b>수용 인원</b></td><td><input type="text" id="maxcap" name="maxcap" readonly value="${accRoom.maxcap}"></td>
+        <td><b>수용 인원</b></td><td>${accRoom.maxcap}</td>
      </tr>
      <tr>
-        <td><b>1박 가격</b></td><td><input type="text" id="price"
-					name="price" readonly value="${accRoom.price}"></td>
+        <td><b>1박 가격</b></td><td>${accRoom.price}</td>
      </tr>
       <tr>
-        <td><b>체크인</b></td><td><input type="text" id="checkin" name="checkin" readonly value="${param.checkin}"></td>
+        <td><b>체크인</b></td><td>${param.checkin}</td>
      </tr>
       <tr>
-        <td><b>체크아웃</b></td><td><input type="text" id="checkout" name="checkout" readonly value="${param.checkout}"></td>
+        <td><b>체크아웃</b></td><td>${param.checkout}</td>
      </tr>
      <tr>
-        <td><b>이름</b></td><td><input type="text" id="mname" name="mname" readonly value="${loginUser.name}"></td>
+        <td><b>이름</b></td><td>${loginUser.name}</td>
      </tr>
       <tr>
-        <td><b>전화번호</b></td><td><input type="text" id="phone" name="phone" readonly value="${loginUser.phone}"></td>
+        <td><b>전화번호</b></td><td>${loginUser.phone}</td>
      </tr>
       <tr>
-        <td><b>이메일</b></td><td><input type="text" id="memail" name="memail" readonly value="${loginUser.email}"></td>
+        <td><b>이메일</b></td><td>${loginUser.email}</td>
      </tr>
       <tr>
         <td colspan="1"><b>결제 금액</b></td>

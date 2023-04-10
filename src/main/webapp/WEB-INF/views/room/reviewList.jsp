@@ -38,7 +38,7 @@ table#rep_input td {
 .btn {
 	width: 60px;
 	 padding: 10px 20px;
-  background-color: #ff5a5f;
+  background-color: tomato;
   color: #fff;
   border: none;
   border-radius: 4px;

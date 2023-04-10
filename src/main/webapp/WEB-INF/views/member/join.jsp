@@ -3,6 +3,20 @@
 <%@ include file="../header.jsp"%>
 
 
+<style>
+input[type="button"], input[type="submit"], input[type="reset"]{
+  padding: 10px 20px;
+  background-color: #fff;
+  color: tomato;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+</style>
+
 <main>
 
 
