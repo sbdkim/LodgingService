@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -20,6 +21,7 @@ import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
+import com.ezen.biz.dto.SalesQuantity;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.RoomService;
@@ -329,17 +331,21 @@ public class HostController {
 
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
-	public String adminProductSalesForm() {
+	public String hostBookingSalesForm() {
 		return "host/salesRecords";
 
 	}
 
-	@RequestMapping("/host_booking_delete")
-	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {
 
-		bookingService.deleteBookByBseq(bseq);
 
-		return "redirect:accommodation_detail";
+	@RequestMapping("/booking_record_chart")
+	@ResponseBody // 화면이 아닌 데이터를 리턴하는 메소드로 지정
+	public List<SalesQuantity> salesRecordChart(HttpSession session, AccommodationVO vo) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		vo.setHemail(loginHost.getHemail());
+		List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
+		return listSales;
 	}
 
 }
