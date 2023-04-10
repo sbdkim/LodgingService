@@ -132,7 +132,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="numb
 
 button[type="submit"] {
   padding: 10px 20px;
-  background-color: var(--primary-color);
+  background-color: #ff5a5f;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -144,6 +144,20 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #d1494b;
 }
+
+input[type="button"], input[type="submit"]{
+  padding: 10px 20px;
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+
 
 /* Image grid styles */
 section {
