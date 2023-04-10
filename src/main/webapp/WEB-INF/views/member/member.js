@@ -76,13 +76,13 @@ function go_save() {
 
 //회원 가입시 필수입력 확인
 function go_save_host() {
-	if (document.getElementById("hostemail").value == "") {
+	if (document.getElementById("hemail").value == "") {
 		alert("사업자 이메일을 입력해 주세요.");
-		document.getElementById("hostemail").focus();
+		document.getElementById("hemail").focus();
 		return false;
-	} else if (document.getElementById("rehostemail").value == ""){
+	} else if (document.getElementById("rehemail").value == ""){
 		alert("이메일 중복체크를 해주세요.");
-		document.getElementById("hostemail").focus();
+		document.getElementById("hemail").focus();
 		return false;
 	} else if (document.getElementById("hostpwd").value == ""){
 		alert("비밀번호를 입력해 주세요.");

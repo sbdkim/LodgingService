@@ -37,9 +37,10 @@
       <td> <fmt:formatDate value="${qnaVO.indate}"/></td>
       </tr>
     </c:forEach>
-    <tr id="pagination" style="background:white"><td  colspan="4" style="text-align:center;"> <%@ include file="page_area.jsp" %> </td></tr>
+
     </table>
     </form>    
+         <%@ include file="page_area.jsp" %> 
   </article>
   <%@ include file="../footer.jsp"%>
 </body>

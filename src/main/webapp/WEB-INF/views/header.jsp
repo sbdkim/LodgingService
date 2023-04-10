@@ -16,15 +16,17 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-  <script>
+<script>
   function requestPay() {
+	  var bprice = parseInt($("#bprice").val());
 	  var result = false;
 	  IMP.init("imp80657743"); // 예: imp00000000 
 	  IMP.request_pay({
       pg: 'html5_inicis.INIpayTest',
       pay_method: 'card',
-      merchant_uid: 'merchant_'+new Date().getTime(),   // 주문번호
+      merchant_uid: 'merchant_'+ new Date().getTime(),   // 주문번호
       name: "KozyNest 결제",
+      // amount: bprice,
       amount: 100,                         // 숫자 타입
       buyer_email: "${loginUser.email}",
       buyer_name: "${loginUser.name}",
