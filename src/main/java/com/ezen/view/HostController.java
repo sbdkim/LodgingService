@@ -89,7 +89,7 @@ public class HostController {
 		model.addAttribute("accommodationVO", accommodation);
 		model.addAttribute("categoryList", categoryList);
 
-		return "host/mypage/accommodationUpdate";
+		return "host/accommodationUpdate";
 	}
 
 	@PostMapping("/host_acc_update")
@@ -141,7 +141,7 @@ public class HostController {
 
 			model.addAttribute("accommodationList", accommodationList);
 
-			return "host/mypage/hostmypage";
+			return "host/hostmypage";
 
 		}
 
@@ -159,7 +159,7 @@ public class HostController {
 
 			model.addAttribute("accommodationList", accommodationList);
 
-			return "host/mypage/accommodationList";
+			return "host/accommodationList";
 		}
 	}
 
@@ -199,7 +199,7 @@ public class HostController {
 				model.addAttribute("accommodationDetail", accommodationDetail);
 				model.addAttribute("roomList", roomList);
 
-				return "host/mypage/accommodationDetail";
+				return "host/accommodationDetail";
 			}
 
 			
@@ -213,7 +213,7 @@ public class HostController {
 		model.addAttribute("aseq", vo.getAseq());
 		
 
-		return "host/mypage/roomWrite";
+		return "host/roomWrite";
 	}
 
 	@RequestMapping(value = "/host_room_write")
@@ -261,7 +261,7 @@ public class HostController {
 		model.addAttribute("aseq", vo.getAseq());
 		model.addAttribute("roomVO", room);
 
-		return "host/mypage/roomUpdate";
+		return "host/roomUpdate";
 	}
 
 	@PostMapping("/host_room_update")
@@ -312,7 +312,7 @@ public class HostController {
 
 			model.addAttribute("accommodationList", accommodationList);
 
-			return "host/booking/hostBookingList";
+			return "host/hostBookingList";
 		}
 	}
 	
@@ -344,7 +344,7 @@ public class HostController {
 					
 			}
 			
-			return "host/booking/hostBookingListDetail";
+			return "host/hostBookingListDetail";
 			
 		
 	}
@@ -378,7 +378,7 @@ public class HostController {
 					
 			}
 			
-			return "host/booking/hostBookingListDetail";
+			return "host/hostBookingListDetail";
 			
 		}
 	}
@@ -414,7 +414,7 @@ public class HostController {
 				
 			}
 
-			return "host/booking/hostBookingListDetail";
+			return "host/hostBookingListDetail";
 		}
 	}
 
@@ -426,14 +426,6 @@ public class HostController {
 
 	}
 	
-	@RequestMapping("/booking_record_chart")
-    @ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
-    public List<SalesQuantity> salesRecordChart(){
-      List<SalesQuantity> listSales = bookingService.getListBookingSales();
-      return listSales;
-    }
-
-
 
 	@RequestMapping("/booking_record_chart")
 	@ResponseBody // 화면이 아닌 데이터를 리턴하는 메소드로 지정
@@ -441,7 +433,7 @@ public class HostController {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
 		vo.setHemail(loginHost.getHemail());
-		List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
+		List<SalesQuantity> listSales = bookingService.getListBookingSales();
 		return listSales;
 	}
 

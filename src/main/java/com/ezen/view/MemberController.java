@@ -78,21 +78,20 @@ public class MemberController {
 
 		} else {
 			
-			if(vo.getStatus()==0) {
-				return "host/login_fail";
-			} else {
 			// host login
-				int result = hostService.loginHost(vo);
-		
-				if (result == 1) {
-		
-					model.addAttribute("loginHost", hostService.getHost(vo.getHemail()));
-		
-					return "redirect:index";
-				} else {
-					return "host/login_fail";
-				}
+			int result = hostService.loginHost(vo);
+	
+			if (result == 1) {
+				System.out.println("status : " + vo.getStatus());
+			
+				model.addAttribute("loginHost", hostService.getHost(vo.getHemail()));
+				
+				return "redirect:index";
+			}else {
+				return "host/login_fail";
+
 			}
+			
 		}
 
 	}
