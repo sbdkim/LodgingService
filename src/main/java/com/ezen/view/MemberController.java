@@ -60,6 +60,7 @@ public class MemberController {
 		System.out.println(vo.toString());
 		String hostEmail = vo.getHemail();
 
+		
 		// admin login
 		if (hostEmail.equals("kozynest0330@gmail.com") || hostEmail.equals("kozynest1104@gmail.com")
 				|| hostEmail.equals("kozynest0116@gmail.com") || hostEmail.equals("kozynest0331@gmail.com")) {
@@ -76,16 +77,21 @@ public class MemberController {
 			}
 
 		} else {
-			// host login
-			int result = hostService.loginHost(vo);
-
-			if (result == 1) {
-
-				model.addAttribute("loginHost", hostService.getHost(vo.getHemail()));
-
-				return "redirect:index";
-			} else {
+			
+			if(vo.getStatus()==0) {
 				return "host/login_fail";
+			} else {
+			// host login
+				int result = hostService.loginHost(vo);
+		
+				if (result == 1) {
+		
+					model.addAttribute("loginHost", hostService.getHost(vo.getHemail()));
+		
+					return "redirect:index";
+				} else {
+					return "host/login_fail";
+				}
 			}
 		}
 

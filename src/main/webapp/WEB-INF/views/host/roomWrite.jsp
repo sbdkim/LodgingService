@@ -116,7 +116,7 @@
 </table>
 <br><br>
 <input class="btn" type="button" value="등록" onClick="go_save()">           
-<input class="btn" type="button" value="취소" onClick="go_mov()">
+<input class="btn" type="button" value="취소" onClick="history.back(1)">
 </form> 
 </article>
 <%@ include file="../footer.jsp"%>
@@ -172,7 +172,4 @@ function go_save() {
 	}
 }
 
-function go_mov(){
-	
-}
 </script>

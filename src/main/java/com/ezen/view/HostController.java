@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -20,6 +21,7 @@ import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
 import com.ezen.biz.dto.HostVO;
 import com.ezen.biz.dto.RoomVO;
+import com.ezen.biz.dto.SalesQuantity;
 import com.ezen.biz.service.AccommodationService;
 import com.ezen.biz.service.BookingService;
 import com.ezen.biz.service.RoomService;
@@ -87,7 +89,7 @@ public class HostController {
 		model.addAttribute("accommodationVO", accommodation);
 		model.addAttribute("categoryList", categoryList);
 
-		return "host/accommodationUpdate";
+		return "host/mypage/accommodationUpdate";
 	}
 
 	@PostMapping("/host_acc_update")
@@ -139,7 +141,7 @@ public class HostController {
 
 			model.addAttribute("accommodationList", accommodationList);
 
-			return "host/hostmypage";
+			return "host/mypage/hostmypage";
 
 		}
 
@@ -157,7 +159,7 @@ public class HostController {
 
 			model.addAttribute("accommodationList", accommodationList);
 
-			return "host/accommodationList";
+			return "host/mypage/accommodationList";
 		}
 	}
 
@@ -190,14 +192,14 @@ public class HostController {
 				model.addAttribute("roomList", roomList);
 
 
-				return "host/accommodationDetail";
+				return "host/mypage/accommodationDetail";
 				
 			} else {
 				
 				model.addAttribute("accommodationDetail", accommodationDetail);
 				model.addAttribute("roomList", roomList);
 
-				return "host/accommodationDetail";
+				return "host/mypage/accommodationDetail";
 			}
 
 			
@@ -211,7 +213,7 @@ public class HostController {
 		model.addAttribute("aseq", vo.getAseq());
 		
 
-		return "host/roomWrite";
+		return "host/mypage/roomWrite";
 	}
 
 	@RequestMapping(value = "/host_room_write")
@@ -259,7 +261,7 @@ public class HostController {
 		model.addAttribute("aseq", vo.getAseq());
 		model.addAttribute("roomVO", room);
 
-		return "host/roomUpdate";
+		return "host/mypage/roomUpdate";
 	}
 
 	@PostMapping("/host_room_update")
@@ -310,10 +312,10 @@ public class HostController {
 
 			model.addAttribute("accommodationList", accommodationList);
 
-			return "host/hostBookingList";
+			return "host/booking/hostBookingList";
 		}
 	}
-
+	
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
@@ -332,21 +334,104 @@ public class HostController {
 			vo.setCheckout(vo.getCheckout());
 			vo.setRprice(vo.getRprice());
 			vo.setBprice(vo.getBprice());
+			vo.setStatus(vo.getStatus());
+			
+			
+				List<BookingVO> bookingList = bookingService.listBookByAseq(vo);
 
-			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo);
+				
+				model.addAttribute("bookingList", bookingList);
+					
+			}
+			
+			return "host/booking/hostBookingListDetail";
+			
+		
+	}
 
-			model.addAttribute("bookingList", bookingList);
+	@GetMapping("/go_booking_detail")
+	public String goBookingDetail(HttpSession session, BookingVO vo, Model model) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
-			return "host/hostBookingListDetail";
+		if (loginHost == null) {
+			return "member/login";
+		} else {
+
+			if(vo.getStatus()==1||vo.getStatus()==2) {
+				
+				vo.setHemail(loginHost.getHemail());
+				vo.setAseq(vo.getAseq());
+				vo.setRseq(vo.getRseq());
+				vo.setMname(vo.getMname());
+				vo.setPhone(vo.getPhone());
+				vo.setMemail(vo.getMemail());
+				vo.setCheckin(vo.getCheckin());
+				vo.setCheckout(vo.getCheckout());
+				vo.setRprice(vo.getRprice());
+				vo.setBprice(vo.getBprice());
+				vo.setStatus(vo.getStatus());
+				
+				List<BookingVO> bookingList = bookingService.getListBookByAseq12(vo);
+
+				
+				model.addAttribute("bookingList", bookingList);
+					
+			}
+			
+			return "host/booking/hostBookingListDetail";
+			
 		}
 	}
+	
+	@GetMapping("/past_booking_detail")
+	public String pastBookingDetail(HttpSession session, BookingVO vo, Model model) {
+		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
+
+		if (loginHost == null) {
+			return "member/login";
+		} else {
+
+
+			
+			if(vo.getStatus()==3) {
+				
+				vo.setHemail(loginHost.getHemail());
+				vo.setAseq(vo.getAseq());
+				vo.setRseq(vo.getRseq());
+				vo.setMname(vo.getMname());
+				vo.setPhone(vo.getPhone());
+				vo.setMemail(vo.getMemail());
+				vo.setCheckin(vo.getCheckin());
+				vo.setCheckout(vo.getCheckout());
+				vo.setRprice(vo.getRprice());
+				vo.setBprice(vo.getBprice());
+				vo.setStatus(vo.getStatus());
+				
+				List<BookingVO> bookingList = bookingService.getListBookByAseq3(vo);
+
+				model.addAttribute("bookingList", bookingList);
+
+				
+			}
+
+			return "host/booking/hostBookingListDetail";
+		}
+	}
+
 
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
 	public String adminProductSalesForm() {
-		return "host/salesRecords";
+		return "host/mypage/salesRecords";
 
 	}
+	
+	@RequestMapping("/booking_record_chart")
+    @ResponseBody//화면이 아닌 데이터를 리턴하는 메소드로 지정
+    public List<SalesQuantity> salesRecordChart(){
+      List<SalesQuantity> listSales = bookingService.getListBookingSales();
+      return listSales;
+    }
 
 	@RequestMapping("/host_booking_delete")
 	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {

@@ -129,12 +129,11 @@ td:last-child {
 		<td align="center" width="500px"> ${accommodationVO.address} </td>
 		<td align="center" width="100px"> ${accommodationVO.tel} </td>
 		<td align="center" width="100px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
-		<td align="center" width="50px"> <a href="host_acc_update_form?aseq=${accommodationVO.aseq}"> 수 정 / </a></td>
+		<td align="center" width="50px"> <a href="host_acc_update_form?aseq=${accommodationVO.aseq}"> 수 정  </a></td>
 		<td align="center" width="40px"> <a href="host_acc_delete?aseq=${accommodationVO.aseq}" onClick="return delcheck();"> 삭 제 </a></td>
 
       </tr>
       </c:forEach>   
-      <tr><td colspan="8" style="text-align:center">${paging}</td></tr> 
       </c:otherwise>
       </c:choose>
       </table>   
@@ -142,7 +141,6 @@ td:last-child {
       <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()">
       </div>
     </form>  
-    <%@ include file="page_area.jsp" %>  
   </article>
 <%@ include file="../footer.jsp" %>   
 

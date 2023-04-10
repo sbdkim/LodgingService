@@ -19,8 +19,22 @@
 	<select id="listBookByAseq" resultType="booking">
 		SELECT * FROM booking_view
 		WHERE aseq=#{aseq}
+		ORDER BY aseq
 	</select>
 	
+	<!-- aseq로 예약내역 조회 -->
+	<select id="listBookByAseq3" resultType="booking">
+		SELECT * FROM booking_view
+		WHERE aseq=#{aseq} AND status=3
+	</select>
+	
+	<!-- aseq로 예약내역 조회 -->
+	<select id="listBookByAseq12" resultType="booking">
+		SELECT * FROM booking_view
+		WHERE aseq=#{aseq}
+		AND status NOT IN 3
+		ORDER BY status
+	</select>
 	
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">

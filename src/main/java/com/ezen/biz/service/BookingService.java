@@ -12,8 +12,12 @@ public interface BookingService {
 
 	// 이메일로 예약내역 조회
 	List<BookingVO> getListBookByEmail(BookingVO vo);
+	
+	List<BookingVO> listBookByAseq(BookingVO vo);
 
-	List<BookingVO> getListBookByAseq(BookingVO vo);
+	List<BookingVO> getListBookByAseq3(BookingVO vo);
+	
+	List<BookingVO> getListBookByAseq12(BookingVO vo);
 
 	// 예약번호로 예약내역 조회
 	BookingVO selectBookByBseq(BookingVO vo);
@@ -35,7 +39,7 @@ public interface BookingService {
 
 	List<BookingVO> getBookingListByAseq(BookingVO vo);
 
-	List<SalesQuantity> getListBookingSales(AccommodationVO vo);
+	List<SalesQuantity> getListBookingSales();
 
 	public List<BookingVO> listBestAccom();
 

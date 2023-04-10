@@ -21,7 +21,7 @@
      <h3> 예약 상품 정보 </h3> 
      <table>
      <tr>
-       <th>예약숙박업체</th><th>예약객실명</th>  <th>체크인 날짜</th> <th>체크아웃 날짜</th> <th>처리 상태</th> <th>예약 취소</th>   
+       <th>예약숙박업체</th><th>예약객실명</th><th>체크인 날짜</th> <th>체크아웃 날짜</th><th>처리 상태</th> <th>예약 취소</th>   
      </tr>
      <tr>
  	   <td> ${booking.aname} </td>

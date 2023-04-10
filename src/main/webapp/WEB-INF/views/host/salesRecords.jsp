@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp"%>
-<%@ include file="sub_menu_host.jsp"%>
+<%@ include file="../../header.jsp"%>
+<%@ include file="../sub_menu_host.jsp"%>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -25,7 +25,7 @@ $(document).ready(function() {
 			alert("Chart drawing error!");
 		}
 	});
-	<%--arrBprice = JSON.parse("[" + price + "]");--%>
+	arrBprice = JSON.parse("[" + price + "]");
 	
 	function drawChart(result) {
 		// 차트 그리는데 사용할 데이터 객체 생성
@@ -34,8 +34,6 @@ $(document).ready(function() {
 		data.addColumn("string", "aname");
 		data.addColumn("number", "bprice");
 		
-		
-	
 		
 		// 콘트롤러에서 json타입으로 전달된 데이터를 
 		// 자바스크립트의 배열로 저장
@@ -47,10 +45,6 @@ $(document).ready(function() {
 		
 		// data객체에 dataArray의 내용을 저장
 		data.addRows(dataArray);
-		
-	
-		
-		
 	
 		
 		// 바차트 그리기
@@ -81,11 +75,9 @@ $(document).ready(function() {
 	<div align="center">
 	<h1>연도별 숙소 예약 현황</h1>
 	<table>
-
 		<tr>
-
 			<td><div id="barchart_div" style="border:1px solid #ccc"></div></td>
 		</tr>
 	</table>
 	</div>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../../footer.jsp"%>

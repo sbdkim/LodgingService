@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
-<%@ include file="../header.jsp" %>  
+<%@ include file="../header.jsp" %> 
+ 
     <article>
     <h2> 상세 정보 </h2>
     <form name="formm" id="room_form" method="post">
@@ -28,7 +29,7 @@
        <td align="center" width="50px">${roomVO.rseq}</td>
  	   <td align="center" width="250px"> ${roomVO.rname} </td>
        <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${roomVO.price}"/></td>
-	   <td align="center" width="50px"> <a href="host_room_update_form?rseq=${roomVO.rseq}"> 수 정 / </a></td>
+	   <td align="center" width="50px"> <a href="host_room_update_form?rseq=${roomVO.rseq}"> 수 정  </a></td>
 	   <td align="center" width="40px"> <a href="host_room_delete?rseq=${roomVO.rseq}" onClick="delcheck();"> 삭 제 </a></td>
      </tr>
      </c:forEach>    

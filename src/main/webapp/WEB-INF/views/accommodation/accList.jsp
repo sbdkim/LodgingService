@@ -129,7 +129,7 @@ td:last-child {
 	
 	<table id="accommodationList" border="1" width="1500">
 		<tr>
-			<th>번호</th><th>숙소명</th><th>주소</th><th>숙소 살펴보기</th><!--  <th>사업자이메일</th><th>전화번호</th>-->
+			<th>번호</th><th>숙소명</th><th>주소</th><th>전화번호</th><th>숙소 살펴보기</th><!--  <th>사업자이메일</th>-->
 		</tr>
 		<c:choose>
 			<c:when test="${accommodationListSize<=0}">
@@ -147,7 +147,7 @@ td:last-child {
 					<td>${accommodationVO.aseq}</td>
 					<td>${accommodationVO.aname}</td>
 					<td>${accommodationVO.address}</td>
-					  
+					<td>${accommodationVO.tel}</td>  
 					<td>
 					
 						<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
@@ -155,7 +155,7 @@ td:last-child {
 						<%--  <button  type=submit>숙소 살펴보기</button> --%>
 					</td>
      				<!-- <td>${accommodationVO.hemail}</td> -->
-					<!-- <td>${accommodationVO.tel}</td>   -->
+					<!--    -->
 				</tr>
 				</c:forEach>
 				<tr id="pagenation" style="background:white"><td  colspan="4" style="text-align:center;"> <%@ include file="page_area.jsp" %> </td></tr>

@@ -57,7 +57,7 @@
   </tr>    
 </table>
 <input class="btn" type="button" value="수정" onClick="go_mod_save('${accommodationVO.aseq}')">           
-<input class="btn" type="button" value="취소" onClick="go_mov()">
+<input class="btn" type="button" value="취소" onClick="history.back(1)">
 </form> 
 </article>
 <%@ include file="../footer.jsp"%>

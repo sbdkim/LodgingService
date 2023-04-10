@@ -4,6 +4,6 @@
   <nav id="sub_menu">
     <ul>
 		<li><a href="qna_list"> Q & A </a></li>
-		<li><a href="hostbookinglist">예약 목록</a></li>
+		<li><a href="booking_list">예약 목록</a></li>
     </ul>
   </nav> 

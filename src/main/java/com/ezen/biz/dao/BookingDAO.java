@@ -29,6 +29,14 @@ public class BookingDAO {
 	public List<BookingVO> listBookByAseq(BookingVO vo){
 		return mybatis.selectList("BookingMapper.listBookByAseq",vo);
 	}
+	
+	public List<BookingVO> listBookByAseq3(BookingVO vo){
+		return mybatis.selectList("BookingMapper.listBookByAseq3",vo);
+	}
+	
+	public List<BookingVO> listBookByAseq12(BookingVO vo){
+		return mybatis.selectList("BookingMapper.listBookByAseq12",vo);
+	}
 
 	// 예약번호로 예약내역 조회
 	public BookingVO selectBookByBseq(BookingVO vo) {
@@ -68,8 +76,8 @@ public class BookingDAO {
 		return mybatis.selectList("BookingMapper.bookingListByAseq", vo);
 	}
 
-	public List<SalesQuantity> getListBookingSales(AccommodationVO vo) {
-		return mybatis.selectList("BookingMapper.getListBookingSales",vo);
+	public List<SalesQuantity> getListBookingSales() {
+		return mybatis.selectList("BookingMapper.getListBookingSales");
 	}
 	
 	public List<BookingVO> listBestAccom() {
