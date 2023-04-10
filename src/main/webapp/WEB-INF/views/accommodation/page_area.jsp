@@ -4,7 +4,6 @@
 
 <!--  각 화면의 페이지 번호가 표시되는 영역의 구현 -->
 <style>
-
 li{
 display: inline-block;
 }
@@ -32,7 +31,7 @@ display: inline-block;
 								'&rowsPerPage=10&key='+document.getElementById('key').value+
 								'&checkin='+document.getElementById('checkin').value+
 								'&checkout='+document.getElementById('checkout').value+
-								'&ro_count='+document.getElementById('ro_count').value">${index}</a><li>
+								'&ro_count='+document.getElementById('ro_count').value">${index}</a></li>
 		</c:forEach>
 		
 		<c:if test="${pageMaker.next}">

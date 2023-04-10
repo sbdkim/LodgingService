@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<style>
+li{
+display: inline-block;
+}
 
+</style>
 <!--  각 화면의 페이지 번호가 표시되는 영역의 구현 -->
 <div>
 	<ul class="pagination">
@@ -15,8 +20,8 @@
 				
 		<!-- [1][2][3]... 표시 부분 -->
 		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-			<a href="#" onclick="location.href='admin_memberList?pageNum='+${index}+
-								'&rowsPerPage=10&key='+document.getElementById('key').value">[${index}]</a>
+			<li><a href="#" onclick="location.href='admin_memberList?pageNum='+${index}+
+								'&rowsPerPage=10&key='+document.getElementById('key').value">[${index}]</a></li>
 		</c:forEach>
 		
 		<c:if test="${pageMaker.next}">
