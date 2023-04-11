@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 
 <style>
@@ -86,40 +87,49 @@ td:last-child {
 
 <main>
 	<div class="tap_wrapper" style="align-items: start; width: 1500px; margin: auto">
-	<%@ include file="sub_menu.jsp" %>  
-		<div class="sub_wrapper"  style="text-align:center; width: 1300px ; margin-left: 10px">
-  <article>
-    <h2 align="center"> 예약 내역 확인 </h2>
-    
-    <div id="buttons">
-       <input type="button"    value="예약 계속하기"  class="cancel"  onclick="location.href='index'"> 
-      </div>
-      <br> 
-    <form name="formm" method="post">
-      <table id="bookingList" border="1" width="1500">
-      <tr>
-        <th>예약일자</th> <th>예약번호</th><th>숙박업체명</th> <th>객실명</th> <th>결제 금액</th> <th>예약 상세</th>   
-      </tr>
-
-      <c:forEach items="${bookingList}"  var="bookingVO">
-      <tr>  
-        <td align="center" width="150px"> <fmt:formatDate value="${bookingVO.bookdate}" type="date"/></td>
-        <td align="center" width="150px"> ${bookingVO.bseq} </td>    
-
-		<td align="center" width="500px"> ${bookingVO.aname} </td>
-		<td align="center" width="200px"> ${bookingVO.rname} </td>
-
-        <td align="center"  width="150px"> <fmt:formatNumber value="${bookingVO.bprice}" type="currency" currencySymbol="￦"/> </td>
-        <td align="center" width="150px"> <a href="booking_detail?bseq=${bookingVO.bseq}"> 조회 </a></td>
-      </tr>
-      </c:forEach>    
-      </table>
-      <br><br>    
-     
-      
-    </form>  
-  </article>
-  </div>
-  </div>
-  </main>
-<%@ include file="../footer.jsp" %>    
+		<%@ include file="sub_menu.jsp"%>
+		<div class="sub_wrapper" style="text-align: center; width: 1300px; margin-left: 10px">
+			<article>
+				<h2 align="center">예약 내역 확인</h2>
+				<div id="buttons">
+					<input type="button" value="예약 계속하기" class="cancel" onclick="location.href='index'">
+				</div>
+				<br>
+				<form name="formm" method="post">
+					<table id="bookingList" border="1" width="1500">
+						<tr>
+							<th>예약일자</th>
+							<th>예약번호</th>
+							<th>숙박업체명</th>
+							<th>객실명</th>
+							<th>결제 금액</th>
+							<th>예약 상세</th>
+						</tr>
+	
+						<c:forEach items="${bookingList}" var="bookingVO">
+							<tr>
+								<td align="center" width="150px">
+									<fmt:formatDate	value="${bookingVO.bookdate}" type="date" />
+								</td>
+								<td align="center" width="150px">${bookingVO.bseq}</td>
+	
+								<td align="center" width="500px">${bookingVO.aname}</td>
+								<td align="center" width="200px">${bookingVO.rname}</td>
+	
+								<td align="center" width="150px">
+									<fmt:formatNumber value="${bookingVO.bprice}" type="currency" currencySymbol="￦" />
+								</td>
+								<td align="center" width="150px">
+									<a href="booking_detail?bseq=${bookingVO.bseq}">조회</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<br>
+					<br>
+				</form>
+			</article>
+		</div>
+	</div>
+</main>
+<%@ include file="../footer.jsp"%>
