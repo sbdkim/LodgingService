@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>
-  <article>
+<main style="display:flex; justify-content: center; padding-top: 100px">
+  <article style="width:1000px">
     <h2>Join Us</h2>
     <form id="join" action="join_form" method="post" name="formm">
         언제나 새로운 즐거움이 가득한 Kozynest의 회원가입 페이지 입니다. <br>
@@ -182,12 +183,19 @@
 (2) 회사의 정액 서비스 회원 및 기타 유료 서비스 이용 회원의 경우 회사가 별도로 정한 약관 및 정책에 따릅니다.
 (3) 서비스 이용으로 발생한 분쟁에 대해 소송이 제기되는 경우 회사의 본사 소재지를 관할하는 법원을 관할 법원으로 합니다.
       </textarea>
-      <br><br>
-      <div style="text-align: center;">
+      
+    </form>
+    <br><br>
+      <div style="display:flex;  justify-content: center;">
       <input type="radio" name="okon1" class="agree" checked style="display:block"> 동의함 &nbsp; &nbsp; &nbsp;
       <input type="radio" name="okon1" class="agree" checked style="display:block"> 동의안함
       </div>
-      <input type="button" value="Next" class="submit"  onclick="go_next()" style="float: right;"> 
-    </form>
+      <br>
+      <div style="display:flex;  justify-content: center;">
+      <input type="button" value="Next" class="submit"  onclick="go_next()" style="float: right; width:200px; font-size: 60px;"> 
+      </div>
+       
+      
   </article>
+  </main>
 <%@ include file="../footer.jsp" %>  
