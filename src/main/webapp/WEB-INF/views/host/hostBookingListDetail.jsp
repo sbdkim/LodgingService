@@ -91,9 +91,9 @@ td:last-child {
 }
 </style>       
 <main>
-	<div class="tap_wrapper" style="align-items: start; width: 1600px;  padding-top:50px; margin: auto">
+	<div class="tap_wrapper" style="align-items: start; width: 1800px;  padding-top:50px; margin: auto">
 	<%@ include file="sub_menu_booking.jsp" %> 
-		<div class="sub_wrapper" style="text-align:center; width: 1400px ; margin-left: 10px"> 
+		<div class="sub_wrapper" style="text-align:center; width: 1600px ; margin-left: 10px"> 
   <article>
       <h2> 예약 목록 </h2>
       <form name="formm" method="post">
@@ -132,7 +132,7 @@ td:last-child {
       
     </form>
     <br><br>
-    <input type="button" value="다른 숙소 보기" onclick="history.back(1)">  
+    <input type="button" value="다른 숙소 보기" onclick="location.href='hostBookingList'">  
   </article>
 </div>
 </div>

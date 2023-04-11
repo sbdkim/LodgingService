@@ -6,7 +6,5 @@
     <ul style="display: flex; flex-direction: column;">
 		<li><a href="#" onclick="location.href='host_booking_detail?status=3&aseq=${aseq}'">지난 예약 내역</a></li>  
 		<li><a href="#" onclick="location.href='host_booking_detail?status=1&aseq=${aseq}'">진행 중인 예약 내역</a></li> 
-		<li><a href="hostBookingList">처음으로</a></li>
-		
     </ul>
   </nav> 
