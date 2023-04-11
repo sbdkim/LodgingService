@@ -335,6 +335,15 @@ public class HostController {
 			
 		
 	}
+	
+	@RequestMapping("/host_booking_delete")
+	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {
+
+		bookingService.deleteBookByBseq(bseq);
+
+		return "redirect:host_booking_detail";
+	}
+
 		
 	
 	// 상품별 판매 실적 화면 출력

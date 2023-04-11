@@ -122,13 +122,17 @@ td:last-child {
  	   <td align="center" width="150px"> ${bookingVO.checkin}</td>
  	   <td align="center" width="170px"> ${bookingVO.checkout}</td>
      <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
-     <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}" onClick="return delcheck();"> 취 소 </a></td>
+     <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}" onClick="delcheck();"> 취 소 </a></td>
      </tr>
-     
-    </c:forEach>
-     </table>
+     </c:forEach> 
+     </c:otherwise>
+     </c:choose>
+
+      </table>
+      
     </form>
     <br><br>
+
     <input type="button" value="다른 숙소 보기" onclick="history.back(1)">  
   </article>
 </div>
@@ -137,7 +141,15 @@ td:last-child {
 <%@ include file="../footer.jsp" %>
 <script type="text/javascript">
 function delcheck(){
-	return confirm("취소하시겠습니까?");
+	if(confirm("삭제하시겠습니까?")){
+		
+		return confirm("삭제하시겠습니까?");
+		
+	}else{
+		return false;
+		location = "hostBookingList";
+	}
+
 }
 </script>
   

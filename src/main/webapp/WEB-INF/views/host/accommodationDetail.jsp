@@ -126,7 +126,7 @@ td:last-child {
 								<td align="center" width="250px">${roomVO.rname}</td>
 								<td align="center" width="150px"><fmt:formatNumber type="currency" value="${roomVO.price}" /></td>
 								<td align="center" width="100px"><a href="host_room_update_form?rseq=${roomVO.rseq}"> 수 정 </a></td>
-								<td align="center" width="100px"><a href="host_room_delete?rseq=${roomVO.rseq}"> 삭 제 </a></td>
+								<td align="center" width="40px"> <a href="host_room_delete?rseq=${roomVO.rseq}" onClick="delcheck();"> 삭 제 </a></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -161,7 +161,7 @@ td:last-child {
 			
 		}else{
 			return false;
-			location = "accommodationDetail";
+			location = "room_form";
 		}
 
 	}
