@@ -25,16 +25,9 @@ public class BookingDAO {
 	public List<BookingVO> listBookByEmail(BookingVO vo) {
 		return mybatis.selectList("BookingMapper.listBookByEmail", vo);
 	}
+
 	
 	public List<BookingVO> listBookByAseq(BookingVO vo){
-		return mybatis.selectList("BookingMapper.listBookByAseq",vo);
-	}
-	
-	public List<BookingVO> listBookByAseq3(BookingVO vo){
-		return mybatis.selectList("BookingMapper.listBookByAseq3",vo);
-	}
-	
-	public List<BookingVO> listBookByAseq12(BookingVO vo){
 		return mybatis.selectList("BookingMapper.listBookByAseq12",vo);
 	}
 

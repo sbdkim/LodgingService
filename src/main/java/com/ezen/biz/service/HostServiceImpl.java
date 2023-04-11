@@ -36,6 +36,12 @@ public class HostServiceImpl implements HostService {
 	public HostVO getHost(String hemail) {
 		return hDao.getHost(hemail);
 	}
+	
+	@Override
+	public HostVO getStatus(String hemail) {
+		
+		return hDao.getStatus(hemail);
+	}
 
 	@Override
 	public void updateHost(String hemail) {
@@ -83,5 +89,7 @@ public class HostServiceImpl implements HostService {
 	public int countHostList(String name) {
 		return hDao.countHostList(name);
 	}
+
+	
 
 }

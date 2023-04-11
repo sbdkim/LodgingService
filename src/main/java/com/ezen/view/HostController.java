@@ -316,6 +316,8 @@ public class HostController {
 		}
 	}
 	
+	
+	
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
@@ -323,102 +325,29 @@ public class HostController {
 		if (loginHost == null) {
 			return "member/login";
 		} else {
-
+			
+			System.out.println("vo.getStatus 12 : " + vo.getStatus());
+			
 			vo.setHemail(loginHost.getHemail());
-			vo.setAseq(vo.getAseq());
-			vo.setRseq(vo.getRseq());
-			vo.setMname(vo.getMname());
-			vo.setPhone(vo.getPhone());
-			vo.setMemail(vo.getMemail());
-			vo.setCheckin(vo.getCheckin());
-			vo.setCheckout(vo.getCheckout());
-			vo.setRprice(vo.getRprice());
-			vo.setBprice(vo.getBprice());
-			vo.setStatus(vo.getStatus());
-			
-			
-				List<BookingVO> bookingList = bookingService.listBookByAseq(vo);
-
-				
-				model.addAttribute("bookingList", bookingList);
-					
+			if (vo.getStatus() < 1 || vo.getStatus() > 3) {
+				vo.setStatus(1);
 			}
 			
-			return "host/hostBookingListDetail";
+			
+			List<BookingVO> bookingList = bookingService.getListBookByAseq12(vo);
+
+			model.addAttribute("aseq", vo.getAseq());
+			
+			model.addAttribute("bookingList", bookingList);
+					
+		}
+			
+		return "host/hostBookingListDetail";
 			
 		
 	}
-
-	@GetMapping("/go_booking_detail")
-	public String goBookingDetail(HttpSession session, BookingVO vo, Model model) {
-		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
-
-		if (loginHost == null) {
-			return "member/login";
-		} else {
-
-			if(vo.getStatus()==1||vo.getStatus()==2) {
-				
-				vo.setHemail(loginHost.getHemail());
-				vo.setAseq(vo.getAseq());
-				vo.setRseq(vo.getRseq());
-				vo.setMname(vo.getMname());
-				vo.setPhone(vo.getPhone());
-				vo.setMemail(vo.getMemail());
-				vo.setCheckin(vo.getCheckin());
-				vo.setCheckout(vo.getCheckout());
-				vo.setRprice(vo.getRprice());
-				vo.setBprice(vo.getBprice());
-				vo.setStatus(vo.getStatus());
-				
-				List<BookingVO> bookingList = bookingService.getListBookByAseq12(vo);
-
-				
-				model.addAttribute("bookingList", bookingList);
-					
-			}
-			
-			return "host/hostBookingListDetail";
-			
-		}
-	}
+		
 	
-	@GetMapping("/past_booking_detail")
-	public String pastBookingDetail(HttpSession session, BookingVO vo, Model model) {
-		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
-
-		if (loginHost == null) {
-			return "member/login";
-		} else {
-
-
-			
-			if(vo.getStatus()==3) {
-				
-				vo.setHemail(loginHost.getHemail());
-				vo.setAseq(vo.getAseq());
-				vo.setRseq(vo.getRseq());
-				vo.setMname(vo.getMname());
-				vo.setPhone(vo.getPhone());
-				vo.setMemail(vo.getMemail());
-				vo.setCheckin(vo.getCheckin());
-				vo.setCheckout(vo.getCheckout());
-				vo.setRprice(vo.getRprice());
-				vo.setBprice(vo.getBprice());
-				vo.setStatus(vo.getStatus());
-				
-				List<BookingVO> bookingList = bookingService.getListBookByAseq3(vo);
-
-				model.addAttribute("bookingList", bookingList);
-
-				
-			}
-
-			return "host/hostBookingListDetail";
-		}
-	}
-
-
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
 	public String hostBookingSalesForm() {

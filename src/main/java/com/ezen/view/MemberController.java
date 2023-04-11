@@ -59,7 +59,6 @@ public class MemberController {
 	public String loginAction(HostVO vo, Model model) {
 		System.out.println(vo.toString());
 		String hostEmail = vo.getHemail();
-
 		
 		// admin login
 		if (hostEmail.equals("kozynest0330@gmail.com") || hostEmail.equals("kozynest1104@gmail.com")
@@ -80,10 +79,12 @@ public class MemberController {
 			
 			// host login
 			int result = hostService.loginHost(vo);
-	
-			if (result == 1) {
+			HostVO host = hostService.getHost(hostEmail);
+			int status = host.getStatus(); 
+			if (result == 1 && status == 1) {
 				System.out.println("status : " + vo.getStatus());
-			
+				
+				
 				model.addAttribute("loginHost", hostService.getHost(vo.getHemail()));
 				
 				return "redirect:index";

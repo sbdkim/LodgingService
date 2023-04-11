@@ -96,7 +96,7 @@ td:last-child {
 	<div class="tap_wrapper">
 		<div class="sub_wrapper">
   <article>
-      <h2> 예약된 목록 </h2>
+      <h2> 예약 목록 </h2>
       <form name="formm" method="post">
         <table id="accommodationList" border="1">
        <c:forEach items="${accommodationList}"  var="accommodationVO">
@@ -109,9 +109,8 @@ td:last-child {
        
        </tr>
        </c:forEach>
-       
+	   
       </table>   
-          
       <div class="clear"></div>
     </form>  
   </article>

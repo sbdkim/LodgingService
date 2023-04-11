@@ -19,6 +19,8 @@ public interface HostService {
 
 	// 호스트 상세정보 조회
 	HostVO getHost(String hemail);
+	
+	HostVO getStatus(String hemail);
 
 	// 호스트 정보 변경
 	void updateHost(String hemail);
