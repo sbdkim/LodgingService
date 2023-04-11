@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>    
-<%@ include file="sub_menu.jsp" %>  
+
 <style>
  /*table */
  /*** Table Styles **/
@@ -94,12 +94,14 @@ td:last-child {
 
 </style>
 <main>
-	<div class="tap_wrapper">
-		<div class="sub_wrapper">
+	<div class="tap_wrapper" style="align-items: start">
+		<%@ include file="sub_menu.jsp" %>  
+		<div class="sub_wrapper"  style="text-align:center; width: 1100px ; margin-left: 10px;">
  <article>
     <h2> 1:1 고객 게시판 </h2>
     <h3> 고객님의 질문에 대해서 운영자가 1:1 답변을 드립니다.</h3>
     <form name="formm" method="post" style="display:block">
+    <div style="display:flex; justify-content: center">
       <table border="1">
       <tr>
         <th>번호</th> <th>제목</th> <th>등록일</th> <th>답변 여부</th>    
@@ -118,7 +120,8 @@ td:last-child {
       </tr>
       </c:forEach>    
       </table>
-      <div class="clear"></div>
+      </div>
+      
       <div id="buttons" style="  text-align: center; margin-top: 30px;">
       <input type="button"  value="1:1 질문하기"  class="submit"    
           onclick="location.href='qna_write_form'"> 

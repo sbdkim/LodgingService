@@ -95,7 +95,8 @@ td:last-child {
 <main>
 	<div class="tap_wrapper">
 		<div class="sub_wrapper">
-    <article>
+    <article style="justify-content: center">
+    
     <h2> 주문상세정보 </h2>
     <form name="formm" method="post" action="booking_delete">   
       <table id="booking" border="1">      
@@ -135,11 +136,15 @@ td:last-child {
      </tr>
      </table>   
           
-     <div class="clear"></div>
-     <div id="buttons" style="float: right">
-       <input type="button"    value="예약 계속하기"  class="cancel"  onclick="location.href='index'">
-     </div>
+
     </form>  
+    
+    
+    <br> 
+         <div id="buttons" style="float: right">
+       <input type="button"    value="예약 계속하기"  class="cancel"  onclick="location.href='index'">
+       <input type="button"    value="돌아가기"  onclick="location.href='mypage'">
+     </div>
   </article>
   </div>
   </div>

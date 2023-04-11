@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <style>
@@ -68,7 +68,7 @@ header{
 					<input type="hidden" name="ro_count" value="2">
 					<!-- select 저장용 -->
 					<select id="select_ro_count" class="form-select form-select-lg" 
-						onchange="change_ro_count()" style="border: none; height:40px; width: 40px; border-radius: 5px;" >
+						onchange="change_ro_count()" style="border: none; height:40px; width: 60px; border-radius: 5px; text-align: center" >
 						<option value="1">1</option>
 						<option value="2" selected>2</option>
 						<option value="3">3</option>

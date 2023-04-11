@@ -205,7 +205,7 @@ td:last-child {
      	</td>
      </tr>
      </table>      
-          
+      <br><br>     
      <div class="clear"></div>
        <input type="submit" value="예약하기">
        <input type="button" value="다른 객실 보기" onclick="history.back(1)">
