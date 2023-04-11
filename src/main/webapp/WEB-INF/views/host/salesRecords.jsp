@@ -55,7 +55,7 @@ $(document).ready(function() {
 		
 		// 바차트 그리기
 		var options = {
-			title: '숙소 예약 현황',
+
 			width: 800,
 			height: 600,
 			vAxis : {title : '숙소이름'},
