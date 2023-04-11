@@ -92,16 +92,14 @@ td:last-child {
 	<div class="tap_wrapper"
 		style="align-items: start; width: 1300px; margin: auto; padding-top: 50px;">
 		<%@ include file="sub_menu_host.jsp"%>
-		<div class="sub_wrapper"
-			style="text-align: center; width: 1000px; margin-left: 10px">
+		<div class="sub_wrapper" style="text-align: center; width: 1000px; margin-left: 10px">
 			<article>
 				<h1>객실 수정</h1>
-				<form name="frm" id="room_update_form" method="post"
-					enctype="multipart/form-data">
-					<input type="hidden" name="rseq" value="${roomVO.rseq}"> <input
-						type="hidden" name="aseq" value="${roomVO.aseq}"> <input
-						type="hidden" name="hemail"> <input type="hidden"
-						name="nonmakeImg" value="${roomVO.rimage}">
+				<form name="frm" id="room_update_form" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="rseq" value="${roomVO.rseq}"> 
+					<input type="hidden" name="aseq" value="${roomVO.aseq}"> 
+					<input type="hidden" name="hemail"> 
+					<input type="hidden" name="nonmakeImg" value="${roomVO.rimage}">
 					<!-- 기존 이미지 저장  -->
 					<table id="list" border="1">
 						<tr>

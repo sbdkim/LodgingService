@@ -184,23 +184,12 @@ public class HostController {
 			RoomVO roomDetail = new RoomVO();
 			roomDetail.setAseq(vo.getAseq());
 
-			if(roomList.size()!=0) {
-				roomDetail.setRname(roomList.get(0).getRname());
-				roomDetail.setPrice(roomList.get(0).getPrice());
-				
-				model.addAttribute("accommodationDetail", accommodationDetail);
-				model.addAttribute("roomList", roomList);
 
+			model.addAttribute("accommodationDetail", accommodationDetail);
+			model.addAttribute("roomList", roomList);
 
-				return "host/accommodationDetail";
-				
-			} else {
-				
-				model.addAttribute("accommodationDetail", accommodationDetail);
-				model.addAttribute("roomList", roomList);
+			return "host/accommodationDetail";
 
-				return "host/accommodationDetail";
-			}
 
 			
 		}
@@ -346,6 +335,15 @@ public class HostController {
 			
 		
 	}
+	
+	@RequestMapping("/host_booking_delete")
+	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {
+
+		bookingService.deleteBookByBseq(bseq);
+
+		return "redirect:host_booking_detail";
+	}
+
 		
 	
 	// 상품별 판매 실적 화면 출력

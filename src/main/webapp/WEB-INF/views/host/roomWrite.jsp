@@ -91,11 +91,9 @@ td:last-child {
 }
 </style>
 <main>
-	<div class="tap_wrapper"
-		style="align-items: start; width: 1300px; margin: auto">
+	<div class="tap_wrapper" style="align-items: start; width: 1300px; margin: auto">
 		<%@ include file="sub_menu_host.jsp"%>
-		<div class="sub_wrapper"
-			style="text-align: center; width: 1000px; margin-left: 10px">
+		<div class="sub_wrapper" style="text-align: center; width: 1000px; margin-left: 10px">
 			<article>
 				<h1>객실 등록</h1>
 				<!-- [1] 파일을 업로드 하기 위해서는 폼태그를 post 방식으로 전송하고,
@@ -257,7 +255,4 @@ td:last-child {
 		}
 	}
 
-	function go_mov() {
-
-	}
 </script>
