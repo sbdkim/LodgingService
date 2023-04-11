@@ -27,8 +27,6 @@ input[type="button"], input[type="submit"]{
 				<h2>Guest</h2>
 				<article>
 					<form method="post" action="login">
-						<fieldset>
-							<legend></legend>
 							<table>
 								<tr>
 									<td><label>User email</label></td>
@@ -39,7 +37,7 @@ input[type="button"], input[type="submit"]{
 									<td><input name="pwd" type="password"></td>
 								</tr>
 							</table>
-						</fieldset>
+
 
 						<div id="buttons">
 							<input type="submit" value="로그인" class="submit"> <input
@@ -54,8 +52,6 @@ input[type="button"], input[type="submit"]{
 				<h2>Host</h2>
 				<article>
 					<form method="post" action="hostlogin">
-						<fieldset>
-							<legend></legend>
 							<table>
 								<tr>
 									<td><label>Host email</label></td>
@@ -67,7 +63,6 @@ input[type="button"], input[type="submit"]{
 									<td><input name="pwd" type="password"></td>
 								</tr>
 							</table>
-						</fieldset>
 						<div id="buttons">
 							<input type="submit" value="로그인" class="submit"> 
 							<input

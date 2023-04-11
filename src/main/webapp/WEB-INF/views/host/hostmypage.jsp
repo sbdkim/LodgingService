@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>
-<%@ include file="sub_menu_host.jsp" %>    
+   
  <style>
  /*table */
  /*** Table Styles **/
 
 .table-fill {
   background: white;
-  border-radius:3px;
+  border-radius:3px;	
   border-collapse: collapse;
   height: 320px;
   margin: auto;
@@ -26,7 +26,7 @@ th {
   border-right: 1px solid #343a45;
   font-size:23px;
   font-weight: 100;
-  padding:24px;
+  padding:10px;
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
@@ -60,7 +60,7 @@ tr:last-child {
 }
  
 tr:nth-child(odd) td {
-  background:#EBEBEB;
+  background:white;
 }
  
 tr:nth-child(odd):hover td {
@@ -77,11 +77,11 @@ tr:last-child td:last-child {
  
 td {
   background:#FFFFFF;
-  padding:20px;
+  padding:10px;
   text-align:left;
   vertical-align:middle;
   font-weight:300;
-  font-size:18px;
+  font-size:15px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
 }
@@ -93,12 +93,20 @@ td:last-child {
 
 </style>    
 <main>
-	<div class="tap_wrapper">
+	<div class="tap_wrapper" style="align-items: start; padding-top:50px">
+	<%@ include file="sub_menu_host.jsp" %> 
+	
+	
 		<div class="sub_wrapper">
-<article>
+<article style=" text-align: center;">
   <h2 align="center">  '${sessionScope.loginHost.name}'님이 등록한 숙소 </h2>
-    <form name="frm" id="acc_form" method="post">
-    <table id="accommodationList" border="1">
+  
+  <div id="buttons" >
+      <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()" style="width:270px; margin-bottom: 30px">
+      </div>
+      
+    <form name="frm" id="acc_form" method="post" style="display:flex">
+    <table id="accommodationList" border="1" style="margin-left: 50px">
       <tr>
         <th>카테고리</th><th>이 름</th> <th>주 소</th> <th>전화번호</th> <th>상 세</th> <th colspan="3">수정하기</th>
       </tr>
@@ -114,7 +122,7 @@ td:last-child {
       <c:forEach items="${accommodationList}"  var="accommodationVO">
       <input type="hidden" name="aseq" value="${accommodationVO.aseq}">
       <tr>  
-        <td align="center" width="200px">
+        <td align="center" width="130px">
         <c:choose>
         <c:when test='${accommodationVO.category==0}'>호텔/리조트</c:when> 
         <c:when test='${accommodationVO.category==1}'>모텔</c:when>
@@ -122,21 +130,18 @@ td:last-child {
         <c:when test='${accommodationVO.category==3}'>게스트 하우스</c:when>  
         </c:choose>
 		</td> 
-		<td align="center" width="300px"> ${accommodationVO.aname} </td>
-		<td align="center" width="500px"> ${accommodationVO.address} </td>
-		<td align="center" width="100px"> ${accommodationVO.tel} </td>
-		<td align="center" width="100px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
-		<td align="center" width="50px"> <a href="host_acc_update_form?aseq=${accommodationVO.aseq}"> 수 정  </a></td>
-		<td align="center" width="40px"> <a href="host_acc_delete?aseq=${accommodationVO.aseq}" onClick="return delcheck();"> 삭 제 </a></td>
-
+		<td align="center" width="250px"> ${accommodationVO.aname} </td>
+		<td align="center" width="450px"> ${accommodationVO.address} </td>
+		<td align="center" width="200px"> ${accommodationVO.tel} </td>
+		<td align="center" width="120px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
+		<td align="center" width="100px"> <a href="host_acc_update_form?aseq=${accommodationVO.aseq}"> 수 정  </a></td>
+		<td align="center" width="100px"> <a href="host_acc_delete?aseq=${accommodationVO.aseq}" onClick="return delcheck();"> 삭 제 </a></td>
       </tr>
       </c:forEach>   
       </c:otherwise>
       </c:choose>
       </table>   
-      <div id="buttons">
-      <input class="btn" type="button" name="btn_write" value="업체 등록" onClick="go_wrt()">
-      </div>
+      
     </form>  
   </article>
   </div>
