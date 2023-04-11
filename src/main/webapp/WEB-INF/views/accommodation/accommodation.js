@@ -1,6 +1,3 @@
-/**
- * 
- */
 function accommodationRooms(aseq) {
   var form = document.createElement("form");
   form.setAttribute("method", "post");

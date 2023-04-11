@@ -94,7 +94,7 @@ td:last-child {
 <main>
 	<div class="tap_wrapper" style="align-items: start; width: 1500px; margin: auto">
 	<%@ include file="sub_menu.jsp" %>  
-		<div class="sub_wrapper"  style="text-align:center; width: 1100px ; margin-left: 10px">
+		<div class="sub_wrapper"  style="text-align:center; width: 1300px ; margin-left: 10px">
   <article>
     <h2 align="center"> 예약 내역 확인 </h2>
     

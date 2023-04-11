@@ -182,17 +182,16 @@ table#productList {
 	margin-bottom: 20px;
 }
 
-th, td{ 
+th, td {
 	padding: 8px 5px;
-	
 }
 
-#productList td{ /* 테이블의 th 와 td 마진과 패딩 지정 */
+#productList td { /* 테이블의 th 와 td 마진과 패딩 지정 */
 	padding-right: 40px;
 	text-align: right;
 }
 
-#list td{ 
+#list td {
 	padding: 8px 5px;
 	text-align: left;
 }
@@ -205,10 +204,6 @@ table#orderList {
 	margin-left: 100px;
 	margin-bottom: 20px;
 }
-
-/* table#orderList th,td {
-	text-align: center;
-} */
 
 #register {
 	margin-left: 300px;
