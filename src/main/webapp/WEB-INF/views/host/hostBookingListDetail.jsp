@@ -121,17 +121,14 @@ td:last-child {
 					 	   <td align="center" width="150px">${bookingVO.checkin}</td>
 					 	   <td align="center" width="170px">${bookingVO.checkout}</td>
 					       <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
-					       <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}"> 삭 제 </a></td>
+					       <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}" onclick="delcheck()"> 삭 제 </a></td>
 					     </tr>
 					     </c:forEach> 
 	      </c:otherwise>
       </c:choose>
-      
-     
+
       </table>
       
-      
- 
     </form>
     <br><br>
     <input type="button" value="다른 숙소 보기" onclick="history.back(1)">  
