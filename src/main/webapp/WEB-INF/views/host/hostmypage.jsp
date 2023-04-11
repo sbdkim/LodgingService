@@ -135,7 +135,7 @@ td:last-child {
 		<td align="center" width="200px"> ${accommodationVO.tel} </td>
 		<td align="center" width="120px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
 		<td align="center" width="100px"> <a href="host_acc_update_form?aseq=${accommodationVO.aseq}"> 수 정 </a></td>
-		<td align="center" width="100px"> <a href="host_acc_delete?aseq=${accommodationVO.aseq}"> 삭 제 </a></td>
+		<td align="center" width="100px"> <a href="host_acc_delete?aseq=${accommodationVO.aseq}" onClick="return delcheck();"> 삭 제 </a></td>
       </tr>
       </c:forEach>   
       </c:otherwise>
@@ -168,18 +168,9 @@ function go_list() {
 	form.submit();
 }
 
-function go_acc_delete(aseq){
-	const query = 'input[name="aseq"]:checked';
-	var len = document.querySelectorAll(query).length;
-	console.log(len);
-	
-	if(len == 0){
-		alert("삭제할 항목을 선택해 주세요")
-	} else{
-		var form = document.getElementById("acc_form");
-		form.action = "host_acc_delete";
-		form.submit();
-	}
+function delcheck(){
+
+	return confirm("삭제하시겠습니까?");
 }
 
 </script>

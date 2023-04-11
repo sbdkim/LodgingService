@@ -164,7 +164,7 @@ public class HostController {
 	}
 
 	@GetMapping("/accommodation_detail")
-	public String AccommodationDetail(HttpSession session, AccommodationVO vo, AccommodationVO acc, Model model) {
+	public String AccommodationDetail(HttpSession session, AccommodationVO vo, Model model) {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
 		if (loginHost == null) {
@@ -183,13 +183,26 @@ public class HostController {
 
 			RoomVO roomDetail = new RoomVO();
 			roomDetail.setAseq(vo.getAseq());
-			roomDetail.setRname(roomList.get(0).getRname());
-			roomDetail.setPrice(roomList.get(0).getPrice());
 
-			model.addAttribute("accommodationDetail", accommodationDetail);
-			model.addAttribute("roomList", roomList);
+			if(roomList.size()!=0) {
+				roomDetail.setRname(roomList.get(0).getRname());
+				roomDetail.setPrice(roomList.get(0).getPrice());
+				
+				model.addAttribute("accommodationDetail", accommodationDetail);
+				model.addAttribute("roomList", roomList);
 
-			return "host/accommodationDetail";
+
+				return "host/accommodationDetail";
+				
+			} else {
+				
+				model.addAttribute("accommodationDetail", accommodationDetail);
+				model.addAttribute("roomList", roomList);
+
+				return "host/accommodationDetail";
+			}
+
+			
 		}
 
 	}
@@ -198,6 +211,7 @@ public class HostController {
 	public String hostRoomWriteView(RoomVO vo, Model model) {
 
 		model.addAttribute("aseq", vo.getAseq());
+		
 
 		return "host/roomWrite";
 	}
@@ -301,7 +315,9 @@ public class HostController {
 			return "host/hostBookingList";
 		}
 	}
-
+	
+	
+	
 	@GetMapping("/host_booking_detail")
 	public String HostBookingDetail(HttpSession session, BookingVO vo, Model model) {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
@@ -309,34 +325,36 @@ public class HostController {
 		if (loginHost == null) {
 			return "member/login";
 		} else {
-
+			
+			System.out.println("vo.getStatus 12 : " + vo.getStatus());
+			
 			vo.setHemail(loginHost.getHemail());
-			vo.setAseq(vo.getAseq());
-			vo.setRseq(vo.getRseq());
-			vo.setMname(vo.getMname());
-			vo.setPhone(vo.getPhone());
-			vo.setMemail(vo.getMemail());
-			vo.setCheckin(vo.getCheckin());
-			vo.setCheckout(vo.getCheckout());
-			vo.setRprice(vo.getRprice());
-			vo.setBprice(vo.getBprice());
-
+			if (vo.getStatus() < 1 || vo.getStatus() > 3) {
+				vo.setStatus(1);
+			}
+			
+			
 			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo);
 
+			model.addAttribute("aseq", vo.getAseq());
+			
 			model.addAttribute("bookingList", bookingList);
-
-			return "host/hostBookingListDetail";
+					
 		}
+			
+		return "host/hostBookingListDetail";
+			
+		
 	}
-
+		
+	
 	// 상품별 판매 실적 화면 출력
 	@RequestMapping("/host_booking_record_form")
 	public String hostBookingSalesForm() {
 		return "host/salesRecords";
 
 	}
-
-
+	
 
 	@RequestMapping("/booking_record_chart")
 	@ResponseBody // 화면이 아닌 데이터를 리턴하는 메소드로 지정

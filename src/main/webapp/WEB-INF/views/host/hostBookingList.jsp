@@ -98,7 +98,7 @@ td:last-child {
 	<%@ include file="sub_menu_host.jsp" %> 
 		<div class="sub_wrapper" style="text-align:center; width: 1000px ; margin-left: 10px">
   <article>
-      <h2> 예약된 목록 </h2>
+      <h2> 예약 목록 </h2>
       <form name="formm" method="post">
         <table id="accommodationList" border="1" style="text-align:center;">
        <c:forEach items="${accommodationList}"  var="accommodationVO">
@@ -111,9 +111,8 @@ td:last-child {
        
        </tr>
        </c:forEach>
-       
+	   
       </table>   
-          
       <div class="clear"></div>
     </form>  
   </article>

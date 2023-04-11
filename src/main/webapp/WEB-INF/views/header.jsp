@@ -49,8 +49,8 @@ opacity
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(), // 주문번호
 			name : "KozyNest 결제",
-			// amount: bprice,
-			amount : 100, // 숫자 타입
+			amount: bprice,
+			// amount : 100, // 숫자 타입
 			buyer_email : "${loginUser.email}",
 			buyer_name : "${loginUser.name}",
 			buyer_tel : "${loginUser.phone}",

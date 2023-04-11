@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>  
+<%@ include file="sub_menu_booking.jsp" %> 
   <style>
  /*table */
  /*** Table Styles **/
@@ -88,8 +89,6 @@ td {
 td:last-child {
   border-right: 0px;
 }
-  
-
 </style>       
 <main>
 	<div class="tap_wrapper">
@@ -122,22 +121,26 @@ td:last-child {
 					 	   <td align="center" width="150px">${bookingVO.checkin}</td>
 					 	   <td align="center" width="170px">${bookingVO.checkout}</td>
 					       <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
-					       <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}"> 삭 제 </a></td>
+					       <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}" onclick="delcheck()"> 삭 제 </a></td>
 					     </tr>
 					     </c:forEach> 
 	      </c:otherwise>
       </c:choose>
-      
-     
+
       </table>
       
-      
- 
     </form>
     <br><br>
     <input type="button" value="다른 숙소 보기" onclick="history.back(1)">  
   </article>
-  </div>
-  </div>
-  </main>
+</div>
+</div>
+</main>
 <%@ include file="../footer.jsp" %>
+<script type="text/javascript">
+function delcheck(){
+	return confirm("취소하시겠습니까?");
+}
+</script>
+  
+
