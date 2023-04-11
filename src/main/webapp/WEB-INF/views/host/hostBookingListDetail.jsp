@@ -24,7 +24,7 @@ th {
   background:#1b1e24;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
-  font-size:23px;
+  font-size:20px;
   font-weight: 100;
   padding:24px;
   text-align:left;
@@ -94,34 +94,47 @@ td:last-child {
 	<div class="tap_wrapper">
 		<div class="sub_wrapper"> 
   <article>
-     <h2> 예약 목록 </h2>
-     <form name="formm" id="host_book_form" method="get">
-     <input type="hidden" name="aseq" id="aseq" value="${aseq}"/>
-     <input type="hidden" name="status" value="${status}"/>
-     <table id="hostBookingList" border="1">
-      
+      <h2> 예약 목록 </h2>
+      <form name="formm" method="post">
+         
+     
+      <table id="hostBookingList" border="1">
       <tr>
        <th>예약번호</th><th>객실번호</th><th>예약날짜</th><th>예약자명</th><th>전화번호</th><th>이메일</th><th>체크인날짜</th><th>체크아웃날짜</th>
-       <th>객실가격</th><th>총 가격</th><th>취 소</th>
+       <th>총 가격</th><th>삭제</th>
       </tr>
-      <c:forEach items="${bookingList}"  var="bookingVO">
-      <tr>
-       <td align="center" width="170px"> ${bookingVO.bseq} </td>
- 	   <td align="center" width="170px"> ${bookingVO.rseq} </td>
- 	   <td align="center" width="300px"> <fmt:formatDate value="${bookingVO.bookdate}" pattern="yyyy-MM-dd"/></td>
- 	   <td align="center" width="170px"> ${bookingVO.mname} </td>
- 	   <td align="center" width="100px"> ${bookingVO.phone} </td>
- 	   <td align="center" width="100px"> ${bookingVO.memail} </td>
- 	   <td align="center" width="200px"> ${bookingVO.checkin}</td>
- 	   <td align="center" width="200px"> ${bookingVO.checkout}</td>
- 	   <td align="center" width="200px"> <fmt:formatNumber type="currency" value="${bookingVO.rprice}"/></td>
-       <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
-       <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}" onClick="return delcheck();"> 취 소 </a></td>
-     </tr>
+      <c:choose>
+	      <c:when test="${empty bookingList}">
+		      <td width="100%" colspan="10" align="center" height="23">
+			  	현재 예약이 없습니다.
+			  </td>
+	      </c:when>
+	      <c:otherwise>
+	      			 <c:forEach items="${bookingList}"  var="bookingVO">
+					     <tr>
+					       <td align="center" width="100px"> ${bookingVO.bseq} </td>
+					 	   <td align="center" width="100px"> ${bookingVO.rseq} </td>
+					 	   <td align="center" width="300px"> ${bookingVO.bookdate}</td>
+					 	   <td align="center" width="130px"> ${bookingVO.mname} </td>
+					 	   <td align="center" width="200px"> ${bookingVO.phone} </td>
+					 	   <td align="center" width="100px"> ${bookingVO.memail} </td>
+					 	   <td align="center" width="150px">${bookingVO.checkin}</td>
+					 	   <td align="center" width="170px">${bookingVO.checkout}</td>
+					       <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
+					       <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}"> 삭 제 </a></td>
+					     </tr>
+					     </c:forEach> 
+	      </c:otherwise>
+      </c:choose>
+      
      
-    </c:forEach>
-     </table>
+      </table>
+      
+      
+ 
     </form>
+    <br><br>
+    <input type="button" value="다른 숙소 보기" onclick="history.back(1)">  
   </article>
 </div>
 </div>

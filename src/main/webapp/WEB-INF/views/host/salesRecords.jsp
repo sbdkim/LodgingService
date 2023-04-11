@@ -74,7 +74,7 @@ $(document).ready(function() {
 });
 </script>
 	<main>
-	<div class="tap_wrapper" style="align-items: start">
+	<div class="tap_wrapper" style="align-items: start ; padding-top:50px">
 		<%@ include file="sub_menu_host.jsp"%>
 		<div class="sub_wrapper" style="width: 1000px">
 			

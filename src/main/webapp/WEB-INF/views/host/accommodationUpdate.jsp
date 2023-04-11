@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<%@ include file="sub_menu_host.jsp"%>
 <style>
 	/*table */
 	/*** Table Styles **/
@@ -88,12 +87,27 @@
 	td:last-child {
 		border-right: 0px;
 	}
+	
+	#category{
+	width: 80px;
+	font-size: 18px;
+  	font-weight: 300;
+	margin-left: 1px;
+
+}
+input[type="text"] {
+width: 300px;
+}
+	
+	
+	
 </style>
 <main>
-	<div class="tap_wrapper">
-		<div class="sub_wrapper">
+	<div class="tap_wrapper" style="align-items: start; width: 1300px; margin: auto; padding-top: 50px">
+	<%@ include file="sub_menu_host.jsp" %> 
+		<div class="sub_wrapper" style="text-align:center; width: 1000px ; margin-left: 10px">
 			<article>
-				<h1>객실 수정</h1>
+				<h1>숙소 수정</h1>
 				<form name="frm" id="acc_update_form" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="aseq" value="${accommodationVO.aseq}">
 					<input type="hidden" name="email"> 
@@ -120,13 +134,13 @@
 						<tr>
 							<th>이 름</th>
 							<td width="343" colspan="5">
-								<input type="text" name="aname" id="aname" size="100" maxlength="500" value="${accommodationVO.aname}">
+								<input type="text" name="aname" id="aname" size="150" maxlength="500" value="${accommodationVO.aname}">
 							</td>
 						</tr>
 						<tr>
 							<th>주 소</th>
 							<td width="343" colspan="5">
-								<input type="text" name="address" id="address" size="47" maxlength="100" value="${accommodationVO.address}">
+								<input type="text" name="address" id="address" size="150" maxlength="100" value="${accommodationVO.address}">
 							</td>
 						</tr>
 						<tr>
@@ -145,12 +159,14 @@
 							</td>
 						</tr>
 					</table>
-					<div id="buttons">
-						<input class="btn" type="button" value="수정" onClick="go_mod_save('${accommodationVO.aseq}')">
-						<input class="btn" type="button" value="취소" onClick="go_mov()">
-					</div>
+					
 				</form>
 			</article>
+			<br><br>
+				<div id="buttons">
+					<input class="btn" type="button" value="수정" onClick="go_mod_save('${accommodationVO.aseq}')">
+					<input class="btn" type="button" value="취소" onClick="go_mov()">
+				</div>
 		</div>
 	</div>
 </main>

@@ -2,7 +2,7 @@
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>  
      
-    <style>
+ <style>
  /*table */
  /*** Table Styles **/
 
@@ -94,7 +94,7 @@ td:last-child {
 
 </style>      
 <main>
-	<div class="tap_wrapper" style="align-items: start; width: 1300px; margin: auto">
+	<div class="tap_wrapper" style="align-items: start; width: 1300px;  padding-top:50px; margin: auto">
 	<%@ include file="sub_menu_host.jsp" %> 
 		<div class="sub_wrapper" style="text-align:center; width: 1000px ; margin-left: 10px">
   <article>
