@@ -89,11 +89,13 @@ td:last-child {
 }
 </style>
 <main>
-	<div class="tap_wrapper">
-		<div class="sub_wrapper">
+	<div class="tap_wrapper" style="align-items: start; width: 1300px; margin: auto; padding-top: 50px">
+	<%@ include file="sub_menu_host.jsp" %> 
+		<div class="sub_wrapper" style="text-align:center; width: 1000px ; margin-left: 10px">
 			<article>
 				<h2>상세 정보</h2>
-				<form name="formm" id="room_form" method="post">
+				<form name="formm" id="room_form" method="post" style="display:flex; justify-content:center; ">
+					<div style="display:block; text-align:center;">
 					<h3>업체 정보</h3>
 					<input type="hidden" name="aseq" value="${accommodationDetail.aseq}">
 					<table id="accommodationList" border="1">
@@ -129,9 +131,11 @@ td:last-child {
 					</table>
 
 					<div class="clear"></div>
-					<div id="buttons" style="float: right">
+					<br> <br>
+					<div id="buttons">
 						<input class="btn" type="button" name="btn_write" value="객실 등록"onClick="go_rwrt()">
 						<input type="button" value="이전단계로" onclick="history.back(1)">
+					</div>
 					</div>
 				</form>
 			</article>

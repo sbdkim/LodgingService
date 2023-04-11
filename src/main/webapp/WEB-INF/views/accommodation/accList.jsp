@@ -149,7 +149,7 @@ td:last-child {
 									</tr>
 								</c:forEach>
 								<tr id="pagination" style="background: white">
-									<td colspan="4" style="text-align: center;"><%@ include file="page_area.jsp"%></td>
+									<td colspan="5" style="text-align: center;"><%@ include file="page_area.jsp"%></td>
 								</tr>
 							</c:otherwise>
 						</c:choose>
