@@ -196,7 +196,7 @@ td:last-child {
 					<br>
 					<div id="buttons">
 						<input class="btn" type="button" value="등록" onClick="go_save()">
-						<input class="btn" type="button" value="취소" onClick="go_mov()">
+						<input class="btn" type="button" value="취소" onClick="history.back(1)">
 					</div>
 				</form>
 			</article>

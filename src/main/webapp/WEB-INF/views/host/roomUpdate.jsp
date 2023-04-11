@@ -194,9 +194,8 @@ td:last-child {
 					<br>
 					<br>
 					<div id="buttons">
-						<input class="btn" type="button" value="수정"
-							onClick="go_mod_save('${roomVO.rseq}')"> <input
-							class="btn" type="button" value="취소" onClick="go_mov()">
+						<input class="btn" type="button" value="수정" onClick="go_mod_save('${roomVO.rseq}')"> 
+						<input class="btn" type="button" value="취소" onClick="history.back(1)">
 					</div>
 				</form>
 			</article>
