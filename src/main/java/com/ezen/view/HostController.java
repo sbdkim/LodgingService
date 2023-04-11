@@ -334,7 +334,7 @@ public class HostController {
 			}
 			
 			
-			List<BookingVO> bookingList = bookingService.getListBookByAseq12(vo);
+			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo);
 
 			model.addAttribute("aseq", vo.getAseq());
 			
