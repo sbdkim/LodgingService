@@ -5,9 +5,8 @@
   <footer>  
     <hr>
     <div id="copy">
-     All contents Copyright 2013 Nonage Inc. all rights reserved<br>
-     Contact mail : Nonage@Nonage.com Tel: +82 64 123 4315 
-     Fax +82 64 123 4321
+     KozyNest Copyright © 2023 Ezen - All rights reserved <br>
+     Contact mail : knest@kozynest.com Tel: +82 10 2343 4315 
     </div>         
   </footer>
 </div>

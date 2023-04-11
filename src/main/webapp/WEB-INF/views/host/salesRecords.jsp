@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<%@ include file="sub_menu_host.jsp"%>
+
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 		var data = new google.visualization.DataTable();
 		
 		data.addColumn("string", "aname");
-		data.addColumn("number", "bprice");
+		data.addColumn("number", "₩");
 		
 		
 	
@@ -79,15 +79,22 @@ $(document).ready(function() {
 	
 });
 </script>
-
-	<div align="center">
-	<h1>연도별 숙소 예약 현황</h1>
-	<table>
-
-		<tr>
-
-			<td><div id="ColumnChart" style="border:1px solid #ccc"></div></td>
-		</tr>
-	</table>
+	<main>
+	<div class="tap_wrapper" style="align-items: start">
+		<%@ include file="sub_menu_host.jsp"%>
+		<div class="sub_wrapper" style="width: 1000px">
+			
+			<div align="center">
+			<h1>숙소별 매출</h1>
+			<table>
+		
+				<tr>
+		
+					<td><div id="ColumnChart" style="border:1px solid #ccc"></div></td>
+				</tr>
+			</table>
+			</div>
+		</div>
 	</div>
+	</main>
 <%@ include file="../footer.jsp"%>

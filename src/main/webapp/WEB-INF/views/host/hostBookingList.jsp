@@ -96,7 +96,7 @@ td:last-child {
 <main>
 	<div class="tap_wrapper" style="align-items: start; width: 1300px; margin: auto">
 	<%@ include file="sub_menu_host.jsp" %> 
-		<div class="sub_wrapper" style="text-align:center; min-width: 500px ; margin-left: 10px">
+		<div class="sub_wrapper" style="text-align:center; width: 1000px ; margin-left: 10px">
   <article>
       <h2> 예약된 목록 </h2>
       <form name="formm" method="post">
