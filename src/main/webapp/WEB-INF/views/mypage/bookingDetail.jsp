@@ -96,7 +96,7 @@ td:last-child {
 	<div class="tap_wrapper">
 		<div class="sub_wrapper">
     <article>
-    <h2> 주문상세정보 </h2>
+    <h2> 예약상세정보 </h2>
     <form name="formm" method="post" action="booking_delete">   
       <table id="booking" border="1">      
       <tr>

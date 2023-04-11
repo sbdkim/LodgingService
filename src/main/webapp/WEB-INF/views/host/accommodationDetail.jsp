@@ -150,6 +150,14 @@ td:last-child {
  }
  
  function delcheck(){
-	 confirm()
- }
+	if(confirm("삭제하시겠습니까?")){
+		
+		return confirm("삭제하시겠습니까?");
+		
+	}else{
+		return false;
+		location = "accommodationDetail";
+	}
+
+}
  </script>   

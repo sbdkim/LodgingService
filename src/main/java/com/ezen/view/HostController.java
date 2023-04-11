@@ -184,23 +184,12 @@ public class HostController {
 			RoomVO roomDetail = new RoomVO();
 			roomDetail.setAseq(vo.getAseq());
 
-			if(roomList.size()!=0) {
-				roomDetail.setRname(roomList.get(0).getRname());
-				roomDetail.setPrice(roomList.get(0).getPrice());
-				
-				model.addAttribute("accommodationDetail", accommodationDetail);
-				model.addAttribute("roomList", roomList);
-
-
-				return "host/mypage/accommodationDetail";
-				
-			} else {
-				
+			
 				model.addAttribute("accommodationDetail", accommodationDetail);
 				model.addAttribute("roomList", roomList);
 
 				return "host/accommodationDetail";
-			}
+
 
 			
 		}
@@ -334,7 +323,7 @@ public class HostController {
 			}
 			
 			
-			List<BookingVO> bookingList = bookingService.getListBookByAseq12(vo);
+			List<BookingVO> bookingList = bookingService.getListBookByAseq(vo);
 
 			model.addAttribute("aseq", vo.getAseq());
 			
