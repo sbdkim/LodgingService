@@ -42,6 +42,10 @@ public class HostDAO {
 		return result;
 	}
 	
+	public HostVO getStatus(String hemail) {
+		return mybatis.selectOne("HostMapper.getHost", hemail);
+	}
+		
 	//호스트 회원가입
 	public void insertHost(HostVO vo) {
 		mybatis.insert("HostMapper.insertHost", vo);

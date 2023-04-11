@@ -170,7 +170,7 @@ td:last-child {
       
       <input type="checkbox" name="bathtub" id="input_check" value="1">욕조<br>
       
-      <input type="checkbox" name="parking" id="input_check" value="1">주방&nbsp;
+      <input type="checkbox" name="parking" id="input_check" value="1">주차장&nbsp;
       
       <input type="checkbox" name="heater" id="input_check" value="1">수영장&nbsp;
       
@@ -212,7 +212,7 @@ td:last-child {
 </table>
 <div id="buttons">
 <input class="btn" type="button" value="수정" onClick="go_mod_save('${roomVO.rseq}')">           
-<input class="btn" type="button" value="취소" onClick="go_mov()">
+<input class="btn" type="button" value="취소" onClick="history.back(1)">
 </div>
 </form> 
 </article>

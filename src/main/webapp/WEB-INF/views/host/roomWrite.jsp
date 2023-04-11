@@ -100,6 +100,7 @@ td:last-child {
 인코딩 타입을 multipart/form-data 로 지정해야 한다. -->
 <form name="frm" id="room_write_form" method="post" enctype="multipart/form-data">
 <input type="hidden" name="aseq" value="${aseq}">
+<input type="hidden" name="rseq" value="${rseq}">
 <table id="list" border="1">
 <tr>
   <th>객실 이름</th>
@@ -168,7 +169,7 @@ td:last-child {
       
       <input type="checkbox" name="bathtub" id="input_check" value="1">욕조<br>
       
-      <input type="checkbox" name="parking" id="input_check" value="1">주방&nbsp;
+      <input type="checkbox" name="parking" id="input_check" value="1">주차장&nbsp;
       
       <input type="checkbox" name="heater" id="input_check" value="1">수영장&nbsp;
       
@@ -208,7 +209,7 @@ td:last-child {
 <br><br>
 <div id="buttons">
 <input class="btn" type="button" value="등록" onClick="go_save()">           
-<input class="btn" type="button" value="취소" onClick="go_mov()">
+<input class="btn" type="button" value="취소" onClick="history.back(1)">
 </div>
 </form> 
 </article>
@@ -266,7 +267,4 @@ function go_save() {
 	}
 }
 
-function go_mov(){
-	
-}
 </script>

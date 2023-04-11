@@ -23,6 +23,7 @@ public class BookingVO {
 	private String mname;
 	private int tprice;
 	private String phone;
+	private String tel;
 
 	// Getter, Setter 메소드
 	public int getBseq() {
@@ -169,15 +170,24 @@ public class BookingVO {
 		this.phone = phone;
 	}
 
+	
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
 	// ToString
 	@Override
 	public String toString() {
-
-		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", memail=" + memail + ", hemail=" + hemail + ", checkin="
-				+ checkin + ", checkout=" + checkout + ", rprice=" + rprice + ", bprice=" + bprice + ", payment="
-				+ payment + ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname + ", rname=" + rname
-				+ ", aseq=" + aseq + ", mname=" + mname + ", tprice=" + tprice + ", email=" + email + ", phone=" + phone
-				+ "]";
+		return "BookingVO [bseq=" + bseq + ", rseq=" + rseq + ", email=" + email + ", memail=" + memail + ", hemail="
+				+ hemail + ", checkin=" + checkin + ", checkout=" + checkout + ", rprice=" + rprice + ", bprice="
+				+ bprice + ", payment=" + payment + ", status=" + status + ", bookdate=" + bookdate + ", aname=" + aname
+				+ ", rname=" + rname + ", aseq=" + aseq + ", mname=" + mname + ", tprice=" + tprice + ", phone=" + phone
+				+ ", tel=" + tel + "]";
 	}
+
 	
 }//BookingVO

@@ -14,13 +14,20 @@
 		WHERE memail=#{memail}
 
 	</select>
+
 	
 	<!-- aseq로 예약내역 조회 -->
 	<select id="listBookByAseq" resultType="booking">
 		SELECT * FROM booking_view
 		WHERE aseq=#{aseq}
+		<if test="status==1 or status==2">
+		AND status in (1, 2)
+		</if>
+		<if test="status==3">
+		AND status=3
+		</if>
+		ORDER BY status
 	</select>
-	
 	
 	<!-- 예약번호로 예약내역 조회 -->
 	<select id="selectBookByBseq" resultType="booking">

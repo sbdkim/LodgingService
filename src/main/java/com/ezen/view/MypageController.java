@@ -69,6 +69,7 @@ public class MypageController {
 			vo.setBseq(vo.getBseq());
 			vo.setStatus(0);
 			vo.setRseq(vo.getRseq());
+			vo.setTel(vo.getTel());
 
 			List<BookingVO> bookList = bookingService.getListBookByEmail(vo);
 
@@ -92,6 +93,7 @@ public class MypageController {
 		vo.setCheckin(vo.getCheckin());
 		vo.setCheckout(vo.getCheckout());
 		vo.setStatus(vo.getStatus());
+		vo.setTel(vo.getTel());
 		BookingVO booking = bookingService.selectBookByBseq(vo);
 
 		model.addAttribute("booking", booking);
