@@ -152,7 +152,7 @@ width: 300px;
 						<tr>
 							<th>업체 이미지</th>
 							<td colspan="5">
-								<img src="accommodation_images/${accommodationVO.aimage}" width="200pt"> 
+								<img src="accommodation_images/${accommodationVO.aseq}.jpg" width="200pt"> 
 								<br>
 								<input type="file" name="accommodation_images" id="accommodation_images">
 								<input type="hidden" name="image" value="${accommodationVO.aimage}">
