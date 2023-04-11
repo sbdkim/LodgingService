@@ -282,11 +282,11 @@ public class HostController {
 	}
 
 	@RequestMapping("/host_room_delete")
-	public String hostRoomDelete(@RequestParam(value = "rseq") int rseq) {
+	public String hostRoomDelete(@RequestParam(value = "rseq") int rseq,@RequestParam(value = "aseq") int aseq ) {
 
 		roomService.deleteRoom(rseq);
 
-		return "redirect:accommodation_detail";
+		return "accommodation_detail?aseq=" + aseq;
 	}
 
 	@GetMapping("/hostBookingList")
@@ -337,11 +337,16 @@ public class HostController {
 	}
 	
 	@RequestMapping("/host_booking_delete")
-	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {
-
+	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq,
+			@RequestParam(value = "status") int status,@RequestParam(value = "aseq") int aseq
+			) {
+		System.out.println("status: " + status);
+		System.out.println("bseq: " + bseq);
+		System.out.println("aseq: " + aseq);
+		
 		bookingService.deleteBookByBseq(bseq);
 
-		return "redirect:host_booking_detail";
+		return "redirect:host_booking_detail?status=" + status + "&aseq=" + aseq;
 	}
 
 		

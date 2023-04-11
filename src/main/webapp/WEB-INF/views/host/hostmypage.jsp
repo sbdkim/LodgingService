@@ -171,7 +171,7 @@ function go_list() {
 function delcheck(){
 	if(confirm("삭제하시겠습니까?")){
 		
-		return confirm("삭제하시겠습니까?");
+		return true;
 		
 	}else{
 		return false;
