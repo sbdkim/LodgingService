@@ -146,51 +146,38 @@ td:last-child {
 						</tr>
 						<tr>
 							<th>객실 정보</th>
-							<td colspan="4"><input type="checkbox" name="wifi"
-								id="input_check" value="1" checked>와이파이 &nbsp; <input
-								type="checkbox" name="kitchen" id="input_check" value="0">주방&nbsp;
-
+							<td colspan="4">
+								<input type="checkbox" name="wifi" id="input_check" value="1" checked>와이파이 &nbsp;
+								<input type="checkbox" name="kitchen" id="input_check" value="0">주방&nbsp;
 								<input type="checkbox" name="pool" id="input_check" value="1">수영장&nbsp;
-
-								<input type="checkbox" name="ac" id="input_check" value="1"
-								checked>에어컨&nbsp; <input type="checkbox" name="tv"
-								id="input_check" value="1">TV&nbsp; <input
-								type="checkbox" name="coffeemachine" id="input_check" value="1">커피머신
-
+								<input type="checkbox" name="ac" id="input_check" value="1" checked>에어컨&nbsp;
+								<input type="checkbox" name="tv" id="input_check" value="1">TV&nbsp;
+								<input type="checkbox" name="coffeemachine" id="input_check" value="1">커피머신
+	
 								<input type="checkbox" name="fridge" id="input_check" value="1">냉장고&nbsp;
-
 								<input type="checkbox" name="bathtub" id="input_check" value="1">욕조<br>
-
 								<input type="checkbox" name="parking" id="input_check" value="1">주방&nbsp;
-
 								<input type="checkbox" name="heater" id="input_check" value="1">수영장&nbsp;
-
-								<input type="checkbox" name="microwave" id="input_check"
-								value="1">에어컨&nbsp; <input type="checkbox" name="kettle"
-								id="input_check" value="1">전기포트 <input type="checkbox"
-								name="washer" id="input_check" value="1">세탁기&nbsp; <input
-								type="checkbox" name="bbq" id="input_check" value="1">바베큐&nbsp;
-
-								<input type="checkbox" name="hairdrier" id="input_check"
-								value="1">헤어드라이어&nbsp;<br> <input type="checkbox"
-								name="amenity" id="input_check" value="1" checked>어메니티&nbsp;
-
-								<input type="checkbox" name="towel" id="input_check" value="1"
-								checked>수건&nbsp; <input type="checkbox" name="elevator"
-								id="input_check" value="1">엘리베이터&nbsp; <input
-								type="checkbox" name="breakfast" id="input_check" value="1">조식&nbsp;
-
-								<input type="checkbox" name="smoking" id="input_check" value="0"
-								checked>금연&nbsp; <input type="checkbox" name="gym"
-								id="input_check" value="1">피트니스&nbsp; <input
-								type="checkbox" name="roomservice" id="input_check" value="1">룸서비스&nbsp;
+								<input type="checkbox" name="microwave" id="input_check" value="1">에어컨&nbsp;
+								<input type="checkbox" name="kettle" id="input_check" value="1">전기포트
+								<input type="checkbox" name="washer" id="input_check" value="1">세탁기&nbsp;
+								<input type="checkbox" name="bbq" id="input_check" value="1">바베큐&nbsp;
+	
+								<input type="checkbox" name="hairdrier" id="input_check" value="1">헤어드라이어&nbsp;<br>
+								<input type="checkbox" name="amenity" id="input_check" value="1" checked>어메니티&nbsp;
+								<input type="checkbox" name="towel" id="input_check" value="1" checked>수건&nbsp;
+								<input type="checkbox" name="elevator" id="input_check" value="1">엘리베이터&nbsp;
+								<input type="checkbox" name="breakfast" id="input_check" value="1">조식&nbsp;
+								<input type="checkbox" name="smoking" id="input_check" value="0" checked>금연&nbsp;
+								<input type="checkbox" name="gym" id="input_check" value="1">피트니스&nbsp;
+								<input type="checkbox" name="roomservice" id="input_check" value="1">룸서비스&nbsp;
 							</td>
 						</tr>
 						<tr>
 							<th>객실 이미지</th>
 							<td width="343" colspan="5">
-								<!--  [2] 파일 업로드를 하기 위한 input 태그는 타입 속성 값을 file로 지정해야 한다.  --> <input
-								type="file" name="default" id="default">
+								<!--  [2] 파일 업로드를 하기 위한 input 태그는 타입 속성 값을 file로 지정해야 한다.  --> 
+								<input type="file" name="default" id="default">
 							</td>
 						</tr>
 					</table>
