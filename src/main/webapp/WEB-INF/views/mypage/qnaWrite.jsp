@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %> 
-<%@ include file="sub_menu.jsp" %> 
+
     <style>
  /*table */
  /*** Table Styles **/
@@ -93,8 +93,9 @@ td:last-child {
 
 </style>      
 <main>
-	<div class="tap_wrapper">
-		<div class="sub_wrapper">
+	<div class="tap_wrapper" style="align-items: start">
+	<%@ include file="sub_menu.jsp" %> 
+		<div class="sub_wrapper" style="text-align:center; width: 1100px ; margin-left: 10px;">
 <article>
 <h2> 1:1 문의 </h2>
   <h3> 고객님의 질문에 대해서 운영자가 1:1 답변을 해드립니다.</h3>
