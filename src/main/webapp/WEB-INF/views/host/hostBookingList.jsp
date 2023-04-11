@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>  
-<%@ include file="sub_menu_host.jsp" %>      
+     
     <style>
  /*table */
  /*** Table Styles **/
@@ -78,10 +78,11 @@ tr:last-child td:last-child {
 td {
   background:#FFFFFF;
   padding:20px;
-  text-align:left;
+  text-align:center;
   vertical-align:middle;
   font-weight:300;
   font-size:18px;
+  width: 800px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
 }
@@ -93,12 +94,13 @@ td:last-child {
 
 </style>      
 <main>
-	<div class="tap_wrapper">
-		<div class="sub_wrapper">
+	<div class="tap_wrapper" style="align-items: start; width: 1300px; margin: auto">
+	<%@ include file="sub_menu_host.jsp" %> 
+		<div class="sub_wrapper" style="text-align:center; width: 1000px ; margin-left: 10px">
   <article>
       <h2> 예약된 목록 </h2>
       <form name="formm" method="post">
-        <table id="accommodationList" border="1">
+        <table id="accommodationList" border="1" style="text-align:center;">
        <c:forEach items="${accommodationList}"  var="accommodationVO">
        <tr>      
          <td align="center">

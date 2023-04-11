@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>
-<%@ include file="sub_menu.jsp" %>        
+      
 <style>
  /*table */
  /*** Table Styles **/
@@ -92,10 +92,16 @@ td:last-child {
 
 </style>
 <main>
-	<div class="tap_wrapper">
-		<div class="sub_wrapper">
+	<div class="tap_wrapper" style="align-items: start; width: 1500px; margin: auto">
+	<%@ include file="sub_menu.jsp" %>  
+		<div class="sub_wrapper"  style="text-align:center; width: 1100px ; margin-left: 10px">
   <article>
     <h2 align="center"> 예약 내역 확인 </h2>
+    
+    <div id="buttons">
+       <input type="button"    value="예약 계속하기"  class="cancel"  onclick="location.href='index'"> 
+      </div>
+      <br> 
     <form name="formm" method="post">
       <table id="bookingList" border="1" width="1500">
       <tr>
@@ -116,10 +122,8 @@ td:last-child {
       </c:forEach>    
       </table>
       <br><br>    
-      <div class="clear"></div>
-      <div id="buttons">
-       <input type="button"    value="예약 계속하기"  class="cancel"  onclick="location.href='index'"> 
-      </div>
+     
+      
     </form>  
   </article>
   </div>

@@ -37,7 +37,7 @@ $(document).ready(function() {
 		var data = new google.visualization.DataTable();
 		
 		data.addColumn("string", "MONTH");
-		data.addColumn("number", "PRICE");
+		data.addColumn("number", "₩");
 		
 		// 콘트롤러에서 json타입으로 전달된 데이터를 
 		// 자바스크립트의 배열로 저장
