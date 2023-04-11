@@ -133,8 +133,6 @@ width: 80px;
 
 <tr>
   <th>주소</th>
-  <td width="300px">
-       <input type="text" name="address" id="address" size="500" maxlength="1500">
   <td >
        <input type="text" name="address" id="address" size="80" maxlength="100">
   </td>

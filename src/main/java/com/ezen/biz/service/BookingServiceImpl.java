@@ -63,8 +63,8 @@ public class BookingServiceImpl implements BookingService {
 	
 	@Override
 
-	public List<SalesQuantity> getListBookingSales() {
-		return bDao.getListBookingSales();
+	public List<SalesQuantity> getListBookingSales(AccommodationVO vo) {
+		return bDao.getListBookingSales(vo);
 	}
 
 	@Override

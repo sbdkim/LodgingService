@@ -134,7 +134,7 @@ td:last-child {
 		<td align="center" width="450px"> ${accommodationVO.address} </td>
 		<td align="center" width="200px"> ${accommodationVO.tel} </td>
 		<td align="center" width="120px"> <a href="accommodation_detail?aseq=${accommodationVO.aseq}"> 조 회 </a></td>
-		<td align="center" width="100px"> <a href="host_acc_update_form?aseq=${accommodationVO.aseq}"> 수 정  </a></td>
+		<td align="center" width="100px"> <a href="host_acc_update_form?aseq=${accommodationVO.aseq}"> 수 정 </a></td>
 		<td align="center" width="100px"> <a href="host_acc_delete?aseq=${accommodationVO.aseq}" onClick="return delcheck();"> 삭 제 </a></td>
       </tr>
       </c:forEach>   

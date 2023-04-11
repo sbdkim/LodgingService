@@ -88,7 +88,6 @@ td:last-child {
 	border-right: 0px;
 }
 </style>
-
 <main>
 	<div class="tap_wrapper" style="align-items: start; width: 1300px; margin: auto; padding-top: 50px">
 	<%@ include file="sub_menu_host.jsp" %> 

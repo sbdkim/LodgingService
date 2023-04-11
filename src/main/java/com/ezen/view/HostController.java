@@ -184,11 +184,11 @@ public class HostController {
 			RoomVO roomDetail = new RoomVO();
 			roomDetail.setAseq(vo.getAseq());
 
-			
-				model.addAttribute("accommodationDetail", accommodationDetail);
-				model.addAttribute("roomList", roomList);
 
-				return "host/accommodationDetail";
+			model.addAttribute("accommodationDetail", accommodationDetail);
+			model.addAttribute("roomList", roomList);
+
+			return "host/accommodationDetail";
 
 
 			
@@ -360,7 +360,7 @@ public class HostController {
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
 
 		vo.setHemail(loginHost.getHemail());
-		List<SalesQuantity> listSales = bookingService.getListBookingSales();
+		List<SalesQuantity> listSales = bookingService.getListBookingSales(vo);
 		return listSales;
 	}
 

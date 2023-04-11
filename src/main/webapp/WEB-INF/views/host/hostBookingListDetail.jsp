@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>  
-<%@ include file="sub_menu_booking.jsp" %> 
+
   <style>
  /*table */
  /*** Table Styles **/
@@ -91,8 +91,9 @@ td:last-child {
 }
 </style>       
 <main>
-	<div class="tap_wrapper">
-		<div class="sub_wrapper"> 
+	<div class="tap_wrapper" style="align-items: start; width: 1600px;  padding-top:50px; margin: auto">
+	<%@ include file="sub_menu_booking.jsp" %> 
+		<div class="sub_wrapper" style="text-align:center; width: 1400px ; margin-left: 10px"> 
   <article>
      <h2> 예약 목록 </h2>
      <form name="formm" id="host_book_form" method="get">
@@ -103,10 +104,11 @@ td:last-child {
       <tr>
         <th>예약번호</th><th>객실번호</th><th>예약날짜</th><th>예약자명</th><th>전화번호</th><th>이메일</th><th>체크인날짜</th><th>체크아웃날짜</th>
         <th>총 가격</th><th>삭제</th>
+
       </tr>
       <c:choose>
 	      <c:when test="${empty bookingList}">
-		      <td width="100%" colspan="10" align="center" height="23">
+		      <td width="100%" colspan="10" align="center" height="23" style="text-align:center">
 			  	현재 예약이 없습니다.
 			  </td>
 	      </c:when>
@@ -127,7 +129,6 @@ td:last-child {
      </c:forEach> 
      </c:otherwise>
      </c:choose>
-
       </table>
       
     </form>

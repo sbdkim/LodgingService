@@ -70,8 +70,8 @@ public class BookingDAO {
 	}
 
 
-	public List<SalesQuantity> getListBookingSales() {
-		return mybatis.selectList("BookingMapper.getListBookingSales");
+	public List<SalesQuantity> getListBookingSales(AccommodationVO vo) {
+		return mybatis.selectList("BookingMapper.getListBookingSales", vo);
 	}
 	
 	public List<BookingVO> listBestAccom() {
