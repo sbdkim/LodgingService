@@ -91,7 +91,7 @@ td:last-child {
   
 
 </style>      
-<main>
+<main style="justify-content: center">
 	<div class="tap_wrapper">
 		<div class="sub_wrapper">
  <article>
@@ -116,14 +116,18 @@ td:last-child {
         <td>${qnaVO.reply}  
       </tr>
     </table>
-    <div class="clear"></div>
-     <div id="buttons" style="float:right">
-      <input type="button"  value="목록보기"     class="submit"  onclick="location.href='qna_list'"> 
-      <input type="button"  value="예약 계속하기"  class="cancel"  onclick="location.href='index'">  
-      </div>
+    
     </form>
   </article>
   </div>
   </div>
+  <br>
+   <div id="buttons"  style="text-align: center;">
+	      <input type="button"  value="목록보기"     class="submit"  onclick="location.href='qna_list'"> 
+	      <input type="button"  value="예약 계속하기"  class="cancel"  onclick="location.href='index'">  
+      </div>
+  
+  
+  
   </main>
 <%@ include file="../footer.jsp" %>
