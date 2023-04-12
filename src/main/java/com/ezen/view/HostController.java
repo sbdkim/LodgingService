@@ -287,6 +287,7 @@ public class HostController {
 		roomService.deleteRoom(rseq);
 
 		return "redirect:accommodation_detail?aseq=" + aseq;
+
 	}
 
 	@GetMapping("/hostBookingList")
@@ -342,7 +343,7 @@ public class HostController {
 		bookingService.deleteBookByBseq(bseq);
 
 		return "redirect:host_booking_detail?status=1&aseq="+aseq;
-	}
+
 
 		
 	

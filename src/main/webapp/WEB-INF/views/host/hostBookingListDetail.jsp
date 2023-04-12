@@ -91,9 +91,9 @@ td:last-child {
 }
 </style>       
 <main>
-	<div class="tap_wrapper" style="align-items: start; width: 1600px;  padding-top:50px; margin: auto">
+	<div class="tap_wrapper" style="align-items: start; width: 1800px;  padding-top:50px; margin: auto">
 	<%@ include file="sub_menu_booking.jsp" %> 
-		<div class="sub_wrapper" style="text-align:center; width: 1400px ; margin-left: 10px"> 
+		<div class="sub_wrapper" style="text-align:center; width: 1600px ; margin-left: 10px"> 
   <article>
      <h2> 예약 목록 </h2>
      <form name="formm" id="host_book_form" method="get">
@@ -124,7 +124,8 @@ td:last-child {
  	   <td align="center" width="150px"> ${bookingVO.checkin}</td>
  	   <td align="center" width="170px"> ${bookingVO.checkout}</td>
      <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
-     <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}"> 취 소 </a></td>
+     <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}&status=${bookingVO.status}&aseq=${aseq}"> 취 소 </a></td>
+
      </tr>
      </c:forEach> 
      </c:otherwise>
@@ -133,8 +134,8 @@ td:last-child {
       
     </form>
     <br><br>
-
     <input type="button" value="다른 숙소 보기" onclick="go_list()">  
+
   </article>
 </div>
 </div>
@@ -147,5 +148,7 @@ function go_list() {
 		form.action = "host_booking_detail";
 		form.submit();
 }
-</script> 
+
+</script>
+
 

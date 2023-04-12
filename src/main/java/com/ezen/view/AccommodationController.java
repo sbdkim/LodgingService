@@ -22,7 +22,6 @@ public class AccommodationController {
 
 	@RequestMapping("/search")
 	public String searchView(AccommodationVO vo, Model model) {
-		System.out.println(vo.toString());
 		String address = vo.getAddress();
 		List<AccommodationVO> accommodationList = accommodationService.selectAccByAdd(address);
 		model.addAttribute("accommodationList", accommodationList);

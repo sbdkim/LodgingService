@@ -124,11 +124,13 @@ td:last-child {
 					</tr>
 					<tr>
 						<td><b>체크인</b></td>
-						<td><input type="hidden" id="checkin" name="checkin" readonly value="${param.checkin}">${param.checkin}</td>
+						<td><input type="hidden" id="checkin" name="checkin" readonly value="${param.checkin}">
+						${param.checkin}</td>
 					</tr>
 					<tr>
 						<td><b>체크아웃</b></td>
-						<td><input type="hidden" id="checkout" name="checkout" readonly value="${param.checkout}">${param.checkout}</td>
+						<td><input type="hidden" id="checkout" name="checkout" readonly value="${param.checkout}">
+						${param.checkout}</td>
 					</tr>
 					<tr>
 						<td><b>이름</b></td>
@@ -186,13 +188,4 @@ td:last-child {
 		document.getElementById("bprice").value = bprice;
 	});
 </script>
-
-<script type="text/javascript">
-	function go_book() {
-		var form = document.getElementById("book_form");
-		form.action = "booking_insert";
-		form.submit();
-	}
-</script>
-
 <%@ include file="../footer.jsp"%>

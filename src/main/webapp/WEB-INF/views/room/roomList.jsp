@@ -124,7 +124,7 @@ td:last-child {
 			<input class="btn" type="button" name="refreshDate" id="refreshDate" value="검색">
 		</div>
 	</form>
-	
+	<br> 
 	<article style="display: flex; justify-content: center;">
 		<form name="roomForm" id="room_form" method="post" style="display: block; margin-bottom: 60px">
 	
