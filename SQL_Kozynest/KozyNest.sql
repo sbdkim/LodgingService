@@ -18,7 +18,7 @@ CREATE TABLE host (
 	pwd	VARCHAR2(20)		NOT NULL,
 	phone	VARCHAR2(20)		NOT NULL,
 	name	VARCHAR2(20)		NOT NULL,
-    status  NUMBER(1)   DEFAULT 0  --0:승인x 1:승인O
+    status  NUMBER(1)   DEFAULT 0 
 );
 
 
@@ -205,6 +205,8 @@ insert into admin values('kozynest0330@gmail.com','0330','김신범','010-5421-7
 insert into admin values('kozynest1104@gmail.com','1104','지원찬','010-4513-9875');
 insert into admin values('kozynest0116@gmail.com','0116','조예리','010-1378-3254');
 insert into admin values('kozynest0331@gmail.com','0331','김서연','010-9312-3311');
-
+insert into admin values('kozynest862@gmail.com','dlwps112','김지연','010-9311-4012');
 
 commit;
+
+	
