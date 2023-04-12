@@ -34,8 +34,6 @@ public class MypageController {
 			return "member/login";
 		} else {
 			vo.setEmail(loginUser.getEmail());
-			vo.setCheckin(checkin);
-			vo.setCheckout(checkout);
 			bookingService.insertBooking(vo);
 			return "redirect:mypage";
 

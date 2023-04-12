@@ -155,7 +155,6 @@ td:last-child {
 	
 	function go_list() {
 		var form = document.getElementById("room_form");
-		
 		form.action = "host_mypage";
 		form.submit();
 	}
