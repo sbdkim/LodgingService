@@ -1,0 +1,7 @@
+member : 400
+host : 100
+accommodation : 300
+room : 600
+booking : 600
+qna : 100
+review : 600
