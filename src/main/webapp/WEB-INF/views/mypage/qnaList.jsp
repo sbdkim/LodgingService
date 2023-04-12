@@ -101,7 +101,14 @@ td:last-child {
 								<th>등록일</th>
 								<th>답변 여부</th>
 							</tr>
-							<c:forEach items="${qnaList}" var="qnaVO">
+							<c:choose>
+								<c:when test = "${empty qnaList }">
+								<td width="100%" colspan="4" align="center" height="23">
+								  현재 등록된 QnA가 없습니다.
+								  </td>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${qnaList}" var="qnaVO">
 								<tr>
 									<td>${qnaVO.qseq}</td>
 									<td>
@@ -118,6 +125,10 @@ td:last-child {
 									</td>
 								</tr>
 							</c:forEach>
+							</c:otherwise>
+							</c:choose>
+							
+							
 						</table>
 					</div>
 	
