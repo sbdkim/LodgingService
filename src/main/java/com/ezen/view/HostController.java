@@ -126,7 +126,7 @@ public class HostController {
 		return "redirect:host_mypage";
 	}
 
-	@GetMapping("/host_mypage")
+	@RequestMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
 
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
@@ -282,11 +282,11 @@ public class HostController {
 	}
 
 	@RequestMapping("/host_room_delete")
-	public String hostRoomDelete(@RequestParam(value = "rseq") int rseq) {
+	public String hostRoomDelete(@RequestParam(value = "rseq") int rseq, @RequestParam(value = "aseq") int aseq) {
 
 		roomService.deleteRoom(rseq);
 
-		return "redirect:accommodation_detail";
+		return "redirect:accommodation_detail?aseq=" + aseq;
 	}
 
 	@GetMapping("/hostBookingList")
@@ -337,11 +337,11 @@ public class HostController {
 	}
 	
 	@RequestMapping("/host_booking_delete")
-	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq) {
+	public String hostBookingDelete(@RequestParam(value = "bseq") int bseq,@RequestParam(value = "aseq") int aseq) {
 
 		bookingService.deleteBookByBseq(bseq);
 
-		return "redirect:host_booking_detail";
+		return "redirect:host_booking_detail?status=1&aseq="+aseq;
 	}
 
 		

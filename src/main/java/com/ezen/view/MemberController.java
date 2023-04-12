@@ -79,16 +79,16 @@ public class MemberController {
 			
 			// host login
 			int result = hostService.loginHost(vo);
-			HostVO host = hostService.getHost(hostEmail);
-			int status = host.getStatus(); 
-			if (result == 1 && status == 1) {
-				System.out.println("status : " + vo.getStatus());
-				
-				
+
+			
+			if (result == 1) {
+								
 				model.addAttribute("loginHost", hostService.getHost(vo.getHemail()));
 				
 				return "redirect:index";
+				
 			}else {
+				
 				return "host/login_fail";
 
 			}

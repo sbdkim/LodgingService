@@ -103,7 +103,7 @@ td:last-child {
       
       <tr>
         <th>예약번호</th><th>객실번호</th><th>예약날짜</th><th>예약자명</th><th>전화번호</th><th>이메일</th><th>체크인날짜</th><th>체크아웃날짜</th>
-        <th>총 가격</th><th>삭제</th>
+        <th>총 가격</th><th>취소</th>
 
       </tr>
       <c:choose>
@@ -124,7 +124,7 @@ td:last-child {
  	   <td align="center" width="150px"> ${bookingVO.checkin}</td>
  	   <td align="center" width="170px"> ${bookingVO.checkout}</td>
      <td align="center" width="100px"> <fmt:formatNumber type="currency" value="${bookingVO.bprice}"/></td>
-     <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}" onClick="return delcheck();"> 취 소 </a></td>
+     <td align="center" width="100px"> <a href="host_booking_delete?bseq=${bookingVO.bseq}"> 취 소 </a></td>
      </tr>
      </c:forEach> 
      </c:otherwise>
@@ -134,24 +134,18 @@ td:last-child {
     </form>
     <br><br>
 
-    <input type="button" value="다른 숙소 보기" onclick="history.back(1)">  
+    <input type="button" value="다른 숙소 보기" onclick="go_list()">  
   </article>
 </div>
 </div>
 </main>
 <%@ include file="../footer.jsp" %>
 <script type="text/javascript">
-function delcheck(){
-	if(confirm("삭제하시겠습니까?")){
+function go_list() {
+		var form = document.getElementById("host_book_form");
 		
-		return confirm("삭제하시겠습니까?");
-		
-	}else{
-		return false;
-		location = "hostBookingList";
-	}
-
+		form.action = "host_booking_detail";
+		form.submit();
 }
-</script>
-  
+</script> 
 
