@@ -189,7 +189,7 @@ label {
 		</form>
 	</div>
 	<input type="hidden" id="rseq" name="rseq" value="${roomVO.rseq }" />
-
+	<br>
 	<div class="container" style="margin-bottom: 60px">
 		<form id="reviewListForm" name="reviewListForm" method="post">
 			<div id="reviewList"></div>

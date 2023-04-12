@@ -106,7 +106,14 @@ td:last-child {
 							<th>예약 상세</th>
 						</tr>
 	
-						<c:forEach items="${bookingList}" var="bookingVO">
+						<c:choose>
+							<c:when test="${empty bookingList}">
+								<td width="100%" colspan="6" align="center" height="23">
+								  현재 예약이 없습니다.
+								  </td>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${bookingList}" var="bookingVO">
 							<tr>
 								<td align="center" width="150px">
 									<fmt:formatDate	value="${bookingVO.bookdate}" type="date" />
@@ -124,6 +131,9 @@ td:last-child {
 								</td>
 							</tr>
 						</c:forEach>
+							</c:otherwise>
+						</c:choose>
+						
 					</table>
 					<br>
 					<br>
