@@ -62,7 +62,7 @@ public class MemberController {
 		
 		// admin login
 		if (hostEmail.equals("kozynest0330@gmail.com") || hostEmail.equals("kozynest1104@gmail.com")
-				|| hostEmail.equals("kozynest0116@gmail.com") || hostEmail.equals("kozynest0331@gmail.com")) {
+				|| hostEmail.equals("kozynest0116@gmail.com") || hostEmail.equals("kozynest0331@gmail.com") || hostEmail.equals("kozynest862@gmail.com")) {
 			System.out.println(hostEmail);
 			int result = adminService.loginAdmin(vo);
 
