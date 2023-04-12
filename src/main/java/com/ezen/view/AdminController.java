@@ -151,7 +151,6 @@ public class AdminController {
 	@ResponseBody // 화면이 아닌 데이터를 리턴하는 메소드로 지정
 	public List<BookingVO> salesRecordChart() {
 		List<BookingVO> listMonthRevenue = bookingService.getMonthlyRevenue();
-		System.out.println(listMonthRevenue);
 		return listMonthRevenue;
 
 	}

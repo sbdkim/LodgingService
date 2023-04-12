@@ -28,7 +28,7 @@ public class MypageController {
 	private AccommodationService accommodationService;
 
 	@PostMapping("/booking_insert")
-	public String insertBooking(BookingVO vo, HttpSession session, @RequestParam(value = "checkin") String checkin, @RequestParam(value = "checkout") String checkout) {
+	public String insertBooking(BookingVO vo, HttpSession session) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
 			return "member/login";
