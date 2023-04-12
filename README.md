@@ -13,13 +13,11 @@ KozyNest 프로젝트의 목적은 백엔드 측면에 초점을 맞춘 숙박 �
 
 ### 🧳 Database ERD
 
-![ERD.jpg]
-(kozynest/Picture1.jpg)
+![ERD.jpg](kozynest/Picture1.jpg)
 
 ###  🧳 Site Map
 
-![Sitemap.jpg]
-(kozynest/Picture2.jpg)
+![Sitemap.jpg](kozynest/Picture2.jpg)
 
 
 ### 🧳 사용된 기술 (Technologies Used)
