@@ -66,20 +66,13 @@
   <script>
   $(document).ready(function() {
 	  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	  
-	  
-	  
 	  mapOption = {
-
-		  
 				 center: new kakao.maps.LatLng(37.564369, 126.980058), // 지도의 중심좌표
 			      level: 7 // 지도의 확대 레벨
-
 	  };  
 	  
-
 	  var map = new kakao.maps.Map(mapContainer, mapOption);
-	    
+	  
 	  var geocoder = new kakao.maps.services.Geocoder();
 	  
 	  $.ajax({
@@ -97,17 +90,9 @@
 				            position: markerPosition
 				          });
 				          marker.setMap(map);
-				          
-				          
-				          
-				          
-				       		// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-				         // var iwContent = '<div style="padding:5px;">' + location.aname + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-				          
+
+				       	// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
 				         var iwContent = '<div style="padding:5px; margin:5px"><table style="border:none"><tr><td width="50" height="50"><img src="accommodation_images/'+ location.aseq + '.jpg" style="width:50px; height:50px;  margin:5px "></td><td style="padding:5px"><p>' + location.aname + '</p><p>' + location.address + '</p></td></tr></table></div>'; 
-				          
-				          
-				          
 
 				          // 인포윈도우를 생성합니다
 				          var infowindow = new kakao.maps.InfoWindow({
@@ -126,8 +111,6 @@
 				              infowindow.close();
 				          });
 				          
-				          
-				          
 				       // 마커에 클릭이벤트를 등록합니다
 				          kakao.maps.event.addListener(marker, 'click', function() {
 				        	  // set the URL of the new page to navigate to
@@ -140,16 +123,6 @@
 				          });
 				          
 				          
-				          
-				          
-				          
-				          
-				          
-				          
-				          
-				          
-				          
-				          
 				        } else {
 				          console.log('Geocoder failed due to: ' + status);
 				        }
@@ -160,7 +133,6 @@
 			  alert("데이터 수신이 실패하였습니다.");
 		  }
 	  })
-	  
 	  
 	  $('#searchBtn').click(function(){
 			// 버튼을 click했을때
@@ -208,11 +180,6 @@
 			    } 
 			});  
 		});
-	  
-	  
-	  
-	  
-	  
 	  
   });
       
