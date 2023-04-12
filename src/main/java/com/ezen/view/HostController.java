@@ -126,7 +126,7 @@ public class HostController {
 		return "redirect:host_mypage";
 	}
 
-	@GetMapping("/host_mypage")
+	@RequestMapping("/host_mypage")
 	public String hostMyPageView(HttpSession session, AccommodationVO vo, Model model) {
 
 		HostVO loginHost = (HostVO) session.getAttribute("loginHost");
