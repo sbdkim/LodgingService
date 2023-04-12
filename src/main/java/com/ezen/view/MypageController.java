@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.biz.dto.AccommodationVO;
 import com.ezen.biz.dto.BookingVO;
@@ -26,7 +27,7 @@ public class MypageController {
 	@Autowired
 	private AccommodationService accommodationService;
 
-	@PostMapping("booking_insert")
+	@PostMapping("/booking_insert")
 	public String insertBooking(BookingVO vo, HttpSession session) {
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
