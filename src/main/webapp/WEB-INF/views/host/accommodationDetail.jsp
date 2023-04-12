@@ -119,34 +119,22 @@ td:last-child {
 							<th>객실 가격</th>
 							<th colspan="3">수정하기</th>
 						</tr>
-						
-						
-						<c:choose>
-							<c:when test = "${empty roomList}">
-								<td width="100%" colspan="4" align="center" height="23" style="text-align:center">
-								  	현재 등록된 객실이 없습니다.
-								  </td>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${roomList}" var="roomVO">
-									<tr>
-										<td align="center" width="100px">${roomVO.rseq}</td>
-										<td align="center" width="250px">${roomVO.rname}</td>
-										<td align="center" width="150px"><fmt:formatNumber type="currency" value="${roomVO.price}" /></td>
-										<td align="center" width="100px"><a href="host_room_update_form?rseq=${roomVO.rseq}"> 수 정 </a></td>
-										<td align="center" width="40px"> <a href="host_room_delete?rseq=${roomVO.rseq}&aseq=${accommodationDetail.aseq}" onClick="delcheck();"> 삭 제 </a></td>
-									</tr>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-						
+						<c:forEach items="${roomList}" var="roomVO">
+							<tr>
+								<td align="center" width="100px">${roomVO.rseq}</td>
+								<td align="center" width="250px">${roomVO.rname}</td>
+								<td align="center" width="150px"><fmt:formatNumber type="currency" value="${roomVO.price}" /></td>
+								<td align="center" width="100px"><a href="host_room_update_form?rseq=${roomVO.rseq}"> 수 정 </a></td>
+								<td align="center" width="40px"> <a href="host_room_delete?rseq=${roomVO.rseq}&aseq=${accommodationDetail.aseq}"> 삭 제 </a></td> 
+							</tr>
+						</c:forEach>
 					</table>
 
 					<div class="clear"></div>
 					<br> <br>
 					<div id="buttons">
-						<input class="btn" type="button" name="btn_write" value="객실 등록"onClick="go_rwrt()">
-						<input type="button" value="이전단계로" onclick="history.back(1)">
+						<input class="btn" type="button" name="btn_write" value="객실 등록" onClick="go_rwrt()">
+						<input type="button" value="이전단계로" onclick="go_list()">
 					</div>
 					</div>
 				</form>
@@ -164,14 +152,12 @@ td:last-child {
 		form.action = "host_room_write_form";
 		form.submit();
 	}
-
-	function delcheck(){
-		if(confirm("삭제하시겠습니까?")){
-			return true;
-		}else{
-			return false;
-			location = "room_form";
-		}
-
+	
+	function go_list() {
+		var form = document.getElementById("room_form");
+		
+		form.action = "host_mypage";
+		form.submit();
 	}
+
 </script>

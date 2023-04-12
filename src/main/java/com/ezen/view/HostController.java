@@ -286,7 +286,7 @@ public class HostController {
 
 		roomService.deleteRoom(rseq);
 
-		return "accommodation_detail?aseq=" + aseq;
+		return "redirect:accommodation_detail?aseq=" + aseq;
 	}
 
 	@GetMapping("/hostBookingList")
