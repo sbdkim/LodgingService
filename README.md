@@ -54,9 +54,9 @@ KozyNest 프로젝트의 목적은 백엔드 측면에 초점을 맞춘 숙박 �
 
 ### 🧳 요구 사항 (Requirements)
 - JDK 11 이상
-Eclipse IDE for Java EE Developers
-Apache Tomcat 9.0 
-Oracle SQL Developer
+- Eclipse IDE for Java EE Developers
+- Apache Tomcat 9.0 
+- Oracle SQL Developer
 
 ### 🧳 설치 및 실행 방법
 1. SQL Developer에 system개정에서 kozynest 사용자를 생성하고 권한을 부여합니다.
