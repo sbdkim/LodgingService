@@ -64,7 +64,6 @@ Oracle SQL Developer
 ```
 CREATE USER kozynest IDENTIFIED BY 1234;
 GRANT dba TO kozynest;
- 
 ```
 
 2. 새로운 데이터베이스를 접속합니다
