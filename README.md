@@ -40,6 +40,7 @@ KozyNest 프로젝트의 목적은 백엔드 측면에 초점을 맞춘 숙박 �
 - Spring AOP
 - Java 11
 - Oracle Database
+- Mybatis
 
 **프론트앤드**
 
